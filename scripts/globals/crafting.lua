@@ -79,8 +79,8 @@ local hqCrystals =
     [4] = { id = xi.items.TERRA_CRYSTAL,    cost = 200 },
     [5] = { id = xi.items.PLASMA_CRYSTAL,   cost = 200 },
     [6] = { id = xi.items.TORRENT_CRYSTAL,  cost = 200 },
-    [7] = { id = xi.items.AURORA_CRYSTAL,   cost = 200 },
-    [8] = { id = xi.items.TWILIGHT_CRYSTAL, cost = 200 },
+    [7] = { id = xi.items.AURORA_CRYSTAL,   cost = 500 },
+    [8] = { id = xi.items.TWILIGHT_CRYSTAL, cost = 500 },
 }
 
 xi.crafting.gpRewards =
