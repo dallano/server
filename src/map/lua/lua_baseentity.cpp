@@ -16265,7 +16265,6 @@ uint32 CLuaBaseEntity::getWorldpassId(uint32 targid)
 void CLuaBaseEntity::sendNpcEmote(CLuaBaseEntity* PBaseEntity, sol::object const& p0, sol::object const& p1, sol::object const& p2)
 {
     XI_DEBUG_BREAK_IF(m_PBaseEntity == nullptr);
-    XI_DEBUG_BREAK_IF(m_PBaseEntity->objtype != TYPE_NPC);
 
     // 1st parameter is optional
     XI_DEBUG_BREAK_IF(p0 == sol::lua_nil);

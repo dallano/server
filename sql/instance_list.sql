@@ -66,7 +66,7 @@ INSERT INTO `instance_list` VALUES (5502,'extermination',55,54,30,298.099,-3.943
 INSERT INTO `instance_list` VALUES (5600,'shades_of_vengeance',56,79,30,127,-15,-303,0,-1,-1,-1,-1);
 INSERT INTO `instance_list` VALUES (5601,'seagull_grounded',56,79,30,-350.000,-15.245,380.000,0,-1,-1,-1,-1);
 INSERT INTO `instance_list` VALUES (5602,'requiem',56,79,30,-470.000,-9.964,-325.000,190,-1,-1,-1,-1);
--- INSERT INTO `instance_list` VALUES (5603,'saving_private_ryaaf',56,79,30,0.000,0.000,0.000,0,-1,-1,-1,-1);
+INSERT INTO `instance_list` VALUES (5603,'saving_private_ryaaf',56,79,30,20.000,-15.624,548.000,0,-1,-1,-1,-1);
 -- INSERT INTO `instance_list` VALUES (5604,'shooting_down_the_baron',56,79,15,0.000,0.000,0.000,0,-1,-1,-1,-1);
 -- INSERT INTO `instance_list` VALUES (5605,'building_bridges',56,79,15,0.000,0.000,0.000,0,-1,-1,-1,-1);
 -- INSERT INTO `instance_list` VALUES (5606,'stop_the_bloodshed',56,79,30,0.000,0.000,0.000,0,-1,-1,-1,-1);

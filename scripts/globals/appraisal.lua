@@ -655,6 +655,14 @@ xi.appraisal.appraisalItems =
             },
         },
 
+        [xi.assault.mission.SAVING_PRIVATE_RYAAF] =
+        {
+            items =
+            {
+                { 100, xi.items.PICKAXE },
+            },
+        },
+
         [xi.appraisal.origin.NYZUL_BAT_EYE] =
         {
             items =

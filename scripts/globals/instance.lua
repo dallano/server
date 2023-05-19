@@ -73,7 +73,7 @@ xi.instance.lookup =
         { 5600, { 143, 79, -6, 0, 99, 3, 0 }, { 143, 4 }, { 147, 3 } }, -- Shades of Vengeance (TOAU31)
         { 5601, { 143, 31, -4, 0, 70, 0, 1 }, { 143, 4 }, { 147, 0 } }, -- Assault: Seagull Grounded
         -- Assault: Requiem
-        -- Assault: Saving Private Ryaaf
+        { 5603, { 143, 33, -4, 0, 70, 3, 1 }, { 143, 4 }, { 147, 0 } }, -- Assault: Saving Private Ryaaf
         -- Assault: Shooting Down the Baron
         -- Assault: Stop the Bloodshed
         -- Assault: Defuse the Threat

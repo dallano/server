@@ -68,6 +68,15 @@ entity.onTrigger = function(player, npc)
                 { itemid = xi.items.UNAPPRAISED_BOX,     droprate = 200 },
             },
         },
+
+        [xi.assault.mission.SAVING_PRIVATE_RYAAF] =
+        {
+            {
+                { itemid = xi.items.APPRAISAL_BOX,     droprate = 500 },
+                { itemid = xi.items.APPRAISAL_SHIELD,  droprate = 250 },
+                { itemid = xi.items.APPRAISAL_POLEARM, droprate = 250 },
+            },
+        },
     }
 
     local regItem =
@@ -176,6 +185,28 @@ entity.onTrigger = function(player, npc)
             {
                 { itemid = xi.items.REMEDY,         droprate = 300 },
                 { itemid = 0,                       droprate = 700 },
+            },
+        },
+
+        [xi.assault.mission.SAVING_PRIVATE_RYAAF] =
+        {
+            {
+                { itemid = xi.items.HI_POTION_P3, droprate = 1000 },
+            },
+
+            {
+                { itemid = xi.items.HI_ETHER_TANK, droprate = 250 },
+                { itemid = 0,                      droprate = 750 },
+            },
+
+            {
+                { itemid = xi.items.HI_RERAISER, droprate = 150 },
+                { itemid = 0,                    droprate = 850 },
+            },
+
+            {
+                { itemid = xi.items.HI_POTION_TANK, droprate = 200 },
+                { itemid = 0,                       droprate = 800 },
             },
         },
     }

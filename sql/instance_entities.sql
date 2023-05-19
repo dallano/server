@@ -200,6 +200,46 @@ INSERT INTO `instance_entities` VALUES (5602,17006880);
 INSERT INTO `instance_entities` VALUES (5602,17006881);
 INSERT INTO `instance_entities` VALUES (5602,17006882);
 INSERT INTO `instance_entities` VALUES (5602,17006892);
+
+-- Saving Private Ryaaf
+-- mobs
+INSERT INTO `instance_entities` VALUES (5603,17006635); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006636); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006637); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006638); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006639); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006640); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006641); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006642); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006643); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006644); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006645); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006646); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006647); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006648); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006649); -- Cursed Chigoe
+INSERT INTO `instance_entities` VALUES (5603,17006650); -- Experimental Undead
+INSERT INTO `instance_entities` VALUES (5603,17006651); -- Experimental Undead
+INSERT INTO `instance_entities` VALUES (5603,17006652); -- Experimental Undead
+INSERT INTO `instance_entities` VALUES (5603,17006653); -- Experimental Undead
+INSERT INTO `instance_entities` VALUES (5603,17006654); -- Experimental Undead
+INSERT INTO `instance_entities` VALUES (5603,17006655); -- Experimental Undead
+INSERT INTO `instance_entities` VALUES (5603,17006656); -- Experimental Undead
+INSERT INTO `instance_entities` VALUES (5603,17006657); -- Experimental Undead
+-- npcs
+INSERT INTO `instance_entities` VALUES (5603,17006809); -- Ancient Lockbox
+INSERT INTO `instance_entities` VALUES (5603,17006810); -- Rune of Release
+INSERT INTO `instance_entities` VALUES (5603,17006811); -- Ryaaf
+INSERT INTO `instance_entities` VALUES (5603,17006812); -- Balarahb
+INSERT INTO `instance_entities` VALUES (5603,17006813); -- Rhagmakah
+INSERT INTO `instance_entities` VALUES (5603,17006813); -- Bridge Switch
+INSERT INTO `instance_entities` VALUES (5603,17006813); -- Bridge Switch
+INSERT INTO `instance_entities` VALUES (5603,17006813); -- Bridge Switch
+INSERT INTO `instance_entities` VALUES (5603,17006813); -- Adeeha
+INSERT INTO `instance_entities` VALUES (5603,17006813); -- _1k2
+INSERT INTO `instance_entities` VALUES (5603,17006813); -- _1k4
+INSERT INTO `instance_entities` VALUES (5603,17006813); -- _1ky
+
 -- The Black Coffin
 -- mobs
 INSERT INTO `instance_entities` VALUES (6000,17022980);

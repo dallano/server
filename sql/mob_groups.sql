@@ -2847,10 +2847,10 @@ INSERT INTO `mob_groups` VALUES (6,360,56,'Batteilant_Bhoot',0,128,0,0,9999,77,7
 INSERT INTO `mob_groups` VALUES (7,905,56,'Darkling_Draugar',0,128,0,0,9999,77,78,0);
 INSERT INTO `mob_groups` VALUES (8,1097,56,'Draconic_Draugar',0,128,0,0,0,77,78,0);
 INSERT INTO `mob_groups` VALUES (9,1112,56,'Draugars_Wyvern',0,128,0,0,0,77,78,0);
-INSERT INTO `mob_groups` VALUES (10,865,56,'Cursed_Chigoe',0,128,0,0,0,77,78,0);
-INSERT INTO `mob_groups` VALUES (11,1274,56,'Experimental_Undead_thf',0,128,0,0,0,77,78,0);
-INSERT INTO `mob_groups` VALUES (12,5468,56,'Experimental_Undead_brd',0,128,0,0,0,77,78,0);
-INSERT INTO `mob_groups` VALUES (13,5469,56,'Experimental_Undead_blm',0,128,0,0,9999,77,78,0);
+INSERT INTO `mob_groups` VALUES (10,865,56,'Cursed_Chigoe',0,128,0,2000,0,77,78,0);
+INSERT INTO `mob_groups` VALUES (11,1274,56,'Experimental_Undead_thf',0,128,0,7500,0,81,82,0);
+INSERT INTO `mob_groups` VALUES (12,5468,56,'Experimental_Undead_brd',0,128,0,7500,0,81,82,0);
+INSERT INTO `mob_groups` VALUES (13,5469,56,'Experimental_Undead_blm',0,128,0,7500,9999,81,82,0);
 INSERT INTO `mob_groups` VALUES (14,431,56,'Black_Baron',0,128,0,0,0,0,75,78);
 INSERT INTO `mob_groups` VALUES (15,715,56,'Chigoe_Breeder',0,128,0,9000,9999,78,79,0);
 INSERT INTO `mob_groups` VALUES (16,285,56,'Augmented_Chigoe',0,128,0,500,0,50,50,0);

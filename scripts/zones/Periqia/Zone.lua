@@ -7,6 +7,11 @@ require('scripts/globals/zone')
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
+    zone:registerTriggerArea(1)
+    zone:registerTriggerArea(2)
+    zone:registerTriggerArea(3)
+    zone:registerTriggerArea(5)
+    zone:registerTriggerArea(5)
 end
 
 zoneObject.onInstanceZoneIn = function(player, instance)
@@ -27,6 +32,19 @@ zoneObject.onInstanceZoneIn = function(player, instance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
+    switch (triggerArea:GetTriggerAreaID()): caseof
+    {
+        [1] = function (x)
+        end,
+        [2] = function (x)
+        end,
+        [3] = function (x)
+        end,
+        [4] = function (x)
+        end,
+        [5] = function (x)
+        end,
+    }
 end
 
 zoneObject.onEventUpdate = function(player, csid, option)
