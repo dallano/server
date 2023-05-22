@@ -523,3 +523,7 @@ xi.instance.updateInstanceTime = function(instance, elapsed, text)
 
     setInstanceLastTimeUpdateMessage(instance, players, remainingTimeLimit, text)
 end
+
+xi.instance.onInstanceTick = function(instance)
+    local players = instance:getChars()
+end

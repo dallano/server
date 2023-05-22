@@ -51,6 +51,9 @@ zones[xi.zone.PERIQIA] =
         EXCALIACE_TOO_CLOSE           = 7547, -- Okay, okay, you got me! I promise I won't run again if you step back a bit...please. Someone's been eating too much garlic...
         EXCALIACE_TIRED               = 7548, -- <Pant>...<wheeze>...
         EXCALIACE_CAUGHT              = 7549, -- Damn...
+        RYAAF_DIALOGUE                = 7550, -- Y-you're not a zombie...? You came all the way in here to find me...?
+        RHAGMAKAH_DIALOGUE            = 7555, -- My thanks!
+        BALARAHB_DIALOGUE             = 7559, -- I thank you for saving me. My name is Balarahb. It wouldn't have been long before a draugar or a qutrub dragged me down into unlife with them.
     },
 
     mob =

@@ -7,11 +7,13 @@ require('scripts/globals/zone')
 local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
-    zone:registerTriggerArea(1)
-    zone:registerTriggerArea(2)
-    zone:registerTriggerArea(3)
-    zone:registerTriggerArea(5)
-    zone:registerTriggerArea(5)
+    -- Assault: "Saving Private Ryaaf" trigger areas
+    zone:registerTriggerArea(1,   -70, 2, 588, 0, 0, 0) -- North
+    zone:registerTriggerArea(2,   109, 2, 449, 0, 0, 0) -- East
+    zone:registerTriggerArea(3, -46.8, 2, 295, 0, 0, 0) -- South
+    zone:registerTriggerArea(4,  -229, 2, 448, 0, 0, 0) -- West
+    zone:registerTriggerArea(5,   -70, 2, 412, 0, 0, 0) -- Center
+    ------------------------------------------------
 end
 
 zoneObject.onInstanceZoneIn = function(player, instance)
@@ -32,19 +34,6 @@ zoneObject.onInstanceZoneIn = function(player, instance)
 end
 
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
-    switch (triggerArea:GetTriggerAreaID()): caseof
-    {
-        [1] = function (x)
-        end,
-        [2] = function (x)
-        end,
-        [3] = function (x)
-        end,
-        [4] = function (x)
-        end,
-        [5] = function (x)
-        end,
-    }
 end
 
 zoneObject.onEventUpdate = function(player, csid, option)
