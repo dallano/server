@@ -353,7 +353,7 @@ local function checkCure(mob, master, fellowLvl, mp, fellowType)
         elseif fellowType == 6 then
             if
                 doMasterCure(mob, master, cureSpell) or
-                doFellowCure(mob, fellowType, fellowType, cureSpell)
+                doFellowCure(mob, fellowType, cureSpell)
             then
                 return true
             end

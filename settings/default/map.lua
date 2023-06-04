@@ -49,9 +49,9 @@ xi.settings.map =
     AH_LIST_LIMIT = 7,
 
     -- Misc EXP related settings
-    EXP_RATE                = 1.0,
+    EXP_RATE                = 1.5,
     EXP_LOSS_RATE           = 1.0,
-    EXP_PARTY_GAP_PENALTIES = true,
+    EXP_PARTY_GAP_PENALTIES = false,
 
     -- Capacity Point Settings
     CAPACITY_RATE = 1.0,
@@ -63,7 +63,7 @@ xi.settings.map =
     VANADIEL_TIME_EPOCH = 0,
 
     -- For old fame calculation use .25
-    FAME_MULTIPLIER = 0.25,
+    FAME_MULTIPLIER = 0.5,
 
     -- Percentage of experience normally lost to keep upon death. 0 means full loss, where 1 means no loss.
     EXP_RETAIN = 0,
@@ -89,7 +89,7 @@ xi.settings.map =
     WS_POINTS_SKILLCHAIN = 1,
 
     -- Enable/disable jobs other than BST and RNG having widescan
-    ALL_JOBS_WIDESCAN = true,
+    ALL_JOBS_WIDESCAN = false,
 
     -- Modifier to apply to player speed. 0 is the retail accurate default. Negative numbers will reduce it.
     SPEED_MOD = -10,
@@ -106,8 +106,8 @@ xi.settings.map =
     CRAFT_CHANCE_MULTIPLIER   = 1.0,
 
     -- Multiplier for skillup amounts. Using anything above 1 will break the 0.5 cap, the cap will become 0.9 (For maximum, set to 5)
-    SKILLUP_AMOUNT_MULTIPLIER = 1,
-    CRAFT_AMOUNT_MULTIPLIER   = 1,
+    SKILLUP_AMOUNT_MULTIPLIER = 2,
+    CRAFT_AMOUNT_MULTIPLIER   = 2,
 
     -- Gardening Factors. DO NOT change defaults without verifiable proof that your change IS how retail does it. Myths need to be optional.
     GARDEN_DAY_MATTERS       = false,
@@ -116,22 +116,22 @@ xi.settings.map =
     GARDEN_MH_AURA_MATTERS   = false,
 
     -- Use current retail skill up rates and margins (Retail = High Skill-Up rate; Skill-Up when at or under 10 levels above synth recipe level.)
-    CRAFT_MODERN_SYSTEM = false,
+    CRAFT_MODERN_SYSTEM = true,
 
     -- Craft level limit from which specialization points beginning to count. (Retail = 700; Level 75 era:600)
     CRAFT_COMMON_CAP = 600,
 
     -- Amount of points allowed in crafts over the level defined above. Points are shared across all crafting skills. (Retail = 400; All skills can go to max = 3200)
-    CRAFT_SPECIALIZATION_POINTS = 400,
+    CRAFT_SPECIALIZATION_POINTS = 3200,
 
     -- Enables fishing. 0 = Disabled. 1 = Enable. ENABLE AT YOUR OWN RISK.
-    FISHING_ENABLE = false,
+    FISHING_ENABLE = true,
 
     -- Minimum level (across all jobs) required to for a player to fish.
-    FISHING_MIN_LEVEL = 15,
+    FISHING_MIN_LEVEL = 1,
 
     -- Multiplier for fishing skill-up chance. Default = 1.0, very hard.
-    FISHING_SKILL_MULTIPLIER = 1.0,
+    FISHING_SKILL_MULTIPLIER = 10.0,
 
     -- Enable/disable skill-ups from bloodpacts
     SKILLUP_BLOODPACT = true,
@@ -139,22 +139,22 @@ xi.settings.map =
     -- Adjust rate of TP gain for mobs, pets (includes charmed pets), fellows, trusts and players.
     -- Acts as a multiplier, so default is 1.
     MOB_TP_MULTIPLIER    = 1.0,
-    PET_TP_MULTIPLIER    = 1.0,
-    PLAYER_TP_MULTIPLIER = 1.0,
+    PET_TP_MULTIPLIER    = 1.25,
+    PLAYER_TP_MULTIPLIER = 1.25,
     TRUST_TP_MULTIPLIER  = 1.0,
-    FELLOW_TP_MULTIPLIER = 1.0,
+    FELLOW_TP_MULTIPLIER = 1.25,
 
     -- Adjust max HP pool for NMs, regular mobs, players, and trusts/fellows. Acts as a multiplier, so default is 1.
     NM_HP_MULTIPLIER        = 1.0,
-    MOB_HP_MULTIPLIER       = 1.0,
-    PLAYER_HP_MULTIPLIER    = 1.0,
-    ALTER_EGO_HP_MULTIPLIER = 1.0,
+    MOB_HP_MULTIPLIER       = 0.75,
+    PLAYER_HP_MULTIPLIER    = 1.25,
+    ALTER_EGO_HP_MULTIPLIER = 1.25,
 
     -- Adjust max MP pool for NMs, regular mobs, players, and trusts/fellows. Acts as a multiplier, so default is 1.
     NM_MP_MULTIPLIER        = 1.0,
     MOB_MP_MULTIPLIER       = 1.0,
-    PLAYER_MP_MULTIPLIER    = 1.0,
-    ALTER_EGO_MP_MULTIPLIER = 1.0,
+    PLAYER_MP_MULTIPLIER    = 1.5,
+    ALTER_EGO_MP_MULTIPLIER = 1.5,
 
     -- Sets the fraction of MP a subjob provides to the main job. Retail is half and this acts as a divisor so default is 2
     SJ_MP_DIVISOR = 2.0,
@@ -171,9 +171,9 @@ xi.settings.map =
 
     -- Adjust base stats (str/vit/etc.) for NMs, regular mobs, players, and trusts/fellows. Acts as a multiplier, so default is 1.
     NM_STAT_MULTIPLIER        = 1.0,
-    MOB_STAT_MULTIPLIER       = 1.0,
-    PLAYER_STAT_MULTIPLIER    = 1.0,
-    ALTER_EGO_STAT_MULTIPLIER = 1.0,
+    MOB_STAT_MULTIPLIER       = 0.75,
+    PLAYER_STAT_MULTIPLIER    = 1.25,
+    ALTER_EGO_STAT_MULTIPLIER = 1.25,
 
     -- Adjust skill caps for trusts/fellows. Acts as a multiplier, so default is 1.
     ALTER_EGO_SKILL_MULTIPLIER = 1.0,
@@ -185,19 +185,19 @@ xi.settings.map =
     BLOOD_PACT_SHARED_TIMER = false,
 
     -- Adjust mob drop rate. Acts as a multiplier, so default is 1.
-    DROP_RATE_MULTIPLIER = 1.0,
+    DROP_RATE_MULTIPLIER = 2.0,
 
     -- Multiplier for gil naturally dropped by mobs. Does not apply to the bonus gil from all_mobs_gil_bonus. Default is 1.0.
-    MOB_GIL_MULTIPLIER = 1.0,
+    MOB_GIL_MULTIPLIER = 1.5,
 
     -- All mobs drop this much extra gil per mob LV even if they normally drop zero.
-    ALL_MOBS_GIL_BONUS = 0,
+    ALL_MOBS_GIL_BONUS = 2,
 
     -- Maximum total bonus gil that can be dropped. Default 9999 gil.
-    MAX_GIL_BONUS = 9999,
+    MAX_GIL_BONUS = 100000,
 
     --  Allow mobs to walk back home instead of despawning
-    MOB_NO_DESPAWN = true,
+    MOB_NO_DESPAWN = false,
 
     -- Adds extra time to mob despawn in seconds. Base time is 25s, so a setting of 5 here would be a total of 30 seconds.
     MOB_ADDITIONAL_TIME_TO_DEAGGRO = 0,
@@ -212,7 +212,7 @@ xi.settings.map =
     BATTLE_CAP_TWEAK = 0,
 
     -- Enable/disable level cap of mission battlefields stored in database.
-    LV_CAP_MISSION_BCNM = 1,
+    LV_CAP_MISSION_BCNM = 0,
 
     -- Max allowed merits points players can hold
     --  10 classic
@@ -242,7 +242,7 @@ xi.settings.map =
     AUDIT_PARTY     = false,
 
     -- Seconds between healing ticks. Default is 10
-    HEALING_TICK_DELAY = 10,
+    HEALING_TICK_DELAY = 5,
 
     -- Set to 1 to enable server side anti-cheating measurements
     ANTICHEAT_ENABLED = true,
@@ -251,14 +251,14 @@ xi.settings.map =
     ANTICHEAT_JAIL_DISABLE = false,
 
     -- Paralysis Settings
-    ITEM_PARALYSIS_LOSS              = true, -- Allow items to be put on recast or deleted when used during a paralysis tick.
+    ITEM_PARALYSIS_LOSS              = false, -- Allow items to be put on recast or deleted when used during a paralysis tick.
     ITEM_PARALYSIS_SCROLL_PROTECTION = false, -- Stops scrolls from being deleted if a paralysis tick occurs.
 
     -- Moghouse Thingies
     MH_EXIT_HOMEPOINT  = false, -- Enables A Homepoint Set Prompt On MH Exit
 
     -- Enable/disable keeping jug pets through zoning
-    KEEP_JUGPET_THROUGH_ZONING = false,
+    KEEP_JUGPET_THROUGH_ZONING = true,
 
     -- Engage Time Reduction
     ENGAGE_TIME_REDUCTION = 0.5, -- Decreases re-engage time(ms) by a percentage. (float)

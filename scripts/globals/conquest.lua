@@ -87,22 +87,18 @@ local outposts =
 
 -- Pre-ToAU outpost values
 if xi.settings.main.ENABLE_TOAU == 0 then
-    outposts[xi.region.RONFAURE].lvl        = 20
-    outposts[xi.region.ZULKHEIM].lvl        = 20
-    outposts[xi.region.NORVALLEN].lvl       = 25
-    outposts[xi.region.GUSTABERG].lvl       = 20
-    outposts[xi.region.DERFLAND].lvl        = 25
-    outposts[xi.region.SARUTABARUTA].lvl    = 20
+    outposts[xi.region.NORVALLEN].lvl       = 20
+    outposts[xi.region.DERFLAND].lvl        = 20
     outposts[xi.region.KOLSHUSHU].lvl       = 20
-    outposts[xi.region.ARAGONEU].lvl        = 25
+    outposts[xi.region.ARAGONEU].lvl        = 20
     outposts[xi.region.FAUREGANDI].lvl      = 35
     outposts[xi.region.VALDEAUNIA].lvl      = 40
-    outposts[xi.region.QUFIMISLAND].lvl     = 25
-    outposts[xi.region.LITELOR].lvl         = 35
-    outposts[xi.region.KUZOTZ].lvl          = 40
-    outposts[xi.region.VOLLBOW].lvl         = 65
-    outposts[xi.region.ELSHIMOLOWLANDS].lvl = 35
-    outposts[xi.region.ELSHIMOUPLANDS].lvl  = 45
+    outposts[xi.region.QUFIMISLAND].lvl     = 20
+    outposts[xi.region.LITELOR].lvl         = 30
+    outposts[xi.region.KUZOTZ].lvl          = 35
+    outposts[xi.region.VOLLBOW].lvl         = 60
+    outposts[xi.region.ELSHIMOLOWLANDS].lvl = 30
+    outposts[xi.region.ELSHIMOUPLANDS].lvl  = 40
     outposts[xi.region.TAVNAZIANARCH].lvl   = 25
 
     for _, outpost in pairs(outposts) do

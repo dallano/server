@@ -363,16 +363,13 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 2220,   880 }, -- Bone Chip
-                    { 2220,   898 }, -- Chicken Bone
-                    { 1220,   891 }, -- Bat Fang
-                    { 1220, 17396 }, -- Little Worm
                     {  720,   897 }, -- Scorpion Claw
                     {  720,   896 }, -- Scorpion Shell
                     {  420,  1616 }, -- Antlion Jaw
                     {  420,  1236 }, -- Cactus Stems
                     {  420,  1473 }, -- High Quality Scorpion Shell
                     {  420,   769 }, -- Colored Rock
+                    {   50,   898 }, -- Chicken Bone
                 },
 
                 points =
@@ -392,15 +389,11 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 2690,   880 }, -- Bone Chip
-                    { 1830,   898 }, -- Chicken Bone
-                    { 1300,   891 }, -- Bat Fang
-                    { 1440,   893 }, -- Giant Femur
-                    { 1250, 17396 }, -- Little Worm
-                    {   50,   897 }, -- Scorpion Claw
-                    {  290,   896 }, -- Scorpion Shell
-                    {  240,   885 }, -- Turtle Shell
-                    {  190,  1888 }, -- Silica
+                    { 940,   893 }, -- Giant Femur
+                    {  50,   897 }, -- Scorpion Claw
+                    { 290,   896 }, -- Scorpion Shell
+                    { 240,   885 }, -- Turtle Shell
+                    { 190,  1888 }, -- Silica
                 },
 
                 points =
@@ -428,17 +421,15 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 2130,   936 }, -- Rock Salt
                     { 1700,   888 }, -- Seashell
-                    {  430,   881 }, -- Crab Shell
                     { 1490,   864 }, -- Fish Scales
-                    { 2130, 17395 }, -- Lugworm
                     { 1060, 17397 }, -- Shell Bug
+                    {  430,   881 }, -- Crab Shell
+                    {  430,   885 }, -- Turtle Shell
                     {  100,   887 }, -- Coral Fragment
                     {  100,   573 }, -- Vegetable Seeds
-                    {  430,   885 }, -- Turtle Shell
                     {  100,   575 }, -- Grain Seeds
-                    {  640,  1985 }, -- Helmet Mole
+                    {   50,  1985 }, -- Helmet Mole
                 },
 
                 points =
@@ -459,9 +450,6 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 2560,   880 }, -- Bone Chip
-                    { 2560,   891 }, -- Bat Fang
-                    { 2330, 17396 }, -- Little Worm
                     {  930,   893 }, -- Giant Femur
                     {  700,   897 }, -- Scorpion Claw
                     {  230,   896 }, -- Scorpion Shell
@@ -976,10 +964,7 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 1150, 1654 }, -- Igneous Rock
                     { 1130,  642 }, -- Zinc Ore
-                    { 1100,  640 }, -- Copper Ore
-                    { 1080,  641 }, -- Tin Ore
                     { 1050,  736 }, -- Silver Ore
                     {  970,  643 }, -- Iron Ore
                     {  680, 1632 }, -- Moblin Mail
@@ -987,6 +972,7 @@ xi.helm.helmInfo =
                     {  600, 1638 }, -- Moblin Mask
                     {  570,  568 }, -- Goblin Die
                     {  570, 1631 }, -- Moblin Armor
+                    {  150, 1654 }, -- Igneous Rock
                     {   80,  645 }, -- Darksteel Ore
                     {   80,  644 }, -- Mythril Ore
                     {   70,  737 }, -- Gold Ore
@@ -1015,17 +1001,15 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 1660,  640 }, -- Copper Ore
-                    { 1100,  641 }, -- Tin Ore
+                    { 1720,  643 }, -- Iron Ore
                     { 1450,  642 }, -- Zinc Ore
-                    { 1790, 1654 }, -- Igneous Rock
                     { 1450,  736 }, -- Silver Ore
                     {  140,  678 }, -- Aluminum Ore
-                    { 1720,  643 }, -- Iron Ore
-                    {   70,  645 }, -- Darksteel Ore
                     {  210,  644 }, -- Mythril Ore
                     {  140,  737 }, -- Gold Ore
                     {  340,  738 }, -- Platium Ore
+                    {   70,  645 }, -- Darksteel Ore
+                    {   80, 1654 }, -- Igneous Rock
                     {   70,  769 }, -- Colored Rock
                 },
 
@@ -1048,20 +1032,14 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 2250, 1108 }, -- Sulfur
-                    { 2990,  643 }, -- Iron Ore
-                    { 1590, 1155 }, -- Iron Sand
-                    { 1540,  768 }, -- Flint Stone
-                    { 1340,  928 }, -- Bomb Ash
-                    {  960, 1632 }, -- Moblin Mail
-                    { 1150, 1625 }, -- Moblin Helm
-                    {  450, 1631 }, -- Moblin Armor
+                    { 3000,  643 }, -- Iron Ore
+                    { 1500, 1155 }, -- Iron Sand
+                    {  800,  646 }, -- Adaman Ore
                     {  380, 2160 }, -- Troll Pauldron
                     {  450, 2161 }, -- Troll Vambrace
-                    {  430, 1638 }, -- Moblin Mask
+                    {  300, 1108 }, -- Sulfur
                     {  210,  902 }, -- Demon Horn
-                    {  140,  646 }, -- Adaman Ore
-                    {   30,  685 }, -- Khroma Ore
+                    {  100,  685 }, -- Khroma Ore
                 },
 
                 points =
@@ -1192,14 +1170,12 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 1460,   640 }, -- Copper Ore
-                    { 1650,   643 }, -- Iron Ore
+                    { 1500,   640 }, -- Copper Ore
                     { 1300,   641 }, -- Tin Ore
-                    { 1140, 17296 }, -- Pebble
-                    { 1320,   642 }, -- Zinc Ore
-                    {  840,   768 }, -- Flint Stone
+                    { 1000,   769 }, -- Colored Rock
+                    {  400,   643 }, -- Iron Ore
                     {  360,   736 }, -- Silver Ore
-                    {  170,   769 }, -- Colored Rock
+                    {  320,   642 }, -- Zinc Ore
                     {  150,   645 }, -- Darksteel Ore
                     {  110,   737 }, -- Gold Ore
                 },
@@ -1247,14 +1223,11 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
+                    { 2000,   644 }, -- Mythril Ore
                     { 1130,   642 }, -- Zinc Ore
                     {  940,   643 }, -- Iron Ore
-                    { 1040, 17296 }, -- Pebble
-                    {  970,   641 }, -- Tin Ore
-                    {  900,   644 }, -- Mythril Ore
                     {  900,   736 }, -- Silver Ore
-                    {  800,   640 }, -- Copper Ore
-                    {  100,   738 }, -- Platinum Ore
+                    {  150,   738 }, -- Platinum Ore
                 },
 
                 points =
@@ -1287,13 +1260,13 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 2450,   643 }, -- Iron Ore
-                    { 1800, 17296 }, -- Pebble
-                    { 1850,   640 }, -- Copper Ore
-                    { 1330,   642 }, -- Zinc Ore
-                    { 1120,   641 }, -- Tin Ore
-                    {  550,  1984 }, -- Snapping Mole
+                    { 2500,   640 }, -- Copper Ore
+                    { 2500,   641 }, -- Tin Ore
+                    { 1500,   642 }, -- Zinc Ore
+                    { 1000,   643 }, -- Iron Ore
                     {  180,   736 }, -- Silver Ore
+                    {  150, 17296 }, -- Pebble
+                    {   50,  1984 }, -- Snapping Mole
                     {   40,   645 }, -- Darksteel Ore
                 },
 
@@ -1330,15 +1303,11 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 1890, 17296 }, -- Pebble
-                    { 1670,   642 }, -- Zinc Ore
-                    { 1510,   640 }, -- Copper Ore
-                    { 1470,   641 }, -- Tin Ore
-                    { 1450,   643 }, -- Iron Ore
+                    { 1750,   643 }, -- Iron Ore
+                    { 1000,   645 }, -- Darksteel Ore
                     {  810,   736 }, -- Silver Ore
-                    {  590,   645 }, -- Darksteel Ore
-                    {  400,   769 }, -- Colored Rock
-                    {   80,   737 }, -- Gold Ore
+                    {  200,   769 }, -- Colored Rock
+                    {  100,   737 }, -- Gold Ore
                 },
 
                 points =
@@ -1368,17 +1337,15 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 2710,   768 }, -- Flint Stone
-                    { 1440,   643 }, -- Iron Ore
-                    {  510,  1108 }, -- Sulfur
-                    {  110, 17316 }, -- Bomb Arm
-                    {  680,   928 }, -- Bomb Ash
-                    {  510,  1155 }, -- Iron Sand
-                    {  170,   646 }, -- Adaman Ore
-                    {  250,   645 }, -- Darksteel Ore
-                    { 1610,  2126 }, -- Orpiment
-                    {  100,   739 }, -- Orichalcum Ore
-                    {  340,   769 }, -- Colored Rock
+                    { 1000,   646 }, -- Adaman Ore
+                    {  850,   643 }, -- Iron Ore
+                    {  550,   645 }, -- Darksteel Ore
+                    {  410,  1108 }, -- Sulfur
+                    {  410,  1155 }, -- Iron Sand
+                    {  380,   928 }, -- Bomb Ash
+                    {  250,   739 }, -- Orichalcum Ore
+                    {   80,   769 }, -- Colored Rock
+                    {   50,  2126 }, -- Orpiment
                 },
 
                 points =
@@ -1545,7 +1512,7 @@ xi.helm.onTrade = function(player, npc, trade, helmType, csid, func)
             if item ~= 0 and full == 0 then
                 player:addItem(item)
 
-                local uses = (npc:getLocalVar("uses") - 1) % 4
+                local uses = (npc:getLocalVar("uses") - 1) % 6
                 npc:setLocalVar("uses", uses)
                 if uses == 0 then
                     movePoint(npc, zoneId, info)
