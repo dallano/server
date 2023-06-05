@@ -411,6 +411,53 @@ INSERT INTO `instance_entities` VALUES (6601, 17047870);
 INSERT INTO `instance_entities` VALUES (6601, 17047874);
 INSERT INTO `instance_entities` VALUES (6601, 17047875);
 
+-- The Double Agent
+-- mobs
+INSERT INTO `instance_entities` VALUES (6604, 17047654); -- Puk
+INSERT INTO `instance_entities` VALUES (6604, 17047655); -- Puk
+INSERT INTO `instance_entities` VALUES (6604, 17047656); -- Puk
+INSERT INTO `instance_entities` VALUES (6604, 17047657); -- Puk
+INSERT INTO `instance_entities` VALUES (6604, 17047658); -- Puk
+INSERT INTO `instance_entities` VALUES (6604, 17047659); -- Puk
+INSERT INTO `instance_entities` VALUES (6604, 17047660); -- Puk
+INSERT INTO `instance_entities` VALUES (6604, 17047661); -- Puk
+INSERT INTO `instance_entities` VALUES (6604, 17047662); -- Puk
+-- npcs
+INSERT INTO `instance_entities` VALUES (6604, 17047808); -- Ancient Lockbox
+INSERT INTO `instance_entities` VALUES (6604, 17047809); -- Rune of Release
+INSERT INTO `instance_entities` VALUES (6604, 17047628); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047629); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047630); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047631); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047632); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047633); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047634); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047635); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047636); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047637); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047638); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047639); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047640); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047641); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047642); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047643); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047644); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047645); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047646); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047647); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047648); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047649); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047650); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047651); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047652); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047653); -- Qiqirn Spy
+INSERT INTO `instance_entities` VALUES (6604, 17047860); -- Door
+INSERT INTO `instance_entities` VALUES (6604, 17047861); -- Door
+INSERT INTO `instance_entities` VALUES (6604, 17047862); -- Door
+INSERT INTO `instance_entities` VALUES (6604, 17047892); -- Door
+INSERT INTO `instance_entities` VALUES (6604, 17047893); -- Door
+INSERT INTO `instance_entities` VALUES (6604, 17047894); -- Door
+
 -- Leujaoam Cleansing
 -- mobs
 INSERT INTO `instance_entities` VALUES (6900,17059841);

@@ -113,7 +113,7 @@ xi.instance.lookup =
         -- Assault: Preemptive Strike
         -- Assault: Sagelord Elimination
         -- Assault: Breaking Morale
-        -- Assault: The Double Agent
+        { 6604, { 505, 15, -4, 0, 70, 1, 1 }, { 505, 4 }, { 511, 0 } }, -- Assault: The Double Agent
         -- Assault: Imperial Treasure Retrieval
         -- Assault: Blitzkrieg
         -- Assault: Marids in the Mist
