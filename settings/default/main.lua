@@ -15,8 +15,7 @@ xi.settings.main =
     SERVER_NAME = "Singleplayer XI",
 
     SERVER_MESSAGE =
-        "Welcome to Singleplayer FFXI. A tailored experience that strives to give a \n"..
-        " laid-back experience for the solo player.",
+        "Welcome to Singleplayer FFXI. A tailored experience that strives to give a laid-back experience for the solo player.",
 
     -- Setting to lock content more accurately to the expansions defined below.
     -- This generally results in a more accurate presentation of your selected expansions,
@@ -113,27 +112,27 @@ xi.settings.main =
     ALL_MAPS                       = 0,  -- Set to 1 to give starting characters all the maps.
     UNLOCK_OUTPOST_WARPS           = 1,  -- Set to 1 to give starting characters all outpost warps.  2 to add Tu'Lia and Tavnazia.
 
-    SHOP_PRICE      = 0.900, -- Multiplies prices in NPC shops.
+    SHOP_PRICE      = 0.800, -- Multiplies prices in NPC shops.
     GIL_RATE        = 1.500, -- Multiplies gil earned from quests.  Won't always display in game.
     BAYLD_RATE      = 1.000, -- Multiples bayld earned from quests.
     -- Note: EXP rates are also influenced by conf setting
-    EXP_RATE        = 1.500, -- Multiplies exp from script (except FoV/GoV).
+    EXP_RATE        = 1.750, -- Multiplies exp from script (except FoV/GoV).
     SCROLL_EXP_RATE = 10.00, -- Multiplies exp from single use XP Scrolls (e.g. Miratete's Memoirs).
     BOOK_EXP_RATE   = 1.250, -- Multiplies exp from FoV/GoV book pages.
     TABS_RATE       = 1.000, -- Multiplies tabs earned from fov.
     ROE_EXP_RATE    = 1.000, -- Multiplies exp earned from records of eminence.
     SPARKS_RATE     = 1.000, -- Multiplies sparks earned from records of eminence.
-    CURE_POWER      = 1.200, -- Multiplies amount healed from Healing Magic, including the relevant Blue Magic.
-    ELEMENTAL_POWER = 1.000, -- Multiplies damage dealt by Elemental and non-drain Dark Magic.
-    DIVINE_POWER    = 1.250, -- Multiplies damage dealt by Divine Magic.
-    NINJUTSU_POWER  = 1.250, -- Multiplies damage dealt by Ninjutsu Magic.
-    BLUE_POWER      = 1.000, -- Multiplies damage dealt by Blue Magic.
-    DARK_POWER      = 1.250, -- Multiplies amount drained by Dark Magic.
+    CURE_POWER      = 1.250, -- Multiplies amount healed from Healing Magic, including the relevant Blue Magic.
+    ELEMENTAL_POWER = 1.500, -- Multiplies damage dealt by Elemental and non-drain Dark Magic.
+    DIVINE_POWER    = 1.500, -- Multiplies damage dealt by Divine Magic.
+    NINJUTSU_POWER  = 1.500, -- Multiplies damage dealt by Ninjutsu Magic.
+    BLUE_POWER      = 1.250, -- Multiplies damage dealt by Blue Magic.
+    DARK_POWER      = 1.750, -- Multiplies amount drained by Dark Magic.
     ITEM_POWER      = 2.000, -- Multiplies the effect of items such as Potions and Ethers.
     WEAPON_SKILL_POWER  = 1.000, -- Multiplies damage dealt by Weapon Skills.
 
     USE_ADOULIN_WEAPON_SKILL_CHANGES = true, -- true/false. Change to toggle new Adoulin weapon skill damage calculations
-    DISABLE_PARTY_EXP_PENALTY        = true, -- true/false.
+    DISABLE_PARTY_EXP_PENALTY        = false, -- true/false.
 
     -- TRUSTS
     ENABLE_TRUST_CASTING           = 0,

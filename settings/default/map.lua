@@ -49,9 +49,9 @@ xi.settings.map =
     AH_LIST_LIMIT = 7,
 
     -- Misc EXP related settings
-    EXP_RATE                = 1.5,
+    EXP_RATE                = 1.75,
     EXP_LOSS_RATE           = 1.0,
-    EXP_PARTY_GAP_PENALTIES = false,
+    EXP_PARTY_GAP_PENALTIES = true,
 
     -- Capacity Point Settings
     CAPACITY_RATE = 1.0,
@@ -102,12 +102,12 @@ xi.settings.map =
     MOB_SPEED_MOD = -10,
 
     -- Allows you to manipulate the constant multiplier in the skill-up rate formulas, having a potent effect on skill-up rates.
-    SKILLUP_CHANCE_MULTIPLIER = 1.0,
-    CRAFT_CHANCE_MULTIPLIER   = 1.0,
+    CRAFT_CHANCE_MULTIPLIER   = 2.0,
+    CRAFT_AMOUNT_MULTIPLIER   = 2.0,
 
     -- Multiplier for skillup amounts. Using anything above 1 will break the 0.5 cap, the cap will become 0.9 (For maximum, set to 5)
-    SKILLUP_AMOUNT_MULTIPLIER = 2,
-    CRAFT_AMOUNT_MULTIPLIER   = 2,
+    SKILLUP_CHANCE_MULTIPLIER = 1,
+    SKILLUP_AMOUNT_MULTIPLIER = 1,
 
     -- Gardening Factors. DO NOT change defaults without verifiable proof that your change IS how retail does it. Myths need to be optional.
     GARDEN_DAY_MATTERS       = false,

@@ -236,7 +236,7 @@ namespace fellowutils
 
         int32 baseValueColumn   = 0; // column number with base HP
         int32 scaleTo60Column   = 1; // column number with modifier up to level 60
-        int32 scaleOver30Column = 2; // column number with modifier after level 30
+        int32 scaleOver20Column = 2; // column number with modifier after level 20
         int32 scaleOver60Column = 3; // column number with modifier after level 60
         int32 scaleOver75Column = 4; // column number with modifier after level 75
         int32 scaleOver60       = 2; // column number with modifier for calculating MP after level 60
@@ -304,7 +304,7 @@ namespace fellowutils
             HPgrowth = 1.014f;
             MPgrowth = 1.14f;
         }
-        else if (mlvl >= 25)
+        else if (mlvl >= 20)
         {
             HPgrowth = 1.01f;
             MPgrowth = 1.1f;
@@ -325,7 +325,7 @@ namespace fellowutils
         }
 
         // Calculation of HP growth from the main job
-        int32 mainLevelOver30     = std::clamp(mlvl - 30, 0, 30); // Calculation of condition + 1HP each LVL after level 30
+        int32 mainLevelOver20     = std::clamp(mlvl - 20, 0, 20); // Calculation of condition + 1HP each LVL after level 20
         int32 mainLevelUpTo60     = (mlvl < 60 ? mlvl - 1 : 59);  // The first mode of calculation to level 60 (Used also for MP)
         int32 mainLevelOver60To75 = std::clamp(mlvl - 60, 0, 15); // The second mode of calculation after level 60
         int32 mainLevelOver75     = (mlvl < 75 ? 0 : mlvl - 75);  // The third mode of calculation after level 75
@@ -343,14 +343,14 @@ namespace fellowutils
         grade = grade::GetRaceGrades(race, 0);
 
         raceStat = grade::GetHPScale(grade, baseValueColumn) + (grade::GetHPScale(grade, scaleTo60Column) * mainLevelUpTo60) +
-                   (grade::GetHPScale(grade, scaleOver30Column) * mainLevelOver30) + (grade::GetHPScale(grade, scaleOver60Column) * mainLevelOver60To75) +
+                   (grade::GetHPScale(grade, scaleOver20Column) * mainLevelOver20) + (grade::GetHPScale(grade, scaleOver60Column) * mainLevelOver60To75) +
                    (grade::GetHPScale(grade, scaleOver75Column) * mainLevelOver75);
 
         // Calculation by main job
         grade = grade::GetJobGrade(mjob, 0);
 
         jobStat = grade::GetHPScale(grade, baseValueColumn) + (grade::GetHPScale(grade, scaleTo60Column) * mainLevelUpTo60) +
-                  (grade::GetHPScale(grade, scaleOver30Column) * mainLevelOver30) + (grade::GetHPScale(grade, scaleOver60Column) * mainLevelOver60To75) +
+                  (grade::GetHPScale(grade, scaleOver20Column) * mainLevelOver20) + (grade::GetHPScale(grade, scaleOver60Column) * mainLevelOver60To75) +
                   (grade::GetHPScale(grade, scaleOver75Column) * mainLevelOver75);
 
         // Bonus HP
@@ -362,7 +362,7 @@ namespace fellowutils
             grade = grade::GetJobGrade(sjob, 0);
 
             sJobStat = grade::GetHPScale(grade, baseValueColumn) + (grade::GetHPScale(grade, scaleTo60Column) * (slvl - 1)) +
-                       (grade::GetHPScale(grade, scaleOver30Column) * subLevelOver30) + subLevelOver30 + subLevelOver10;
+                       (grade::GetHPScale(grade, scaleOver20Column) * subLevelOver30) + subLevelOver30 + subLevelOver10;
             sJobStat = sJobStat / 2;
         }
 
@@ -775,6 +775,36 @@ namespace fellowutils
 
         switch (charlvl)
         {
+            case 20:
+                expNEXTLvl = 4600;
+                break;
+            case 21:
+                expNEXTLvl = 4800;
+                break;
+            case 22:
+                expNEXTLvl = 5000;
+                break;
+            case 23:
+                expNEXTLvl = 5100;
+                break;
+            case 24:
+                expNEXTLvl = 5200;
+                break;
+            case 25:
+                expNEXTLvl = 5300;
+                break;
+            case 26:
+                expNEXTLvl = 5400;
+                break;
+            case 27:
+                expNEXTLvl = 5500;
+                break;
+            case 28:
+                expNEXTLvl = 5600;
+                break;
+            case 29:
+                expNEXTLvl = 5700;
+                break;
             case 30:
                 expNEXTLvl = 5800;
                 break;
@@ -915,7 +945,7 @@ namespace fellowutils
                 break;
         }
 
-        if ((charlvl >= 30) && (charlvl <= 75))
+        if ((charlvl >= 20) && (charlvl <= 75))
             return expNEXTLvl;
 
         return 0;
@@ -927,9 +957,9 @@ namespace fellowutils
         uint8  FLvl = PFellow->GetMLevel();
         uint8  MLvl = PMob->GetMLevel();
 
-        if (FLvl < 30)
+        if (FLvl < 20)
             exp = 0;
-        else if (FLvl == 30)
+        else if (FLvl == 20)
         {
             if (MLvl - FLvl < 0)
                 exp = std::clamp(((MLvl - FLvl) * 15) + 100, 0, 85);
@@ -944,7 +974,7 @@ namespace fellowutils
             else if (MLvl - FLvl >= 4)
                 exp = 200;
         }
-        else if (FLvl > 30 && FLvl <= 50)
+        else if (FLvl > 20 && FLvl <= 50)
         {
             if (MLvl - FLvl < 0)
                 exp = std::clamp(((MLvl - FLvl) * 15) + 100, 0, 85);
@@ -1008,8 +1038,9 @@ namespace fellowutils
             else if (MLvl - FLvl >= 6)
                 exp = 300;
         }
+
         // ShowDebug("fellowutils::Distribute... exp is: %u\n", exp);
-        fellowutils::AddExperiencePoints(PFellow, PMob, exp, PChar);
+        fellowutils::AddExperiencePoints(PFellow, PMob, exp * settings::get<float>("map.EXP_RATE"), PChar);
         fellowutils::AddKillCount(PChar);
     }
 

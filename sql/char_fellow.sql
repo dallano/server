@@ -12,7 +12,7 @@ CREATE TABLE `char_fellow` (
   `fellowid` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `optionsMask` int(11) unsigned NOT NULL DEFAULT 18,
   `lvlcap` tinyint(2) unsigned NOT NULL DEFAULT 50,
-  `level` tinyint(2) unsigned NOT NULL DEFAULT 30,
+  `level` tinyint(2) unsigned NOT NULL DEFAULT 20,
   `exp` smallint(5) unsigned NOT NULL DEFAULT 0,
   `job` tinyint(3) unsigned NOT NULL DEFAULT 1,
   `bond` tinyint(3) unsigned NOT NULL DEFAULT 0,
