@@ -28,6 +28,16 @@ zones[xi.zone.MAMOOL_JA_TRAINING_GROUNDS] =
         TIME_REMAINING_SECONDS        = 7521, -- ime remaining: <number> [second/seconds] (Earth time).
         PARTY_FALLEN                  = 7523, -- ll party members have fallen in battle. Mission failure in <number> [minute/minutes].
         BRUJEEL_TEXT                  = 7532, -- Am I glad to see you!
+        DOUBLE_AGENT_EXACT            = 7555,
+        DOUBLE_AGENT_DIRECTION        = 7557,
+        DOUBLE_AGENT_DISTANCE         = 7569,
+        DOUBLE_AGENT_NO_HINT          = 7572,
+        DOUBLE_AGENT_CAUGHT           = 7580,
+        DOUBLE_AGENT_COMPLETE         = 7581,
+
+        -- 82 You caught agent
+-- 83 What you want
+-- 84 What you want, to capture you, etc etc
     },
 
     mob =
@@ -54,6 +64,21 @@ zones[xi.zone.MAMOOL_JA_TRAINING_GROUNDS] =
                 17047580, 17047581, 17047582, 17047583, 17047584, 17047585, 17047586, 17047587, 17047588, 17047589,
             },
         },
+
+        [xi.assault.mission.THE_DOUBLE_AGENT] =
+        {
+            MOBS_START =
+            {
+                17047654, 17047655, 17047656, 17047657, 17047658, 17047659, 17047660, 17047661, 17047662
+            },
+
+            QIQIRN =
+            {
+                17047628, 17047629, 17047630, 17047631, 17047632, 17047633, 17047634, 17047635, 17047636,
+                17047637, 17047638, 17047639, 17047640, 17047641, 17047642, 17047643, 17047644, 17047645,
+                17047646, 17047647, 17047648, 17047649, 17047650, 17047651, 17047652, 17047653
+            },
+        }
     },
 
     npc =
