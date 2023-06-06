@@ -372,11 +372,11 @@ local function checkBuff(mob, master, fellowLvl, mp, fellowType)
     local pS = {}
     local sS = {}
     local protects =
-    { -- spellid, lvl, mpcost
-        [1] = { 46, 63, 65 }, -- protect IV
-        [2] = { 45, 47, 46 }, -- protect III
-        [3] = { 44, 27, 28 }, -- protect II
-        [4] = { 43,  7,  9 }, -- protect I
+    { --                 spellid,             lvl, mpcost
+        [1] = { xi.magic.spells.PROTECTRA_IV,  63, 65 },
+        [2] = { xi.magic.spells.PROTECTRA_III, 47, 46 },
+        [3] = { xi.magic.spells.PROTECTRA_II,  27, 28 },
+        [4] = { xi.magic.spells.PROTECTRA_I,    7,  9 },
     }
     for i, protect in ipairs(protects) do
         if fellowLvl >= protect[2] then
@@ -386,11 +386,11 @@ local function checkBuff(mob, master, fellowLvl, mp, fellowType)
     end
 
     local shells =
-    { -- spellid, lvl, mpcost
-        [1] = { 51, 68, 75 }, -- shell IV
-        [2] = { 50, 57, 56 }, -- shell III
-        [3] = { 49, 37, 37 }, -- shell II
-        [4] = { 48, 17, 18 }, -- shell I
+    { --                spellid,            lvl, mpcost
+        [1] = { xi.magic.spells.SHELLRA_IV , 68, 75 },
+        [2] = { xi.magic.spells.SHELLRA_III, 57, 56 },
+        [3] = { xi.magic.spells.SHELLRA_II,  37, 37 },
+        [4] = { xi.magic.spells.SHELLRA_I,   17, 18 },
     }
     for i, shell in ipairs(shells) do
         if fellowLvl >= shell[2] then
@@ -401,11 +401,11 @@ local function checkBuff(mob, master, fellowLvl, mp, fellowType)
 
     local buffs =
     {                        -- spellid, lvl, mpcost, canTarget, job, priority, cutoff
-        [xi.effect.STONESKIN] = { 54,    28,    29, false, job = { [3] = { 10, 0 }, [6] = { 20, 60 } } },
+        [xi.effect.STONESKIN] = { 54,    28,    29,    false, job = { [3] = { 10, 0 }, [6] = { 20, 60 } } },
         [xi.effect.PROTECT]   = { pS[1], pS[2], pS[3],  true, job = { [3] = { 50, 0 }, [6] = { 50,  0 } } },
         [xi.effect.SHELL]     = { sS[1], sS[2], sS[3],  true, job = { [3] = { 50, 0 }, [6] = { 50,  0 } } },
-        [xi.effect.BLINK]     = { 53,    19,    20, false, job = { [3] = { 10, 0 }, [6] = { 20, 60 } } },
-        [xi.effect.HASTE]     = { 57,    40,    40,  true, job = { [3] = { 65, 0 }, [6] = { 65, 30 } } },
+        [xi.effect.BLINK]     = { 53,    19,    20,    false, job = { [3] = { 10, 0 }, [6] = { 20, 60 } } },
+        [xi.effect.HASTE]     = { 57,    40,    40,     true, job = { [3] = { 65, 0 }, [6] = { 65, 30 } } },
     }
 
     if master:getFellowValue("job") == fellowTypes.SOOTHING then
@@ -530,15 +530,34 @@ local function checkAilment(mob, master, fellowLvl, mp)
     end
 
     local ailments =
-    {                        -- spellid, lvl, mpcost, selfcast
-        [xi.effect.PETRIFICATION] = { 18, 40, 12, false },
-        [xi.effect.BLINDNESS]     = { 16, 14, 16,  true },
-        [xi.effect.PARALYSIS]     = { 15,  9, 12,  true },
-        [xi.effect.CURSE_II]      = { 20, 29, 30,  true },
-        [xi.effect.CURSE_I]       = { 20, 29, 30,  true },
-        [xi.effect.DISEASE]       = { 19, 34, 48,  true },
-        [xi.effect.SILENCE]       = { 17, 19, 24, false },
-        [xi.effect.POISON]        = { 14,  6,  8,  true },
+    {                                   -- spellid,         lvl, mpcost, selfcast
+        [xi.effect.PETRIFICATION] = { xi.magic.spell.STONA,   40, 12, false },
+        [xi.effect.BLINDNESS]     = { xi.magic.spell.BLINDNA, 14, 16,  true },
+        [xi.effect.PARALYSIS]     = { xi.magic.spell.BLINDNA,  9, 12,  true },
+        [xi.effect.CURSE_II]      = { xi.magic.spell.CURSNA,  29, 30,  true },
+        [xi.effect.CURSE_I]       = { xi.magic.spell.CURSNA,  29, 30,  true },
+        [xi.effect.DISEASE]       = { xi.magic.spell.VIRUNA , 34, 48,  true },
+        [xi.effect.SILENCE]       = { xi.magic.spell.SILENA,  19, 24, false },
+        [xi.effect.POISON]        = { xi.magic.spell.POISONA,  6,  8,  true },
+        [xi.effect.ATTACK_DOWN]   = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.DEFENSE_DOWN]  = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.ACCURACY_DOWN] = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.WEIGHT]        = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.BIND]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.SLOW]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.DOOM]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.DIA]           = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.BIO]           = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.BURN]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.DROWN]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.CHOKE]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.RASP]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.FROST]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.SHOCK]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.REQUIEM]       = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.SLEEP_I]       = { xi.magic.spell.CURE_I,   1,  8, false }, -- (spXI)
+        [xi.effect.SLEEP_II]      = { xi.magic.spell.CURE_I,   1,  8, false }, -- (spXI)
+        [xi.effect.LULLABY]       = { xi.magic.spell.CURE_I,   1,  8, false }, -- (spXI)
     }
 
     for status, spell in pairs(ailments) do
@@ -691,23 +710,23 @@ entity.onMobRoam = function(mob)
                 math.random(10) < fellowType + 3 and
                 checkCure(mob, master, fellowLvl, mp, fellowType)
             then
-                mob:setLocalVar("castingCoolDown", os.time() + math.random(15, 25))
+                mob:setLocalVar("castingCoolDown", os.time() + 5) -- Can recast cure much faster (spXI)
             elseif
                 math.random(10) < fellowType + 1 and
                 checkAilment(mob, master, fellowLvl, mp)
             then
-                mob:setLocalVar("castingCoolDown", os.time() + math.random(15, 25))
+                mob:setLocalVar("castingCoolDown", os.time() + math.random(15, 20))
             elseif
                 math.random(10) < fellowType - 1 and
                 checkBuff(mob, master, fellowLvl, mp, fellowType)
             then
-                mob:setLocalVar("castingCoolDown", os.time() + math.random(15, 25))
+                mob:setLocalVar("castingCoolDown", os.time() + math.random(15, 20))
             end
         end
     end
 
     if
-        mpp < 67 and
+        mpp < 50 and
         mpNotice ~= 1
     then
         mob:setLocalVar("mpNotice", 1)

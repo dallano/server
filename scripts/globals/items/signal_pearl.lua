@@ -14,10 +14,6 @@ itemObject.onItemCheck = function(target)
         xi.settings.main.ENABLE_ADVENTURING_FELLOWS == nil or
         not xi.settings.main.ENABLE_ADVENTURING_FELLOWS
     then
-            return xi.msg.basic.ITEM_UNABLE_TO_USE
-    end
-
-    if not target:canUseMisc(xi.zoneMisc.FELLOW) then
         return xi.msg.basic.ITEM_UNABLE_TO_USE
     end
 

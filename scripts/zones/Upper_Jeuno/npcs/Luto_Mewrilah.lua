@@ -198,7 +198,6 @@ entity.onTrigger = function(player, npc)
         player:startEvent(10085)
     elseif
         unlistedQualities == QUEST_AVAILABLE and
-        player:getRank(player:getNation()) >= 4 and -- Rank 4 not required after 2013
         xi.settings.main.ENABLE_ADVENTURING_FELLOWS
     then
         player:startEvent(10031)

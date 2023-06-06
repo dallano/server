@@ -10087,7 +10087,7 @@ INSERT INTO `mob_groups` VALUES (31,3937,140,'Toadpillow',0,128,0,0,0,31,33,0);
 INSERT INTO `mob_groups` VALUES (32,3938,140,'Toadsquab',0,128,0,0,0,31,33,0);
 INSERT INTO `mob_groups` VALUES (33,3935,140,'Toadbolster',0,128,0,0,0,31,33,0);
 INSERT INTO `mob_groups` VALUES (34,3936,140,'Toadcushion',0,128,0,0,0,31,33,0);
-INSERT INTO `mob_groups` VALUES (35,651,140,'Carrion_Dragon',0,128,0,0,0,32,32,0);
+INSERT INTO `mob_groups` VALUES (35,651,140,'Carrion_Dragon',0,128,0,0,0,19,20,0);
 
 -- ------------------------------------------------------------
 -- Fort_Ghelsba (Zone 141)
