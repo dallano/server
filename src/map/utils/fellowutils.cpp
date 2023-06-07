@@ -575,6 +575,7 @@ namespace fellowutils
         const char* QueryP      = "SELECT personality FROM char_fellow WHERE charid = %u";
         if (sql->Query(QueryP, PMaster->id) != SQL_ERROR && sql->NumRows() != 0 && sql->NextRow() == SQL_SUCCESS)
             personality = (uint8)sql->GetIntData(0);
+
         const char* QueryHead = "SELECT fellow_headgear.%s FROM fellow_headgear, char_fellow WHERE\
             char_fellow.head = fellow_headgear.rank AND\
             charid = %u";
@@ -582,6 +583,7 @@ namespace fellowutils
         {
             PFellow->look.head = (uint16)sql->GetIntData(0) + 0x1000;
         }
+
         const char* QueryBody = "SELECT fellow_armor.body FROM fellow_armor, char_fellow WHERE\
             char_fellow.body = fellow_armor.rank AND\
             charid = %u";
@@ -589,6 +591,7 @@ namespace fellowutils
         {
             PFellow->look.body = (uint16)sql->GetIntData(0) + 0x2000;
         }
+
         const char* QueryHands = "SELECT fellow_armor.hands FROM fellow_armor, char_fellow WHERE\
             char_fellow.hands = fellow_armor.rank AND\
             charid = %u";
@@ -596,6 +599,7 @@ namespace fellowutils
         {
             PFellow->look.hands = (uint16)sql->GetIntData(0) + 0x3000;
         }
+
         const char* QueryLegs = "SELECT fellow_armor.legs FROM fellow_armor, char_fellow WHERE\
             char_fellow.legs = fellow_armor.rank AND\
             charid = %u";
@@ -603,6 +607,7 @@ namespace fellowutils
         {
             PFellow->look.legs = (uint16)sql->GetIntData(0) + 0x4000;
         }
+
         const char* QueryFeet = "SELECT fellow_armor.feet FROM fellow_armor, char_fellow WHERE\
             char_fellow.feet = fellow_armor.rank AND\
             charid = %u";
@@ -610,6 +615,7 @@ namespace fellowutils
         {
             PFellow->look.feet = (uint16)sql->GetIntData(0) + 0x5000;
         }
+
         const char* Query = "SELECT\
                 char_fellow.fellowid,\
                 fellow_list.name,\
@@ -1120,18 +1126,11 @@ namespace fellowutils
 
         if (ret != SQL_ERROR && sql->NumRows() != 0 && sql->NextRow() == SQL_SUCCESS)
         {
-            uint16 fellowBond = (uint16)sql->GetIntData(0);
             uint16 kills      = (uint16)sql->GetIntData(1);
             kills += 1;
             PMaster->m_PFellow->zoneKills += 1;
 
-            uint16 maxKills = 15;
-            if (fellowBond >= 120)
-                maxKills = 30;
-            else if (fellowBond >= 70)
-                maxKills = 25;
-            else if (fellowBond >= 30)
-                maxKills = 20;
+            uint16 maxKills = 1000;
 
             PMaster->m_PFellow->SetLocalVar("maxKills", maxKills);
             PMaster->m_PFellow->SetLocalVar("zoneKills", PMaster->m_PFellow->zoneKills);
