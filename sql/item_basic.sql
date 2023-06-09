@@ -13844,7 +13844,7 @@ INSERT INTO `item_basic` VALUES (16528,0,'bloody_rapier','bloody_rapier',1,2084,
 INSERT INTO `item_basic` VALUES (16529,0,'musketeers_sword','musketeers_sword',1,2052,3,0,7009);
 INSERT INTO `item_basic` VALUES (16530,0,'xiphos','xiphos',1,2084,3,0,168);
 INSERT INTO `item_basic` VALUES (16531,0,'brass_xiphos','brass_xiphos',1,2084,3,0,783);
-INSERT INTO `item_basic` VALUES (16532,0,'gladius','gladius',1,2084,3,0,2688);
+INSERT INTO `item_basic` VALUES (16532,0,'gladius','gladius',1,2084,3,0,3288);
 INSERT INTO `item_basic` VALUES (16533,0,'ancient_sword','ancient_sword',1,2052,3,0,5997);
 INSERT INTO `item_basic` VALUES (16534,0,'onion_sword','onion_sword',1,6148,3,1,0);
 INSERT INTO `item_basic` VALUES (16535,0,'bronze_sword','bronze_sword',1,2084,3,0,67);
@@ -14342,7 +14342,7 @@ INSERT INTO `item_basic` VALUES (17031,0,'shell_scepter','shell_scepter',1,64600
 INSERT INTO `item_basic` VALUES (17032,0,'gobbie_gavel','gobbie_gavel',1,64600,0,1,0);
 INSERT INTO `item_basic` VALUES (17033,0,'bone_cudgel_+1','bone_cudgel_+1',1,2080,11,0,1055);
 INSERT INTO `item_basic` VALUES (17034,0,'bronze_mace','bronze_mace',1,2084,11,0,47);
-INSERT INTO `item_basic` VALUES (17035,0,'mace','mace',1,2084,11,0,808);
+INSERT INTO `item_basic` VALUES (17035,0,'mace','mace',1,2084,11,0,2853);
 INSERT INTO `item_basic` VALUES (17036,0,'mythril_mace','mythril_mace',1,2084,11,0,2256);
 INSERT INTO `item_basic` VALUES (17037,0,'darksteel_mace','darksteel_mace',1,2084,11,0,4935);
 INSERT INTO `item_basic` VALUES (17038,0,'buzdygan','buzdygan',1,2084,11,0,3211);

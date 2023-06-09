@@ -36,7 +36,7 @@ CREATE TABLE `char_fellow` (
   `zone_hp` smallint(4) unsigned NOT NULL DEFAULT 0,
   `zone_mp` smallint(4) unsigned NOT NULL DEFAULT 0,
   `wotg_unlock` tinyint(1) unsigned NOT NULL DEFAULT 0,
-  `weaponlvl` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `weaponlvl` tinyint(1) unsigned NOT NULL DEFAULT 1,
   `formalwear` tinyint(1) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`charid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 

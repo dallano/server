@@ -466,6 +466,14 @@ namespace fellowutils
         {
             PFellow->allegiance = PMaster->allegiance;
             PMaster->StatusEffectContainer->CopyConfrontationEffect(PFellow);
+
+            PFellow->setBattleID(PMaster->getBattleID());
+
+            if (PMaster->PBattlefield)
+            {
+                PFellow->PBattlefield = PMaster->PBattlefield;
+            }
+
             if (PMaster->PInstance)
             {
                 PFellow->PInstance = PMaster->PInstance;

@@ -1260,10 +1260,10 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 2500,   640 }, -- Copper Ore
-                    { 2500,   641 }, -- Tin Ore
+                    { 2500,   643 }, -- Iron Ore
                     { 1500,   642 }, -- Zinc Ore
-                    { 1000,   643 }, -- Iron Ore
+                    {  500,   640 }, -- Copper Ore
+                    {  500,   641 }, -- Tin Ore
                     {  180,   736 }, -- Silver Ore
                     {  150, 17296 }, -- Pebble
                     {   50,  1984 }, -- Snapping Mole
@@ -1512,7 +1512,7 @@ xi.helm.onTrade = function(player, npc, trade, helmType, csid, func)
             if item ~= 0 and full == 0 then
                 player:addItem(item)
 
-                local uses = (npc:getLocalVar("uses") - 1) % 6
+                local uses = (npc:getLocalVar("uses") - 1) % 8
                 npc:setLocalVar("uses", uses)
                 if uses == 0 then
                     movePoint(npc, zoneId, info)

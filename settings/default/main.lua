@@ -116,7 +116,7 @@ xi.settings.main =
     GIL_RATE        = 1.500, -- Multiplies gil earned from quests.  Won't always display in game.
     BAYLD_RATE      = 1.000, -- Multiples bayld earned from quests.
     -- Note: EXP rates are also influenced by conf setting
-    EXP_RATE        = 2.000, -- Multiplies exp from script (except FoV/GoV).
+    EXP_RATE        = 2.500, -- Multiplies exp from script (except FoV/GoV).
     SCROLL_EXP_RATE = 10.00, -- Multiplies exp from single use XP Scrolls (e.g. Miratete's Memoirs).
     BOOK_EXP_RATE   = 1.250, -- Multiplies exp from FoV/GoV book pages.
     TABS_RATE       = 1.000, -- Multiplies tabs earned from fov.
@@ -130,6 +130,7 @@ xi.settings.main =
     DARK_POWER      = 1.750, -- Multiplies amount drained by Dark Magic.
     ITEM_POWER      = 2.000, -- Multiplies the effect of items such as Potions and Ethers.
     WEAPON_SKILL_POWER  = 1.000, -- Multiplies damage dealt by Weapon Skills.
+    CHEST_GIL_MULT  = 2.000, -- Multiplier for gil drops from chests
 
     USE_ADOULIN_WEAPON_SKILL_CHANGES = true, -- true/false. Change to toggle new Adoulin weapon skill damage calculations
     DISABLE_PARTY_EXP_PENALTY        = false, -- true/false.

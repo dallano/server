@@ -49,9 +49,9 @@ xi.settings.map =
     AH_LIST_LIMIT = 7,
 
     -- Misc EXP related settings
-    EXP_RATE                = 2.0,
+    EXP_RATE                = 2.5,
     EXP_LOSS_RATE           = 1.0,
-    EXP_PARTY_GAP_PENALTIES = true,
+    EXP_PARTY_GAP_PENALTIES = false,
 
     -- Capacity Point Settings
     CAPACITY_RATE = 1.0,
@@ -245,7 +245,7 @@ xi.settings.map =
     HEALING_TICK_DELAY = 5,
 
     -- Set to 1 to enable server side anti-cheating measurements
-    ANTICHEAT_ENABLED = true,
+    ANTICHEAT_ENABLED = false,
 
     -- Set to 1 to completely disable auto-jailing offenders
     ANTICHEAT_JAIL_DISABLE = false,

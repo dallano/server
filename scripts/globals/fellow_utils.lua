@@ -8,6 +8,11 @@ require("scripts/globals/utils")
 xi = xi or {}
 xi.fellow_utils = {}
 
+-- Magic tables
+local dS = {}
+local pS = {}
+local sS = {}
+
 local fellowTypes =
 {
     NONE     = 0,
@@ -42,6 +47,46 @@ local cures =
     [5] = { xi.magic.spell.CURE_I,    1,   8 },
 }
 
+local dias =
+{
+    [1] = { xi.magic.spell.DIA_II, 36, 30 }, -- dia II
+    [2] = { xi.magic.spell.DIA_I,  3,  7  }, -- dia I
+}
+
+local debuffs =
+{                       -- spellid, lvl, mpcost, priority, immunity
+    [xi.effect.SILENCE]   = { xi.magic.spell.SILENCE,  15,    16, 15,  xi.immunity.SILENCE },
+    [xi.effect.PARALYSIS] = { xi.magic.spell.PARALYZE,  4,    6,  25, xi.immunity.PARALYZE },
+    [xi.effect.SLOW]      = { xi.magic.spell.SLOW,     13,    15, 45,     xi.immunity.SLOW },
+    [xi.effect.DIA]       = { dS[1],                dS[2], dS[3], 75,     xi.immunity.NONE },
+}
+
+local protects =
+{ --                 spellid,             lvl, mpcost
+    [1] = { xi.magic.spell.PROTECTRA_IV,  63, 65 },
+    [2] = { xi.magic.spell.PROTECTRA_III, 47, 46 },
+    [3] = { xi.magic.spell.PROTECTRA_II,  27, 28 },
+    [4] = { xi.magic.spell.PROTECTRA_I,    7,  9 },
+}
+
+local shells =
+{ --                spellid,            lvl, mpcost
+    [1] = { xi.magic.spell.SHELLRA_IV , 68, 75 },
+    [2] = { xi.magic.spell.SHELLRA_III, 57, 56 },
+    [3] = { xi.magic.spell.SHELLRA_II,  37, 37 },
+    [4] = { xi.magic.spell.SHELLRA_I,   17, 18 },
+}
+
+local buffs =
+{                        -- spellid, lvl, mpcost, selfTarget,     job, priority, mpcutoff
+    [xi.effect.REFRESH]   = { xi.magic.spell.REFRESH,    41,    40,     true, job = { [3] = { 20, 0 }, [6] = { 20, 30 } } },
+    [xi.effect.HASTE]     = { xi.magic.spell.HASTE,      40,    40,     true, job = { [3] = { 20, 0 }, [6] = { 20, 30 } } },
+    [xi.effect.STONESKIN] = { xi.magic.spell.STONESKIN, 28,    29,    false, job = { [3] = { 30, 0 }, [6] = { 30, 60 } } },
+    [xi.effect.BLINK]     = { xi.magic.spell.BLINK,     19,    20,    false, job = { [3] = { 35, 0 }, [6] = { 35, 60 } } },
+    [xi.effect.PROTECT]   = { pS[1],                  pS[2], pS[3],     true, job = { [3] = { 50, 0 }, [6] = { 50,  0 } } },
+    [xi.effect.SHELL]     = { sS[1],                  sS[2], sS[3],     true, job = { [3] = { 55, 0 }, [6] = { 55,  0 } } },
+}
+
 local accuracy =
 { -- hpp, fellowType, accuracy(chance to use full pwr), validity(does this type cast at this hpp)
     [1] = { hpp = 30, job = { [3] = { 95,  true }, [4] = { 100, true }, [6] = { 100, true } } },
@@ -55,7 +100,7 @@ local weaponskills =
 {
     [xi.skill.HAND_TO_HAND] =
     {
-        [1] = { 1, false }, -- combo
+        [1] = { 1,  false }, -- combo
         [2] = { 13, false }, -- shoulder tackle
         [3] = { 24, false }, -- one inch punch
         [4] = { 33, false }, -- backhand blow
@@ -66,7 +111,7 @@ local weaponskills =
     },
     [xi.skill.DAGGER] =
     {
-        [16] = { 1, false }, -- wasp sting
+        [16] = { 1,  false }, -- wasp sting
         [17] = { 13, false }, -- gust slash
         [18] = { 23, false }, -- shadowstitch
         [19] = { 33, false }, -- viper bite
@@ -78,7 +123,7 @@ local weaponskills =
     },
     [xi.skill.SWORD] =
     {
-        [32] = { 1, false }, -- fast blade
+        [32] = { 1,  false }, -- fast blade
         [33] = { 9, false }, -- burning blade
         [34] = { 16, false }, -- red lotus blade
         [35] = { 24, false }, -- flat blade
@@ -91,18 +136,18 @@ local weaponskills =
     },
     [xi.skill.GREAT_SWORD] =
     {
-        [48] = { 1, false }, -- hard slash
-        [49] = { 9, false }, -- power slash
+        [48] = { 1,  false }, -- hard slash
+        [49] = { 9,  false }, -- power slash
         [50] = { 23, false }, -- frostbite
         [51] = { 33, false }, -- freezebite
-        [52] = { 49, true }, -- shockwave
+        [52] = { 49,  true }, -- shockwave
         [53] = { 55, false }, -- crescent moon
         [54] = { 60, false }, -- sickle moon
         [55] = { 65, false }, -- spinning slash
     },
     [xi.skill.AXE] =
     {
-        [64] = { 1, false }, -- raging axe
+        [64] = { 1,  false }, -- raging axe
         [65] = { 13, false }, -- smash axe
         [66] = { 23, false }, -- gale axe
         [67] = { 33, false }, -- avalanche axe
@@ -113,7 +158,7 @@ local weaponskills =
     },
     [xi.skill.GREAT_AXE] =
     {
-        [80] = { 1, false }, -- shield break
+        [80] = { 1,  false }, -- shield break
         [81] = { 13, false }, -- iron tempest
         [82] = { 23, false }, -- sturmwind
         [83] = { 33, false }, -- armor break
@@ -124,19 +169,19 @@ local weaponskills =
     },
     [xi.skill.SCYTHE] =
     {
-        [96] = { 1, false }, -- slice
-        [97] = { 9, false }, -- dark harvest
-        [98] = { 23, false }, -- shadow of death
-        [99] = { 33, false }, -- nightmare scythe
-        [100] = { 41, true }, -- spinning scythe
+        [96]  = { 1,  false }, -- slice
+        [97]  = { 9,  false }, -- dark harvest
+        [98]  = { 23, false }, -- shadow of death
+        [99]  = { 33, false }, -- nightmare scythe
+        [100] = { 41,  true }, -- spinning scythe
         [101] = { 49, false }, -- vorpal scythe
         [102] = { 60, false }, -- guillotine
         [103] = { 65, false }, -- cross reaper
     },
     [xi.skill.POLEARM] =
     {
-        [112] = { 1, false }, -- double thrust
-        [113] = { 9, false }, -- thunder thrust
+        [112] = { 1,  false }, -- double thrust
+        [113] = { 9,  false }, -- thunder thrust
         [114] = { 23, false }, -- raiden thrust
         [115] = { 33, false }, -- leg sweep
         [116] = { 49, false }, -- penta thrust
@@ -146,8 +191,8 @@ local weaponskills =
     },
     [xi.skill.KATANA] =
     {
-        [128] = { 1, false }, -- blade: rin
-        [129] = { 9, false }, -- blade: retsu
+        [128] = { 1,  false }, -- blade: rin
+        [129] = { 9,  false }, -- blade: retsu
         [130] = { 23, false }, -- blade: teki
         [131] = { 33, false }, -- blade: to
         [132] = { 49, false }, -- blade: chi
@@ -157,8 +202,8 @@ local weaponskills =
     },
     [xi.skill.GREAT_KATANA] =
     {
-        [144] = { 1, false }, -- tachi: enpi
-        [145] = { 9, false }, -- tachi: hobaku
+        [144] = { 1,  false }, -- tachi: enpi
+        [145] = { 9,  false }, -- tachi: hobaku
         [146] = { 23, false }, -- tachi: goten
         [147] = { 33, false }, -- tachi: kagero
         [148] = { 49, false }, -- tachi: jinpu
@@ -168,7 +213,7 @@ local weaponskills =
     },
     [xi.skill.CLUB] =
     {
-        [160] = { 1, false }, -- shining strike
+        [160] = { 1,  false }, -- shining strike
         [161] = { 13, false }, -- seraph strike
         [162] = { 23, false }, -- brainshaker
         [163] = { 33, false }, -- starlight
@@ -180,7 +225,7 @@ local weaponskills =
     },
     [xi.skill.STAFF] =
     {
-        [176] = { 1, false }, -- heavy swing
+        [176] = { 1,  false }, -- heavy swing
         [177] = { 13, false }, -- rock crusher
         [178] = { 23,  true }, -- earth crusher
         [179] = { 33, false }, -- starburst
@@ -236,8 +281,7 @@ xi.fellow_utils.weaponskill = function(fellow, target, master)
 
     if
         (fellowType == fellowTypes.ATTACKER or
-        fellowType == fellowTypes.FIERCE) and
-        fellow:checkDistance(target) <= 5
+        fellowType == fellowTypes.FIERCE)
     then
         if fellow:getTP() == 3000 then
             if
@@ -342,7 +386,8 @@ xi.fellow_utils.checkWeaponSkill = function(fellow, target, fellowLvl)
 
     if
         fellow:actionQueueEmpty() and
-        fellow:getLocalVar("wsTime") == 0
+        fellow:getLocalVar("wsTime") == 0 and
+        fellow:checkDistance(target) < 5
     then
         fellow:setLocalVar("wsTime", fellow:getBattleTime())
         local ws = randomWS[math.random(#randomWS)]
@@ -379,8 +424,8 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
 
     if
         (fellowType == fellowTypes.SHIELD or
-        fellowType == fellowTypes.STALWART or
-        master:getHPP() < 25) and
+        fellowType == fellowTypes.STALWART) and
+        fellow:checkDistance(target) <= 12 and
         provoke < os.time() and
         otherSignals
     then
@@ -590,26 +635,12 @@ xi.fellow_utils.checkDebuff = function(fellow, target, master, fellowLvl, mp)
         return false
     end
 
-    local dS = {}
-    local dias =
-    { -- spellid, lvl, mpcost
-        [1] = { 24, 36, 30 }, -- dia II
-        [2] = { 23,  3,  7 }, -- dia I
-    }
     for i, dia in ipairs(dias) do
         if fellowLvl >= dia[2] then
             dS = dias[i]
             break
         end
     end
-
-    local debuffs =
-    {                       -- spellid, lvl, mpcost, priority, immunity
-        [xi.effect.PARALYSIS] = {   58,     4,     6, 25,  32 },
-        [xi.effect.SILENCE]   = {   59,    15,    16, 60,  16 },
-        [xi.effect.SLOW]      = {   56,    13,    15, 25, 128 },
-        [xi.effect.DIA]       = { dS[1], dS[2], dS[3], 75,   0 },
-    }
 
     if not target:hasSpellList() then
         debuffs[xi.effect.SILENCE] = nil
@@ -639,16 +670,8 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
         return false
     end
 
-    local mpp = fellow:getMP() / fellow:getMaxMP() * 100
-    local pS = {}
-    local sS = {}
-    local protects =
-    { --                 spellid,             lvl, mpcost
-        [1] = { xi.magic.spells.PROTECTRA_IV,  63, 65 },
-        [2] = { xi.magic.spells.PROTECTRA_III, 47, 46 },
-        [3] = { xi.magic.spells.PROTECTRA_II,  27, 28 },
-        [4] = { xi.magic.spells.PROTECTRA_I,    7,  9 },
-    }
+    local mp = fellow:getMP()
+
     for i, protect in ipairs(protects) do
         if fellowLvl >= protect[2] then
             pS = protects[i]
@@ -656,13 +679,6 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
         end
     end
 
-    local shells =
-    { --                spellid,            lvl, mpcost
-        [1] = { xi.magic.spells.SHELLRA_IV , 68, 75 },
-        [2] = { xi.magic.spells.SHELLRA_III, 57, 56 },
-        [3] = { xi.magic.spells.SHELLRA_II,  37, 37 },
-        [4] = { xi.magic.spells.SHELLRA_I,   17, 18 },
-    }
     for i, shell in ipairs(shells) do
         if fellowLvl >= shell[2] then
             sS = shells[i]
@@ -670,48 +686,39 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
         end
     end
 
-    local buffs =
-    {                        -- spellid, lvl, mpcost, canTarget, job, priority, cutoff
-        [xi.effect.STONESKIN] = { 54,    28,    29,    false, job = { [3] = { 10, 0 }, [6] = { 20, 60 } } },
-        [xi.effect.PROTECT]   = { pS[1], pS[2], pS[3],  true, job = { [3] = { 50, 0 }, [6] = { 50,  0 } } },
-        [xi.effect.SHELL]     = { sS[1], sS[2], sS[3],  true, job = { [3] = { 50, 0 }, [6] = { 50,  0 } } },
-        [xi.effect.BLINK]     = { 53,    19,    20,    false, job = { [3] = { 10, 0 }, [6] = { 20, 60 } } },
-        [xi.effect.HASTE]     = { 57,    40,    40,     true, job = { [3] = { 65, 0 }, [6] = { 65, 30 } } },
-    }
-
-    if master:getFellowValue("job") == fellowTypes.SOOTHING then
+    if fellowType == fellowTypes.SOOTHING then
         switch (master:getMainJob()) : caseof
         {
             [xi.job.WHM] = function(x)
-                buffs[xi.effect.HASTE].job[6][2] = 80
+                buffs[xi.effect.HASTE].job[fellowType][2] = 80
             end,
 
             [xi.job.BLM] = function(x)
-                buffs[xi.effect.HASTE].job[6][2] = 80
+                buffs[xi.effect.HASTE].job[fellowType][2] = 80
             end,
 
             [xi.job.RDM] = function(x)
-                buffs[xi.effect.HASTE].job[6][2] = 80
+                buffs[xi.effect.HASTE].job[fellowType][2] = 80
             end,
 
             [xi.job.BRD] = function(x)
-                buffs[xi.effect.HASTE].job[6][2] = 80
+                buffs[xi.effect.HASTE].job[fellowType][2] = 80
             end,
 
             [xi.job.RNG] = function(x)
-                buffs[xi.effect.HASTE].job[6][2] = 80
+                buffs[xi.effect.HASTE].job[fellowType][2] = 80
             end,
 
             [xi.job.SMN] = function(x)
-                buffs[xi.effect.HASTE].job[6][2] = 80
+                buffs[xi.effect.HASTE].job[fellowType][2] = 80
             end,
 
             [xi.job.COR] = function(x)
-                buffs[xi.effect.HASTE].job[6][2] = 80
+                buffs[xi.effect.HASTE].job[fellowType][2] = 80
             end,
 
             [xi.job.SCH] = function(x)
-                buffs[xi.effect.HASTE].job[6][2] = 80
+                buffs[xi.effect.HASTE].job[fellowType][2] = 80
             end,
         }
     end
@@ -719,18 +726,21 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
     for status, spell in pairs(buffs) do
         if
             math.random(100) < spell.job[fellowType][1] and
-            mpp > spell.job[fellowType][2]
+            mp > spell.job[fellowType][2]
         then
             if
                 not fellow:hasStatusEffect(status) and
-                fellowLvl >= spell[2] and mp >= spell[3]
+                fellowLvl >= spell[2] and
+                mp >= spell[3]
             then
                 fellow:castSpell(spell[1], fellow)
                 return true
             end
+
         elseif
             math.random(100) < spell.job[fellowType][1] and
-            mpp > spell.job[fellowType][2] and spell[4]
+            mp > spell.job[fellowType][2] and
+            spell[4]
         then
             if
                 not master:hasStatusEffect(status) and
@@ -747,6 +757,7 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
 end
 
 xi.fellow_utils.battleMessaging = function(fellow, master)
+    local ID = require("scripts/zones/"..master:getZoneName().."/IDs")
     local personality   = xi.fellow_utils.checkPersonality(fellow)
     local optionsMask   = master:getFellowValue("optionsMask")
     local hpWarning     = fellow:getLocalVar("hpWarning")
@@ -832,8 +843,8 @@ xi.fellow_utils.onDeath = function(fellow)
     local master = GetPlayerByID(fellow:getLocalVar("masterID"))
 
     if master ~= nil then
-        local ID = require("scripts/zones/"..master:getZoneName().."/IDs")
-        local bf = master:getBattlefield()
+    local ID = require("scripts/zones/"..master:getZoneName().."/IDs")
+    local bf = master:getBattlefield()
 
         if bf ~= nil then
             if bf:getID() == 37 then -- mirror mirror

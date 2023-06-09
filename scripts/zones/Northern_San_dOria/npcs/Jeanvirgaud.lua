@@ -8,10 +8,10 @@ require("scripts/globals/conquest")
 -----------------------------------
 local entity = {}
 
-local teleporterNation = xi.nation.SANDORIA
 local teleporterEvent  = 716
 
 entity.onTrigger = function(player, npc)
+    local teleporterNation = player:getNation()
     xi.conquest.teleporterOnTrigger(player, teleporterNation, teleporterEvent)
 end
 
