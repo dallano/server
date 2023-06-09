@@ -14351,7 +14351,7 @@ INSERT INTO `item_basic` VALUES (17040,0,'warp_cudgel','warp_cudgel',1,3116,11,0
 INSERT INTO `item_basic` VALUES (17041,0,'holy_mace','holy_mace',1,2084,11,0,3102);
 INSERT INTO `item_basic` VALUES (17042,0,'bronze_hammer','bronze_hammer',1,2084,11,0,85);
 INSERT INTO `item_basic` VALUES (17043,0,'brass_hammer','brass_hammer',1,2084,11,0,463);
-INSERT INTO `item_basic` VALUES (17044,0,'warhammer','warhammer',1,2084,11,0,1093);
+INSERT INTO `item_basic` VALUES (17044,0,'warhammer','warhammer',1,2084,11,0,2893);
 INSERT INTO `item_basic` VALUES (17045,0,'maul','maul',1,2084,11,0,2280);
 INSERT INTO `item_basic` VALUES (17046,0,'darksteel_maul','darksteel_maul',1,2084,11,0,6012);
 INSERT INTO `item_basic` VALUES (17047,0,'magnus_hammer','magnus_hammer',1,63572,0,1,0);
