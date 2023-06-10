@@ -10,8 +10,6 @@ xi.fellow_utils = {}
 
 -- Magic tables
 local dS = {}
-local pS = {}
-local sS = {}
 
 local fellowTypes =
 {
@@ -40,52 +38,73 @@ local fellowMessageOffsets =
 -- spellid, lvl, mpcost
 local cures =
 {
-    [1] = { xi.magic.spell.CURE_V,   61, 135 },
-    [2] = { xi.magic.spell.CURE_IV,  41,  88 },
-    [3] = { xi.magic.spell.CURE_III, 21,  46 },
-    [4] = { xi.magic.spell.CURE_II,  11,  24 },
-    [5] = { xi.magic.spell.CURE_I,    1,   8 },
+    { xi.magic.spell.CURE_V,   61, 135 },
+    { xi.magic.spell.CURE_IV,  41,  88 },
+    { xi.magic.spell.CURE_III, 21,  46 },
+    { xi.magic.spell.CURE_II,  11,  24 },
+    { xi.magic.spell.CURE,      1,   8 },
 }
 
 local dias =
 {
-    [1] = { xi.magic.spell.DIA_II, 36, 30 }, -- dia II
-    [2] = { xi.magic.spell.DIA_I,  3,  7  }, -- dia I
+    { xi.magic.spell.DIA_II, 36, 30 }, -- dia II
+    { xi.magic.spell.DIA,    3,  7  }, -- dia I
 }
 
 local debuffs =
 {                       -- spellid, lvl, mpcost, priority, immunity
-    [xi.effect.SILENCE]   = { xi.magic.spell.SILENCE,  15,    16, 15,  xi.immunity.SILENCE },
-    [xi.effect.PARALYSIS] = { xi.magic.spell.PARALYZE,  4,    6,  25, xi.immunity.PARALYZE },
-    [xi.effect.SLOW]      = { xi.magic.spell.SLOW,     13,    15, 45,     xi.immunity.SLOW },
-    [xi.effect.DIA]       = { dS[1],                dS[2], dS[3], 75,     xi.immunity.NONE },
-}
-
-local protects =
-{ --                 spellid,             lvl, mpcost
-    [1] = { xi.magic.spell.PROTECTRA_IV,  63, 65 },
-    [2] = { xi.magic.spell.PROTECTRA_III, 47, 46 },
-    [3] = { xi.magic.spell.PROTECTRA_II,  27, 28 },
-    [4] = { xi.magic.spell.PROTECTRA_I,    7,  9 },
-}
-
-local shells =
-{ --                spellid,            lvl, mpcost
-    [1] = { xi.magic.spell.SHELLRA_IV , 68, 75 },
-    [2] = { xi.magic.spell.SHELLRA_III, 57, 56 },
-    [3] = { xi.magic.spell.SHELLRA_II,  37, 37 },
-    [4] = { xi.magic.spell.SHELLRA_I,   17, 18 },
+    { xi.effect.SILENCE,   xi.magic.spell.SILENCE,  15,    16, 15,  xi.immunity.SILENCE },
+    { xi.effect.PARALYSIS, xi.magic.spell.PARALYZE,  4,    6,  25, xi.immunity.PARALYZE },
+    { xi.effect.SLOW,      xi.magic.spell.SLOW,     13,    15, 45,     xi.immunity.SLOW },
+    { xi.effect.DIA,       dS[1],                dS[2], dS[3], 75,     xi.immunity.NONE },
 }
 
 local buffs =
 {                        -- spellid, lvl, mpcost, selfTarget,     job, priority, mpcutoff
-    [xi.effect.REFRESH]   = { xi.magic.spell.REFRESH,    41,    40,     true, job = { [3] = { 20, 0 }, [6] = { 20, 30 } } },
-    [xi.effect.HASTE]     = { xi.magic.spell.HASTE,      40,    40,     true, job = { [3] = { 20, 0 }, [6] = { 20, 30 } } },
-    [xi.effect.STONESKIN] = { xi.magic.spell.STONESKIN, 28,    29,    false, job = { [3] = { 30, 0 }, [6] = { 30, 60 } } },
-    [xi.effect.BLINK]     = { xi.magic.spell.BLINK,     19,    20,    false, job = { [3] = { 35, 0 }, [6] = { 35, 60 } } },
-    [xi.effect.PROTECT]   = { pS[1],                  pS[2], pS[3],     true, job = { [3] = { 50, 0 }, [6] = { 50,  0 } } },
-    [xi.effect.SHELL]     = { sS[1],                  sS[2], sS[3],     true, job = { [3] = { 55, 0 }, [6] = { 55,  0 } } },
+    { xi.effect.REFRESH,   xi.magic.spell.REFRESH,       41, 40,  true, job = { [3] = { 20, 0 }, [6] = { 20, 30 } } },
+    { xi.effect.HASTE,     xi.magic.spell.HASTE,         40, 40,  true, job = { [3] = { 20, 0 }, [6] = { 20, 30 } } },
+    { xi.effect.STONESKIN, xi.magic.spell.STONESKIN,     28, 29, false, job = { [3] = { 30, 0 }, [6] = { 30, 60 } } },
+    { xi.effect.BLINK,     xi.magic.spell.BLINK,         19, 20, false, job = { [3] = { 35, 0 }, [6] = { 35, 60 } } },
+    { xi.effect.PROTECT,   xi.magic.spell.PROTECTRA_IV,  68, 65,  true, job = { [3] = { 50, 0 }, [6] = { 50,  0 } } },
+    { xi.effect.PROTECT,   xi.magic.spell.PROTECTRA_III, 47, 46,  true, job = { [3] = { 52, 0 }, [6] = { 52,  0 } } },
+    { xi.effect.PROTECT,   xi.magic.spell.PROTECTRA_II,  27, 28,  true, job = { [3] = { 54, 0 }, [6] = { 54,  0 } } },
+    { xi.effect.PROTECT,   xi.magic.spell.PROTECTRA,      7,  9,  true, job = { [3] = { 56, 0 }, [6] = { 56,  0 } } },
+    { xi.effect.SHELL,     xi.magic.spell.SHELLRA_IV,    68, 75,  true, job = { [3] = { 51, 0 }, [6] = { 51,  0 } } },
+    { xi.effect.SHELL,     xi.magic.spell.SHELLRA_III,   57, 56,  true, job = { [3] = { 53, 0 }, [6] = { 53,  0 } } },
+    { xi.effect.SHELL,     xi.magic.spell.SHELLRA_II,    37, 37,  true, job = { [3] = { 55, 0 }, [6] = { 55,  0 } } },
+    { xi.effect.SHELL,     xi.magic.spell.SHELLRA,       17, 18,  true, job = { [3] = { 57, 0 }, [6] = { 57,  0 } } },
 }
+
+local ailments =
+    {                                   -- spellid,         lvl, mpcost, selfcast
+        [xi.effect.PETRIFICATION] = { xi.magic.spell.STONA,   40, 12, false },
+        [xi.effect.BLINDNESS]     = { xi.magic.spell.BLINDNA, 14, 16,  true },
+        [xi.effect.PARALYSIS]     = { xi.magic.spell.BLINDNA,  9, 12,  true },
+        [xi.effect.CURSE_II]      = { xi.magic.spell.CURSNA,  29, 30,  true },
+        [xi.effect.CURSE_I]       = { xi.magic.spell.CURSNA,  29, 30,  true },
+        [xi.effect.DISEASE]       = { xi.magic.spell.VIRUNA , 34, 48,  true },
+        [xi.effect.SILENCE]       = { xi.magic.spell.SILENA,  19, 24, false },
+        [xi.effect.POISON]        = { xi.magic.spell.POISONA,  6,  8,  true },
+        [xi.effect.ATTACK_DOWN]   = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.DEFENSE_DOWN]  = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.ACCURACY_DOWN] = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.WEIGHT]        = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.BIND]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.SLOW]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.DOOM]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.DIA]           = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.BIO]           = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.BURN]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.DROWN]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.CHOKE]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.RASP]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.FROST]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.SHOCK]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.REQUIEM]       = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
+        [xi.effect.SLEEP_I]       = { xi.magic.spell.CURE_I,   1,  8, false }, -- (spXI)
+        [xi.effect.SLEEP_II]      = { xi.magic.spell.CURE_I,   1,  8, false }, -- (spXI)
+        [xi.effect.LULLABY]       = { xi.magic.spell.CURE_I,   1,  8, false }, -- (spXI)
+    }
 
 local accuracy =
 { -- hpp, fellowType, accuracy(chance to use full pwr), validity(does this type cast at this hpp)
@@ -466,7 +485,7 @@ xi.fellow_utils.spellCheck = function(fellow, master)
         then
             if
                 math.random(10) < fellowType + 3 and
-                xi.fellow_utils.checkCure(fellow, master, fellowLvl, mp, fellowType)
+                xi.fellow_utils.checkCure(fellow, master)
             then
                 fellow:setLocalVar("castingCoolDown", os.time() + 5) -- Can recast cure much faster (spXI)
             elseif
@@ -491,7 +510,11 @@ xi.fellow_utils.spellCheck = function(fellow, master)
     end
 end
 
-xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
+xi.fellow_utils.checkCure = function(fellow, master)
+    local fellowType = master:getFellowValue("job")
+    local fellowLvl  = fellow:getMainLvl()
+    local mp         = fellow:getMP()
+
     if master == nil then
         return false
     end
@@ -578,37 +601,6 @@ xi.fellow_utils.checkAilment = function(fellow, master, fellowLvl, mp)
         return false
     end
 
-    local ailments =
-    {                                   -- spellid,         lvl, mpcost, selfcast
-        [xi.effect.PETRIFICATION] = { xi.magic.spell.STONA,   40, 12, false },
-        [xi.effect.BLINDNESS]     = { xi.magic.spell.BLINDNA, 14, 16,  true },
-        [xi.effect.PARALYSIS]     = { xi.magic.spell.BLINDNA,  9, 12,  true },
-        [xi.effect.CURSE_II]      = { xi.magic.spell.CURSNA,  29, 30,  true },
-        [xi.effect.CURSE_I]       = { xi.magic.spell.CURSNA,  29, 30,  true },
-        [xi.effect.DISEASE]       = { xi.magic.spell.VIRUNA , 34, 48,  true },
-        [xi.effect.SILENCE]       = { xi.magic.spell.SILENA,  19, 24, false },
-        [xi.effect.POISON]        = { xi.magic.spell.POISONA,  6,  8,  true },
-        [xi.effect.ATTACK_DOWN]   = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.DEFENSE_DOWN]  = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.ACCURACY_DOWN] = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.WEIGHT]        = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.BIND]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.SLOW]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.DOOM]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.DIA]           = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.BIO]           = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.BURN]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.DROWN]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.CHOKE]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.RASP]          = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.FROST]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.SHOCK]         = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.REQUIEM]       = { xi.magic.spell.ERASE,   32, 18,  true }, -- (spXI)
-        [xi.effect.SLEEP_I]       = { xi.magic.spell.CURE_I,   1,  8, false }, -- (spXI)
-        [xi.effect.SLEEP_II]      = { xi.magic.spell.CURE_I,   1,  8, false }, -- (spXI)
-        [xi.effect.LULLABY]       = { xi.magic.spell.CURE_I,   1,  8, false }, -- (spXI)
-    }
-
     for status, spell in pairs(ailments) do
         if
             fellow:hasStatusEffect(status) and
@@ -670,22 +662,6 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
         return false
     end
 
-    local mp = fellow:getMP()
-
-    for i, protect in ipairs(protects) do
-        if fellowLvl >= protect[2] then
-            pS = protects[i]
-            break
-        end
-    end
-
-    for i, shell in ipairs(shells) do
-        if fellowLvl >= shell[2] then
-            sS = shells[i]
-            break
-        end
-    end
-
     if fellowType == fellowTypes.SOOTHING then
         switch (master:getMainJob()) : caseof
         {
@@ -723,17 +699,18 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
         }
     end
 
-    for status, spell in pairs(buffs) do
+    for _, spell in pairs(buffs) do
         if
             math.random(100) < spell.job[fellowType][1] and
             mp > spell.job[fellowType][2]
         then
             if
-                not fellow:hasStatusEffect(status) and
+                not fellow:hasStatusEffect(spell[1]) and
                 fellowLvl >= spell[2] and
                 mp >= spell[3]
             then
-                fellow:castSpell(spell[1], fellow)
+                fellow:castSpell(spell[2], fellow)
+                print("castedmaybehere?")
                 return true
             end
 
@@ -743,11 +720,12 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
             spell[4]
         then
             if
-                not master:hasStatusEffect(status) and
+                not master:hasStatusEffect(spell[1]) and
                 fellowLvl >= spell[2] and
                 mp >= spell[3]
             then
-                fellow:castSpell(spell[1], master)
+                fellow:castSpell(spell[2], master)
+                print("casted? here")
                 return true
             end
         end
