@@ -64,8 +64,8 @@ INSERT INTO `skill_ranks` VALUES (31, 'parrying',     8,  10, 0,  0,  10, 2,  7,
 INSERT INTO `skill_ranks` VALUES (32, 'divine',       0,  0,  1,  0,  10, 0,  3,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  9,  0,  4);
 INSERT INTO `skill_ranks` VALUES (33, 'healing',      0,  0,  1,  0,  8,  0,  7,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  9,  0,  0);
 INSERT INTO `skill_ranks` VALUES (34, 'enhancing',    0,  0,  6,  10, 3,  0,  9,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  9,  0,  5);
-INSERT INTO `skill_ranks` VALUES (35, 'enfeebling',   0,  0,  5,  6,  1,  0,  0,  3,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  9,  6,  0);
-INSERT INTO `skill_ranks` VALUES (36, 'elemental',    0,  0,  0,  1,  6,  0,  0,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  9,  3,  0);
+INSERT INTO `skill_ranks` VALUES (35, 'enfeebling',   0,  0,  5,  6,  1,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  9,  6,  0);
+INSERT INTO `skill_ranks` VALUES (36, 'elemental',    0,  0,  0,  1,  6,  0,  0,  3,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  9,  3,  0);
 INSERT INTO `skill_ranks` VALUES (37, 'dark',         0,  0,  0,  2,  10, 0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  9,  7,  0);
 INSERT INTO `skill_ranks` VALUES (38, 'summoning',    0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0);
 INSERT INTO `skill_ranks` VALUES (39, 'ninjutsu',     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0);

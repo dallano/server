@@ -18,58 +18,18 @@ local quest = Quest:new(xi.quest.log_id.JEUNO, xi.quest.id.jeuno.BLIGHTED_GLOOM)
 quest.reward = {}
 
 quest.sections = {
-
-    -- Qm's normal state
-     {
-        check = function(player, status, vars)
-            return status == QUEST_AVAILABLE or status == QUEST_COMPLETED
-        end,
-
-        [xi.zone.KORROLOKA_TUNNEL] = {
-            ['qm3'] = {
-                onTrigger = function(player, npc)
-                    return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
-                end
-            },
-        },
-
-        [xi.zone.ORDELLES_CAVES] = {
-            ['qm8'] = {
-                onTrigger = function(player, npc)
-                    return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
-                end
-            },
-        },
-
-        [xi.zone.RANGUEMONT_PASS] = {
-            ['qm1'] = {
-                onTrigger = function(player, npc)
-                    return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
-                end
-            },
-        },
-
-        [xi.zone.JUGNER_FOREST] = {
-            ['qm2'] = {
-                onTrigger = function(player, npc)
-                    return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
-                end
-            },
-        },
-    },
-
-    -- Section: Begin quest
+    -- Section: Quest is Available
     {
         check = function(player, status, vars)
             return status == QUEST_AVAILABLE
                 and player:getQuestStatus(xi.quest.log_id.JEUNO, PAST_REFLECTIONS) == QUEST_COMPLETED
-                and player:getFellowValue("bond") >= 45
+                and player:getFellowValue("bond") >= 30
         end,
 
         [xi.zone.UPPER_JEUNO] = {
             ['Luto_Mewrilah'] = {
                 onTrigger = function(player, npc)
-                    local fellowParam = getFellowParam(player)
+                    local fellowParam = xi.fellow_utils.getFellowParam(player)
                     return quest:event(10065, {[7] = fellowParam})
                 end,
             },
@@ -82,7 +42,7 @@ quest.sections = {
         },
     },
 
-    -- Section: Questing
+    -- Section: Quest is Accepted
     {
         check = function(player, status, vars)
             return status == QUEST_ACCEPTED
@@ -92,7 +52,7 @@ quest.sections = {
             ['Luto_Mewrilah'] = {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, "Prog") == 1 and player:hasKeyItem(xi.keyItem.VITRALLUM) then
-                        local fellowParam = getFellowParam(player)
+                        local fellowParam = xi.fellow_utils.getFellowParam(player)
                         return quest:progressEvent(10066, {[7] = fellowParam})
                     end
                 end,
@@ -110,7 +70,7 @@ quest.sections = {
                 onTrigger = function(player, npc)
                     if not player:hasKeyItem(xi.keyItem.VITRALLUM) then
                         if quest:getVar(player, "Prog") == 0 and player:getLocalVar("Initiate") == 0 and not GetMobByID(zones[player:getZoneID()].mob.METALLIC_SLIME):isSpawned() then
-                            local fellowParam = getFellowParam(player)
+                            local fellowParam = xi.fellow_utils.getFellowParam(player)
                             return quest:progressEvent(1, {[7] = fellowParam})
                         elseif quest:getVar(player, "Prog") == 1 then
                             npcUtil.giveKeyItem(player, xi.keyItem.VITRALLUM)
@@ -143,7 +103,7 @@ quest.sections = {
                 onTrigger = function(player, npc)
                     if not player:hasKeyItem(xi.keyItem.VITRALLUM) then
                         if quest:getVar(player, "Prog") == 0 and player:getLocalVar("Initiate") == 0 and not GetMobByID(zones[player:getZoneID()].mob.METALLIC_SLIME):isSpawned() then
-                            local fellowParam = getFellowParam(player)
+                            local fellowParam = xi.fellow_utils.getFellowParam(player)
                             return quest:progressEvent(56, {[7] = fellowParam})
                         elseif quest:getVar(player, "Prog") == 1 then
                             npcUtil.giveKeyItem(player, xi.keyItem.VITRALLUM)
@@ -176,15 +136,12 @@ quest.sections = {
                 onTrigger = function(player, npc)
                     if not player:hasKeyItem(xi.keyItem.VITRALLUM) then
                         if quest:getVar(player, "Prog") == 0 and player:getLocalVar("Initiate") == 0 and not GetMobByID(zones[player:getZoneID()].mob.METALLIC_SLIME):isSpawned() then
-                            local fellowParam = getFellowParam(player)
+                            local fellowParam = xi.fellow_utils.getFellowParam(player)
                             return quest:progressEvent(22, {[7] = fellowParam})
+
                         elseif quest:getVar(player, "Prog") == 1 then
                             npcUtil.giveKeyItem(player, xi.keyItem.VITRALLUM)
-                        else
-                            return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
                         end
-                    else
-                        return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)
                     end
                 end,
             },
@@ -208,7 +165,7 @@ quest.sections = {
             ['qm2'] = {
                 onTrigger = function(player, npc)
                     if quest:getVar(player, "Prog") == 2 then
-                        local fellowParam = getFellowParam(player)
+                        local fellowParam = xi.fellow_utils.getFellowParam(player)
                         return quest:progressEvent(31, {[0] = 104, [1] = 23, [3] = 1743, [7] = fellowParam})
                     else
                         return quest:messageSpecial(zones[player:getZoneID()].text.NOTHING_OUT_OF_ORDINARY)

@@ -14,6 +14,9 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onUseAbility = function(player, target, ability)
+    -- xiSP
+    player:setHP(target:getHP() + (100 * (player:getSkillLevel(xi.skill.DARK_MAGIC * 0.05))))
+
     xi.job_utils.dark_knight.useLastResort(player, target, ability)
 end
 

@@ -467,36 +467,42 @@ xi.rendezvousPoints.onEventUpdate = function(player, csid, option)
         (option == 0xA000102 or
         option == 0x5000102)
     then -- shield style
+        xi.fellow_utils.changeJob(player, job, 1)
         player:setFellowValue("job", 1)
     elseif
         csid == cutscenes[zone].standard and
         (option == 0xA000202 or
         option == 0x5000202)
     then -- attacker style
+        xi.fellow_utils.changeJob(player, job, 2)
         player:setFellowValue("job", 2)
     elseif
         csid == cutscenes[zone].standard and
         (option == 0xA000302 or
         option == 0x5000302)
     then -- healer style
+        xi.fellow_utils.changeJob(player, job, 3)
         player:setFellowValue("job", 3)
     elseif
         csid == cutscenes[zone].standard and
         (option == 0xA000402 or
         option == 0x5000402)
     then -- stalwart style
+        xi.fellow_utils.changeJob(player, job, 4)
         player:setFellowValue("job", 4)
     elseif
         csid == cutscenes[zone].standard and
         (option == 0xA000502 or
         option == 0x5000502)
     then -- fierce style
+        xi.fellow_utils.changeJob(player, job, 5)
         player:setFellowValue("job", 5)
     elseif
         csid == cutscenes[zone].standard and
         (option == 0xA000602 or
         option == 0x5000602)
     then -- soothing style
+        xi.fellow_utils.changeJob(player, job, 6)
         player:setFellowValue("job", 6)
     end
 end

@@ -1803,6 +1803,10 @@ xi.magic.calculateDuration = function(duration, magicSkill, spellGroup, caster, 
         then
             duration  = duration * 2
         end
+
+        -- xiSP changes
+        duration = duration + (caster:getSkillLevel(xi.skill.ENHANCING_MAGIC) * 0.6)
+
     elseif magicSkill == xi.skill.ENFEEBLING_MAGIC then -- Enfeebling Magic
         if caster:hasStatusEffect(xi.effect.SABOTEUR) then
             if target:isNM() then

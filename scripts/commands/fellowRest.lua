@@ -15,14 +15,13 @@ function error(player)
 end
 
 function onTrigger(player)
-    local target = player:getCursorTarget()
+    local fellow = player:getFellow()
 
-    if
-        target ~= nil and
-        target:isMob()
-    then
-        player:fellowAttack(target)
+    if fellow:hasStatusEffect(xi.effect.HEALING) then
+        fellow:delStatusEffect(xi.effect.HEALING)
+        print("I'm no longer healing")
     else
-        error(player)
+        fellow:addStatusEffect(xi.effect.HEALING)
+        print("I'm starting to heal")
     end
 end
