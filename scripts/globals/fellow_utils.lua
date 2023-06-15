@@ -8,9 +8,6 @@ require("scripts/globals/utils")
 xi = xi or {}
 xi.fellow_utils = {}
 
--- Magic tables
-local dS = {}
-
 local fellowTypes =
 {
     NONE     = 0,
@@ -53,11 +50,11 @@ local cureTable =
 
 local debuffTable =
 {
-    { effect = xi.effect.SILENCE,   spell = xi.magic.spell.SILENCE,  level = 15, mpCost = 16, immunity = xi.immunity.SILENCE  },
-    { effect = xi.effect.PARALYSIS, spell = xi.magic.spell.PARALYZE, level =  4, mpCost = 6,  immunity = xi.immunity.PARALYZE },
-    { effect = xi.effect.SLOW,      spell = xi.magic.spell.SLOW,     level = 13, mpCost = 15, immunity = xi.immunity.SLOW     },
-    { effect = xi.effect.DIA,       spell = xi.magic.spell.DIA_II,   level = 36, mpCost = 30, immunity = xi.immunity.NONE     },
-    { effect = xi.effect.DIA,       spell = xi.magic.spell.DIA,      level =  3, mpCost =  7, immunity = xi.immunity.NONE     },
+    { effect = xi.effect.SILENCE,   spell = xi.magic.spell.SILENCE,  level = 15, mpCost = 16, immunity = xi.immunity.SILENCE,  check = true },
+    { effect = xi.effect.PARALYSIS, spell = xi.magic.spell.PARALYZE, level =  4, mpCost = 6,  immunity = xi.immunity.PARALYZE, check = true },
+    { effect = xi.effect.SLOW,      spell = xi.magic.spell.SLOW,     level = 13, mpCost = 15, immunity = xi.immunity.SLOW,     check = true },
+    { effect = xi.effect.DIA,       spell = xi.magic.spell.DIA_II,   level = 36, mpCost = 30, immunity = xi.immunity.NONE,     check = true },
+    { effect = xi.effect.DIA,       spell = xi.magic.spell.DIA,      level =  3, mpCost =  7, immunity = xi.immunity.NONE,     check = true },
 }
 
 local buffTable =
@@ -249,17 +246,18 @@ local weaponskills =
 
 local armorIndex =
 {
-    [1]  = 25,
-    [2]  = 30,
-    [3]  = 35,
-    [4]  = 40,
-    [5]  = 45,
-    [6]  = 50,
-    [7]  = 55,
-    [8]  = 60,
-    [9]  = 65,
-    [10] = 70,
-    [11] = 75,
+    [0]   = 20,
+    [1]   = 25,
+    [2]   = 30,
+    [3]   = 35,
+    [4]   = 40,
+    [5]   = 45,
+    [6]   = 50,
+    [7]   = 55,
+    [8]   = 60,
+    [9]   = 65,
+    [10]  = 70,
+    [11]  = 75,
 }
 
 xi.fellow_utils.onFellowSpawn = function(fellow)
@@ -288,21 +286,20 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.GKATANA, 15)
         fellow:setMod(xi.mod.STORETP, 15)
         fellow:setMod(xi.mod.PARRY,    5)
-
         fellow:setMod(xi.mod.ATTP, 20)
         fellow:setMod(xi.mod.ACC, 25)
         fellow:setMod(xi.mod.STR, 15)
         fellow:setMod(xi.mod.DEX, 15)
 
     elseif fellowType == fellowTypes.SHIELD then
-        fellow:setMod(xi.mod.RDEFP, 10)
+        fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.ENMITY, 5)
 
     elseif fellowType == fellowTypes.STALWART then
+        fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.SHIELD, 15)
         fellow:setMod(xi.mod.SWORD,  15)
         fellow:setMod(xi.mod.ENMITY,10)
-        fellow:setMod(xi.mod.RDEFP, 20)
         fellow:setMod(xi.mod.DEFP, 20)
 
     elseif fellowType == fellowTypes.HEALER then
@@ -388,12 +385,21 @@ xi.fellow_utils.spellCheck = function(fellow, master)
     end
 
     if
+        (fellowType == fellowTypes.SHIELD or
+        fellowType == fellowTypes.STALWART or
+        fellowType == fellowTypes.HEALER or
+        fellowType == fellowTypes.SOOTHING) and
+        master ~= nil
+    then
+        xi.fellow_utils.checkCure(fellow, master, fellowLvl, mp, fellowType)
+    end
+
+    if
         (fellowType == fellowTypes.HEALER or
         fellowType == fellowTypes.SOOTHING) and
         master ~= nil
     then
         xi.fellow_utils.checkRegen(fellow, master, fellowLvl, mp, fellowType)
-        xi.fellow_utils.checkCure(fellow, master, fellowLvl, mp, fellowType)
         xi.fellow_utils.checkAilment(fellow, master, fellowLvl, mp, fellowType)
         xi.fellow_utils.checkBuff(fellow, master, fellowLvl, mp, fellowType)
         xi.fellow_utils.checkDebuff(fellow, master, fellowLvl, mp, fellowType)
@@ -468,17 +474,23 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
     local fellowHP      = fellow:getMaxHP() - fellow:getHP()
 
     if coolDown < os.time() then
-        if fellowType == fellowTypes.HEALER then
+        if
+            fellowType == fellowTypes.HEALER or
+            fellowType == fellowTypes.SOOTHING
+        then
             recast = recast + math.random(2, 3)
+        else
+            recast = recast + math.random(8, 12)
         end
 
         for _, cure in pairs(cureTable) do
             if
                 cure.level <= fellowLvl and
                 cure.mpCost <= mp
-                -- Make check to see if fellow is resting or not
             then
                 if
+                    (fellowType == fellowTypes.HEALER or
+                    fellowType == fellowTypes.SOOTHING) and
                     fellow:getHPP() < 30 and
                     master:getHPP() > 40
                 then
@@ -488,14 +500,29 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                         return
                     end
                 else
-                    if cure.hpThreshold <= masterHP then
-                        fellow:setLocalVar("castingCoolDown", os.time() + recast)
-                        fellow:castSpell(cure.spell, master)
-                        return
-                    elseif cure.hpThreshold <= fellowHP then
-                        fellow:setLocalVar("castingCoolDown", os.time() + recast)
-                        fellow:castSpell(cure.spell, fellow)
-                        return
+                    if
+                        fellowType == fellowTypes.SHIELD or
+                        fellowType == fellowTypes.STALWART
+                    then
+                        if cure.hpThreshold * 1.25 <= fellowHP then
+                            fellow:setLocalVar("castingCoolDown", os.time() + recast)
+                            fellow:castSpell(cure.spell, fellow)
+                            return
+                        elseif cure.hpThreshold * 2.5 <= masterHP then
+                            fellow:setLocalVar("castingCoolDown", os.time() + recast)
+                            fellow:castSpell(cure.spell, master)
+                            return
+                        end
+                    else
+                        if cure.hpThreshold <= masterHP then
+                            fellow:setLocalVar("castingCoolDown", os.time() + recast)
+                            fellow:castSpell(cure.spell, master)
+                            return
+                        elseif cure.hpThreshold <= fellowHP then
+                            fellow:setLocalVar("castingCoolDown", os.time() + recast)
+                            fellow:castSpell(cure.spell, fellow)
+                            return
+                        end
                     end
                 end
             end
@@ -580,11 +607,12 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
                 then
                     buff.targetMaster = false
                 elseif
-                    job == xi.job.BLM or
+                    buff.effect == xi.effect.HASTE and
+                    (job == xi.job.BLM or
                     job == xi.job.RNG or
                     job == xi.job.SMN or
                     job == xi.job.COR or
-                    job == xi.job.SCH
+                    job == xi.job.SCH)
                 then
                     buff.targetMaster = false
                 end
@@ -642,9 +670,21 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
                     debuff.immunity == 0) and
                     target:isEngaged()
                 then
-                    fellow:setLocalVar("castingCoolDown", os.time() + recast)
-                    fellow:castSpell(debuff.spell, target)
-                    return
+
+                    if
+                        (debuff.effect == xi.effect.SILENCE and
+                        not target:hasSpellList()) or
+                        (target:hasStatusEffect(xi.effect.BIO) and
+                        debuff.effect == xi.effect.DIA)
+                    then
+                        debuff.check = false
+                    end
+
+                    if debuff.check then
+                        fellow:setLocalVar("castingCoolDown", os.time() + recast)
+                        fellow:castSpell(debuff.spell, target)
+                        return
+                    end
                 end
             end
         end
@@ -958,8 +998,9 @@ end
 
 -- Players must kill a number of mobs greater than 15x the selected
 -- armor rank. This scales from 15 -> 165. Requiring 3,960 kills for
--- completion.
+-- completion - as well as lvl 75.
 xi.fellow_utils.upgradeArmor = function(fellow, master)
+    local offset        = master:getCharVar("[FELLOW]armorOffset")
     local armorLock     = master:getFellowValue("armorLock")
     local kills         = master:getFellowValue("kills")
     local unlocked      = {}
@@ -978,39 +1019,26 @@ xi.fellow_utils.upgradeArmor = function(fellow, master)
     end
 
     for i = 1, #unlocked do
-        local rank = master:getFellowValue(unlocked[i])
+        local rank = master:getFellowValue(unlocked[i]) - offset
 
         if
             armorIndex[rank] <= fellow:getMainLvl() and
             kills >= rank * 15
         then
-            master:setFellowValue(unlocked[i], rank + 1)
+            master:setFellowValue(unlocked[i], rank + 1 + offset)
             return
         end
     end
 end
 
 xi.fellow_utils.changeJob = function(master, pJob, job)
+    local offset = master:getCharVar("[FELLOW]armorOffset")
     if job == 1 or job == 4 then
-        if pJob == 2 or pJob == 5 then
-            master:setCharVar("[FELLOW]armorOffset", -100)
-        else
-            master:setCharVar("[FELLOW]armorOffset", -200)
-        end
-
+        master:setCharVar("[FELLOW]armorOffset", 0)
     elseif job == 2 or job == 5 then
-        if pJob == 1 or pJob == 4 then
-            master:setCharVar("[FELLOW]armorOffset", 100)
-        else
-            master:setCharVar("[FELLOW]armorOffset", -100)
-        end
-
-    elseif job == 3 or job == 6 then
-        if pJob == 2 or pJob == 5 then
-            master:setCharVar("[FELLOW]armorOffset", 100)
-        else
-            master:setCharVar("[FELLOW]armorOffset", 200)
-        end
+        master:setCharVar("[FELLOW]armorOffset", 100)
+    else
+        master:setCharVar("[FELLOW]armorOffset", 200)
     end
 
     xi.fellow_utils.updateLook(master, master:getCharVar("[FELLOW]armorOffset"))

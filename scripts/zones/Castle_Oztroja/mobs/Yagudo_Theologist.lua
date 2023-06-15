@@ -12,7 +12,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, ID.mob.MOO_OUZI_THE_SWIFTBLADE_PH, 5, 1200) -- 20 minute respawn
+    xi.mob.phOnDespawn(mob, ID.mob.MOO_OUZI_THE_SWIFTBLADE_PH, 20, 1) -- 1 minute respawn (xiSP)
 end
 
 return entity

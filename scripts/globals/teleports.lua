@@ -83,6 +83,7 @@ local ids =
     BASTOK_STARLIGHT      = 68,
     SAN_DORIA_STARLIGHT   = 69,
     WINDURST_STARLIGHT    = 70,
+    LOWER_JEUNO           = 71,
 }
 xi.teleport.id = ids
 
@@ -154,8 +155,9 @@ xi.teleport.destination =
     [ids.ESCHA_RUAUN]           = {   -0.371,  -34.279, -466.980, 192, 289 },
     [ids.MISAREAUX_CONFLUENCE]  = {  -57.385,  -21.460,  568.941, 160,  25 },
     [ids.BASTOK_STARLIGHT]      = { -344.489,  -10.002,  -182.797, 88, 235 },
-    [ids.SAN_DORIA_STARLIGHT]   = { 100.952,  0.999,   -49.758, 31,  230 },
-    [ids.WINDURST_STARLIGHT]    = { 103.065,  -5.000,  -48.627, 5,  241 },
+    [ids.SAN_DORIA_STARLIGHT]   = { 100.952,  0.999,      -49.758, 31, 230 },
+    [ids.WINDURST_STARLIGHT]    = { 103.065,  -5.000,     -48.627, 5,  241 },
+    [ids.LOWER_JEUNO]           = { -43.000,   5.899,     -113.00, 0,  245 }, -- (xiSP)
 }
 
 xi.teleport.type =

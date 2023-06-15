@@ -13146,9 +13146,9 @@ INSERT INTO `mob_droplist` VALUES (1651,0,0,1000,2357,@UNCOMMON);  -- Medusas Ar
 INSERT INTO `mob_droplist` VALUES (1651,0,0,1000,14959,@UNCOMMON); -- Mercenarys Dastanas (Uncommon, 10%)
 
 -- ZoneID: 151 - Mee Deggi The Punisher
-INSERT INTO `mob_droplist` VALUES (1652,2,0,1000,656,0);       -- Beastcoin (Steal)
-INSERT INTO `mob_droplist` VALUES (1652,1,1,1000,16703,900);   -- Impact Knuckles (Group 1 - 90.0%)
-INSERT INTO `mob_droplist` VALUES (1652,1,1,1000,14986,100); -- Ochimusha Kote (Group 1 - 10%)
+INSERT INTO `mob_droplist` VALUES (1652,2,0,1000,656,0);     -- Beastcoin (Steal)
+INSERT INTO `mob_droplist` VALUES (1652,1,1,1000,16703,800); -- Impact Knuckles (Group 1 - 90.0%)
+INSERT INTO `mob_droplist` VALUES (1652,1,1,1000,14986,200); -- Ochimusha Kote (Group 1 - 10%)
 
 -- ZoneID:  24 - Megalobugard
 INSERT INTO `mob_droplist` VALUES (1653,0,0,1000,15324,@UNCOMMON); -- Caitiffs Socks (Uncommon, 10%)
@@ -13610,8 +13610,8 @@ INSERT INTO `mob_droplist` VALUES (1729,0,0,1000,4277,@UNCOMMON); -- Tonosama Ri
 
 -- ZoneID: 136 - Moo Ouzi The Swiftblade
 -- ZoneID: 151 - Moo Ouzi The Swiftblade
-INSERT INTO `mob_droplist` VALUES (1730,1,1,1000,16935,920); -- Barbarians Sword (Group 1 - 92.0%)
-INSERT INTO `mob_droplist` VALUES (1730,1,1,1000,16936,80);  -- Demonic Sword (Group 1 - 8.0%)
+INSERT INTO `mob_droplist` VALUES (1730,1,1,1000,16935,800); -- Barbarians Sword (Group 1 - 92.0%)
+INSERT INTO `mob_droplist` VALUES (1730,1,1,1000,16936,200);  -- Demonic Sword (Group 1 - 8.0%)
 
 -- ZoneID: 161 - Morbid Eye
 INSERT INTO `mob_droplist` VALUES (1731,0,0,1000,921,@VCOMMON); -- Bottle Of Ahriman Tears (Very Common, 24%)
@@ -16513,8 +16513,8 @@ INSERT INTO `mob_droplist` VALUES (2068,0,0,1000,5365,@COMMON); -- Incus Cell (C
 INSERT INTO `mob_droplist` VALUES (2068,0,0,1000,5366,@COMMON); -- Castellanus Cell (Common, 15%)
 
 -- ZoneID: 151 - Quu Domi The Gallant
-INSERT INTO `mob_droplist` VALUES (2069,1,1,1000,16820,900); -- Strider Sword (Group 1 - 90.0%)
-INSERT INTO `mob_droplist` VALUES (2069,1,1,1000,15737,100); -- Sarutobi Kyahan (Group 1 - 10.0%)
+INSERT INTO `mob_droplist` VALUES (2069,1,1,1000,16820,800); -- Strider Sword (Group 1 - 90.0%)
+INSERT INTO `mob_droplist` VALUES (2069,1,1,1000,15737,200); -- Sarutobi Kyahan (Group 1 - 10.0%)
 
 -- ZoneID:  95 - Rafflesia
 INSERT INTO `mob_droplist` VALUES (2070,0,0,1000,2513,60); -- Rafflesia Vine (6.0%)

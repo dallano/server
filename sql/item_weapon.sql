@@ -578,7 +578,7 @@ INSERT INTO `item_weapon` VALUES (16932,'greatsword_+1',4,0,0,0,0,2,1,443,59,0);
 INSERT INTO `item_weapon` VALUES (16933,'dst._claymore_+1',4,0,0,0,0,2,1,475,75,0);
 INSERT INTO `item_weapon` VALUES (16934,'braveheart',4,0,0,0,0,2,1,444,33,0);
 INSERT INTO `item_weapon` VALUES (16935,'barbarians_sword',4,0,0,0,0,2,1,444,40,0);
-INSERT INTO `item_weapon` VALUES (16936,'demonic_sword',4,0,0,0,0,2,1,456,47,0);
+INSERT INTO `item_weapon` VALUES (16936,'demonic_sword',4,0,0,0,0,2,1,456,56,0);
 INSERT INTO `item_weapon` VALUES (16937,'icicle_sword',4,0,0,0,0,2,1,456,56,0);
 INSERT INTO `item_weapon` VALUES (16938,'glorious_sword',4,0,0,0,0,2,1,456,71,0);
 INSERT INTO `item_weapon` VALUES (16939,'ram-dao_+1',4,0,0,0,0,2,1,466,82,0);

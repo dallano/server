@@ -970,14 +970,16 @@ end
 xi.spells.damage.calculateSkillTypeMultiplier = function(caster, target, spell, skillType)
     local skillTypeMultiplier = 1
 
-    if skillType == xi.skill.ELEMENTAL_MAGIC then
-        skillTypeMultiplier = xi.settings.main.ELEMENTAL_POWER
-    elseif skillType == xi.skill.DARK_MAGIC then
-        skillTypeMultiplier = xi.settings.main.DARK_POWER
-    elseif skillType == xi.skill.NINJUTSU then
-        skillTypeMultiplier = xi.settings.main.NINJUTSU_POWER
-    elseif skillType == xi.skill.DIVINE_MAGIC then
-        skillTypeMultiplier = xi.settings.main.DIVINE_POWER
+    if not caster:isMob() then
+        if skillType == xi.skill.ELEMENTAL_MAGIC then
+            skillTypeMultiplier = xi.settings.main.ELEMENTAL_POWER
+        elseif skillType == xi.skill.DARK_MAGIC then
+            skillTypeMultiplier = xi.settings.main.DARK_POWER
+        elseif skillType == xi.skill.NINJUTSU then
+            skillTypeMultiplier = xi.settings.main.NINJUTSU_POWER
+        elseif skillType == xi.skill.DIVINE_MAGIC then
+            skillTypeMultiplier = xi.settings.main.DIVINE_POWER
+        end
     end
 
     return skillTypeMultiplier
