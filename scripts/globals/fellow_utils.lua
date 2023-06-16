@@ -359,6 +359,27 @@ xi.fellow_utils.onFellowRoam = function(fellow)
 
     xi.fellow_utils.timeWarning(fellow, master)
     xi.fellow_utils.spellCheck(fellow, master)
+    xi.fellow_utils.onslaught(fellow, master)
+end
+
+xi.fellow_utils.onslaught = function(fellow, master)
+    if
+        fellow:getLocalVar("onslaught") == 1 and
+        fellow:getHPP() >= 60
+    then
+        local zone = fellow:getZone()
+        local mobs = zone:getMobs()
+
+        for _, mob in pairs(mobs) do
+            if
+                master:checkDistance(mob) < 40 and
+                master:getMainLvl() - mob:getMainLvl() >= 2 and
+                not mob:isNM()
+            then
+                master:fellowAttack(mob)
+            end
+        end
+    end
 end
 
 xi.fellow_utils.onFellowFight = function(fellow, target)
@@ -423,15 +444,11 @@ end
 -------------------------------------------------------------------------------
 xi.fellow_utils.checkRegen = function(fellow, master, fellowLvl, mp, fellowType)
     local cooldown  = fellow:getLocalVar("castingCoolDown")
-    local recast    = math.random(4, 6)
+    local recast    = xi.fellow_utils.calculateRecast(fellow, fellowType)
     local fellowHPP = fellow:getHPP()
     local masterHPP = master:getHPP()
 
     if cooldown <= os.time() then
-        if fellowType == fellowTypes.HEALER then
-            recast = recast + math.random(2, 3)
-        end
-
         for _, regen in pairs(regenTable) do
             if
                 regen.level <= fellowLvl and
@@ -471,17 +488,15 @@ end
 -------------------------------------------------------------------------------
 xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
     local coolDown      = fellow:getLocalVar("castingCoolDown")
-    local recast        = math.random(4, 6)
+    local recast        = xi.fellow_utils.calculateRecast(fellow, fellowType)
     local masterHP      = master:getMaxHP() - master:getHP()
     local fellowHP      = fellow:getMaxHP() - fellow:getHP()
 
     if coolDown < os.time() then
         if
-            fellowType == fellowTypes.HEALER or
-            fellowType == fellowTypes.SOOTHING
+            fellowType == fellowTypes.SHIELD or
+            fellowType == fellowTypes.STALWART
         then
-            recast = recast + math.random(2, 3)
-        else
             recast = recast + math.random(8, 12)
         end
 
@@ -549,13 +564,9 @@ end
 -------------------------------------------------------------------------------
 xi.fellow_utils.checkAilment = function(fellow, master, fellowLvl, mp, fellowType)
     local coolDown      = fellow:getLocalVar("castingCoolDown")
-    local recast        = math.random(4, 6)
+    local recast        = xi.fellow_utils.calculateRecast(fellow, fellowType)
 
     if coolDown < os.time() then
-        if fellowType == fellowTypes.HEALER then
-            recast = recast + math.random(2, 3)
-        end
-
         for _, debuff in pairs(ailmentTable) do
             if
                 debuff.level <= fellowLvl and
@@ -595,34 +606,29 @@ end
 --           BLM, RNG, SMN, COR, SCH
 -------------------------------------------------------------------------------
 xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
-    local coolDown      = fellow:getLocalVar("castingCoolDown")
-    local recast        = math.random(4, 6)
-    local job           = master:getMainJob()
+    local coolDown = fellow:getLocalVar("castingCoolDown")
+    local recast   = xi.fellow_utils.calculateRecast(fellow, fellowType)
+    local job      = master:getMainJob()
 
 
     if coolDown < os.time() then
-        if fellowType == fellowTypes.HEALER then
-            recast = recast + math.random(2, 3)
-        end
-
         for _, buff in pairs(buffTable) do
             if
                 buff.level <= fellowLvl and
                 buff.mpCost <= mp
             then
+                -- Case for Refresh + Haste
                 if
-                    buff.effect == xi.effect.REFRESH and
+                    (buff.effect == xi.effect.REFRESH and
                     (master:getMP() < 40 or
-                    master:getMP() == master:getMaxMP())
-                then
-                    buff.targetMaster = false
-                elseif
-                    buff.effect == xi.effect.HASTE and
+                    master:getMP() == master:getMaxMP()))
+                    or
+                    (buff.effect == xi.effect.HASTE and
                     (job == xi.job.BLM or
                     job == xi.job.RNG or
                     job == xi.job.SMN or
                     job == xi.job.COR or
-                    job == xi.job.SCH)
+                    job == xi.job.SCH))
                 then
                     buff.targetMaster = false
                 end
@@ -654,14 +660,10 @@ end
 -------------------------------------------------------------------------------
 xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType)
     local coolDown = fellow:getLocalVar("castingCoolDown")
-    local recast   = math.random(4, 6)
+    local recast   = xi.fellow_utils.calculateRecast(fellow, fellowType)
     local target   = nil
 
     if coolDown < os.time() then
-        if fellowType == fellowTypes.HEALER then
-            recast = recast + math.random(2, 3)
-        end
-
         if fellow:isEngaged() then
             target = fellow:getTarget()
         elseif master:isEngaged() then
@@ -680,7 +682,6 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
                     debuff.immunity == 0) and
                     target:isEngaged()
                 then
-
                     if
                         (debuff.effect == xi.effect.SILENCE and
                         not target:hasSpellList()) or
@@ -900,8 +901,18 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
     return false
 end
 
+xi.fellow_utils.calculateRecast = function(fellow, fellowType)
+    local recast = math.random(4, 6)
+
+    if fellowType == fellowTypes.HEALER then
+        recast = recast + math.random(3, 4)
+    end
+
+    return recast
+end
+
 xi.fellow_utils.battleMessaging = function(fellow, master)
-    local ID = require("scripts/zones/"..master:getZoneName().."/IDs")
+    local ID            = require("scripts/zones/"..master:getZoneName().."/IDs")
     local personality   = xi.fellow_utils.checkPersonality(fellow)
     local optionsMask   = master:getFellowValue("optionsMask")
     local hpWarning     = fellow:getLocalVar("hpWarning")
@@ -1050,21 +1061,9 @@ xi.fellow_utils.upgradeArmor = function(fellow, master)
 end
 
 xi.fellow_utils.changeJob = function(master, pJob, job)
-    local offset = master:getCharVar("[FELLOW]armorOffset")
-    if job == 1 or job == 4 then
-        master:setCharVar("[FELLOW]armorOffset", 0)
-    elseif job == 2 or job == 5 then
-        master:setCharVar("[FELLOW]armorOffset", 100)
-    else
-        master:setCharVar("[FELLOW]armorOffset", 200)
-    end
-
-    xi.fellow_utils.updateLook(master, master:getCharVar("[FELLOW]armorOffset"))
-end
-
-xi.fellow_utils.updateLook = function(master, offset)
     local armorLock    = master:getFellowValue("armorLock")
     local unlockedSlot = {}
+    local offset       = 0
     local armorTable   =
     {
         [1] = { "body" },
@@ -1072,6 +1071,30 @@ xi.fellow_utils.updateLook = function(master, offset)
         [3] = { "legs" },
         [4] = { "feet" },
     }
+
+    if job == 1 or job == 4 then
+        if pJob == 2 or pJob == 5 then
+            master:setCharVar("[FELLOW]armorOffset", -100)
+        else
+            master:setCharVar("[FELLOW]armorOffset", -200)
+        end
+
+    elseif job == 2 or job == 5 then
+        if pJob == 1 or pJob == 4 then
+            master:setCharVar("[FELLOW]armorOffset", 100)
+        else
+            master:setCharVar("[FELLOW]armorOffset", -100)
+        end
+
+    else
+        if pJob == 2 or pJob == 5 then
+            master:setCharVar("[FELLOW]armorOffset", 100)
+        else
+            master:setCharVar("[FELLOW]armorOffset", 200)
+        end
+    end
+
+    offset = master:getCharVar("[FELLOW]armorOffset")
 
     for i, v in ipairs(armorTable) do
         if bit.band(armorLock, bit.lshift(1, i)) == 0 then
