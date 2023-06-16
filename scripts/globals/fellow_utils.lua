@@ -263,6 +263,8 @@ local armorIndex =
 xi.fellow_utils.onFellowSpawn = function(fellow)
     local master        = fellow:getMaster()
     local fellowType    = master:getFellowValue("job")
+    local level         = fellow:getMainLvl()
+    local refreshPower  = math.ceil(level * 0.05)
     fellow:setLocalVar("masterID", master:getID())
     fellow:setLocalVar("castingCoolDown", os.time() + math.random(15, 25))
     master:setLocalVar("chatCounter", 0)
@@ -303,7 +305,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.DEFP, 20)
 
     elseif fellowType == fellowTypes.HEALER then
-        fellow:setMod(xi.mod.REFRESH, 1)
+        fellow:setMod(xi.mod.REFRESH, refreshPower)
         fellow:setMod(xi.mod.ENMITY, -5)
         fellow:setMod(xi.mod.DEFP, -15)
         fellow:setMod(xi.mod.MDEF, 10)
@@ -315,8 +317,8 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.DIVINE,  15)
         fellow:setMod(xi.mod.HEALING, 15)
         fellow:setMod(xi.mod.ENFEEB,  15)
+        fellow:setMod(xi.mod.REFRESH, refreshPower * 1.5)
         fellow:setMod(xi.mod.ENMITY, -10)
-        fellow:setMod(xi.mod.REFRESH, 2)
         fellow:setMod(xi.mod.RDEFP, -10)
         fellow:setMod(xi.mod.DEFP, -10)
         fellow:setMod(xi.mod.MDEF, 20)
@@ -488,12 +490,20 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                 cure.level <= fellowLvl and
                 cure.mpCost <= mp
             then
+                -- Get that weak shit out of here
                 if
+                    cure.spell == xi.magic.spell.CURE and
+                    master:getMainLvl() > 30
+                then
+                    return
+
+                elseif
                     (fellowType == fellowTypes.HEALER or
                     fellowType == fellowTypes.SOOTHING) and
                     fellow:getHPP() < 30 and
                     master:getHPP() > 40
                 then
+
                     if cure.hpThreshold <= fellowHP then
                         fellow:setLocalVar("castingCoolDown", os.time() + recast)
                         fellow:castSpell(cure.spell, fellow)
@@ -844,6 +854,11 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
     local provoke       = fellow:getLocalVar("provoke")
     local fellowType    = master:getFellowValue("job")
     local otherSignals  = false
+    local recast        = 30
+
+    if fellowType == fellowTypes.SHIELD then
+        recast = recast + math.random(5, 10)
+    end
 
     if bit.band(optionsMask, bit.lshift(1, 4)) == 16 then
         otherSignals = true
@@ -866,15 +881,18 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
             master:getHPP() < 10)
         then
             if target:isEngaged() then
+                -- Provoke only if target isn't attacking fellow
                 if target:getTarget():getID() ~= fellow:getID() then
                     fellow:useJobAbility(35, target)
-                    fellow:setLocalVar("provoke", os.time() + math.random(30, 60))
+                    fellow:setLocalVar("provoke", os.time() + recast)
+                    master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
+
+                -- Uses Provoke on NMs as frequently as possible
+                elseif target:isNM() then
+                    fellow:useJobAbility(35, target)
+                    fellow:setLocalVar("provoke", os.time() + recast)
                     master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
                 end
-            else -- edge case for independent fellow attacking (quest bcnms)
-                fellow:useJobAbility(35, target)
-                fellow:setLocalVar("provoke", os.time() + math.random(30, 60))
-                master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
             end
         end
     end
