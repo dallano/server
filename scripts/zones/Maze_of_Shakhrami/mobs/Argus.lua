@@ -6,6 +6,10 @@ local ID = require("scripts/zones/Maze_of_Shakhrami/IDs")
 -----------------------------------
 local entity = {}
 
+entity.onMobRoam = function(mob)
+    print("yoo!!!!!")
+end
+
 entity.onMobDeath = function(mob, player, optParams)
 end
 

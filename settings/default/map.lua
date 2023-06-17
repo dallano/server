@@ -92,14 +92,14 @@ xi.settings.map =
     ALL_JOBS_WIDESCAN = false,
 
     -- Modifier to apply to player speed. 0 is the retail accurate default. Negative numbers will reduce it.
-    SPEED_MOD = -10,
+    SPEED_MOD = -5,
 
     -- Modifier to apply to mount speed. 0 is the retail accurate default. Negative numbers will reduce it.
     -- Note retail treats the mounted speed as double what it actually is.
-    MOUNT_SPEED_MOD = 0,
+    MOUNT_SPEED_MOD = 10,
 
     -- Modifier to apply to agro'd monster speed. 0 is the retail accurate default. Negative numbers will reduce it.
-    MOB_SPEED_MOD = -10,
+    MOB_SPEED_MOD = -5,
 
     -- Allows you to manipulate the constant multiplier in the skill-up rate formulas, having a potent effect on skill-up rates.
     CRAFT_CHANCE_MULTIPLIER   = 2.0,
@@ -131,7 +131,7 @@ xi.settings.map =
     FISHING_MIN_LEVEL = 1,
 
     -- Multiplier for fishing skill-up chance. Default = 1.0, very hard.
-    FISHING_SKILL_MULTIPLIER = 10.0,
+    FISHING_SKILL_MULTIPLIER = 5.0,
 
     -- Enable/disable skill-ups from bloodpacts
     SKILLUP_BLOODPACT = true,

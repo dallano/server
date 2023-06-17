@@ -33,13 +33,13 @@ CREATE TABLE `mob_droplist` (
 
 -- Variables
 SET @ALWAYS = 1000;  -- Always, 100%
-SET @VCOMMON = 240;  -- Very common, 24%
-SET @COMMON = 150;   -- Common, 15%
-SET @UNCOMMON = 100; -- Uncommon, 10%
-SET @RARE = 50;      -- Rare, 5%
-SET @VRARE = 10;     -- Very rare, 1%
-SET @SRARE = 5;      -- Super Rare, 0.5%
-SET @URARE = 1;      -- Ultra rare, 0.1%
+SET @VCOMMON = 400;  -- Very common, 40%
+SET @COMMON = 250;   -- Common, 25%
+SET @UNCOMMON = 180; -- Uncommon, 18%
+SET @RARE = 100;      -- Rare, 10%
+SET @VRARE = 50;     -- Very rare, 5%
+SET @SRARE = 20;      -- Super Rare, 2%
+SET @URARE = 10;      -- Ultra rare, 1%
 
 --
 -- Dumping data for table `mob_droplist`
@@ -3264,7 +3264,7 @@ INSERT INTO `mob_droplist` VALUES (351,2,0,1000,750,0);          -- Silver Beast
 INSERT INTO `mob_droplist` VALUES (352,0,0,1000,17397,@VCOMMON); -- Shell Bug (Very Common, 24%)
 INSERT INTO `mob_droplist` VALUES (352,1,1,@RARE,607,500);       -- Quadav Fetich Torso (Group 1 - Rare, 5% * 50%)
 INSERT INTO `mob_droplist` VALUES (352,1,1,@RARE,608,500);       -- Quadav Fetich Arms (Group 1 - Rare, 5% * 50%)
-INSERT INTO `mob_droplist` VALUES (352,0,0,1000,1025,@VRARE);    -- Palborough Chest Key (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (352,0,0,1000,1025,@RARE);    -- Palborough Chest Key (Rare, 1%)
 -- INSERT INTO `mob_droplist` VALUES (352,0,0,1000,2758,@VRARE);    -- Quadav Backscale (Very Rare, 1%)
 INSERT INTO `mob_droplist` VALUES (352,0,0,1000,12449,@VRARE);   -- Brass Cap (Very Rare, 1%)
 INSERT INTO `mob_droplist` VALUES (352,0,0,1000,12705,@VRARE);   -- Brass Mittens (Very Rare, 1%)
@@ -4552,7 +4552,7 @@ INSERT INTO `mob_droplist` VALUES (513,0,0,1000,12961,@VRARE);   -- Brass Leggin
 INSERT INTO `mob_droplist` VALUES (513,2,0,1000,750,0);          -- Silver Beastcoin (Steal)
 
 -- ZoneID: 143 - Copper Quadav
-INSERT INTO `mob_droplist` VALUES (514,0,0,1000,1025,@VRARE);   -- Palborough Chest Key (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (514,0,0,1000,1025,@RARE);   -- Palborough Chest Key (Rare, 1%)
 INSERT INTO `mob_droplist` VALUES (514,0,0,1000,1529,@VRARE);   -- Darksteel Engraving (Very Rare, 1%)
 -- INSERT INTO `mob_droplist` VALUES (514,0,0,1000,2758,@VRARE);   -- Quadav Backscale (Very Rare, 1%) AMK item
 INSERT INTO `mob_droplist` VALUES (514,0,0,1000,12449,@VRARE);  -- Brass Cap (Very Rare, 1%)
@@ -17292,7 +17292,7 @@ INSERT INTO `mob_droplist` VALUES (2180,0,0,1000,4878,@VRARE);    -- Scroll Of A
 INSERT INTO `mob_droplist` VALUES (2181,0,0,1000,897,@ALWAYS);     -- Scorpion Claw (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (2181,0,0,1000,896,@COMMON);     -- Scorpion Shell (Common, 15%)
 INSERT INTO `mob_droplist` VALUES (2181,0,0,1000,16783,@UNCOMMON); -- Plantreaper (Uncommon, 10%)
-INSERT INTO `mob_droplist` VALUES (2181,0,0,1000,1025,@VRARE);     -- Palborough Chest Key (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (2181,0,0,1000,1025,@RARE);     -- Palborough Chest Key (Rare, 1%)
 
 -- ZoneID:  89 - Scitalis
 INSERT INTO `mob_droplist` VALUES (2182,0,0,1000,16150,160); -- Saurian Helm (16.0%)

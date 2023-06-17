@@ -629,6 +629,8 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
                     job == xi.job.SMN or
                     job == xi.job.COR or
                     job == xi.job.SCH))
+                    and
+                    fellow:actionQueueEmpty()
                 then
                     buff.targetMaster = false
                 end
@@ -1054,7 +1056,7 @@ xi.fellow_utils.upgradeArmor = function(fellow, master)
             armorIndex[rank] <= fellow:getMainLvl() and
             kills >= rank * 15
         then
-            master:setFellowValue(unlocked[i], rank + 1 + offset)
+            master:setFellowValue(unlocked[i], rank + offset + 1)
             return
         end
     end

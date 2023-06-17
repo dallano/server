@@ -1170,9 +1170,7 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 1500,   640 }, -- Copper Ore
-                    { 1300,   641 }, -- Tin Ore
-                    { 1000,   769 }, -- Colored Rock
+                    { 2000,   769 }, -- Colored Rock
                     {  400,   643 }, -- Iron Ore
                     {  360,   736 }, -- Silver Ore
                     {  320,   642 }, -- Zinc Ore
