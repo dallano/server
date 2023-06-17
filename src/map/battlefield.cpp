@@ -34,6 +34,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/
 #include "entities/mobentity.h"
 #include "entities/npcentity.h"
 #include "entities/trustentity.h"
+#include "entities/fellowentity.h"
 
 #include "lua/luautils.h"
 
@@ -365,7 +366,7 @@ bool CBattlefield::InsertEntity(CBaseEntity* PEntity, bool enter, BATTLEFIELDMOB
         PEntity->loc.zone->UpdateEntityPacket(PEntity, ENTITY_SPAWN, UPDATE_ALL_MOB);
         m_NpcList.push_back(static_cast<CNpcEntity*>(PEntity));
     }
-    else if (PEntity->objtype == TYPE_MOB || PEntity->objtype == TYPE_PET)
+    else if (PEntity->objtype == TYPE_MOB || PEntity->objtype == TYPE_PET || PEntity->objtype == TYPE_FELLOW)
     {
         // mobs
         if (!ally)
@@ -489,7 +490,7 @@ CBaseEntity* CBattlefield::GetEntity(CBaseEntity* PEntity)
             }
         }
     }
-    else if (PEntity->objtype == TYPE_PET || PEntity->objtype == TYPE_TRUST)
+    else if (PEntity->objtype == TYPE_PET || PEntity->objtype == TYPE_TRUST || PEntity->objtype == TYPE_FELLOW)
     {
         if (auto* POwner = dynamic_cast<CCharEntity*>(static_cast<CBattleEntity*>(PEntity)->PMaster))
         {

@@ -157,7 +157,7 @@ xi.teleport.destination =
     [ids.BASTOK_STARLIGHT]      = { -344.489,  -10.002,  -182.797, 88, 235 },
     [ids.SAN_DORIA_STARLIGHT]   = { 100.952,  0.999,      -49.758, 31, 230 },
     [ids.WINDURST_STARLIGHT]    = { 103.065,  -5.000,     -48.627, 5,  241 },
-    [ids.LOWER_JEUNO]           = { -43.000,   5.899,     -113.00, 0,  245 }, -- (xiSP)
+    [ids.LOWER_JEUNO]           = { -68.000,   6.000,     -105.00, 0,  213 }, -- (xiSP)
 }
 
 xi.teleport.type =

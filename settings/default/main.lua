@@ -184,7 +184,7 @@ xi.settings.main =
     GARRISON_TIME_LIMIT          = 1800,   -- Time in seconds before lose ongoing garrison (default: 1800)
     GARRISON_ONCE_PER_WEEK       = false,  -- Set to false to bypass the limit of one garrison per Conquest Tally Week.
     GARRISON_PARTY_LIMIT         = 18,     -- Set to max party members you want to do garrison (default: 18).
-    GARRISON_NATION_BYPASS       = false,  -- Set to true to bypass the nation requirement.
+    GARRISON_NATION_BYPASS       = true,  -- Set to true to bypass the nation requirement.
     GARRISON_RANK                = 2,      -- Set to minumum Nation Rank to start Garrison (default: 2).
 
     -- DYNAMIS SETTINGS

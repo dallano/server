@@ -367,13 +367,17 @@ xi.fellow_utils.onslaught = function(fellow, master)
         fellow:getLocalVar("onslaught") == 1 and
         fellow:getHPP() >= 60
     then
-        local zone = fellow:getZone()
-        local mobs = zone:getMobs()
+        local zone    = fellow:getZone()
+        local mobs    = zone:getMobs()
 
         for _, mob in pairs(mobs) do
+            local yOffset = master:getPos().y - mob:getPos().y
+
             if
                 master:checkDistance(mob) < 40 and
                 master:getMainLvl() - mob:getMainLvl() >= 2 and
+                yOffset >= -8 and
+                yOffset <= 8 and
                 not mob:isNM()
             then
                 master:fellowAttack(mob)
