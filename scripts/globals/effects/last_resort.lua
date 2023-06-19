@@ -17,7 +17,7 @@ effectObject.onEffectGain = function(target, effect)
 
     -- xiSP
     if not target:isMob() then
-        target:addHP(100 + (target:getSkillLevel(xi.skill.DARK) * 0.05))
+        target:addHP(100 + (target:getSkillLevel(xi.skill.DARK_MAGIC) * 0.05))
     end
 end
 

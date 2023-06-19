@@ -505,18 +505,21 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
         end
 
         for _, cure in pairs(cureTable) do
+            -- Check if cure is valid to cast
             if
                 cure.level <= fellowLvl and
                 cure.mpCost <= mp
             then
-                -- Get that weak shit out of here
+                -- Do not cast weaker cures above lvl 30
                 if
                     cure.spell == xi.magic.spell.CURE and
                     master:getMainLvl() > 30
                 then
                     return
+                end
 
-                elseif
+                -- If mage, prioritize self if hp < 30 and master is doing alright
+                if
                     (fellowType == fellowTypes.HEALER or
                     fellowType == fellowTypes.SOOTHING) and
                     fellow:getHPP() < 30 and
@@ -529,10 +532,12 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                         return
                     end
                 else
+                    -- Tank Logic
                     if
                         fellowType == fellowTypes.SHIELD or
                         fellowType == fellowTypes.STALWART
                     then
+                        -- Tanks cure less often and not as efficiently. Especially on their master.
                         if cure.hpThreshold * 1.25 <= fellowHP then
                             fellow:setLocalVar("castingCoolDown", os.time() + recast)
                             fellow:castSpell(cure.spell, fellow)
@@ -542,7 +547,9 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                             fellow:castSpell(cure.spell, master)
                             return
                         end
+                    -- Mage Logic
                     else
+                        -- Prioritize master
                         if cure.hpThreshold <= masterHP then
                             fellow:setLocalVar("castingCoolDown", os.time() + recast)
                             fellow:castSpell(cure.spell, master)
