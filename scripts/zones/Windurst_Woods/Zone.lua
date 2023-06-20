@@ -92,6 +92,8 @@ zoneObject.onGameHour = function(zone)
             end
         end
     end
+
+    xi.events.sunbreeze_festival.spawnFireworks(zone)
 end
 
 return zoneObject

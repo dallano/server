@@ -55,6 +55,14 @@ zoneObject.onConquestUpdate = function(zone, updatetype, influence, owner, ranki
     xi.conq.onConquestUpdate(zone, updatetype, influence, owner, ranking, isConquestAlliance)
 end
 
+zoneObject.onZoneTick = function(zone)
+    xi.events.sunbreeze_festival.onZoneTick(zone)
+end
+
+zoneObject.onGameHour = function(zone)
+    xi.events.sunbreeze_festival.spawnFireworks(zone)
+end
+
 zoneObject.onGameDay = function()
     SetServerVariable("[DIG]ZONE116_ITEMS", 0)
     if xi.events.starlightCelebration.isStarlightEnabled ~= 0 then

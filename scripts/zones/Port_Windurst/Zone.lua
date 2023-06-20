@@ -53,6 +53,10 @@ zoneObject.onTransportEvent = function(player, transport)
     end
 end
 
+zoneObject.onGameHour = function(zone)
+    xi.events.sunbreeze_festival.spawnFireworks(zone)
+end
+
 zoneObject.onEventUpdate = function(player, csid, option)
 end
 

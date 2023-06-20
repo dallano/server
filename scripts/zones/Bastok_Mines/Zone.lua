@@ -48,6 +48,10 @@ end
 zoneObject.onEventUpdate = function(player, csid, option)
 end
 
+zoneObject.onGameHour = function(zone)
+    xi.events.sunbreeze_festival.spawnFireworks(zone)
+end
+
 zoneObject.onEventFinish = function(player, csid, option)
     xi.moghouse.exitJobChangeFinish(player, csid, option)
 end

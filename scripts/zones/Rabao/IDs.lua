@@ -22,7 +22,9 @@ zones[xi.zone.RABAO] =
         LOGIN_NUMBER                  = 6453,  -- In celebration of your most recent login (login no. <number>), we have provided you with <number> points! You currently have a total of <number> points.
         MEMBERS_LEVELS_ARE_RESTRICTED = 6473,  -- Your party is unable to participate because certain members' levels are restricted.
         CONQUEST_BASE                 = 6510,  -- Tallying conquest results...
+        GOLDFISH_MESSAGE_OFFSET       = 6693,  -- A tiny goldfish approaches!
         FISHING_MESSAGE_OFFSET        = 6669,  -- You can't fish here.
+        GOLDFISH_HURRY                = 6732,  -- Hurry before the goldfish sees you!
         REGIME_CANCELED               = 6869,  -- Current training regime canceled.
         HUNT_ACCEPTED                 = 6887,  -- Hunt accepted!
         USE_SCYLDS                    = 6888,  -- You use <number> [scyld/scylds]. Scyld balance: <number>.
@@ -43,13 +45,16 @@ zones[xi.zone.RABAO] =
         LUCKY_ROLL_GAMEOVER           = 10324, -- I'm sorry, but that's it for today's game of Lucky Roll. Come by tomorrow, and maybe Lady Luck will be waiting for you!
         LUCKY_ROLL_EXACT              = 10322, -- And because your roll put the running total at exactly 400, you receive a bonus prize!
         LUCKY_ROLL_CLOSE              = 10323, -- And for bringing the total so close to 400, here is your extra prize!
+        GOLDFISH_NPC_DIALOGUE         = 10397, -- Goldfish... Goldfish...something...
+        GOLDFISH_POINT_UPDATE         = 10442, -- <player's> point total is now <int>.
     },
     mob =
     {
     },
     npc =
     {
-        MILEON                        = 17788987, -- Lucky Roll Npc
+        MILEON       = 17788987, -- Lucky Roll Npc
+        GOLDFISH_NPC = 17789025,
     },
 }
 

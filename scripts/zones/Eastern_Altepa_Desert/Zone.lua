@@ -60,6 +60,10 @@ zoneObject.onZoneOut = function(player)
     end
 end
 
+zoneObject.onGameHour = function(zone)
+    xi.events.sunbreeze_festival.spawnFireworks(zone)
+end
+
 zoneObject.onGameDay = function()
     SetServerVariable("[DIG]ZONE114_ITEMS", 0)
 end

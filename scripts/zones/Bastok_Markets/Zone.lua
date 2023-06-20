@@ -40,6 +40,10 @@ end
 zoneObject.onTriggerAreaEnter = function(player, triggerArea)
 end
 
+zoneObject.onGameHour = function(zone)
+    xi.events.sunbreeze_festival.spawnFireworks(zone)
+end
+
 zoneObject.onGameDay = function()
     -- Removes daily the bit mask that tracks the treats traded for Harvest Festival.
     if isHalloweenEnabled() ~= 0 then

@@ -25,6 +25,10 @@ zoneObject.onZoneIn = function(player, prevZone)
     return cs
 end
 
+zoneObject.onZoneTick = function(zone)
+    xi.events.sunbreeze_festival.onZoneTick(zone)
+end
+
 zoneObject.afterZoneIn = function(player)
     xi.chocobo.confirmRentalAfterZoneIn(player)
 end
@@ -40,6 +44,10 @@ zoneObject.onEventUpdate = function(player, csid, option)
 end
 
 zoneObject.onEventFinish = function(player, csid, option)
+end
+
+zoneObject.onGameHour = function(zone)
+    xi.events.sunbreeze_festival.spawnFireworks(zone)
 end
 
 return zoneObject
