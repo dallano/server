@@ -10,7 +10,7 @@ xi.events.sunbreeze_festival = xi.events.sunbreeze_festival or {}
 local event = SeasonalEvent:new("SunbreezeFestival")
 
 xi.events.sunbreeze_festival.enabledCheck = function()
-    return tonumber(os.date("%m")) == 7 -- 8
+    return tonumber(os.date("%m")) == 8
 end
 
 event:setEnableCheck(xi.events.sunbreeze_festival.enabledCheck)
@@ -314,9 +314,7 @@ end
 
 xi.events.sunbreeze_festival.moogleVendorOnTrigger = function(player, npc)
     player:messageSpecial(zones[player:getZoneID()].text.SUNBREEZE_MOOGLE_VENDOR)
-
     xi.shop.general(player, moogleVendorStock[xi.settings.main.SUNBREEZE_VENDOR_ERA])
-
 end
 
 xi.events.sunbreeze_festival.setMusic = function(flag)
