@@ -9,14 +9,13 @@ mixins = { require("scripts/mixins/families/empty_terroanima") }
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addMod(xi.mod.TRIPLE_ATTACK, 10)
-    mob:addMod(xi.mod.DEFP, 35)
+    mob:addMod(xi.mod.TRIPLE_ATTACK, 5)
     mob:setMod(xi.mod.STORETP, 100)
     mob:setSpeed(50)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setLocalVar("maxBabies", 4)
+    mob:setLocalVar("maxBabies", 2)
 end
 
 entity.onMobWeaponSkillPrepare = function(mob, target)
@@ -31,8 +30,8 @@ entity.onMobWeaponSkillPrepare = function(mob, target)
 end
 
 entity.onMobFight = function(mob, target)
-    if mob:getHPP() <= 35 then
-        mob:setMod(xi.mod.STORETP, 250)
+    if mob:getHPP() <=15 then
+        mob:setMod(xi.mod.STORETP, 200)
     end
 end
 

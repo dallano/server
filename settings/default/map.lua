@@ -139,16 +139,16 @@ xi.settings.map =
     -- Adjust rate of TP gain for mobs, pets (includes charmed pets), fellows, trusts and players.
     -- Acts as a multiplier, so default is 1.
     MOB_TP_MULTIPLIER    = 1.0,
-    PET_TP_MULTIPLIER    = 1.25,
-    PLAYER_TP_MULTIPLIER = 1.25,
+    PET_TP_MULTIPLIER    = 1.0,
+    PLAYER_TP_MULTIPLIER = 1.0,
     TRUST_TP_MULTIPLIER  = 1.0,
-    FELLOW_TP_MULTIPLIER = 1.25,
+    FELLOW_TP_MULTIPLIER = 1.0,
 
     -- Adjust max HP pool for NMs, regular mobs, players, and trusts/fellows. Acts as a multiplier, so default is 1.
     NM_HP_MULTIPLIER        = 1.0,
     MOB_HP_MULTIPLIER       = 0.75,
-    PLAYER_HP_MULTIPLIER    = 1.25,
-    ALTER_EGO_HP_MULTIPLIER = 1.25,
+    PLAYER_HP_MULTIPLIER    = 1.00,
+    ALTER_EGO_HP_MULTIPLIER = 1.00,
 
     -- Adjust max MP pool for NMs, regular mobs, players, and trusts/fellows. Acts as a multiplier, so default is 1.
     NM_MP_MULTIPLIER        = 1.0,
@@ -171,9 +171,9 @@ xi.settings.map =
 
     -- Adjust base stats (str/vit/etc.) for NMs, regular mobs, players, and trusts/fellows. Acts as a multiplier, so default is 1.
     NM_STAT_MULTIPLIER        = 1.0,
-    MOB_STAT_MULTIPLIER       = 1.0,
+    MOB_STAT_MULTIPLIER       = 0.7,
     PLAYER_STAT_MULTIPLIER    = 1.0,
-    ALTER_EGO_STAT_MULTIPLIER = 1.1,
+    ALTER_EGO_STAT_MULTIPLIER = 1.0,
 
     -- Adjust skill caps for trusts/fellows. Acts as a multiplier, so default is 1.
     ALTER_EGO_SKILL_MULTIPLIER = 1.0,
@@ -197,7 +197,7 @@ xi.settings.map =
     MAX_GIL_BONUS = 100000,
 
     --  Allow mobs to walk back home instead of despawning
-    MOB_NO_DESPAWN = false,
+    MOB_NO_DESPAWN = true,
 
     -- Adds extra time to mob despawn in seconds. Base time is 25s, so a setting of 5 here would be a total of 30 seconds.
     MOB_ADDITIONAL_TIME_TO_DEAGGRO = 0,
@@ -212,7 +212,7 @@ xi.settings.map =
     BATTLE_CAP_TWEAK = 0,
 
     -- Enable/disable level cap of mission battlefields stored in database.
-    LV_CAP_MISSION_BCNM = 0,
+    LV_CAP_MISSION_BCNM = 1,
 
     -- Max allowed merits points players can hold
     --  10 classic

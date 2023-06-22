@@ -33,13 +33,13 @@ CREATE TABLE `mob_droplist` (
 
 -- Variables
 SET @ALWAYS = 1000;  -- Always, 100%
-SET @VCOMMON = 400;  -- Very common, 40%
-SET @COMMON = 250;   -- Common, 25%
-SET @UNCOMMON = 180; -- Uncommon, 18%
-SET @RARE = 100;      -- Rare, 10%
-SET @VRARE = 50;     -- Very rare, 5%
-SET @SRARE = 20;      -- Super Rare, 2%
-SET @URARE = 10;      -- Ultra rare, 1%
+SET @VCOMMON = 240;  -- Very common, 24%
+SET @COMMON = 150;   -- Common, 15%
+SET @UNCOMMON = 100; -- Uncommon, 10%
+SET @RARE = 50;      -- Rare, 5%
+SET @VRARE = 10;     -- Very rare, 1%
+SET @SRARE = 5;      -- Super Rare, 0.5%
+SET @URARE = 1;      -- Ultra rare, 0.1%
 
 --
 -- Dumping data for table `mob_droplist`
@@ -15719,7 +15719,7 @@ INSERT INTO `mob_droplist` VALUES (1955,2,0,1000,749,0);        -- Mythril Beast
 -- ZoneID: 204 - Ore Golem
 INSERT INTO `mob_droplist` VALUES (1956,0,0,1000,644,@COMMON);  -- Chunk Of Mythril Ore (Common, 15%)
 INSERT INTO `mob_droplist` VALUES (1956,0,0,1000,955,@RARE);    -- Golem Shard (Rare, 5%)
-INSERT INTO `mob_droplist` VALUES (1956,0,0,1000,1037,@VRARE);  -- Feiyin Chest Key (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (1956,0,0,1000,1037,@RARE);  -- Feiyin Chest Key (Rare, 5%)
 
 -- ZoneID: 177 - Ornamental Weapon
 INSERT INTO `mob_droplist` VALUES (1957,0,0,1000,1060,@RARE); -- Velugannon Coffer Key (Rare, 5%)
@@ -19809,7 +19809,7 @@ INSERT INTO `mob_droplist` VALUES (2519,0,0,1000,924,@VRARE);    -- Vial Of Fien
 INSERT INTO `mob_droplist` VALUES (2520,0,0,1000,891,@VCOMMON); -- Bat Fang (Very Common, 24%)
 INSERT INTO `mob_droplist` VALUES (2520,0,0,1000,891,@VCOMMON); -- Bat Fang (Very Common, 24%)
 INSERT INTO `mob_droplist` VALUES (2520,0,0,1000,922,@VCOMMON); -- Bat Wing (Very Common, 24%)
-INSERT INTO `mob_droplist` VALUES (2520,0,0,1000,1037,@VRARE);  -- Feiyin Chest Key (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (2520,0,0,1000,1037,@RARE);  -- Feiyin Chest Key (Rare, 5%)
 
 -- ZoneID: 212 - Ungur
 INSERT INTO `mob_droplist` VALUES (2521,0,0,1000,18141,@ALWAYS);  -- Ungur Boomerang (Always, 100%)

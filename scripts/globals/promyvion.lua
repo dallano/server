@@ -76,7 +76,7 @@ xi.promyvion.strayOnSpawn = function(mob)
     local mother = GetMobByID(findMother(mob))
 
     if mother ~= nil and mother:isSpawned() then
-        mob:setPos(mother:getXPos(), mother:getYPos() - 5, mother:getZPos())
+        mob:setPos(mother:getXPos(), mother:getYPos() - 3, mother:getZPos())
         mother:setAnimationSub(1)
         mother:timer(1000, function(motherArg)
             if motherArg:isAlive() then
@@ -106,8 +106,8 @@ xi.promyvion.receptacleOnFight = function(mob, target)
             end
         end
 
-        if count < numStrays then
-            mob:setLocalVar("[promy]nextStray", os.time() + 20)
+        if count < numStrays - 3 then
+            mob:setLocalVar("[promy]nextStray", os.time() + 40)
             for i = mobId + 1, mobId + numStrays do
                 local stray = GetMobByID(i)
                 if not stray:isSpawned() then
@@ -134,7 +134,7 @@ xi.promyvion.receptacleIdle = function(mob)
             end
         end
 
-        if count < numStrays then
+        if count < numStrays - 5 then
             mob:setLocalVar("[promy]nextStray", os.time() + 300)
             for i = mobId + 1, mobId + numStrays do
                 local stray = GetMobByID(i)
@@ -169,25 +169,20 @@ xi.promyvion.receptacleOnDeath = function(mob, optParams)
         DisallowRespawn(mobId, true)
         mob:setAnimationSub(2)
 
-        -- Random chance to open a portal, unless there are none left
-        local portalChance = 1 / (#alive + 1)
+        local zone   = mob:getZone()
+        if zone:getLocalVar(string.format("[MR][%s]", floor)) ~= 1 then
+            -- Only open the portal if no other portals in this group are open
+            local events = receptacleStreams.destinations
+            local event  = events[math.random(#events)]
 
-        if math.random() < portalChance then
-            local zone   = mob:getZone()
-            if zone:getLocalVar(string.format("[MR][%s]", floor)) ~= 1 then
-                -- Only open the portal if no other portals in this group are open
-                local events = receptacleStreams.destinations
-                local event  = events[math.random(#events)]
-                zone:setLocalVar(string.format("[MR][%s]", floor), 1)
-
-                stream:setLocalVar("[promy]destination", event)
-                stream:setLocalVar("zoneportal", floor)
-                stream:openDoor(180)
-                stream:timer(179000, function(s)
-                    local mobFloor = s:getLocalVar("zoneportal")
-                    s:getZone():setLocalVar(string.format("[MR][%s]", mobFloor), 0)
-                end)
-            end
+            zone:setLocalVar(string.format("[MR][%s]", floor), 1)
+            stream:setLocalVar("[promy]destination", event)
+            stream:setLocalVar("zoneportal", floor)
+            stream:openDoor(180)
+            stream:timer(179000, function(s)
+                local mobFloor = s:getLocalVar("zoneportal")
+                s:getZone():setLocalVar(string.format("[MR][%s]", mobFloor), 0)
+            end)
         end
 
         -- Allow respawn if all receptacles on floor are dead

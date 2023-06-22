@@ -1090,8 +1090,16 @@ void CBattleEntity::SetSLevel(uint8 slvl)
                 m_slvl = 0;
                 break;
             case 1: // 1/2 (75/37, 99/49)
-                m_slvl = (slvl > (m_mlvl >> 1) ? (m_mlvl == 1 ? 1 : (m_mlvl >> 1)) : slvl);
-                break;
+                if (this->objtype & TYPE_FELLOW)
+                {
+                    m_slvl = (slvl > m_mlvl ? (m_mlvl == 1 ? 1 : m_mlvl) : slvl);
+                    break;
+                }
+                else
+                {
+                    m_slvl = (slvl > (m_mlvl >> 1) ? (m_mlvl == 1 ? 1 : (m_mlvl >> 1)) : slvl);
+                    break;
+                }
             case 2: // 2/3 (75/50, 99/66)
                 m_slvl = (slvl > (m_mlvl * 2) / 3 ? (m_mlvl == 1 ? 1 : (m_mlvl * 2) / 3) : slvl);
                 break;

@@ -964,19 +964,13 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 1130,  642 }, -- Zinc Ore
                     { 1050,  736 }, -- Silver Ore
-                    {  970,  643 }, -- Iron Ore
-                    {  680, 1632 }, -- Moblin Mail
-                    {  630, 1625 }, -- Moblin Helm
-                    {  600, 1638 }, -- Moblin Mask
-                    {  570,  568 }, -- Goblin Die
-                    {  570, 1631 }, -- Moblin Armor
-                    {  150, 1654 }, -- Igneous Rock
-                    {   80,  645 }, -- Darksteel Ore
+                    { 1050,  678 }, -- Aluminum Ore
+                    {   80,  568 }, -- Goblin Die
                     {   80,  644 }, -- Mythril Ore
                     {   70,  737 }, -- Gold Ore
                     {   70,  738 }, -- Platium Ore
+                    {   20, 1654 }, -- Igneous Rock
                 },
 
                 points =
@@ -1001,16 +995,12 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 1720,  643 }, -- Iron Ore
-                    { 1450,  642 }, -- Zinc Ore
-                    { 1450,  736 }, -- Silver Ore
-                    {  140,  678 }, -- Aluminum Ore
-                    {  210,  644 }, -- Mythril Ore
-                    {  140,  737 }, -- Gold Ore
+                    { 1500,  678 }, -- Aluminum Ore
+                    {  750,  736 }, -- Silver Ore
+                    {  500,  737 }, -- Gold Ore
                     {  340,  738 }, -- Platium Ore
-                    {   70,  645 }, -- Darksteel Ore
-                    {   80, 1654 }, -- Igneous Rock
-                    {   70,  769 }, -- Colored Rock
+                    {   50,  644 }, -- Mythril Ore
+                    {   20, 1654 }, -- Igneous Rock
                 },
 
                 points =
@@ -1118,10 +1108,6 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 1870,   640 }, -- Copper Ore
-                    { 1930,   642 }, -- Zinc Ore
-                    { 1500,   641 }, -- Tin Ore
-                    { 1340, 17296 }, -- Pebble
                     {  860,   736 }, -- Silver Ore
                     { 1180,   643 }, -- Iron Ore
                     {  750,   644 }, -- Mythril Ore
@@ -1260,8 +1246,6 @@ xi.helm.helmInfo =
                 {
                     { 2500,   643 }, -- Iron Ore
                     { 1500,   642 }, -- Zinc Ore
-                    {  500,   640 }, -- Copper Ore
-                    {  500,   641 }, -- Tin Ore
                     {  180,   736 }, -- Silver Ore
                     {  150, 17296 }, -- Pebble
                     {   50,  1984 }, -- Snapping Mole
@@ -1335,15 +1319,14 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
-                    { 1000,   646 }, -- Adaman Ore
-                    {  850,   643 }, -- Iron Ore
-                    {  550,   645 }, -- Darksteel Ore
-                    {  410,  1108 }, -- Sulfur
-                    {  410,  1155 }, -- Iron Sand
-                    {  380,   928 }, -- Bomb Ash
-                    {  250,   739 }, -- Orichalcum Ore
-                    {   80,   769 }, -- Colored Rock
-                    {   50,  2126 }, -- Orpiment
+                    { 1200, 1155 }, -- Iron Sand
+                    { 1200,  928 }, -- Bomb Ash
+                    { 1000,  646 }, -- Adaman Ore
+                    { 1000,  739 }, -- Orichalcum Ore
+                    {  850,  643 }, -- Iron Ore
+                    {  550,  645 }, -- Darksteel Ore
+                    {   80,  769 }, -- Colored Rock
+                    {   50, 2126 }, -- Orpiment
                 },
 
                 points =
@@ -1508,26 +1491,13 @@ xi.helm.onTrade = function(player, npc, trade, helmType, csid, func)
 
             -- success! reward item and decrement number of remaining uses on the point
             if item ~= 0 and full == 0 then
-                player:addItem(item)
+                -- player:addItem(item, 1, math.random(1, 3))
+                npcUtil.giveItem(player, { { item, math.random(1, 3) }}, { silent = true })
 
                 local uses = (npc:getLocalVar("uses") - 1) % 8
                 npc:setLocalVar("uses", uses)
                 if uses == 0 then
                     movePoint(npc, zoneId, info)
-                end
-
-                if
-                    xi.events and
-                    xi.events.egg_hunt and
-                    xi.events.egg_hunt.enabledCheck and
-                    player:getVar("[EGGHUNT]DAILY_HELM") < vanaDay()
-                then
-                    player:timer(3000, function(playerArg)
-                        if npcUtil.giveItem(playerArg, math.random(xi.items.A_EGG, xi.items.Z_EGG)) then
-                            playerArg:setVar("[EGGHUNT]DAILY_HELM", vanaDay())
-                            return
-                        end
-                    end)
                 end
 
                 player:triggerRoeEvent(xi.roe.triggers.helmSuccess, { ["skillType"] = helmType })

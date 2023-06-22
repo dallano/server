@@ -72,7 +72,7 @@ local outposts =
     [xi.region.SARUTABARUTA]    = { zone = 115, ki = xi.ki.SARUTABARUTA_SUPPLIES,          cp = 10, lvl = 10, fee = 100 },
     [xi.region.KOLSHUSHU]       = { zone = 118, ki = xi.ki.KOLSHUSHU_SUPPLIES,             cp = 40, lvl = 10, fee = 100 },
     [xi.region.ARAGONEU]        = { zone = 119, ki = xi.ki.ARAGONEU_SUPPLIES,              cp = 40, lvl = 15, fee = 150 },
-    [xi.region.FAUREGANDI]      = { zone = 111, ki = xi.ki.FAUREGANDI_SUPPLIES,            cp = 70, lvl = 35, fee = 350 },
+    [xi.region.FAUREGANDI]      = { zone = 111, ki = xi.ki.FAUREGANDI_SUPPLIES,            cp = 70, lvl = 20, fee = 350 },
     [xi.region.VALDEAUNIA]      = { zone = 112, ki = xi.ki.VALDEAUNIA_SUPPLIES,            cp = 50, lvl = 40, fee = 400 },
     [xi.region.QUFIMISLAND]     = { zone = 126, ki = xi.ki.QUFIM_SUPPLIES,                 cp = 60, lvl = 15, fee = 150 },
     [xi.region.LITELOR]         = { zone = 121, ki = xi.ki.LITELOR_SUPPLIES,               cp = 40, lvl = 25, fee = 250 },

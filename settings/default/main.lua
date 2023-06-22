@@ -48,7 +48,6 @@ xi.settings.main =
     ENABLE_DAILY_TALLY = 0,  -- Allows acquisition of daily points for gobbie mystery box.
     DAILY_TALLY_AMOUNT = 10,
     DAILY_TALLY_LIMIT  = 50000,
-    GOBBIE_BOX_MIN_AGE = 45, -- Minimum character age in days before a character can sign up for Gobbie Mystery Box
 
     -- Records of Eminence
     ENABLE_ROE            = 0, -- Enable Records of Eminence
@@ -155,10 +154,10 @@ xi.settings.main =
         "\129\153\129\154 The Alter Ego Expo Campaign is active! \129\154\129\153\n" ..
         "Trusts gain the benefits of Increased HP, MP, and Status Resistances!",
 
-    HARVESTING_BREAK_CHANCE = 5,   -- % chance for the sickle to break during harvesting.  Set between 0 and 100.
-    EXCAVATION_BREAK_CHANCE = 5,   -- % chance for the pickaxe to break during excavation.  Set between 0 and 100.
-    LOGGING_BREAK_CHANCE    = 5,   -- % chance for the hatchet to break during logging.  Set between 0 and 100.
-    MINING_BREAK_CHANCE     = 5,   -- % chance for the pickaxe to break during mining.  Set between 0 and 100.
+    HARVESTING_BREAK_CHANCE = 10,   -- % chance for the sickle to break during harvesting.  Set between 0 and 100.
+    EXCAVATION_BREAK_CHANCE = 10,   -- % chance for the pickaxe to break during excavation.  Set between 0 and 100.
+    LOGGING_BREAK_CHANCE    = 10,   -- % chance for the hatchet to break during logging.  Set between 0 and 100.
+    MINING_BREAK_CHANCE     = 10,   -- % chance for the pickaxe to break during mining.  Set between 0 and 100.
     HARVESTING_RATE         = 75,  -- % chance to recieve an item from haresting.  Set between 0 and 100.
     EXCAVATION_RATE         = 75,  -- % chance to recieve an item from excavation.  Set between 0 and 100.
     LOGGING_RATE            = 75,  -- % chance to recieve an item from logging.  Set between 0 and 100.
@@ -188,7 +187,7 @@ xi.settings.main =
     GARRISON_RANK                = 2,      -- Set to minumum Nation Rank to start Garrison (default: 2).
 
     -- DYNAMIS SETTINGS
-    BETWEEN_2DYNA_WAIT_TIME     = 3,       -- Hours before player can re-enter Dynamis. Default is 1 Earthday (24 hours).
+    BETWEEN_2DYNA_WAIT_TIME     = 12,       -- Hours before player can re-enter Dynamis. Default is 1 Earthday (24 hours).
     DYNA_MIDNIGHT_RESET         = false,     -- If true, makes the wait time count by number of server midnights instead of full 24 hour intervals
     DYNA_LEVEL_MIN              = 65,       -- Level min for entering in Dynamis
     TIMELESS_HOURGLASS_COST     = 50000,    -- Refund for the timeless hourglass for Dynamis.
@@ -213,9 +212,9 @@ xi.settings.main =
 
     -- SPELL SPECIFIC SETTINGS
     DIA_OVERWRITE                   = 1,     -- Set to 1 to allow Bio to overwrite same tier Dia.  Default is 1.
-    BIO_OVERWRITE                   = 0,     -- Set to 1 to allow Dia to overwrite same tier Bio.  Default is 0.
+    BIO_OVERWRITE                   = 1,     -- Set to 1 to allow Dia to overwrite same tier Bio.  Default is 0.
     STONESKIN_CAP                   = 1000,  -- Soft cap for hp absorbed by stoneskin
-    BLINK_SHADOWS                   = 3,     -- Number of shadows supplied by Blink spell
+    BLINK_SHADOWS                   = 4,     -- Number of shadows supplied by Blink spell
     SPIKE_EFFECT_DURATION           = 180,   -- the duration of RDM, BLM spikes effects (not Reprisal)
     ELEMENTAL_DEBUFF_DURATION       = 120,   -- base duration of elemental debuffs
     AQUAVEIL_COUNTER                = 3,     -- Base amount of hits Aquaveil absorbs to prevent spell interrupts. Retail is 1.
@@ -276,9 +275,9 @@ xi.settings.main =
     ACTIVATE_LAMP_TIME   = 6000, -- Time in miliseconds for lamps to stay lit. TODO: Get retail confirmation.
 
     -- MISC
-    ERA_CHOCOBO_ZONE_DISMOUNT    = true, -- If true, forces players to dismount a chocobo before entering a city or dungeon.
+    ERA_CHOCOBO_ZONE_DISMOUNT    = false, -- If true, forces players to dismount a chocobo before entering a city or dungeon.
     RIVERNE_PORTERS              = 120,  -- Time in seconds that Unstable Displacements in Cape Riverne stay open after trading a scale.
-    LANTERNS_STAY_LIT            = 1200, -- time in seconds that lanterns in the Den of Rancor stay lit.
+    LANTERNS_STAY_LIT            = 3600, -- time in seconds that lanterns in the Den of Rancor stay lit.
     ENABLE_COP_ZONE_CAP          = 1,    -- Enable or disable lvl cap
     ALLOW_MULTIPLE_EXP_RINGS     = 0,    -- Set to 1 to remove ownership restrictions on the Chariot/Empress/Emperor Band trio.
     BYPASS_EXP_RING_ONE_PER_WEEK = 0,    -- Set to 1 to bypass the limit of one ring per Conquest Tally Week.

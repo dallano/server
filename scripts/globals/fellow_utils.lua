@@ -51,10 +51,10 @@ local cureTable =
 local debuffTable =
 {
     { effect = xi.effect.SILENCE,   spell = xi.magic.spell.SILENCE,  level = 15, mpCost = 16, immunity = xi.immunity.SILENCE,  check = true },
-    { effect = xi.effect.PARALYSIS, spell = xi.magic.spell.PARALYZE, level =  4, mpCost = 6,  immunity = xi.immunity.PARALYZE, check = true },
-    { effect = xi.effect.SLOW,      spell = xi.magic.spell.SLOW,     level = 13, mpCost = 15, immunity = xi.immunity.SLOW,     check = true },
     { effect = xi.effect.DIA,       spell = xi.magic.spell.DIA_II,   level = 36, mpCost = 30, immunity = xi.immunity.NONE,     check = true },
     { effect = xi.effect.DIA,       spell = xi.magic.spell.DIA,      level =  3, mpCost =  7, immunity = xi.immunity.NONE,     check = true },
+    { effect = xi.effect.PARALYSIS, spell = xi.magic.spell.PARALYZE, level =  4, mpCost =  6, immunity = xi.immunity.PARALYZE, check = true },
+    { effect = xi.effect.SLOW,      spell = xi.magic.spell.SLOW,     level = 13, mpCost = 15, immunity = xi.immunity.SLOW,     check = true },
 }
 
 local buffTable =
@@ -273,9 +273,10 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
     -- Disengage now handled only by !fellowDisengage
 
     if fellowType == fellowTypes.ATTACKER then
-        fellow:setMod(xi.mod.ACC, 10)
-        fellow:setMod(xi.mod.STR, 7)
-        fellow:setMod(xi.mod.DEX, 7)
+        fellow:setMod(xi.mod.ATTP, 10)
+        fellow:setMod(xi.mod.ACC,  10)
+        fellow:setMod(xi.mod.STR,   7)
+        fellow:setMod(xi.mod.DEX,   7)
 
     elseif fellowType == fellowTypes.FIERCE then
         fellow:setMod(xi.mod.HTH,     15)
@@ -288,42 +289,61 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.GKATANA, 15)
         fellow:setMod(xi.mod.STORETP, 15)
         fellow:setMod(xi.mod.PARRY,    5)
-        fellow:setMod(xi.mod.ATTP, 20)
-        fellow:setMod(xi.mod.ACC, 25)
-        fellow:setMod(xi.mod.STR, 15)
-        fellow:setMod(xi.mod.DEX, 15)
+        fellow:setMod(xi.mod.ATTP,    20)
+        fellow:setMod(xi.mod.ACC,     25)
+        fellow:setMod(xi.mod.STR,     15)
+        fellow:setMod(xi.mod.DEX,     15)
 
     elseif fellowType == fellowTypes.SHIELD then
         fellow:setMod(xi.mod.REFRESH, 1)
-        fellow:setMod(xi.mod.ENMITY, 5)
+        fellow:setMod(xi.mod.ENMITY,  5)
 
     elseif fellowType == fellowTypes.STALWART then
         fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.SHIELD, 15)
         fellow:setMod(xi.mod.SWORD,  15)
-        fellow:setMod(xi.mod.ENMITY,10)
-        fellow:setMod(xi.mod.DEFP, 20)
+        fellow:setMod(xi.mod.ENMITY, 10)
+        fellow:setMod(xi.mod.DEFP,   20)
 
     elseif fellowType == fellowTypes.HEALER then
         fellow:setMod(xi.mod.REFRESH, refreshPower)
         fellow:setMod(xi.mod.ENMITY, -5)
-        fellow:setMod(xi.mod.DEFP, -15)
-        fellow:setMod(xi.mod.MDEF, 10)
-        fellow:setMod(xi.mod.MACC, 7)
+        fellow:setMod(xi.mod.DEFP,  -15)
+        fellow:setMod(xi.mod.MDEF,   10)
+        fellow:setMod(xi.mod.MACC,    7)
 
     elseif fellowType == fellowTypes.SOOTHING then
+        fellow:setMod(xi.mod.REFRESH, refreshPower * 1.5)
         fellow:setMod(xi.mod.CLUB,    15)
         fellow:setMod(xi.mod.STAFF,   15)
         fellow:setMod(xi.mod.DIVINE,  15)
         fellow:setMod(xi.mod.HEALING, 15)
         fellow:setMod(xi.mod.ENFEEB,  15)
-        fellow:setMod(xi.mod.REFRESH, refreshPower * 1.5)
         fellow:setMod(xi.mod.ENMITY, -10)
-        fellow:setMod(xi.mod.RDEFP, -10)
-        fellow:setMod(xi.mod.DEFP, -10)
-        fellow:setMod(xi.mod.MDEF, 20)
-        fellow:setMod(xi.mod.MACC, 15)
+        fellow:setMod(xi.mod.RDEFP,  -10)
+        fellow:setMod(xi.mod.DEFP,   -10)
+        fellow:setMod(xi.mod.MDEF,    20)
+        fellow:setMod(xi.mod.MACC,    15)
     end
+
+    -- local mob = fellow:getZone():insertDynamicEntity({
+    --     objtype = xi.objType.MOB,
+    --     allegiance = xi.allegiance.PLAYER,
+    --     name = "Moblin Boi",
+    --     x = fellow:getPos().x + math.random(-1, 1),
+    --     y = fellow:getPos().y,
+    --     z = fellow:getPos().z + math.random(-1, 1),
+    --     rotation = fellow:getPos().rotation,
+    --     look = 699,
+
+    --     releaseIdOnDisappear = true,
+    --     specialSpawnAnimation = true,
+    -- })
+
+    -- local pos = mob:getPos()
+
+    -- mob:setSpawn(pos.x, pos.y, pos.z)
+    -- mob:spawn()
 end
 
 xi.fellow_utils.onTrigger = function(player, fellow)
@@ -355,6 +375,11 @@ xi.fellow_utils.onFellowRoam = function(fellow)
 
     if master == nil then
         return
+    end
+
+    if fellow:checkDistance(master) >= 50 then
+        local mPos = master:getPos()
+        fellow:setPos(mPos.x + math.random(-1, 1), mPos.y, mPos.z + math.random(-1, 1))
     end
 
     xi.fellow_utils.timeWarning(fellow, master)
@@ -465,6 +490,7 @@ xi.fellow_utils.checkRegen = function(fellow, master, fellowLvl, mp, fellowType)
                 then
                     fellow:setLocalVar("castingCoolDown", os.time() + recast)
                     fellow:castSpell(regen.spell, fellow)
+                    return
 
                 elseif
                     not master:hasStatusEffect(xi.effect.REGEN) and
@@ -473,6 +499,7 @@ xi.fellow_utils.checkRegen = function(fellow, master, fellowLvl, mp, fellowType)
                 then
                     fellow:setLocalVar("castingCoolDown", os.time() + recast)
                     fellow:castSpell(regen.spell, master)
+                    return
                 end
             end
         end
@@ -611,10 +638,6 @@ end
 -- Function: checkBuff
 --    Notes: checkBuff loops through the table of potential buffs that the
 --           fellow will attempt to cast. This table is sorted by priority.
---           Fellows will not cast haste or refresh in certain cases. Fellows
---           will not cast refresh on the player if they have less than 40 MP or
---           they have full MP. Fellows will not cast haste on the following jobs:
---           BLM, RNG, SMN, COR, SCH
 -------------------------------------------------------------------------------
 xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
     local coolDown = fellow:getLocalVar("castingCoolDown")
@@ -628,25 +651,10 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
                 buff.level <= fellowLvl and
                 buff.mpCost <= mp
             then
-                -- Case for Refresh + Haste
                 if
-                    (buff.effect == xi.effect.REFRESH and
-                    (master:getMP() < 40 or
-                    master:getMP() == master:getMaxMP()))
-                    or
-                    (buff.effect == xi.effect.HASTE and
-                    (job == xi.job.BLM or
-                    job == xi.job.RNG or
-                    job == xi.job.SMN or
-                    job == xi.job.COR or
-                    job == xi.job.SCH))
-                    and
-                    fellow:actionQueueEmpty()
+                    not fellow:hasStatusEffect(buff.effect) and
+                    buff.effect ~= xi.effect.HASTE
                 then
-                    buff.targetMaster = false
-                end
-
-                if not fellow:hasStatusEffect(buff.effect) then
                     fellow:setLocalVar("castingCoolDown", os.time() + recast)
                     fellow:castSpell(buff.spell, fellow)
                     return
@@ -676,7 +684,10 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
     local recast   = xi.fellow_utils.calculateRecast(fellow, fellowType)
     local target   = nil
 
-    if coolDown < os.time() then
+    if
+        coolDown < os.time() and
+        fellow:getMPP() > 30
+    then
         if fellow:isEngaged() then
             target = fellow:getTarget()
         elseif master:isEngaged() then
@@ -692,14 +703,17 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
                 if
                     not target:hasStatusEffect(debuff.effect) and
                     (not target:hasImmunity(debuff.immunity) or
-                    debuff.immunity == 0) and
+                    debuff.effect == xi.effect.DIA) and
                     target:isEngaged()
                 then
                     if
-                        (debuff.effect == xi.effect.SILENCE and
-                        not target:hasSpellList()) or
-                        (target:hasStatusEffect(xi.effect.BIO) and
-                        debuff.effect == xi.effect.DIA)
+                        debuff.effect == xi.effect.SILENCE and
+                        not target:hasSpellList()
+                    then
+                        debuff.check = false
+                    elseif
+                        target:hasStatusEffect(xi.effect.BIO) and
+                        debuff.effect == xi.effect.DIA
                     then
                         debuff.check = false
                     end
@@ -867,6 +881,7 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
     local optionsMask   = master:getFellowValue("optionsMask")
     local provoke       = fellow:getLocalVar("provoke")
     local fellowType    = master:getFellowValue("job")
+    local flash         = fellow:getLocalVar("flash")
     local otherSignals  = false
     local recast        = 30
 
@@ -896,18 +911,32 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
         then
             if target:isEngaged() then
                 -- Provoke only if target isn't attacking fellow
-                if target:getTarget():getID() ~= fellow:getID() then
-                    fellow:useJobAbility(35, target)
-                    fellow:setLocalVar("provoke", os.time() + recast)
-                    master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
-
-                -- Uses Provoke on NMs as frequently as possible
-                elseif target:isNM() then
+                if
+                    target:getTarget():getID() ~= fellow:getID() or
+                    target:isNM()
+                then
                     fellow:useJobAbility(35, target)
                     fellow:setLocalVar("provoke", os.time() + recast)
                     master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
                 end
             end
+        end
+    elseif
+        (fellowType == fellowTypes.SHIELD or
+        fellowType == fellowTypes.STALWART) and
+        fellow:checkDistance(target) <= 20 and
+        flash < os.time()
+    then
+        -- Use Flash if provoke timer is down and we still don't have enmity
+        -- TODO: Add a misc spell container for Paladin
+        if
+            target:getTarget():getID() ~= fellow:getID() or
+            target:isNM() and
+            fellow:getMP() > 25
+        then
+            fellow:castSpell(xi.magic.spell.FLASH, target)
+            fellow:setLocalVar("flash", os.time() + 45)
+            master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
         end
     end
 
@@ -1061,13 +1090,13 @@ xi.fellow_utils.upgradeArmor = function(fellow, master)
     end
 
     for i = 1, #unlocked do
-        local rank = master:getFellowValue(unlocked[i]) - offset
+        local rank = master:getFellowValue(unlocked[i]) % 100
 
         if
             armorIndex[rank] <= fellow:getMainLvl() and
             kills >= rank * 15
         then
-            master:setFellowValue(unlocked[i], rank + offset + 1)
+            master:setFellowValue(unlocked[i], master:getFellowValue(unlocked[i]) + 1)
             return
         end
     end

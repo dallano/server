@@ -642,7 +642,7 @@ namespace fellowutils
             if (PMaster->GetMLevel() < mlvl)
                 mlvl = PMaster->GetMLevel();
             PFellow->SetMLevel(mlvl);
-            PFellow->SetSLevel(mlvl / 2);
+            PFellow->SetSLevel(mlvl); // Fellows' subjobs are the same level as their main (xiSP)
 
             uint8 job  = 0;
             uint8 sjob = 0;
@@ -654,25 +654,25 @@ namespace fellowutils
                     sjob = 1;
                     break; // Shield (PLD/WAR)
                 case 2:
-                    job  = 1;
-                    sjob = 2;
-                    break; // Attacker (WAR/MNK)
+                    job  = 8;
+                    sjob = 1;
+                    break; // Attacker (DRK/WAR)
                 case 3:
                     job  = 3;
-                    sjob = 1;
-                    break; // Healer (WHM/WAR)
+                    sjob = 5;
+                    break; // Healer (WHM/RDM)
                 case 4:
                     job  = 7;
                     sjob = 1;
                     break; // Stalwart (PLD/WAR)
                 case 5:
-                    job  = 1;
-                    sjob = 2;
-                    break; // Fierce (WAR/MNK)
+                    job  = 8;
+                    sjob = 1;
+                    break; // Fierce (DRK/WAR)
                 case 6:
                     job  = 3;
-                    sjob = 1;
-                    break; // Soothing (WHM/WAR)
+                    sjob = 5;
+                    break; // Soothing (WHM/RDM)
             }
             PFellow->SetMJob(job);
             PFellow->SetSJob(sjob);
