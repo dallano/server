@@ -60,7 +60,6 @@ local debuffTable =
 local buffTable =
 {
     { effect = xi.effect.REFRESH,   spell = xi.magic.spell.REFRESH,       level = 41, mpCost = 40, targetMaster =  true },
-    { effect = xi.effect.HASTE,     spell = xi.magic.spell.HASTE,         level = 40, mpCost = 40, targetMaster =  true },
     { effect = xi.effect.PROTECT,   spell = xi.magic.spell.PROTECTRA_IV,  level = 68, mpCost = 65, targetMaster = false },
     { effect = xi.effect.PROTECT,   spell = xi.magic.spell.PROTECTRA_III, level = 47, mpCost = 46, targetMaster = false },
     { effect = xi.effect.PROTECT,   spell = xi.magic.spell.PROTECTRA_II,  level = 27, mpCost = 28, targetMaster = false },
@@ -69,6 +68,7 @@ local buffTable =
     { effect = xi.effect.SHELL,     spell = xi.magic.spell.SHELLRA_III,   level = 57, mpCost = 56, targetMaster = false },
     { effect = xi.effect.SHELL,     spell = xi.magic.spell.SHELLRA_II,    level = 37, mpCost = 37, targetMaster = false },
     { effect = xi.effect.SHELL,     spell = xi.magic.spell.SHELLRA,       level = 17, mpCost = 18, targetMaster = false },
+    { effect = xi.effect.HASTE,     spell = xi.magic.spell.HASTE,         level = 40, mpCost = 40, targetMaster =  true },
     { effect = xi.effect.STONESKIN, spell = xi.magic.spell.STONESKIN,     level = 28, mpCost = 29, targetMaster = false },
     { effect = xi.effect.BLINK,     spell = xi.magic.spell.BLINK,         level = 19, mpCost = 20, targetMaster = false },
 }
@@ -347,10 +347,10 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
 end
 
 xi.fellow_utils.onTrigger = function(player, fellow)
+    local ID                = require("scripts/zones/"..player:getZoneName().."/IDs")
+    local personality       = xi.fellow_utils.checkPersonality(fellow)
     local fellowChatGeneral = 1
 
-    local ID            = require("scripts/zones/"..player:getZoneName().."/IDs")
-    local personality   = xi.fellow_utils.checkPersonality(fellow)
     if personality > 5 then
         personality = personality - 1
     end

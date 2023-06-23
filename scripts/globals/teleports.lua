@@ -84,6 +84,9 @@ local ids =
     SAN_DORIA_STARLIGHT   = 69,
     WINDURST_STARLIGHT    = 70,
     LOWER_JEUNO           = 71,
+    SPIRE_OF_HOLLA        = 72,
+    SPIRE_OF_DEM          = 73,
+    SPIRE_OF_MEA          = 74,
 }
 xi.teleport.id = ids
 
@@ -154,10 +157,13 @@ xi.teleport.destination =
     [ids.QUFIM_CONFLUENCE]      = {     -203,      -20,       81,  76, 126 },
     [ids.ESCHA_RUAUN]           = {   -0.371,  -34.279, -466.980, 192, 289 },
     [ids.MISAREAUX_CONFLUENCE]  = {  -57.385,  -21.460,  568.941, 160,  25 },
-    [ids.BASTOK_STARLIGHT]      = { -344.489,  -10.002,  -182.797, 88, 235 },
-    [ids.SAN_DORIA_STARLIGHT]   = { 100.952,  0.999,      -49.758, 31, 230 },
-    [ids.WINDURST_STARLIGHT]    = { 103.065,  -5.000,     -48.627, 5,  241 },
-    [ids.LOWER_JEUNO]           = { -68.000,   6.000,     -105.00, 0,  245 }, -- (xiSP)
+    [ids.BASTOK_STARLIGHT]      = { -344.489,  -10.002, -182.797,  88, 235 },
+    [ids.SAN_DORIA_STARLIGHT]   = { 100.952,     0.999,  -49.758,  31, 230 },
+    [ids.WINDURST_STARLIGHT]    = { 103.065,    -5.000,  -48.627,   5, 241 },
+    [ids.LOWER_JEUNO]           = { -68.000,     6.000,  -105.00, 219, 245 }, -- (xiSP)
+    [ids.SPIRE_OF_DEM]          = { -0.5390,    -2.000,   293.64,  64,  19 }, -- (xiSP)
+    [ids.SPIRE_OF_MEA]          = {  0.0225,    -2.000,   293.64,  64,  21 }, -- (xiSP)
+    [ids.SPIRE_OF_HOLLA]        = {  0.0225,    -2.000,  -293.64, 191,  17 }, -- (xiSP)
 }
 
 xi.teleport.type =

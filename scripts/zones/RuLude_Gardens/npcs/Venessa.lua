@@ -3,6 +3,7 @@
 --  NPC: Venessa
 -----------------------------------
 local ID = require("scripts/zones/RuLude_Gardens/IDs")
+require("scripts/globals/teleports")
 require("scripts/globals/npc_util")
 require("scripts/globals/keyitems")
 require("scripts/globals/items")
@@ -50,8 +51,38 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    -- Player has attempted the ENM at least once
     if
+        player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.THE_MOTHERCRYSTALS and
+        player:hasKeyItem(xi.ki.CENSER_OF_ANTIPATHY)
+    then
+        npc:injectActionPacket(player:getID(), 4, 261, 0, 0, 0, 10, 1)
+
+        npc:timer(3500, function(x)
+            xi.teleport.to(player, xi.teleport.id.SPIRE_OF_DEM)
+        end)
+
+    elseif
+        player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.THE_MOTHERCRYSTALS and
+        player:hasKeyItem(xi.ki.CENSER_OF_ABANDONMENT)
+    then
+        npc:injectActionPacket(player:getID(), 4, 261, 0, 0, 0, 10, 1)
+
+        npc:timer(3500, function(x)
+            xi.teleport.to(player, xi.teleport.id.SPIRE_OF_HOLLA)
+        end)
+
+    elseif
+        player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.THE_MOTHERCRYSTALS and
+        player:hasKeyItem(xi.ki.CENSER_OF_ANIMUS)
+    then
+        npc:injectActionPacket(player:getID(), 4, 261, 0, 0, 0, 10, 1)
+
+        npc:timer(3500, function(x)
+            xi.teleport.to(player, xi.teleport.id.SPIRE_OF_MEA)
+        end)
+
+    -- Player has attempted the ENM at least once
+    elseif
         player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.THE_RITES_OF_LIFE and
         player:getCharVar("[ENM]VenessaComplete") == 1
     then
