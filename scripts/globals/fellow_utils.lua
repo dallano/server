@@ -361,7 +361,9 @@ xi.fellow_utils.onTrigger = function(player, fellow)
     then
         player:setLocalVar("triggerFellow", 0)
         player:setCharVar("[Quest]Looking_Glass", 4)
-        player:showText(fellow, ID.text.GIRL_BACK_TO_JEUNO + personality)
+        if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+            player:showText(fellow, ID.text.GIRL_BACK_TO_JEUNO + personality)
+        end
         player:timer(6000, function(playerArg)
             playerArg:despawnFellow()
         end)
@@ -757,7 +759,9 @@ xi.fellow_utils.weaponskill = function(fellow, target, master)
                 xi.fellow_utils.checkWeaponSkill(fellow, target, fellowLvl) and
                 otherSignals
             then
-                master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
+                if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+                    master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
+                end
             end
 
         elseif fellow:getTP() > 1000 then
@@ -767,7 +771,9 @@ xi.fellow_utils.weaponskill = function(fellow, target, master)
                 master:getTP() < 1000 and
                 master:getTP() > 500
             then
-                master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WS_READY + personality)
+                if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+                    master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WS_READY + personality)
+                end
                 fellow:setLocalVar("wsReady", 1)
 
             elseif
@@ -781,7 +787,9 @@ xi.fellow_utils.weaponskill = function(fellow, target, master)
                     xi.fellow_utils.checkWeaponSkill(fellow, target, fellowLvl) and
                     otherSignals
                 then
-                    master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
+                    if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+                        master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
+                    end
                 end
 
             elseif
@@ -790,7 +798,9 @@ xi.fellow_utils.weaponskill = function(fellow, target, master)
                 wsReady == 0 and
                 target:getHPP() > 15
             then
-                master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL2 + personality)
+                if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+                    master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL2 + personality)
+                end
                 fellow:setLocalVar("wsTime", os.time() + 5)
                 fellow:setLocalVar("wsReady", 1)
 
@@ -803,7 +813,9 @@ xi.fellow_utils.weaponskill = function(fellow, target, master)
                     xi.fellow_utils.checkWeaponSkill(fellow, target, fellowLvl) and
                     otherSignals
                 then
-                    master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
+                    if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+                        master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
+                    end
                 end
             end
         end
@@ -813,7 +825,9 @@ xi.fellow_utils.weaponskill = function(fellow, target, master)
             xi.fellow_utils.checkWeaponSkill(fellow, target, fellowLvl) and
             otherSignals
         then
-            master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
+            if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+                master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
+            end
         end
     end
 end
@@ -917,7 +931,9 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
                 then
                     fellow:useJobAbility(35, target)
                     fellow:setLocalVar("provoke", os.time() + recast)
-                    master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
+                    if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+                        master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
+                    end
                 end
             end
         end
@@ -936,7 +952,9 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
         then
             fellow:castSpell(xi.magic.spell.FLASH, target)
             fellow:setLocalVar("flash", os.time() + 45)
-            master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
+            if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+                master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
+            end
         end
     end
 
@@ -978,7 +996,9 @@ xi.fellow_utils.battleMessaging = function(fellow, master)
         hpWarning == 0 and
         hpSignals
     then
-        master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.HP_LOW_NOTICE + personality)
+        if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+            master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.HP_LOW_NOTICE + personality)
+        end
         fellow:setLocalVar("hpWarning", 1)
     elseif
         fellow:getHPP() > 25 and
@@ -990,7 +1010,9 @@ xi.fellow_utils.battleMessaging = function(fellow, master)
         mpWarning == 0 and
         mpSignals
     then
-        master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.MP_LOW_NOTICE + personality)
+        if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+            master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.MP_LOW_NOTICE + personality)
+        end
         fellow:setLocalVar("mpWarning", 1)
     elseif
         mpp > 25 and
@@ -1018,19 +1040,25 @@ xi.fellow_utils.timeWarning = function(fellow, master)
         os.time() > spawnTime + maxTime - 300 and
         timeWarning == 0
     then
-        master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.FIVE_MIN_WARNING + personality)
+        if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+            master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.FIVE_MIN_WARNING + personality)
+        end
         fellow:setLocalVar("timeWarning", 1)
     elseif
         os.time() > spawnTime + maxTime - 4 and
         timeWarning == 1
     then
-        master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.TIME_EXPIRED + personality)
+        if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+            master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.TIME_EXPIRED + personality)
+        end
         fellow:setLocalVar("timeWarning", 2)
     elseif
         os.time() > spawnTime + maxTime and
         timeWarning == 2
     then
-        master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.LEAVE + personality)
+        if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
+            master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.LEAVE + personality)
+        end
         fellow:setLocalVar("timeWarning", 3)
         master:despawnFellow()
     end
