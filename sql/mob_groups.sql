@@ -677,8 +677,8 @@ INSERT INTO `mob_groups` VALUES (23,4527,16,'Livid_Seether',960,0,0,0,0,83,84,0)
 -- Spire_of_Holla (Zone 17)
 -- ------------------------------------------------------------
 
-INSERT INTO `mob_groups` VALUES (1,4382,17,'Wreaker',0,128,0,1300,0,32,33,0);
-INSERT INTO `mob_groups` VALUES (2,760,17,'Cogitator',0,128,0,1300,0,32,33,0);
+INSERT INTO `mob_groups` VALUES (1,4382,17,'Wreaker',0,128,0,1300,0,31,32,0);
+INSERT INTO `mob_groups` VALUES (2,760,17,'Cogitator',0,128,0,1300,0,31,32,0);
 INSERT INTO `mob_groups` VALUES (3,4317,17,'Weeper',0,128,0,200,0,26,27,0);
 INSERT INTO `mob_groups` VALUES (4,0,17,'Recollector',0,128,0,0,0,0,0,0);
 INSERT INTO `mob_groups` VALUES (5,0,17,'Futile_Thinker',0,128,0,0,0,0,0,0);
@@ -8035,9 +8035,9 @@ INSERT INTO `mob_groups` VALUES (22,995,112,'Demon_Warlock',330,0,624,0,0,50,52,
 INSERT INTO `mob_groups` VALUES (23,994,112,'Demons_Elemental',0,128,0,0,0,43,45,0);
 INSERT INTO `mob_groups` VALUES (24,3576,112,'Shadow_Eye',0,32,2226,6700,0,48,49,0);
 INSERT INTO `mob_groups` VALUES (25,693,112,'Chaos_Elemental',0,128,452,3200,0,42,42,0);
-INSERT INTO `mob_groups` VALUES (26,510,112,'Boreal_Hound',300,0,0,8675,0,58,58,0);
-INSERT INTO `mob_groups` VALUES (27,509,112,'Boreal_Coeurl',300,0,0,3750,0,58,58,0);
-INSERT INTO `mob_groups` VALUES (28,511,112,'Boreal_Tiger',300,0,0,4400,0,58,58,0);
+INSERT INTO `mob_groups` VALUES (26,510,112,'Boreal_Hound',300,0,0,5675,0,54,56,0);
+INSERT INTO `mob_groups` VALUES (27,509,112,'Boreal_Coeurl',300,0,0,3750,0,54,56,0);
+INSERT INTO `mob_groups` VALUES (28,511,112,'Boreal_Tiger',300,0,0,3400,0,54,56,0);
 INSERT INTO `mob_groups` VALUES (29,2276,112,'Koenigstiger',0,128,0,22000,0,63,63,0);
 INSERT INTO `mob_groups` VALUES (30,1983,112,'Hobgoblin_Warrior',0,128,0,0,0,50,55,0);
 INSERT INTO `mob_groups` VALUES (31,1984,112,'Hobgoblin_White_Mage',0,128,0,0,0,50,55,0);

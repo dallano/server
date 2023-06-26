@@ -584,7 +584,7 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                     -- Mage Logic
                     else
                         if masterJob == xi.job.PLD then
-                            thresholdMod = 1.5
+                            thresholdMod = 1.75
 
                         elseif masterJob == xi.job.DRK then
                             thresholdMod = 1.25
@@ -716,8 +716,7 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
             then
                 if
                     not target:hasStatusEffect(debuff.effect) and
-                    (not target:hasImmunity(debuff.immunity) or
-                    debuff.effect == xi.effect.DIA) and
+                    not target:hasImmunity(debuff.immunity) and
                     target:isEngaged()
                 then
                     if
