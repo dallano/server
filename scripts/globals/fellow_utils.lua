@@ -32,6 +32,31 @@ local fellowMessageOffsets =
     WEAPONSKILL2     = 463,
 }
 
+local tankJobAbilityTable =
+{
+    { ability = xi.jobAbility.INVINCIBLE,  level = 1,  recast = 7200, hppThreshold = 25,  recastVar = "[FELLOW]twoHourRecast"    },
+    { ability = xi.jobAbility.SENTINEL,    level = 30, recast = 300,  hppThreshold = 100, recastVar = "[FELLOW]sentinelRecast"   },
+    { ability = xi.jobAbility.DEFENDER,    level = 25, recast = 180,  hppThreshold = 100, recastVar = "[FELLOW]defenderRecast"   },
+    { ability = xi.jobAbility.SHIELD_BASH, level = 15, recast = 300,  hppThreshold = 60,  recastVar = "[FELLOW]shieldBashRecast" },
+    { ability = xi.jobAbility.RAMPART,     level = 62, recast = 180,  hppThreshold = 45,  recastVar = "[FELLOW]rampartRecast"    },
+}
+
+local meleeJobAbilityTable =
+{
+    { ability = xi.jobAbility.BLOOD_WEAPON, level = 1,  recast = 7200, hppThreshold = 45,  recastVar = "[FELLOW]twoHourRecast"    },
+    { ability = xi.jobAbility.BERSERK,      level = 15, recast = 380,  hppThreshold = 100, recastVar = "[FELLOW]berserkRecast"    },
+    { ability = xi.jobAbility.LAST_RESORT,  level = 15, recast = 380,  hppThreshold = 100, recastVar = "[FELLOW]lastResortRecast" },
+    { ability = xi.jobAbility.WEAPON_BASH,  level = 20, recast = 380,  hppThreshold = 100, recastVar = "[FELLOW]weaponBashRecast" },
+    { ability = xi.jobAbility.SOULEATER,    level = 30, recast = 440,  hppThreshold = 100, recastVar = "[FELLOW]souleaterRecast"  },
+}
+
+local mageJobAbilityTable =
+{
+    { ability = xi.jobAbility.BENEDICTION, level = 1,  recast = 7200, hppThreshold = 25,  recastVar = "[FELLOW]twoHourRecast"   },
+    { ability = xi.jobAbility.COMPOSURE,   level = 50, recast = 350,  hppThreshold = 100, recastVar = "[FELLOW]composureRecast" },
+    { ability = xi.jobAbility.CONVERT,     level = 40, recast = 600,  hppThreshold = 100, recastVar = "[FELLOW]convertRecast"   },
+}
+
 local regenTable =
 {
     { spell = xi.magic.spell.REGEN_III, level = 66, mpCost = 64 },
@@ -279,17 +304,17 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.DEX,   7)
 
     elseif fellowType == fellowTypes.FIERCE then
-        fellow:setMod(xi.mod.HTH,     15)
-        fellow:setMod(xi.mod.GSWORD,  15)
-        fellow:setMod(xi.mod.AXE,     15)
-        fellow:setMod(xi.mod.GAXE,    15)
-        fellow:setMod(xi.mod.SCYTHE,  15)
-        fellow:setMod(xi.mod.POLEARM, 15)
-        fellow:setMod(xi.mod.KATANA,  15)
         fellow:setMod(xi.mod.GKATANA, 15)
         fellow:setMod(xi.mod.STORETP, 15)
+        fellow:setMod(xi.mod.POLEARM, 15)
+        fellow:setMod(xi.mod.GSWORD,  15)
+        fellow:setMod(xi.mod.SCYTHE,  15)
+        fellow:setMod(xi.mod.KATANA,  15)
         fellow:setMod(xi.mod.PARRY,    5)
+        fellow:setMod(xi.mod.GAXE,    15)
         fellow:setMod(xi.mod.ATTP,    20)
+        fellow:setMod(xi.mod.AXE,     15)
+        fellow:setMod(xi.mod.HTH,     15)
         fellow:setMod(xi.mod.ACC,     25)
         fellow:setMod(xi.mod.STR,     15)
         fellow:setMod(xi.mod.DEX,     15)
@@ -297,23 +322,27 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
     elseif fellowType == fellowTypes.SHIELD then
         fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.ENMITY,  5)
+        fellow:setMod(xi.mod.ATTP,  -15)
 
     elseif fellowType == fellowTypes.STALWART then
         fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.SHIELD, 15)
-        fellow:setMod(xi.mod.SWORD,  15)
         fellow:setMod(xi.mod.ENMITY, 10)
+        fellow:setMod(xi.mod.SWORD,  15)
         fellow:setMod(xi.mod.DEFP,   20)
+        fellow:setMod(xi.mod.ATTP,  -5)
 
     elseif fellowType == fellowTypes.HEALER then
         fellow:setMod(xi.mod.REFRESH, refreshPower)
         fellow:setMod(xi.mod.ENMITY, -5)
+        fellow:setMod(xi.mod.ATTP,  -20)
         fellow:setMod(xi.mod.DEFP,  -15)
         fellow:setMod(xi.mod.MDEF,   10)
         fellow:setMod(xi.mod.MACC,    7)
 
     elseif fellowType == fellowTypes.SOOTHING then
         fellow:setMod(xi.mod.REFRESH, refreshPower * 1.5)
+        fellow:setMod(xi.mod.ATTP,   -10)
         fellow:setMod(xi.mod.CLUB,    15)
         fellow:setMod(xi.mod.STAFF,   15)
         fellow:setMod(xi.mod.DIVINE,  15)
@@ -420,6 +449,7 @@ xi.fellow_utils.onFellowFight = function(fellow, target)
         return
     end
 
+    xi.fellow_utils.checkJobAbility(fellow, master)
     xi.fellow_utils.checkProvoke(fellow, target, master)
     xi.fellow_utils.spellCheck(fellow, master)
     xi.fellow_utils.weaponskill(fellow, target, master)
@@ -439,10 +469,8 @@ xi.fellow_utils.spellCheck = function(fellow, master)
     end
 
     if
-        (fellowType == fellowTypes.SHIELD or
-        fellowType == fellowTypes.STALWART or
-        fellowType == fellowTypes.HEALER or
-        fellowType == fellowTypes.SOOTHING) and
+        fellowType ~= fellowTypes.ATTACKER and
+        fellowType ~= fellowTypes.FIERCE and
         master ~= nil
     then
         xi.fellow_utils.checkCure(fellow, master, fellowLvl, mp, fellowType)
@@ -464,6 +492,57 @@ xi.fellow_utils.spellCheck = function(fellow, master)
         mp / fellow:getMaxMP() * 100 < 25
     then
         fellow:setLocalVar("mpNotice", 1)
+    end
+end
+
+xi.fellow_utils.checkJobAbility = function(fellow, master)
+    local fellowType    = master:getFellowValue("job")
+    local fellowLvl     = fellow:getMainLvl()
+    local hpp           = fellow:getHPP()
+
+    if fellowType == fellowTypes.SHIELD or fellowType == fellowTypes.STALWART then
+        for _, ability in pairs(tankJobAbilityTable) do
+            local recast = master:getCharVar(ability.recastVar)
+
+            if
+                fellowLvl > ability.level and
+                hpp <= ability.hppThreshold and
+                recast < ability.recast + os.time()
+            then
+                master:setCharVar(ability.recastVar, os.time() + ability.recast)
+                fellow:useJobAbility(ability.ability)
+            end
+        end
+    elseif fellowType == fellowTypes.ATTACKER or fellowType == fellowTypes.FIERCE then
+        for _, ability in pairs(meleeJobAbilityTable) do
+            local recast = master:getCharVar(ability.recastVar)
+
+            if
+                fellowLvl > ability.level and
+                hpp <= ability.hppThreshold and
+                recast < ability.recast + os.time()
+            then
+                master:setCharVar(ability.recastVar, os.time() + ability.recast)
+                fellow:useJobAbility(ability.ability)
+            end
+        end
+    else
+        for _, ability in pairs(mageJobAbilityTable) do
+            local recast = master:getCharVar(ability.recastVar)
+
+            if
+                fellowLvl > ability.level and
+                hpp <= ability.hppThreshold and
+                recast < ability.recast + os.time()
+            then
+                if ability.ability == xi.jobAbility.CONVERT and fellow:getMPP() > 15 then
+                    return
+                end
+
+                master:setCharVar(ability.recastVar, os.time() + ability.recast)
+                fellow:useJobAbility(ability.ability)
+            end
+        end
     end
 end
 
@@ -538,6 +617,20 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
             recast = recast + math.random(8, 12)
         end
 
+        -- If master or fellow has poison, prioritize that
+        if
+            (master:hasStatusEffect(xi.effect.POISON) and
+            master:getHPP() > 60)
+        then
+            fellow:castSpell(xi.magic.spell.POISONA, master)
+        elseif
+            (fellow:hasStatusEffect(xi.effect.POISON) and
+            master:getHPP() > 60) and
+            fellow:getHPP() > 60
+        then
+            fellow:castSpell(xi.magic.spell.POISONA, fellow)
+        end
+
         for _, cure in pairs(cureTable) do
             -- Check if cure is valid to cast
             if
@@ -554,8 +647,7 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
 
                 -- If mage, prioritize self if hp < 30 and master is doing alright
                 if
-                    (fellowType == fellowTypes.HEALER or
-                    fellowType == fellowTypes.SOOTHING) and
+                    (fellowType == fellowTypes.HEALER or fellowType == fellowTypes.SOOTHING) and
                     fellow:getHPP() < 30 and
                     master:getHPP() > 40
                 then
@@ -566,12 +658,9 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                         return
                     end
                 else
-                    -- Tank Logic
-                    if
-                        fellowType == fellowTypes.SHIELD or
-                        fellowType == fellowTypes.STALWART
-                    then
-                        -- Tanks cure less often and not as efficiently. Especially on their master.
+                    -- Tank Logic:
+                    -- Cure less often and not as efficiently as mage stance. Especially on their master.
+                    if fellowType == fellowTypes.SHIELD or fellowType == fellowTypes.STALWART then
                         if cure.hpThreshold * 1.25 <= fellowHP then
                             fellow:setLocalVar("castingCoolDown", os.time() + recast)
                             fellow:castSpell(cure.spell, fellow)
@@ -582,11 +671,12 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                             return
                         end
                     -- Mage Logic
+                    -- Cure less often on PLD and DRK as they have means to do so themselves to maintain hate
                     else
                         if masterJob == xi.job.PLD then
                             thresholdMod = 1.75
 
-                        elseif masterJob == xi.job.DRK then
+                        elseif masterJob == xi.job.DRK and not master:hasStatusEffect(xi.effect.SOULEATER) then
                             thresholdMod = 1.25
                         end
 
@@ -940,7 +1030,7 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
                     target:getTarget():getID() ~= fellow:getID() or
                     target:isNM()
                 then
-                    fellow:useJobAbility(35, target)
+                    fellow:useJobAbility(xi.jobAbility.PROVOKE, target)
                     fellow:setLocalVar("provoke", os.time() + recast)
                     if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
                         master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
