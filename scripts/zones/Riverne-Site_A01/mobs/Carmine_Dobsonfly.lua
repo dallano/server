@@ -27,7 +27,7 @@ entity.onMobDespawn = function(mob)
     -- each dead dobsonfly should stay despawned until all 10 are killed. then they respawn as a group.
 
     local allFliesDead = true
-    for i = ID.mob.CARMINE_DOBSONFLY_OFFSET, ID.mob.CARMINE_DOBSONFLY_OFFSET + 9 do
+    for i = ID.mob.CARMINE_DOBSONFLY_OFFSET, ID.mob.CARMINE_DOBSONFLY_OFFSET + 3 do
         if GetMobByID(i):isAlive() then
             allFliesDead = false
             break -- Break if 1 fly is found alive
@@ -36,7 +36,7 @@ entity.onMobDespawn = function(mob)
 
     if allFliesDead then
         local respawnTime = math.random(75600, 86400)
-        for i = ID.mob.CARMINE_DOBSONFLY_OFFSET, ID.mob.CARMINE_DOBSONFLY_OFFSET + 9 do
+        for i = ID.mob.CARMINE_DOBSONFLY_OFFSET, ID.mob.CARMINE_DOBSONFLY_OFFSET + 3 do
             DisallowRespawn(i, false)
             xi.mob.nmTODPersist(GetMobByID(i), respawnTime) -- 21 to 24 hours
         end

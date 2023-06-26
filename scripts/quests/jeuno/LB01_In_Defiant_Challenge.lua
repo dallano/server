@@ -165,6 +165,7 @@ quest.sections =
                         cleanKIPapyrus(player)
                         player:confirmTrade()
                         player:setLevelCap(55)
+                        player:setFellowValue("lvlcap", 55)
                         -- Leaving this here for historic purposes. Unneeded. The event now returns this message on its own.
                         -- player:messageSpecial(ID.text.YOUR_LEVEL_LIMIT_IS_NOW_55)
                     end

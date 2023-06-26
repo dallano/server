@@ -69,12 +69,12 @@ quest.sections =
             ['Gumbah'] =
             {
                 onTrigger = function(player, npc)
-                    if player:hasKeyItem(xi.ki.ANNALS_OF_TRUTH) then
+                    -- if player:hasKeyItem(xi.ki.ANNALS_OF_TRUTH) then
                         return quest:progressEvent(194) -- complete
-                    else
-                        local hideReacquireMenuItem = (player:hasItem(xi.items.SWORD_OF_TRIALS) or player:hasKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH)) and 1 or 0
-                        return quest:event(191, hideReacquireMenuItem) -- cont 1
-                    end
+                    -- else
+                    --     local hideReacquireMenuItem = (player:hasItem(xi.items.SWORD_OF_TRIALS) or player:hasKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH)) and 1 or 0
+                    --     return quest:event(191, hideReacquireMenuItem) -- cont 1
+                    -- end
                 end,
 
                 onTrade = function(player, npc, trade)
@@ -111,8 +111,8 @@ quest.sections =
                     player:delKeyItem(xi.ki.MAP_TO_THE_ANNALS_OF_TRUTH)
                     player:delKeyItem(xi.ki.ANNALS_OF_TRUTH)
                     player:delKeyItem(xi.ki.WEAPON_TRAINING_GUIDE)
-                    player:addLearnedWeaponskill(xi.ws_unlock.GROUND_STRIKE)
-                    player:messageSpecial(bastokMinesID.text.GROUND_STRIKE_LEARNED)
+                    player:addLearnedWeaponskill(xi.ws_unlock.RESOLUTION)
+                    -- player:messageSpecial(bastokMinesID.text.GROUND_STRIKE_LEARNED)
                     quest:complete(player)
                 end,
             },

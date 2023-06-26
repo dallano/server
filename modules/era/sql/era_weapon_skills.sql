@@ -61,8 +61,8 @@ REPLACE INTO `weapon_skills` (`weaponskillid`, `name`, `jobs`, `type`, `skilllev
     (53,'crescent_moon',0x01000000000001010000000000000000000000000001,4,175,0,111,2000,5,1,4,0,0,0,0),
     (54,'sickle_moon',0x00000000000001010000000000000000000000000001,4,200,0,112,2000,5,1,4,8,0,1,0),
     (55,'spinning_slash',0x00000000000001010000000000000000000000000001,4,225,0,113,2000,5,1,12,0,0,1,0),
-    (56,'ground_strike',0x01000000000001010000000000000000000000000001,4,250,0,114,2000,5,1,12,10,0,0,4),
     (57,'scourge',0x00000000000000000000000000000000000000000000,4,0,0,115,2000,5,1,13,11,0,1,0),
+    (60,'resolution',0x01000000000001010000000000000000000000000001,4,250,0,118,2000,5,1,12,4,0,1,4),
 
     -- Axes
     (64,'raging_axe',0x02000000000000020200020000000000000000000002,5,5,0,46,2000,5,1,6,8,0,0,0),
@@ -199,7 +199,6 @@ DELETE FROM `weapon_skills` WHERE
     -- Hand to Hand
     name = "tornado_kick"       or -- June 2010
     name = "victory_smite"      or -- September 2010
-    name = "shijin_spiral"      or -- December 2011
     name = "final_paradise"     or -- May 2018
 
     -- Daggers
@@ -209,62 +208,50 @@ DELETE FROM `weapon_skills` WHERE
     -- Swords
     name = "sanguine_blade"     or -- June 2010
     name = "chant_du_cygne"     or -- September 2010
-    name = "requiescat"         or -- December 2011
     name = "knights_of_rotund"  or -- July 2017
 
     -- Great Swords
     name = "herculean_slash"    or -- June 2010
     name = "torcleaver"         or -- September 2010
-    name = "resolution"         or -- December 2011
     name = "dimidiation"        or -- July 2014
 
     -- Axes
     name = "bora_axe"           or -- June 2010
     name = "cloudsplitter"      or -- September 2010
-    name = "ruinator"           or -- December 2011
 
     -- Great Axes
     name = "fell_cleave"        or -- June 2010
     name = "ukkos_fury"         or -- September 2010
-    name = "upheaval"           or -- December 2011
 
     -- Scythe
     name = "infernal_scythe"    or -- June 2010
     name = "quietus"            or -- September 2010
-    name = "entropy"            or -- December 2011
 
     -- Polearm
     name = "sonic_thrust"       or -- June 2010
     name = "camlanns_torment"   or -- September 2010
-    name = "stardiver"          or -- December 2011
 
     -- Katana
     name = "blade_yu"           or -- June 2010
     name = "blade_hi"           or -- September 2010
-    name = "blade_shun"         or -- December 2011
 
     -- Great Katana
     name = "tachi_ageha"        or -- June 2010
     name = "tachi_fudo"         or -- September 2010
-    name = "tachi_shoha"        or -- December 2011
     name = "tachi_suikawari"    or -- August 2018
 
     -- Clubs
     name = "flash_nova"         or -- June 2010
     name = "dagan"              or -- Sepember 2010
-    name = "realmrazer"         or -- December 2011
 
     -- Staffs
     name = "cataclysm"          or -- June 2010
     name = "myrkr"              or -- Sepember 2010
-    name = "shattersoul"        or -- December 2011
 
     -- Archery
     name = "refulgent_arrow"    or -- June 2010
     name = "jishnus_radiance"   or -- September 2010
-    name = "apex_arrow"         or -- December 2011
 
     -- Marksmanship
     name = "numbing_shot"       or -- June 2010
     name = "wildfire"           or -- September 2010
-    name = "last_stand";           -- December 2011

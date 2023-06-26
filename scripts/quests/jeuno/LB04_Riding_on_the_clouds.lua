@@ -137,6 +137,7 @@ quest.sections =
                         player:delKeyItem(xi.ki.SOMBER_STONE)
                         player:delKeyItem(xi.ki.SPIRITED_STONE)
                         player:setLevelCap(70)
+                        player:setFellowValue("lvlcap", 75)
                         player:messageSpecial(ruludeID.text.YOUR_LEVEL_LIMIT_IS_NOW_70)
                     end
                 end,

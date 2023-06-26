@@ -5,6 +5,7 @@
 -- !pos -74.308 -24.782 -28.475 26
 -----------------------------------
 local ID = require("scripts/zones/Tavnazian_Safehold/IDs")
+require("scripts/globals/teleports")
 require("scripts/globals/keyitems")
 -----------------------------------
 local entity = {}
@@ -14,6 +15,14 @@ end
 
 entity.onTrigger = function(player, npc)
     local cd = player:getCharVar("[ENM]MonarchBeard")
+
+    if player:hasKeyItem(xi.ki.MONARCH_BEARD) then
+        npc:injectActionPacket(player:getID(), 4, 261, 0, 0, 0, 10, 1)
+
+        npc:timer(3500, function(x)
+            xi.teleport.to(player, xi.teleport.id.MONARCH_LINN)
+        end)
+    end
 
     if
         player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.AN_ETERNAL_MELODY and

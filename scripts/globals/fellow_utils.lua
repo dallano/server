@@ -518,12 +518,17 @@ end
 --           Fellows will prioritze themselves if under 30% HP while master's HP
 --           is greater than 40%. They will otherwise cure themselves if master's
 --           HP doesn't fall below a cure's HP threshold.
+--
+--           Fellows will heal PLD and DRK at a slower rate to allow them to
+--           use abilities to heal themselves to better balance / maintain hate
 -------------------------------------------------------------------------------
 xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
     local coolDown      = fellow:getLocalVar("castingCoolDown")
     local recast        = xi.fellow_utils.calculateRecast(fellow, fellowType)
     local masterHP      = master:getMaxHP() - master:getHP()
     local fellowHP      = fellow:getMaxHP() - fellow:getHP()
+    local masterJob     = master:getMainJob()
+    local thresholdMod  = 1
 
     if coolDown < os.time() then
         if
@@ -571,15 +576,22 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                             fellow:setLocalVar("castingCoolDown", os.time() + recast)
                             fellow:castSpell(cure.spell, fellow)
                             return
-                        elseif cure.hpThreshold * 2.5 <= masterHP then
+                        elseif cure.hpThreshold * 2.25 <= masterHP then
                             fellow:setLocalVar("castingCoolDown", os.time() + recast)
                             fellow:castSpell(cure.spell, master)
                             return
                         end
                     -- Mage Logic
                     else
+                        if masterJob == xi.job.PLD then
+                            thresholdMod = 1.5
+
+                        elseif masterJob == xi.job.DRK then
+                            thresholdMod = 1.25
+                        end
+
                         -- Prioritize master
-                        if cure.hpThreshold <= masterHP then
+                        if cure.hpThreshold * thresholdMod <= masterHP then
                             fellow:setLocalVar("castingCoolDown", os.time() + recast)
                             fellow:castSpell(cure.spell, master)
                             return

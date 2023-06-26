@@ -43,7 +43,7 @@ local validCombatSkills =
 
 local function hasRequiredCombatSkill(player)
     for _, v in ipairs(validCombatSkills) do
-        if player:getSkillLevel(v) >= 357 then
+        if player:getSkillLevel(v) >= 280 then
             return true
         end
     end
@@ -56,8 +56,9 @@ quest.sections =
     {
         check = function(player, status, vars)
             return status == QUEST_AVAILABLE and
-                player:getMainLvl() >= 96 and
-                hasRequiredCombatSkill(player)
+                player:getMainLvl() >= 75 and
+                hasRequiredCombatSkill(player) and
+                player:hasKeyItem(xi.ki.LIMIT_BREAKER)
         end,
 
         [xi.zone.RULUDE_GARDENS] =
@@ -77,9 +78,9 @@ quest.sections =
         check = function(player, status, vars)
             -- TODO: Confirm that the player must be on a valid job to complete
             return status == QUEST_ACCEPTED and
-                player:getMainLvl() >= 96 and
+                player:getMainLvl() >= 75 and
                 hasRequiredCombatSkill(player) and
-                player:getMeritCount() >= 15
+                player:getMeritCount() >= 10
         end,
 
         [xi.zone.RULUDE_GARDENS] =
@@ -90,7 +91,7 @@ quest.sections =
             {
                 [10198] = function(player, csid, option, npc)
                     if quest:complete(player) then
-                        player:setMerits(player:getMeritCount() - 15)
+                        player:setMerits(player:getMeritCount() - 10)
                         player:messageSpecial(ruLudeID.text.LEARNED_SECRET_TECHNIQUE)
                     end
                 end,

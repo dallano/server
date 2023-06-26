@@ -12361,7 +12361,7 @@ INSERT INTO `mob_droplist` VALUES (1535,0,0,1000,15829,92);     -- Skirmishers R
 INSERT INTO `mob_droplist` VALUES (1536,0,0,1000,4484,@ALWAYS);  -- Shall Shell (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (1536,0,0,1000,4484,@VCOMMON); -- Shall Shell (Very Common, 24%)
 INSERT INTO `mob_droplist` VALUES (1536,0,0,1000,4484,@VCOMMON); -- Shall Shell (Very Common, 24%)
-INSERT INTO `mob_droplist` VALUES (1536,0,0,1000,18852,@RARE);   -- Octave Club (Rare, 5%)
+INSERT INTO `mob_droplist` VALUES (1536,0,0,1000,17440,@RARE);   -- Kraken Club (Rare, 5%)
 
 -- ZoneID: 217 - Lord Varney
 INSERT INTO `mob_droplist` VALUES (1537,0,0,1000,3197,660);  -- Bale Seal Feet (66.0%)

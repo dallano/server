@@ -87,6 +87,7 @@ local ids =
     SPIRE_OF_HOLLA        = 72,
     SPIRE_OF_DEM          = 73,
     SPIRE_OF_MEA          = 74,
+    MONARCH_LINN          = 75,
 }
 xi.teleport.id = ids
 
@@ -160,10 +161,11 @@ xi.teleport.destination =
     [ids.BASTOK_STARLIGHT]      = { -344.489,  -10.002, -182.797,  88, 235 },
     [ids.SAN_DORIA_STARLIGHT]   = { 100.952,     0.999,  -49.758,  31, 230 },
     [ids.WINDURST_STARLIGHT]    = { 103.065,    -5.000,  -48.627,   5, 241 },
-    [ids.LOWER_JEUNO]           = { -68.000,     6.000,  -105.00, 219, 245 }, -- (xiSP)
+    [ids.LOWER_JEUNO]           = { -68.000,     6.000,  -105.00, 212, 245 }, -- (xiSP)
     [ids.SPIRE_OF_DEM]          = { -0.5390,    -2.000,   293.64,  64,  19 }, -- (xiSP)
     [ids.SPIRE_OF_MEA]          = {  0.0225,    -2.000,   293.64,  64,  21 }, -- (xiSP)
     [ids.SPIRE_OF_HOLLA]        = {  0.0225,    -2.000,  -293.64, 191,  17 }, -- (xiSP)
+    [ids.MONARCH_LINN]          = {  12.527,     0.400,  -539.60, 127,  31 }, -- (xiSP)
 }
 
 xi.teleport.type =

@@ -677,8 +677,8 @@ INSERT INTO `mob_groups` VALUES (23,4527,16,'Livid_Seether',960,0,0,0,0,83,84,0)
 -- Spire_of_Holla (Zone 17)
 -- ------------------------------------------------------------
 
-INSERT INTO `mob_groups` VALUES (1,4382,17,'Wreaker',0,128,0,2300,0,26,27,0);
-INSERT INTO `mob_groups` VALUES (2,760,17,'Cogitator',0,128,0,1600,0,32,33,0);
+INSERT INTO `mob_groups` VALUES (1,4382,17,'Wreaker',0,128,0,1300,0,32,33,0);
+INSERT INTO `mob_groups` VALUES (2,760,17,'Cogitator',0,128,0,1300,0,32,33,0);
 INSERT INTO `mob_groups` VALUES (3,4317,17,'Weeper',0,128,0,200,0,26,27,0);
 INSERT INTO `mob_groups` VALUES (4,0,17,'Recollector',0,128,0,0,0,0,0,0);
 INSERT INTO `mob_groups` VALUES (5,0,17,'Futile_Thinker',0,128,0,0,0,0,0,0);
@@ -768,8 +768,8 @@ INSERT INTO `mob_groups` VALUES (23,4527,20,'Livid_Seether',960,0,0,0,0,83,84,0)
 -- Spire_of_Mea (Zone 21)
 -- ------------------------------------------------------------
 
-INSERT INTO `mob_groups` VALUES (1,966,21,'Delver',0,128,0,1600,0,31,32,0);
-INSERT INTO `mob_groups` VALUES (2,1237,21,'Envier',0,128,0,1600,0,31,32,0);
+INSERT INTO `mob_groups` VALUES (1,966,21,'Delver',0,128,0,1300,0,31,32,0);
+INSERT INTO `mob_groups` VALUES (2,1237,21,'Envier',0,128,0,1300,0,31,32,0);
 INSERT INTO `mob_groups` VALUES (3,3539,21,'Seether',0,128,0,200,0,20,21,0);
 INSERT INTO `mob_groups` VALUES (4,0,21,'Recollector',0,128,0,0,0,0,0,0);
 INSERT INTO `mob_groups` VALUES (5,0,21,'Quenchless_Craver',0,128,0,0,0,0,0,0);
@@ -1159,11 +1159,11 @@ INSERT INTO `mob_groups` VALUES (4,1918,30,'Heliodromos',0,128,1291,0,0,41,42,0)
 INSERT INTO `mob_groups` VALUES (5,71,30,'Air_Elemental',330,4,38,0,0,42,43,0);
 INSERT INTO `mob_groups` VALUES (6,1340,30,'Firedrake',330,0,830,0,0,41,42,0);
 INSERT INTO `mob_groups` VALUES (7,3912,30,'Thunder_Elemental',330,4,2410,0,0,42,43,0);
-INSERT INTO `mob_groups` VALUES (8,1901,30,'Hawker',330,0,142,0,0,42,43,0);
+INSERT INTO `mob_groups` VALUES (8,1901,30,'Hawker',330,0,142,0,0,33,34,0);
 INSERT INTO `mob_groups` VALUES (9,747,30,'Cloud_Hippogryph',330,0,488,0,0,42,43,0);
 INSERT INTO `mob_groups` VALUES (10,277,30,'Atomic_Cluster',330,0,188,0,0,40,41,0);
 INSERT INTO `mob_groups` VALUES (11,1355,30,'Flamedrake',330,0,841,0,0,41,42,0);
-INSERT INTO `mob_groups` VALUES (12,641,30,'Carmine_Dobsonfly',0,128,418,520,0,37,38,0);
+INSERT INTO `mob_groups` VALUES (12,641,30,'Carmine_Dobsonfly',0,128,418,720,0,37,38,0);
 INSERT INTO `mob_groups` VALUES (13,4532,30,'Darner',330,0,142,0,0,84,85,0);
 INSERT INTO `mob_groups` VALUES (14,68,30,'Aiatar',0,32,35,6500,0,42,43,0);
 INSERT INTO `mob_groups` VALUES (15,4309,30,'Water_Elemental',0,128,0,4000,10000,75,75,0);
@@ -1177,7 +1177,7 @@ INSERT INTO `mob_groups` VALUES (20,3596,30,'Shieldtrap',0,128,2235,0,0,39,44,0)
 -- Monarch_Linn (Zone 31)
 -- ------------------------------------------------------------
 
-INSERT INTO `mob_groups` VALUES (1,2499,31,'Mammet-19_Epsilon',0,128,1585,2500,0,42,43,0);
+INSERT INTO `mob_groups` VALUES (1,2499,31,'Mammet-19_Epsilon',0,128,1585,750,0,36,37,0);
 INSERT INTO `mob_groups` VALUES (2,3070,31,'Ouryu',0,128,0,4500,500,52,53,0);
 INSERT INTO `mob_groups` VALUES (3,1885,31,'Hamadryad',0,128,0,0,0,42,43,0);
 INSERT INTO `mob_groups` VALUES (4,3333,31,'Razon',0,128,0,0,0,42,43,0);
@@ -8035,9 +8035,9 @@ INSERT INTO `mob_groups` VALUES (22,995,112,'Demon_Warlock',330,0,624,0,0,50,52,
 INSERT INTO `mob_groups` VALUES (23,994,112,'Demons_Elemental',0,128,0,0,0,43,45,0);
 INSERT INTO `mob_groups` VALUES (24,3576,112,'Shadow_Eye',0,32,2226,6700,0,48,49,0);
 INSERT INTO `mob_groups` VALUES (25,693,112,'Chaos_Elemental',0,128,452,3200,0,42,42,0);
-INSERT INTO `mob_groups` VALUES (26,510,112,'Boreal_Hound',300,0,0,28675,0,58,58,0);
-INSERT INTO `mob_groups` VALUES (27,509,112,'Boreal_Coeurl',300,0,0,6750,0,58,58,0);
-INSERT INTO `mob_groups` VALUES (28,511,112,'Boreal_Tiger',300,0,0,15400,0,58,58,0);
+INSERT INTO `mob_groups` VALUES (26,510,112,'Boreal_Hound',300,0,0,8675,0,58,58,0);
+INSERT INTO `mob_groups` VALUES (27,509,112,'Boreal_Coeurl',300,0,0,3750,0,58,58,0);
+INSERT INTO `mob_groups` VALUES (28,511,112,'Boreal_Tiger',300,0,0,4400,0,58,58,0);
 INSERT INTO `mob_groups` VALUES (29,2276,112,'Koenigstiger',0,128,0,22000,0,63,63,0);
 INSERT INTO `mob_groups` VALUES (30,1983,112,'Hobgoblin_Warrior',0,128,0,0,0,50,55,0);
 INSERT INTO `mob_groups` VALUES (31,1984,112,'Hobgoblin_White_Mage',0,128,0,0,0,50,55,0);

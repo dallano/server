@@ -27,44 +27,44 @@ local quest = Quest:new(xi.quest.log_id.OTHER_AREAS, xi.quest.id.otherAreas.UNIN
 
 local rewards =
 {
-    { droprate = 509, rewardId =  4247 }, -- Miratete's Memoirs
-    { droprate = 35,  rewardId =  4550 }, -- Bream Risotto
-    { droprate = 30,  rewardId =  1132 }, -- Raxa
-    { droprate = 30,  rewardId =  5144 }, -- Crimson Jelly
-    { droprate = 30,  rewardId =  4279 }, -- Tavnazian Salad
-    { droprate = 29,  rewardId =   678 }, -- Aluminum Ore
-    { droprate = 29,  rewardId =  5142 }, -- Bison Steak
-    { droprate = 29,  rewardId =  4544 }, -- Mushroom Stew
-    { droprate = 27,  rewardId =  1766 }, -- Tiger Eye
-    { droprate = 24,  rewardId =  1841 }, -- Unicorn Horn
-    { droprate = 24,  rewardId =    61 }, -- Armoire
-    { droprate = 24,  rewardId =  1602 }, -- Mannequin Body
-    { droprate = 21,  rewardId =  4434 }, -- Mushroom Risotto
-    { droprate = 19,  rewardId =  1603 }, -- Mannequin Hands
-    { droprate = 18,  rewardId =  1770 }, -- Oversized Fang
-    { droprate = 18,  rewardId =  1771 }, -- Dragon Bone
-    { droprate = 16,  rewardId =   690 }, -- Elm Log
+    { droprate = 500, rewardId =  4247 }, -- Miratete's Memoirs
+    { droprate = 15,  rewardId =  4550 }, -- Bream Risotto
+    { droprate = 15,  rewardId =  1132 }, -- Raxa
+    { droprate = 15,  rewardId =  5144 }, -- Crimson Jelly
+    { droprate = 15,  rewardId =  4279 }, -- Tavnazian Salad
+    { droprate = 15,  rewardId =   678 }, -- Aluminum Ore
+    { droprate = 15,  rewardId =  5142 }, -- Bison Steak
+    { droprate = 15,  rewardId =  4544 }, -- Mushroom Stew
+    { droprate = 15,  rewardId =  1766 }, -- Tiger Eye
+    { droprate = 15,  rewardId =  1841 }, -- Unicorn Horn
+    { droprate = 15,  rewardId =    61 }, -- Armoire
+    { droprate = 15,  rewardId =  1602 }, -- Mannequin Body
+    { droprate = 15,  rewardId =  4434 }, -- Mushroom Risotto
+    { droprate = 15,  rewardId =  1603 }, -- Mannequin Hands
+    { droprate = 15,  rewardId =  1770 }, -- Oversized Fang
+    { droprate = 15,  rewardId =  1771 }, -- Dragon Bone
+    { droprate = 15,  rewardId =   690 }, -- Elm Log
     { droprate = 15,  rewardId =  1604 }, -- Mannequin Legs
-    { droprate = 11,  rewardId =  1605 }, -- Mannequin Feet
-    { droprate = 11,  rewardId =   646 }, -- Adaman Ore
-    { droprate = 11,  rewardId =   860 }, -- Behemoth Hide
-    { droprate = 10,  rewardId =  1765 }, -- Habu Skin
-    { droprate = 7,   rewardId =  1842 }, -- Cloud Evoker
-    { droprate = 7,   rewardId =  1601 }, -- Mannequin Head
-    { droprate = 6,   rewardId =   739 }, -- Orichalcum  Ore
-    { droprate = 4,   rewardId =  5158 }, -- Vermillion Jelly
-    { droprate = 4,   rewardId =  5185 }, -- Leremieu Salad
-    { droprate = 3,   rewardId =   908 }, -- Adamantoise Shell
-    { droprate = 3,   rewardId =  1312 }, -- Angel Skin
-    { droprate = 3,   rewardId =  4486 }, -- Dragon Heart
-    { droprate = 3,   rewardId =  5157 }, -- Marbled Steak
-    { droprate = 3,   rewardId =  4268 }, -- Sea Spray Risotto
-    { droprate = 3,   rewardId =  1313 }, -- Siren's Hair
-    { droprate = 3,   rewardId =  5264 }, -- Yellow Liquid
-    { droprate = 2,   rewardId =  4330 }, -- Witch Risotto
-    { droprate = 2,   rewardId =     1 }, -- 10,000 Gil Speical cased to ID 1
-    { droprate = 2,   rewardId = 14470 }, -- Assault Breastplate
-    { droprate = 2,   rewardId =  4344 }, -- Witch Stew
+    { droprate = 15,  rewardId =  1605 }, -- Mannequin Feet
+    { droprate = 15,  rewardId =   646 }, -- Adaman Ore
+    { droprate = 15,  rewardId =   860 }, -- Behemoth Hide
+    { droprate = 15,  rewardId =  1765 }, -- Habu Skin
+    { droprate = 15,  rewardId =  1842 }, -- Cloud Evoker
+    { droprate = 15,  rewardId =  1601 }, -- Mannequin Head
+    { droprate = 15,  rewardId =   739 }, -- Orichalcum  Ore
+    { droprate = 15,  rewardId =  5158 }, -- Vermillion Jelly
+    { droprate = 15,  rewardId =  5185 }, -- Leremieu Salad
+    { droprate = 15,  rewardId =   908 }, -- Adamantoise Shell
+    { droprate = 15,  rewardId =  1312 }, -- Angel Skin
+    { droprate = 15,  rewardId =  4486 }, -- Dragon Heart
+    { droprate = 15,  rewardId =  5157 }, -- Marbled Steak
+    { droprate = 15,  rewardId =  4268 }, -- Sea Spray Risotto
+    { droprate = 15,  rewardId =  1313 }, -- Siren's Hair
+    { droprate = 15,  rewardId =  5264 }, -- Yellow Liquid
+    { droprate = 15,  rewardId =  4330 }, -- Witch Risotto
+    { droprate = 15,  rewardId =     1 }, -- 10,000 Gil Speical cased to ID 1
+    { droprate = 15,  rewardId = 14470 }, -- Assault Breastplate
+    { droprate = 15,  rewardId =  4344 }, -- Witch Stew
 }
 
 local updateUninvitedGuests = function(player, clearVars)
