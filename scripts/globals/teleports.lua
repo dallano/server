@@ -520,7 +520,8 @@ xi.teleport.explorerMoogleOnEventFinish = function(player, csid, option, event)
 end
 
 xi.teleport.clearEnmityList = function(player)
-    local pet = player:getPet()
+    local fellow = player:getFellow()
+    local pet    = player:getPet()
 
     for _, entry in pairs(player:getNotorietyList()) do
         entry:clearEnmity(player) -- reset hate on player after teleporting
@@ -529,6 +530,12 @@ xi.teleport.clearEnmityList = function(player)
     if pet ~= nil then
         for _, entry in pairs(pet:getNotorietyList()) do
             entry:clearEnmity(pet) -- reset hate on player after teleporting
+        end
+    end
+
+    if fellow ~= nil then
+        for _, entry in pairs(fellow:getNotorietyList()) do
+            entry:clearEnmity(fellow) -- reset hate on player after teleporting
         end
     end
 end

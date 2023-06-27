@@ -17,11 +17,12 @@ end
 
 entity.onTrigger = function(player, npc)
     local xPos = player:getXPos()
+    local pZone = player:getPreviousZone()
 
     if xPos > 12.934 and xPos < 24.934 then
-        if player:getPreviousZone() == xi.zone.RIVERNE_SITE_A01 then
+        if pZone == xi.zone.RIVERNE_SITE_A01 or pZone == xi.zone.TAVNAZIAN_SAFEHOLD then
             player:startEvent(11) -- To Riv Site A
-        elseif player:getPreviousZone() == xi.zone.RIVERNE_SITE_B01 then
+        elseif pZone == xi.zone.RIVERNE_SITE_B01 then
             player:startEvent(10) -- To Riv Site B
         end
     -- TODO: Do we really want to only check X values here?

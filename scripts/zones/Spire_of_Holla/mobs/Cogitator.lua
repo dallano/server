@@ -31,7 +31,7 @@ entity.onMobFight = function(mob, target)
             if not GetMobByID(id+i):isSpawned() then
                 GetMobByID(id+i):setSpawn(pos.x, pos.y, pos.z)
                 SpawnMob(id+i):updateEnmity(mob:getTarget())
-                mob:setLocalVar("timer", os.time() + math.random(20,130))
+                mob:setLocalVar("timer", os.time() + math.random(60, 130))
                 break
             end
         end

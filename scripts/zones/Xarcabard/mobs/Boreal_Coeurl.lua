@@ -18,8 +18,6 @@ entity.onMobSpawn = function(mob)
     mob:setMobMod(xi.mobMod.DRAW_IN_CUSTOM_RANGE, 15)
     mob:setMobMod(xi.mobMod.MAGIC_COOL, math.random(20, 30))
     mob:addImmunity(xi.immunity.SLEEP)
-    mob:addImmunity(xi.immunity.STUN)
-    mob:addImmunity(xi.immunity.SILENCE)
 
     -- Failsafe to make sure NPC is down when NM is up
     if xi.settings.main.OLDSCHOOL_G2 then
