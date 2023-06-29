@@ -42,12 +42,12 @@ INSERT INTO `fellow_armor` VALUES (109,  27,  27,  27,  27); -- gavial mail, gav
 INSERT INTO `fellow_armor` VALUES (110, 150, 150, 150, 150); -- alumine haubert, alumine moufles, alumine brayettes, alumine sollerets           body=14444, hands=14051, legs=15402, feet=15341
 INSERT INTO `fellow_armor` VALUES (111,  98,  98,  98,  98); -- yasha samue, yasha tekko, yasha hakama, yasha sune-ate                           body=12618, hands=13957, legs=12847, feet=13002
 -- mage armor
-INSERT INTO `fellow_armor` VALUES (200,  21,  21,  21,  21); -- doublet, gloves, brais, gaiters                                                  body=12592, hands=12720, legs=12848, feet=12976
+INSERT INTO `fellow_armor` VALUES (200,  21,  20,  20,  20); -- doublet, cuffs, slops, ash clogs                                                 body=12592, hands=12720, legs=12848, feet=12976
 INSERT INTO `fellow_armor` VALUES (201, 149, 149, 149, 149); -- trader saio, trader cuffs, trader slops, trader pigaches                         body=14446, hands=14053, legs=15404, feet=15343
 INSERT INTO `fellow_armor` VALUES (202, 131, 131, 131, 131); -- seer tunic, seer mitts, seer slacks, seer pumps                                  body=14424, hands=14856, legs=14325, feet=15313
 INSERT INTO `fellow_armor` VALUES (203,  23,  23,  23,  23); -- gambison, bracers, hose, socks                                                   body=12594, hands=12722, legs=12850, feet=12978
 INSERT INTO `fellow_armor` VALUES (204,  18,  18,  18,  18); -- wool robe, wool cuffs, wool slops, chestnut sabots                               body=12602, hands=12730, legs=12858, feet=12986
-INSERT INTO `fellow_armor` VALUES (205,  97,  20,  20,  20); -- holy breastplate, cuffs, slops, ash clogs                                        body=13812, hands=12728, legs=12856, feet=12984
+INSERT INTO `fellow_armor` VALUES (205,  97,  21,  21,  21); -- holy breastplate, gloves, brais, gaiters                                         body=13812, hands=12728, legs=12856, feet=12984
 INSERT INTO `fellow_armor` VALUES (206,  19,  19,  19,  19); -- t.m. coat, t.m. cuffs, t.m. slops, t.m. pigaches                                 body=12606, hands=12734, legs=12862, feet=12990
 INSERT INTO `fellow_armor` VALUES (207,  43,  10,  11,  11); -- earth doublet, silk mitts, silk slacks, silk pumps                               body=13732, hands=12740, legs=12868, feet=12996
 INSERT INTO `fellow_armor` VALUES (208, 115, 115, 115, 115); -- austere robe, austere cuffs, austere slops, austere sabots                       body=13814, hands=14826, legs=14310, feet=14189

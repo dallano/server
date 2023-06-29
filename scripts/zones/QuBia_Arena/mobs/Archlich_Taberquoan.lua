@@ -15,7 +15,7 @@ end
 entity.onMobFight = function(mob, target)
     local battleTime = mob:getBattleTime()
 
-    if battleTime - mob:getLocalVar("RepopWarriors") > 30 then
+    if battleTime - mob:getLocalVar("RepopWarriors") > 60 then
         local warriorsSpawned = 0
         for warrior = mob:getID() + 3, mob:getID() + 6 do
             if not GetMobByID(warrior):isSpawned() and warriorsSpawned < 2 then

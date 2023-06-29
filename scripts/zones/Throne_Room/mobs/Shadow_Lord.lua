@@ -26,7 +26,6 @@ entity.onMobFight = function(mob, target)
             -- subanimation 0 is first phase subanim, so just go straight to magic mode
             if mob:getAnimationSub() == 0 then
                 mob:setAnimationSub(1)
-                mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
                 mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
                 mob:setAutoAttackEnabled(false)
                 mob:setMagicCastingEnabled(true)
@@ -41,7 +40,6 @@ entity.onMobFight = function(mob, target)
                 mob:getBattleTime() - changeTime > 300)
             then
                 mob:setAnimationSub(1)
-                mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
                 mob:addStatusEffectEx(xi.effect.MAGIC_SHIELD, 0, 1, 0, 0)
                 mob:setAutoAttackEnabled(false)
                 mob:setMagicCastingEnabled(true)
@@ -58,7 +56,7 @@ entity.onMobFight = function(mob, target)
                 mob:useMobAbility(673)
                 mob:setAnimationSub(2)
                 mob:delStatusEffect(xi.effect.MAGIC_SHIELD)
-                mob:addStatusEffectEx(xi.effect.PHYSICAL_SHIELD, 0, 1, 0, 0)
+                mob:setMod(xi.mod.UDMGPHYS, -2500)
                 mob:setAutoAttackEnabled(true)
                 mob:setMagicCastingEnabled(false)
                 mob:setMobMod(xi.mobMod.MAGIC_COOL, 10)
@@ -67,9 +65,9 @@ entity.onMobFight = function(mob, target)
             end
         end
     else
-        -- second phase AI: Implode every 9 seconds
+        -- second phase AI: Implode every 15 seconds
         local lastImplodeTime = mob:getLocalVar("lastImplodeTime")
-        if mob:getBattleTime() - lastImplodeTime > 9 then
+        if mob:getBattleTime() - lastImplodeTime > 15 then
             mob:useMobAbility(669)
             mob:setLocalVar("lastImplodeTime", mob:getBattleTime())
         end

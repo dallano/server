@@ -34,27 +34,28 @@ local fellowMessageOffsets =
 
 local tankJobAbilityTable =
 {
-    { ability = xi.jobAbility.INVINCIBLE,  level = 1,  recast = 7200, hppThreshold = 25,  isValid = true, recastVar = "[FELLOW]twoHourRecast"    },
-    { ability = xi.jobAbility.SENTINEL,    level = 30, recast = 300,  hppThreshold = 100, isValid = true, recastVar = "[FELLOW]sentinelRecast"   },
-    { ability = xi.jobAbility.DEFENDER,    level = 25, recast = 180,  hppThreshold = 100, isValid = true, recastVar = "[FELLOW]defenderRecast"   },
-    { ability = xi.jobAbility.SHIELD_BASH, level = 15, recast = 300,  hppThreshold = 60,  isValid = true, recastVar = "[FELLOW]shieldBashRecast" },
-    { ability = xi.jobAbility.RAMPART,     level = 62, recast = 180,  hppThreshold = 45,  isValid = true, recastVar = "[FELLOW]rampartRecast"    },
+    { ability = xi.jobAbility.RAMPART,     level = 62, recast = 180,  hppThreshold = 45,  isValid = true,  self = true,  recastVar = "[FELLOW]rampartRecast"    },
+    { ability = xi.jobAbility.SENTINEL,    level = 30, recast = 300,  hppThreshold = 60,  isValid = true,  self = true,  recastVar = "[FELLOW]sentinelRecast"   },
+    { ability = xi.jobAbility.DEFENDER,    level = 25, recast = 180,  hppThreshold = 100, isValid = true,  self = true,  recastVar = "[FELLOW]defenderRecast"   },
+    { ability = xi.jobAbility.SHIELD_BASH, level = 15, recast = 300,  hppThreshold = 100, isValid = false, self = false, recastVar = "[FELLOW]shieldBashRecast" },
+    { ability = xi.jobAbility.HOLY_CIRCLE, level = 5,  recast = 300,  hppThreshold = 100, isValid = false, self = true,  recastVar = "[FELLOW]holyCircleRecast" },
+    { ability = xi.jobAbility.INVINCIBLE,  level = 1,  recast = 7200, hppThreshold = 25,  isValid = true,  self = true,  recastVar = "[FELLOW]twoHourRecast"    },
 }
 
 local meleeJobAbilityTable =
 {
-    { ability = xi.jobAbility.BLOOD_WEAPON, level = 1,  recast = 7200, hppThreshold = 45,  isValid = true, recastVar = "[FELLOW]twoHourRecast"    },
-    { ability = xi.jobAbility.BERSERK,      level = 15, recast = 380,  hppThreshold = 100, isValid = true, recastVar = "[FELLOW]berserkRecast"    },
-    { ability = xi.jobAbility.LAST_RESORT,  level = 15, recast = 380,  hppThreshold = 100, isValid = true, recastVar = "[FELLOW]lastResortRecast" },
-    { ability = xi.jobAbility.WEAPON_BASH,  level = 20, recast = 380,  hppThreshold = 100, isValid = true, recastVar = "[FELLOW]weaponBashRecast" },
-    { ability = xi.jobAbility.SOULEATER,    level = 30, recast = 440,  hppThreshold = 100, isValid = true, recastVar = "[FELLOW]souleaterRecast"  },
+    { ability = xi.jobAbility.SOULEATER,    level = 30, recast = 440,  hppThreshold = 100, isValid = true, self = true,  recastVar = "[FELLOW]souleaterRecast"  },
+    { ability = xi.jobAbility.WEAPON_BASH,  level = 20, recast = 380,  hppThreshold = 100, isValid = true, self = false, recastVar = "[FELLOW]weaponBashRecast" },
+    { ability = xi.jobAbility.BERSERK,      level = 15, recast = 380,  hppThreshold = 100, isValid = true, self = true,  recastVar = "[FELLOW]berserkRecast"    },
+    { ability = xi.jobAbility.LAST_RESORT,  level = 15, recast = 380,  hppThreshold = 100, isValid = true, self = true,  recastVar = "[FELLOW]lastResortRecast" },
+    { ability = xi.jobAbility.BLOOD_WEAPON, level = 1,  recast = 7200, hppThreshold = 45,  isValid = true, self = true,  recastVar = "[FELLOW]twoHourRecast"    },
 }
 
 local mageJobAbilityTable =
 {
-    { ability = xi.jobAbility.BENEDICTION, level = 1,  recast = 7200, hppThreshold = 25,  isValid = true, recastVar = "[FELLOW]twoHourRecast"   },
     { ability = xi.jobAbility.COMPOSURE,   level = 50, recast = 350,  hppThreshold = 100, isValid = true, recastVar = "[FELLOW]composureRecast" },
     { ability = xi.jobAbility.CONVERT,     level = 40, recast = 600,  hppThreshold = 100, isValid = true, recastVar = "[FELLOW]convertRecast"   },
+    { ability = xi.jobAbility.BENEDICTION, level = 1,  recast = 7200, hppThreshold = 25,  isValid = true, recastVar = "[FELLOW]twoHourRecast"   },
 }
 
 local regenTable =
@@ -499,6 +500,7 @@ xi.fellow_utils.checkJobAbility = function(fellow, master)
     local fellowType    = master:getFellowValue("job")
     local fellowLvl     = fellow:getMainLvl()
     local hpp           = fellow:getHPP()
+    local target        = fellow:getTarget()
 
     -- Case for Tank Fellow
     if fellowType == fellowTypes.SHIELD or fellowType == fellowTypes.STALWART then
@@ -509,18 +511,27 @@ xi.fellow_utils.checkJobAbility = function(fellow, master)
             if
                 fellowLvl > ability.level and
                 hpp <= ability.hppThreshold and
-                recast < ability.recast + os.time()
+                recast < os.time()
             then
                 if
                     ability.ability == xi.jobAbility.SHIELD_BASH and
-                    (action ~= xi.action.MAGIC_CASTING or action ~= xi.action.MOBABILITY_START)
+                    (action == xi.action.MAGIC_CASTING or action == xi.action.MOBABILITY_START)
                 then
-                    ability.isValid = false
+                    ability.isValid = true
+
+                elseif
+                    ability.ability == xi.jobAbility.HOLY_CIRCLE and
+                    target:getSystem() == 19
+                then
+                    ability.isValid = true
                 end
 
                 if ability.isValid then
+                    if ability.self then
+                        target = fellow
+                    end
                     master:setCharVar(ability.recastVar, os.time() + ability.recast)
-                    fellow:useJobAbility(ability.ability)
+                    fellow:useJobAbility(ability.ability, target)
                 end
             end
         end
@@ -532,7 +543,7 @@ xi.fellow_utils.checkJobAbility = function(fellow, master)
             if
                 fellowLvl > ability.level and
                 hpp <= ability.hppThreshold and
-                recast < ability.recast + os.time()
+                recast < os.time()
             then
                 master:setCharVar(ability.recastVar, os.time() + ability.recast)
                 fellow:useJobAbility(ability.ability)
@@ -546,7 +557,7 @@ xi.fellow_utils.checkJobAbility = function(fellow, master)
             if
                 fellowLvl > ability.level and
                 hpp <= ability.hppThreshold and
-                recast < ability.recast + os.time()
+                recast < os.time()
             then
                 if ability.ability == xi.jobAbility.CONVERT and fellow:getMPP() > 15 then
                     ability.isValid = false
