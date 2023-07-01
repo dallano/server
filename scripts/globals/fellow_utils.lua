@@ -38,7 +38,7 @@ local tankJobAbilityTable =
     { ability = xi.jobAbility.SENTINEL,    level = 30, recast = 300,  hppThreshold = 60,  isValid = true,  self = true,  recastVar = "[FELLOW]sentinelRecast"   },
     { ability = xi.jobAbility.DEFENDER,    level = 25, recast = 180,  hppThreshold = 100, isValid = true,  self = true,  recastVar = "[FELLOW]defenderRecast"   },
     { ability = xi.jobAbility.SHIELD_BASH, level = 15, recast = 300,  hppThreshold = 100, isValid = false, self = false, recastVar = "[FELLOW]shieldBashRecast" },
-    { ability = xi.jobAbility.HOLY_CIRCLE, level = 5,  recast = 300,  hppThreshold = 100, isValid = false, self = true,  recastVar = "[FELLOW]holyCircleRecast" },
+    -- { ability = xi.jobAbility.HOLY_CIRCLE, level = 5,  recast = 300,  hppThreshold = 100, isValid = false, self = true,  recastVar = "[FELLOW]holyCircleRecast" },
     { ability = xi.jobAbility.INVINCIBLE,  level = 1,  recast = 7200, hppThreshold = 25,  isValid = true,  self = true,  recastVar = "[FELLOW]twoHourRecast"    },
 }
 
@@ -516,12 +516,6 @@ xi.fellow_utils.checkJobAbility = function(fellow, master)
                 if
                     ability.ability == xi.jobAbility.SHIELD_BASH and
                     (action == xi.action.MAGIC_CASTING or action == xi.action.MOBABILITY_START)
-                then
-                    ability.isValid = true
-
-                elseif
-                    ability.ability == xi.jobAbility.HOLY_CIRCLE and
-                    target:getSystem() == 19
                 then
                     ability.isValid = true
                 end

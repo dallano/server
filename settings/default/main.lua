@@ -38,7 +38,7 @@ xi.settings.main =
 
     -- FIELDS OF VALOR/Grounds of Valor settings
     ENABLE_FIELD_MANUALS  = 1, -- Enables Fields of Valor
-    ENABLE_GROUNDS_TOMES  = 0, -- Enables Grounds of Valor
+    ENABLE_GROUNDS_TOMES  = 1, -- Enables Grounds of Valor
     ENABLE_SURVIVAL_GUIDE = 0, -- Enables Survival Guides (Not Implemented)
     REGIME_WAIT           = 0, -- Make people wait till 00:00 game time as in retail. If it's 0, there is no wait time.
     FOV_REWARD_ALLIANCE   = 0, -- Allow Fields of Valor rewards while being a member of an alliance. (default retail behavior: 0)
@@ -265,7 +265,7 @@ xi.settings.main =
     DIG_ZONE_LIMIT               = 0,   -- Set max amount of items that can be dug from a specific zone every Vana'Diel Day. Set to 0 to disable.
     DIG_GRANT_BURROW             = 0,
     DIG_GRANT_BORE               = 0,
-    DIG_DISTANCE_REQ             = 0, -- Sets the distance squared in yalms of how far a player has to move.
+    DIG_DISTANCE_REQ             = 1, -- Sets the distance squared in yalms of how far a player has to move.
     DIG_FATIGUE_SKILL_UP         = true, -- Allows for skilling up while at fatigue.
 
     -- NYZUL
