@@ -4527,7 +4527,7 @@ namespace charutils
                                     PMember->expChain.chainTime = gettick() + 30000;
                                     break;
                                 default:
-                                    PMember->expChain.chainTime = gettick() + 15000;
+                                    PMember->expChain.chainTime = gettick() + 30000;
                                     break;
                             }
 
@@ -4552,7 +4552,7 @@ namespace charutils
                                     PMember->expChain.chainTime = gettick() + 60000;
                                     break;
                                 default:
-                                    PMember->expChain.chainTime = gettick() + 25000;
+                                    PMember->expChain.chainTime = gettick() + 60000;
                                     break;
                             }
 
@@ -4577,7 +4577,7 @@ namespace charutils
                                     PMember->expChain.chainTime = gettick() + 60000;
                                     break;
                                 default:
-                                    PMember->expChain.chainTime = gettick() + 30000;
+                                    PMember->expChain.chainTime = gettick() + 60000;
                                     break;
                             }
                         }
@@ -4601,7 +4601,7 @@ namespace charutils
                                     PMember->expChain.chainTime = gettick() + 80000;
                                     break;
                                 default:
-                                    PMember->expChain.chainTime = gettick() + 40000;
+                                    PMember->expChain.chainTime = gettick() + 80000;
                                     break;
                             }
                         }
@@ -4622,10 +4622,10 @@ namespace charutils
                                     PMember->expChain.chainTime = gettick() + 170000;
                                     break;
                                 case 4:
-                                    PMember->expChain.chainTime = gettick() + 110000;
+                                    PMember->expChain.chainTime = gettick() + 150000;
                                     break;
                                 default:
-                                    PMember->expChain.chainTime = gettick() + 50000;
+                                    PMember->expChain.chainTime = gettick() + 150000;
                                     break;
                             }
                         }
@@ -4646,10 +4646,10 @@ namespace charutils
                                     PMember->expChain.chainTime = gettick() + 180000;
                                     break;
                                 case 4:
-                                    PMember->expChain.chainTime = gettick() + 120000;
+                                    PMember->expChain.chainTime = gettick() + 150000;
                                     break;
                                 default:
-                                    PMember->expChain.chainTime = gettick() + 60000;
+                                    PMember->expChain.chainTime = gettick() + 150000;
                                     break;
                             }
                         }

@@ -2,6 +2,7 @@
 -- Zone: Port_Jeuno (246)
 -----------------------------------
 local ID = require('scripts/zones/Port_Jeuno/IDs')
+require("scripts/globals/teleports")
 require('scripts/globals/conquest')
 require('scripts/globals/settings')
 require('scripts/globals/chocobo')
@@ -10,8 +11,48 @@ require('scripts/globals/zone')
 -----------------------------------
 local zoneObject = {}
 
+local checkOrb = function(player)
+    if
+        player:hasItem(xi.items.STAR_ORB) or
+        player:hasItem(xi.items.CLOUDY_ORB) or
+        player:hasItem(xi.items.SKY_ORB) or
+        player:hasItem(xi.items.COMET_ORB) or
+        player:hasItem(xi.items.MOON_ORB) or
+        player:hasItem(xi.items.ATROPOS_ORB) or
+        player:hasItem(xi.items.CLOTHO_ORB) or
+        player:hasItem(xi.items.LACHESIS_ORB)
+    then
+        return true
+    end
+end
+
 zoneObject.onInitialize = function(zone)
     xi.chocobo.initZone(zone)
+
+    -- BCNM Warp NPCs
+    local quadavStatue = zone:insertDynamicEntity({
+        objtype = xi.objType.NPC,
+        name = "Quadav Effigy",
+        x = -64.931,
+        y = 0.000,
+        z = 8.092,
+        rotation = 64,
+        look = 1058,
+
+        releaseIdOnDisappear = true,
+        specialSpawnAnimation = true,
+
+        onTrigger = function(player, npc)
+            if checkOrb(player) then
+                npc:injectActionPacket(player:getID(), 4, 261, 0, 0, 0, 10, 1)
+
+                npc:timer(3500, function(x)
+                    xi.teleport.to(player, xi.teleport.id.WAUGHROON_SHRINE)
+                end)
+            end
+        end,
+    })
+    quadavStatue:setStatus(xi.status.NORMAL)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

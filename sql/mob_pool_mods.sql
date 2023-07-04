@@ -37,7 +37,6 @@ INSERT INTO `mob_pool_mods` VALUES (21,29,100,0); -- MDEF: 100
 
 -- Adamantoise
 INSERT INTO `mob_pool_mods` VALUES (44,368,150,0); -- REGAIN: 150
-INSERT INTO `mob_pool_mods` VALUES (44,59,150,1); -- WEAPON_BONUS: 150
 
 -- Agas
 INSERT INTO `mob_pool_mods` VALUES (60,370,20,0); -- REGEN: 20
@@ -68,8 +67,8 @@ INSERT INTO `mob_pool_mods` VALUES (242,43,1,1);   -- TELEPORT_TYPE: 1
 INSERT INTO `mob_pool_mods` VALUES (242,47,22,1);  -- SPAWN_LEASH: 22
 
 -- Aspidochelone
-INSERT INTO `mob_pool_mods` VALUES (268,368,150,0); -- REGAIN: 150
-INSERT INTO `mob_pool_mods` VALUES (268,370,50,0);  -- REGEN: 50
+INSERT INTO `mob_pool_mods` VALUES (268,368,50,0); -- REGAIN: 50
+INSERT INTO `mob_pool_mods` VALUES (268,370,15,0);  -- REGEN: 15
 INSERT INTO `mob_pool_mods` VALUES (268,59,150,1); -- WEAPON_BONUS: 150
 
 -- Athamas
@@ -80,9 +79,6 @@ INSERT INTO `mob_pool_mods` VALUES (289,4,4,1); -- SIGHT_RANGE: 4
 
 -- Battle Bugard
 INSERT INTO `mob_pool_mods` VALUES (370,28,5,1); -- EXP_BONUS: 5
-
--- Behemoth
-INSERT INTO `mob_pool_mods` VALUES (387,59,152,1); -- WEAPON_BONUS: 152
 
 -- Biast
 INSERT INTO `mob_pool_mods` VALUES (410,236,20,0); -- HUMANOID_KILLER: 20
@@ -282,7 +278,6 @@ INSERT INTO `mob_pool_mods` VALUES (2254,407,100,0); -- UFASTCAST: 100
 INSERT INTO `mob_pool_mods` VALUES (2255,3,100,1);  -- MP_BASE: 100
 INSERT INTO `mob_pool_mods` VALUES (2255,34,60,1);  -- MAGIC_COOL: 60
 INSERT INTO `mob_pool_mods` VALUES (2255,368,70,0); -- REGAIN: 70
-INSERT INTO `mob_pool_mods` VALUES (2255,59,171,1); -- WEAPON_BONUS: 171
 
 -- King Vinegarroon
 INSERT INTO `mob_pool_mods` VALUES (2262,370,125,0); -- REGEN: 125
@@ -368,8 +363,7 @@ INSERT INTO `mob_pool_mods` VALUES (2834,574,100,0); -- WSD+% (Backhand Blow): 1
 
 -- Nidhogg
 INSERT INTO `mob_pool_mods` VALUES (2840,368,70,0); -- REGAIN: 70
-INSERT INTO `mob_pool_mods` VALUES (2840,370,50,0); -- REGEN: 50
-INSERT INTO `mob_pool_mods` VALUES (2840,59,153,1); -- WEAPON_BONUS: 153
+INSERT INTO `mob_pool_mods` VALUES (2840,370,15,0); -- REGEN: 15
 
 -- Nunyunuwi
 INSERT INTO `mob_pool_mods` VALUES (2922,370,100,0); -- REGEN: 100
@@ -449,7 +443,6 @@ INSERT INTO `mob_pool_mods` VALUES (3540,3,100,1); -- MP_BASE: 100
 INSERT INTO `mob_pool_mods` VALUES (3540,59,157,1); -- WEAPON_BONUS: 157
 
 -- Serket
-INSERT INTO `mob_pool_mods` VALUES (3549,370,50,0); -- REGEN: 50
 INSERT INTO `mob_pool_mods` VALUES (3549,59,128,1); -- WEAPON_BONUS: 128
 
 -- Shikaree X

@@ -114,11 +114,13 @@ end
 
 -- potential lottery placeholder was killed
 xi.mob.phOnDespawn = function(ph, phList, chance, cooldown, immediate)
-    print("killed PH")
     -- Confirm the mob is actually dead
     if ph:getHP() > 0 then
         return
     end
+
+    print("killed PH")
+    print(ph)
 
     if type(immediate) ~= "boolean" then
         immediate = false
@@ -148,6 +150,7 @@ xi.mob.phOnDespawn = function(ph, phList, chance, cooldown, immediate)
                 math.random(1, 1000) <= chance
             then
                 -- on PH death, replace PH repop with NM repop
+                print("NM set to spawn!")
                 DisallowRespawn(phId, true)
                 UpdateNMSpawnPoint(nmId)
                 nm:setRespawnTime(immediate and 1 or GetMobRespawnTime(phId)) -- if immediate is true, spawn the nm immediately (1ms) else use placeholder's timer

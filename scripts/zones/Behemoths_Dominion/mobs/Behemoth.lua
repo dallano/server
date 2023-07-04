@@ -11,7 +11,6 @@ local entity = {}
 
 entity.onMobSpawn = function(mob)
     mob:setLocalVar("[rage]timer", 1800) -- 30 minutes
-    mob:addMod(xi.mod.SLEEPRES, 90)
     mob:setMod(xi.mod.TRIPLE_ATTACK, 5)
     mob:setMod(xi.mod.MDEF, 20)
     mob:setMod(xi.mod.EVA, 315)
@@ -21,9 +20,9 @@ entity.onMobSpawn = function(mob)
     mob:setMod(xi.mod.GRAVITYRES, 10)
     mob:setMod(xi.mod.PARALYZERES, 15)
     mob:setMod(xi.mod.BLINDRES, 15)
-    mob:setMod(xi.mod.SLEEPRES, 100)
     mob:setMod(xi.mod.STUNRES, 50)
-    mob:setMod(xi.mod.SILENCERES, 100)
+    mob:addImmunity(xi.immunity.SILENCE)
+    mob:addImmunity(xi.immunity.SLEEP)
 
     -- Despawn the ???
     local questionMarks = GetNPCByID(ID.npc.BEHEMOTH_QM)

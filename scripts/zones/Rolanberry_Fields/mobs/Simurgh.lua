@@ -15,7 +15,7 @@ local entity = {}
 entity.onMobInitialize = function(mob)
     --xi.mob.nmTODPersistCache(mob:getZone(), mob:getID())
     mob:addMod(xi.mod.SLEEPRES, 100)
-    mob:setMod(xi.mod.EVA, 400)
+    mob:setMod(xi.mod.EVA, 50)
 end
 
 entity.onMobSpawn = function(mob)

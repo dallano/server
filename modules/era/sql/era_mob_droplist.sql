@@ -3693,7 +3693,7 @@ INSERT INTO `mob_droplist` VALUES (403,0,0,1000,4400,@ALWAYS);  -- Slice Of Land
 INSERT INTO `mob_droplist` VALUES (403,0,0,1000,4400,@ALWAYS);  -- Slice Of Land Crab Meat (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (403,0,0,1000,881,@ALWAYS);   -- Crab Shell (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (403,0,0,1000,936,@UNCOMMON); -- Chunk Of Rock Salt (Uncommon, 10%)
-INSERT INTO `mob_droplist` VALUES (403,0,0,1000,16945,@RARE);   -- Arondight (Rare, 5%)
+INSERT INTO `mob_droplist` VALUES (403,0,0,1000,16945,@COMMON);   -- Arondight (Common, 24%)
 
 -- ZoneID: 132 - Cankercap
 INSERT INTO `mob_droplist` VALUES (404,0,0,1000,2901,@UNCOMMON); -- Giant Agaricus Mushroom (Uncommon, 10%)
@@ -11770,7 +11770,7 @@ INSERT INTO `mob_droplist` VALUES (1448,0,0,1000,12924,@ALWAYS);   -- Magic Cuis
 INSERT INTO `mob_droplist` VALUES (1448,0,0,1000,11286,@UNCOMMON); -- Avalon Breastplate (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (1448,0,0,1000,16178,@UNCOMMON); -- Avalon Shield (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (1448,0,0,1000,836,70);          -- Square Of Damascene Cloth (7.0%)
-INSERT INTO `mob_droplist` VALUES (1448,0,0,1000,15899,@RARE);     -- Velocious Belt (Rare, 5%)
+INSERT INTO `mob_droplist` VALUES (1448,0,0,1000,13189,@RARE);     -- Speed Belt (Rare, 5%)
 
 -- ZoneID: 104 - King Arthro
 INSERT INTO `mob_droplist` VALUES (1449,0,0,1000,4172,@ALWAYS);  -- Reraiser (Always, 100%)

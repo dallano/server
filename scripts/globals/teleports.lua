@@ -88,6 +88,7 @@ local ids =
     SPIRE_OF_DEM          = 73,
     SPIRE_OF_MEA          = 74,
     MONARCH_LINN          = 75,
+    WAUGHROON_SHRINE      = 76,
 }
 xi.teleport.id = ids
 
@@ -166,6 +167,7 @@ xi.teleport.destination =
     [ids.SPIRE_OF_MEA]          = {  0.0225,    -2.000,   293.64,  64,  21 }, -- (xiSP)
     [ids.SPIRE_OF_HOLLA]        = {  0.0225,    -2.000,  -293.64, 191,  17 }, -- (xiSP)
     [ids.MONARCH_LINN]          = {  12.527,     0.400,  -539.60, 127,  31 }, -- (xiSP)
+    [ids.WAUGHROON_SHRINE]      = {  -357.63,    104.24, -259.99,   0, 144 }, -- (xiSP)
 }
 
 xi.teleport.type =

@@ -15,7 +15,7 @@ local intoShell = function(mob)
     mob:setMobAbilityEnabled(false)
     mob:setAutoAttackEnabled(false)
     mob:setMagicCastingEnabled(true)
-    mob:setMod(xi.mod.REGEN, 200)
+    mob:setMod(xi.mod.REGEN, 20)
     mob:setMod(xi.mod.UDMGRANGE, -9500)
     mob:setMod(xi.mod.UDMGPHYS, -9500)
     mob:setBehaviour(bit.bor(mob:getBehaviour(), xi.behavior.STANDBACK))
@@ -81,7 +81,7 @@ entity.onMobFight = function(mob, target)
 
     if mob:getHP() <= changeHP then
         if mob:getAnimationSub() == 1 then -- In shell
-            mob:setLocalVar("dmgToChange", mob:getHP() - 1000)
+            mob:setLocalVar("dmgToChange", mob:getHP() - 150)
             outOfShell(mob)
         elseif mob:getAnimationSub() == 2 then -- Out of shell
             intoShell(mob)

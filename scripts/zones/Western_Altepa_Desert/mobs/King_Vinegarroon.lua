@@ -15,22 +15,22 @@ local updateRegen = function(mob)
 
     if hour > 3 and hour < 20 then -- daytime between 4:00 and 20:00
         if regen ~= 125 then
-            mob:setMod(xi.mod.REGEN, 125)
+            mob:setMod(xi.mod.REGEN, 10)
         end
     else
-        if regen ~= 250 then
-            mob:setMod(xi.mod.REGEN, 250)
+        if regen ~= 20 then
+            mob:setMod(xi.mod.REGEN, 20)
         end
     end
 end
 
 entity.onMobInitialize = function(mob)
     mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:addMod(xi.mod.REGAIN, 50)
+    mob:addMod(xi.mod.REGAIN, 10)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.PETRIFY, { chance = 100 })
+    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.PETRIFY, { chance = 15 })
 end
 
 entity.onMobDisengage = function(mob, weather)
@@ -61,8 +61,6 @@ entity.onMobWeaponSkill = function(target, mob, skill)
             mob:triggerDrawIn(mob, false, 1, nil, target, true)
         end
 
-        -- KV always does an AOE TP move followed by a single target TP move
-        mob:useMobAbility(({ 353, 350, 720 })[math.random(1, 3)])
         mob:setLocalVar("[Draw-In]WaitTime", os.time() + 1)
     end
 end

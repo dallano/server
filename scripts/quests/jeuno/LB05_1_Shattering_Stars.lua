@@ -106,6 +106,7 @@ quest.sections =
                 [93] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         player:setLevelCap(75)
+                        player:setFellowValue("lvlcap", 75)
                         player:messageSpecial(ruludeID.text.YOUR_LEVEL_LIMIT_IS_NOW_75)
                     end
                 end,

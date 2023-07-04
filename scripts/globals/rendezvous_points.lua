@@ -21,11 +21,11 @@ xi.rendezvousPoints = xi.rendezvousPoints or {}
 
 local cutscenes =
 {
-    [xi.zone.NORTHERN_SAN_DORIA]  = { standard = 779, manual = 781, tactics = 780 },
-    [xi.zone.PORT_BASTOK]  = { standard = 347, manual = 351, tactics = 350 },
-    [xi.zone.WINDURST_WATERS]  = { standard = 903, manual = 915, tactics = 914 },
-    [xi.zone.RULUDE_GARDENS]  = { standard = 10069, manual = 10072, tactics = 10071 },
-    [xi.zone.AHT_URHGAN_WHITEGATE]  = { standard = 966, manual = 965, tactics = 964 },
+    [xi.zone.NORTHERN_SAN_DORIA]    = { standard = 779,   manual = 781,   tactics = 780   },
+    [xi.zone.PORT_BASTOK]           = { standard = 347,   manual = 351,   tactics = 350   },
+    [xi.zone.WINDURST_WATERS]       = { standard = 903,   manual = 915,   tactics = 914   },
+    [xi.zone.RULUDE_GARDENS]        = { standard = 10069, manual = 10072, tactics = 10071 },
+    [xi.zone.AHT_URHGAN_WHITEGATE]  = { standard = 966,   manual = 965,   tactics = 964   },
 }
 
 xi.rendezvousPoints.onTrigger = function(player, npc)
@@ -33,6 +33,7 @@ xi.rendezvousPoints.onTrigger = function(player, npc)
     local optionsMask   = player:getFellowValue("optionsMask")
     local bond          = player:getFellowValue("bond")
     local menuParam     = 240 -- default chat, quests, battle options
+
     if bond >= 30 then
         menuParam = menuParam - 16
     end -- appearances option
@@ -51,25 +52,21 @@ xi.rendezvousPoints.onTrigger = function(player, npc)
     local fellowParam   = xi.fellow_utils.getFellowParam(player)
 
     if player:getQuestStatus(xi.quest.log_id.JEUNO, xi.quest.id.jeuno.MIRROR_MIRROR) == QUEST_COMPLETED then
-        if player:getQuestStatus(xi.quest.log_id.JEUNO, xi.quest.id.jeuno.CHAMELEON_CAPERS) == QUEST_COMPLETED then
-            if
-                player:hasItem(xi.items.TACTICS_MANUAL_OF_FORTITUDE) and
-                (bit.band(optionsMask, bit.lshift(1, 5)) == 0)
-            then -- T.M. Fortitude
-                player:startEvent(cutscenes[zone].manual, zone, 1820, 0, 0, 0, styleParam, lookParam, fellowParam)
-            elseif
-                player:hasItem(xi.items.TACTICS_MANUAL_OF_MIGHT) and
-                (bit.band(optionsMask, bit.lshift(1, 6)) == 0)
-            then -- T.M. Might
-                player:startEvent(cutscenes[zone].manual, zone, 1839, 0, 0, 0, styleParam, lookParam, fellowParam)
-            elseif
-                player:hasItem(xi.items.TACTICS_MANUAL_OF_ENDURANCE) and
-                (bit.band(optionsMask, bit.lshift(1, 7)) == 0)
-            then -- T.M. Endurance
-                player:startEvent(cutscenes[zone].manual, zone, 1876, 0, 0, 0, styleParam, lookParam, fellowParam)
-            else
-                player:startEvent(cutscenes[zone].standard, zone, menuParam, 0, 0, pearl, styleParam, lookParam, fellowParam)
-            end
+        if
+            player:hasItem(xi.items.TACTICS_MANUAL_OF_FORTITUDE) and
+            (bit.band(optionsMask, bit.lshift(1, 5)) == 0)
+        then -- T.M. Fortitude
+            player:startEvent(cutscenes[zone].manual, zone, 1820, 0, 0, 0, styleParam, lookParam, fellowParam)
+        elseif
+            player:hasItem(xi.items.TACTICS_MANUAL_OF_MIGHT) and
+            (bit.band(optionsMask, bit.lshift(1, 6)) == 0)
+        then -- T.M. Might
+            player:startEvent(cutscenes[zone].manual, zone, 1839, 0, 0, 0, styleParam, lookParam, fellowParam)
+        elseif
+            player:hasItem(xi.items.TACTICS_MANUAL_OF_ENDURANCE) and
+            (bit.band(optionsMask, bit.lshift(1, 7)) == 0)
+        then -- T.M. Endurance
+            player:startEvent(cutscenes[zone].manual, zone, 1876, 0, 0, 0, styleParam, lookParam, fellowParam)
         else
             player:startEvent(cutscenes[zone].standard, zone, menuParam, 0, 0, pearl, styleParam, lookParam, fellowParam)
         end

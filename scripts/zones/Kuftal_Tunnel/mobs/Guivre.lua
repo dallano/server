@@ -155,8 +155,8 @@ entity.onMobInitialize = function(mob)
     --natural double/triple attack.
     mob:setMod(xi.mod.MOVE, 150)
     mob:setMobMod(xi.mobMod.SIGHT_RANGE, 30)
-    mob:setMod(xi.mod.DOUBLE_ATTACK, 25)
-    mob:setMod(xi.mod.TRIPLE_ATTACK, 15)
+    mob:setMod(xi.mod.DOUBLE_ATTACK, 5)
+    mob:setMod(xi.mod.TRIPLE_ATTACK, 1)
 end
 
 entity.onMobSpawn = function(mob)

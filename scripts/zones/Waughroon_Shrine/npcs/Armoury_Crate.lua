@@ -434,12 +434,10 @@ local loot =
             { itemid = 17203, droprate  = 98 },  -- Shikar Bow
         },
         {
-            { itemid = 4874, droprate = 123 }, -- Absorb-STR
-            { itemid = 4751, droprate = 165 }, -- Erase
-            { itemid = 4714, droprate = 140 }, -- Phalanx
-            { itemid = 4896, droprate = 145 }, -- Fire Spirit
-            { itemid = 666,  droprate = 229 },  -- Steel Sheet
-            { itemid = 652,  droprate = 238 },  -- Steel Ingot
+            { itemid = 4874, droprate = 250 }, -- Absorb-STR
+            { itemid = 4751, droprate = 250 }, -- Erase
+            { itemid = 4714, droprate = 250 }, -- Phalanx
+            { itemid = 4896, droprate = 250 }, -- Fire Spirit
         },
         {
             { itemid = 4717, droprate = 263 }, -- Refresh
