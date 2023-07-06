@@ -140,7 +140,6 @@ xi.mob.phOnDespawn = function(ph, phList, chance, cooldown, immediate)
             local pop = nm:getLocalVar("pop")
 
             chance = math.ceil(chance * 10) -- chance / 1000.
-            print(chance)
             if
                 os.time() > pop and
                 not lotteryPrimed(phList) and
@@ -152,7 +151,6 @@ xi.mob.phOnDespawn = function(ph, phList, chance, cooldown, immediate)
                 DisallowRespawn(phId, true)
                 UpdateNMSpawnPoint(nmId)
                 nm:setRespawnTime(immediate and 1 or GetMobRespawnTime(phId)) -- if immediate is true, spawn the nm immediately (1ms) else use placeholder's timer
-                print("Spawning an NM!")
 
                 nm:addListener("SPAWN", "SPAWN_" .. nmId, function(m)
                     print("Lottery NM Spawned")

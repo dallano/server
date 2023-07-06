@@ -1187,6 +1187,19 @@ end
 xi.conquest.overseerOnTrigger = function(player, npc, guardNation, guardType, guardEvent, guardRegion)
     local pNation = player:getNation()
 
+    -- XISP (Ronfaure, Gustaberg, Sarutabaruta)
+    if
+        (guardRegion == xi.region.RONFAURE or
+        guardRegion == xi.region.GUSTABERG or
+        guardRegion == xi.region.SARUTABARUTA) and
+        guardType >= xi.conquest.guard.OUTPOST and
+        not player:hasTeleport(player:getNation(), guardRegion + 5)
+    then
+        player:PrintToPlayer("Congratulations! You have unlocked this regional outpost.", 20)
+        player:addTeleport(player:getNation(), guardRegion + 5)
+        return
+    end
+
     if xi.garrison.onTrigger(player, npc) then
         return
     end
@@ -1400,18 +1413,6 @@ xi.conquest.overseerOnEventFinish = function(player, csid, option, guardNation, 
         if not player:hasTeleport(guardNation, sRegion + 5) then
             player:addTeleport(guardNation, sRegion + 5)
         end
-
-    -- XISP (Ronfaure, Gustaberg, Sarutabaruta)
-    elseif
-        (guardRegion == xi.region.RONFAURE or
-        guardRegion == xi.region.GUSTABERG or
-        guardRegion == xi.region.SARUTABARUTA) and
-        guardType >= xi.conquest.guard.OUTPOST and
-        not player:hasTeleport(guardNation, sRegion + 5) and
-        sOutpost ~= nil
-    then
-        player:addTeleport(guardNation, sRegion + 5)
-        player:PrintToPlayer("Congratulations! You have unlocked this regional outpost.", 20)
 
     -- SET HOMEPOINT
     elseif option == 4 then
