@@ -21,6 +21,14 @@ entity.onTrigger = function(player, npc)
         17336,    5, -- Crossbow Bolt
         17313, 1107, -- Grenade
         2865, 10000, -- Dutchy Waystone
+        1255, 65643, -- Fire Ore
+        1256, 73125, -- Ice Ore
+        1257, 67154, -- Wind Ore
+        1258, 68156, -- Earth Ore
+        1259, 62156, -- Lightning Ore
+        1260, 58152, -- Water Ore
+        1261, 75213, -- Light Ore
+        1262, 76523, -- Dark Ore
     }
 
     player:showText(npc, ID.text.JUNK_SHOP_DIALOG)

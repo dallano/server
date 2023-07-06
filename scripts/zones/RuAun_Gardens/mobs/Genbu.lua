@@ -10,14 +10,14 @@ require("scripts/globals/status")
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.SILENCERES, 90)
+    mob:setMod(xi.mod.SILENCERES, 60)
     mob:addMod(xi.mod.EVA, 39)
-    mob:addMod(xi.mod.DEF, 210)
-    mob:addMod(xi.mod.VIT, 78)
+    mob:addMod(xi.mod.DEF, 110)
+    mob:addMod(xi.mod.VIT, 24)
     mob:addMod(xi.mod.DOUBLE_ATTACK, 10)
-    mob:setMod(xi.mod.COUNTER, 25)
+    mob:setMod(xi.mod.COUNTER, 10)
     mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
-    mob:setMobMod(xi.mobMod.MAGIC_COOL, 35)
+    mob:setMobMod(xi.mobMod.MAGIC_COOL, 15)
     mob:setLocalVar('defaultATT', mob:getMod(xi.mod.ATT))
 end
 
@@ -36,7 +36,7 @@ end
 entity.onMobFight = function(mob, target)
     -- Appears to gain +10 attack per 1% HP lost
     local hp = mob:getHPP()
-    local power = (100 - hp) * 10
+    local power = (100 - hp) * 5
 
     mob:setMod(xi.mod.ATT, mob:getLocalVar('defaultATT') + power)
 end

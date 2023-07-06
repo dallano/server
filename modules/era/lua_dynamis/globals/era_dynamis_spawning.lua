@@ -435,7 +435,7 @@ xi.dynamis.normalDynamicSpawn = function(oMob, oMobIndex, target)
                     require("scripts/mixins/job_special"),
                 },
             })
-            mobArg:setSpawn(oMob:getXPos()+math.random()*6-3, oMob:getYPos()-0.3, oMob:getZPos()+math.random()*6-3, oMob:getRotPos())
+            mobArg:setSpawn(oMob:getXPos() + math.random() * 6 - 3, oMob:getYPos() - 0.3, oMob:getZPos() + math.random() * 6 - 3, oMob:getRotPos())
             mobArg:spawn()
 
             if mobArg:getFamily() == 359 then
@@ -476,9 +476,9 @@ xi.dynamis.nonStandardDynamicSpawn = function(mobIndex, oMob, forceLink, zoneID,
         zPos = xi.dynamis.mobList[zoneID][mobIndex].pos[3]
         rPos = xi.dynamis.mobList[zoneID][mobIndex].pos[4]
     elseif oMob ~= nil then
-        xPos = oMob:getXPos()+math.random()*6-3
-        yPos = oMob:getYPos()-0.3
-        zPos = oMob:getZPos()+math.random()*6-3
+        xPos = oMob:getXPos()+math.random() * 6 - 3
+        yPos = oMob:getYPos() - 0.3
+        zPos = oMob:getZPos()+math.random() * 6 - 3
         rPos = oMob:getRotPos()
     end
     local zone = GetZone(zoneID)
@@ -1833,14 +1833,6 @@ xi.dynamis.setMobStats = function(mob)
 
         mob:setTrueDetection(true)
 
-        if     mob:getFamily() == 359 then -- If Hydra
-            mob:setMobLevel(math.random(80,82))
-        elseif mob:getFamily() == 358 then -- If Kindred
-            mob:setMobLevel(math.random(77,80))
-        else
-            mob:setMobLevel(math.random(77.78))
-        end
-
         if     job == xi.job.WAR then
             local params = {  }
             params.specials = {  }
@@ -1950,7 +1942,6 @@ xi.dynamis.setNightmareStats = function(mob)
         xi.dynamis.setSpecialSkill(mob)
         mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
         local job = mob:getMainJob()
-        mob:setMobLevel(math.random(78,80))
         mob:setTrueDetection(true)
 
         xi.dynamis.addParentListeners(mob)
@@ -1988,7 +1979,6 @@ xi.dynamis.setNMStats = function(mob)
     mob:addStatusEffect(xi.effect.BATTLEFIELD, 1, 0, 0, true)
     xi.dynamis.setSpecialSkill(mob)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 2)
-    mob:setMobLevel(math.random(80,82))
     mob:setTrueDetection(true)
     xi.dynamis.setMDB(mob)
 
@@ -2011,24 +2001,12 @@ xi.dynamis.setStatueStats = function(mob, mobIndex)
     mob:setMobType(xi.mobskills.mobType.BATTLEFIELD)
     mob:addStatusEffect(xi.effect.BATTLEFIELD, 1, 0, 0, true)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 2)
-    mob:setMobLevel(math.random(82,84))
-    mob:setMod(xi.mod.DMG, -5000)
-    -- if an eye then does not have slow movement speed and has lower HP in xarc
-    if mob:getFamily() == 4 then
-        -- base hp of eyes is 2600 for beauc, xarc eyes have about 1040
-        if mob:getZoneID() == xi.zone.DYNAMIS_XARCABARD then
-            mob:addMod(xi.mod.HPP, -60)
-        end
-    -- all other statues have slow movement speed
-    else
-        mob:setSpeed(20)
-    end
-
     mob:setTrueDetection(true)
     -- Disabling WHM job trait mods because their job is set to WHM in the DB.
     mob:setMod(xi.mod.REGEN, 0)
     mob:setMod(xi.mod.MPHEAL, 0)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 2)
+    mob:setSpeed(10)
 
     xi.dynamis.setMDB(mob)
     xi.dynamis.addParentListeners(mob)
@@ -2049,7 +2027,6 @@ xi.dynamis.setMegaBossStats = function(mob)
     mob:setMobType(xi.mobskills.mobType.BATTLEFIELD)
     mob:addStatusEffect(xi.effect.BATTLEFIELD, 1, 0, 0, true)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 2)
-    mob:setMobLevel(88)
     mob:setMod(xi.mod.STR, -10)
     mob:setTrueDetection(true)
     xi.dynamis.setMDB(mob)
@@ -2065,7 +2042,6 @@ xi.dynamis.setPetStats = function(mob)
     mob:addStatusEffect(xi.effect.BATTLEFIELD, 1, 0, 0, true)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
     mob:setMobMod(xi.mobMod.CHARMABLE, 0)
-    mob:setMobLevel(79)
     mob:setTrueDetection(true)
     xi.dynamis.setMDB(mob)
 end

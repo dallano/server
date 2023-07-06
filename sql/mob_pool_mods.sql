@@ -105,8 +105,8 @@ INSERT INTO `mob_pool_mods` VALUES (559,302,40,30); -- TATT
 -- Byakko
 INSERT INTO `mob_pool_mods` VALUES (592,3,100,1);  -- MP_BASE: 100
 INSERT INTO `mob_pool_mods` VALUES (592,68,15,0);  -- EVA: 15
-INSERT INTO `mob_pool_mods` VALUES (592,302,45,0); -- TRIPLE_ATTACK: 45
-INSERT INTO `mob_pool_mods` VALUES (592,59,160,1); -- WEAPON_BONUS: 160
+INSERT INTO `mob_pool_mods` VALUES (592,302,5,0); -- TRIPLE_ATTACK: 5
+INSERT INTO `mob_pool_mods` VALUES (592,59,65,1); -- WEAPON_BONUS: 65
 
 -- Capricious Cassie
 INSERT INTO `mob_pool_mods` VALUES (630,59,128,1); -- WEAPON_BONUS: 128
@@ -196,7 +196,7 @@ INSERT INTO `mob_pool_mods` VALUES (1461,4,4,1); -- SIGHT_RANGE: 4
 
 -- Genbu
 INSERT INTO `mob_pool_mods` VALUES (1491,3,100,1); -- MP_BASE: 100
-INSERT INTO `mob_pool_mods` VALUES (1491,59,130,1); -- WEAPON_BONUS: 130
+INSERT INTO `mob_pool_mods` VALUES (1491,59,60,1); -- WEAPON_BONUS: 60
 
 -- Goblin Digger Near
 INSERT INTO `mob_pool_mods` VALUES (1648,17,1,1);  -- NO_DESPAWN: 1
@@ -427,7 +427,7 @@ INSERT INTO `mob_pool_mods` VALUES (3268,56,1,1); -- HP_STANDBACK: 1
 INSERT INTO `mob_pool_mods` VALUES (3301,29,100,0); -- MDEF: 100
 
 -- Roc
-INSERT INTO `mob_pool_mods` VALUES (3376,59,136,1); -- WEAPON_BONUS: 136
+INSERT INTO `mob_pool_mods` VALUES (3376,59,136,1); -- WEAPON_BONUS: 150
 
 -- Rock Golem
 INSERT INTO `mob_pool_mods` VALUES (3379,4,4,1); -- SIGHT_RANGE: 4
@@ -440,7 +440,7 @@ INSERT INTO `mob_pool_mods` VALUES (3483,59,119,1); -- WEAPON_BONUS: 119
 
 -- Seiryu
 INSERT INTO `mob_pool_mods` VALUES (3540,3,100,1); -- MP_BASE: 100
-INSERT INTO `mob_pool_mods` VALUES (3540,59,157,1); -- WEAPON_BONUS: 157
+INSERT INTO `mob_pool_mods` VALUES (3540,59,65,1); -- WEAPON_BONUS: 65
 
 -- Serket
 INSERT INTO `mob_pool_mods` VALUES (3549,59,128,1); -- WEAPON_BONUS: 128
@@ -481,7 +481,7 @@ INSERT INTO `mob_pool_mods` VALUES (3796,21,97,1); -- PET_SPELL_LIST: 97
 
 -- Suzaku
 INSERT INTO `mob_pool_mods` VALUES (3816,3,100,1); -- MP_BASE: 100
-INSERT INTO `mob_pool_mods` VALUES (3816,59,157,1); -- WEAPON_BONUS: 157
+INSERT INTO `mob_pool_mods` VALUES (3816,59,70,1); -- WEAPON_BONUS: 70
 
 -- Swashstox Beadblinker
 INSERT INTO `mob_pool_mods` VALUES (3824,29,2,1); -- ASSIST: 2

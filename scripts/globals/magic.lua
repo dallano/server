@@ -1354,14 +1354,17 @@ xi.magic.finalMagicAdjustments = function(caster, target, spell, dmg)
     end
 
     local skill = spell:getSkillType()
-    if skill == xi.skill.ELEMENTAL_MAGIC then
-        dmg = dmg * xi.settings.main.ELEMENTAL_POWER
-    elseif skill == xi.skill.DARK_MAGIC then
-        dmg = dmg * xi.settings.main.DARK_POWER
-    elseif skill == xi.skill.NINJUTSU then
-        dmg = dmg * xi.settings.main.NINJUTSU_POWER
-    elseif skill == xi.skill.DIVINE_MAGIC then
-        dmg = dmg * xi.settings.main.DIVINE_POWER
+
+    if not caster:isMob() then
+        if skill == xi.skill.ELEMENTAL_MAGIC then
+            dmg = dmg * xi.settings.main.ELEMENTAL_POWER
+        elseif skill == xi.skill.DARK_MAGIC then
+            dmg = dmg * xi.settings.main.DARK_POWER
+        elseif skill == xi.skill.NINJUTSU then
+            dmg = dmg * xi.settings.main.NINJUTSU_POWER
+        elseif skill == xi.skill.DIVINE_MAGIC then
+            dmg = dmg * xi.settings.main.DIVINE_POWER
+        end
     end
 
     dmg = target:magicDmgTaken(dmg)

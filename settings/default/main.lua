@@ -109,7 +109,7 @@ xi.settings.main =
     SUBJOB_QUEST_LEVEL             = 18, -- Minimum level to accept either subjob quest.  Set to 0 to start the game with subjobs unlocked.
     ADVANCED_JOB_LEVEL             = 30, -- Minimum level to accept advanced job quests.  Set to 0 to start the game with advanced jobs.
     ALL_MAPS                       = 0,  -- Set to 1 to give starting characters all the maps.
-    UNLOCK_OUTPOST_WARPS           = 1,  -- Set to 1 to give starting characters all outpost warps.  2 to add Tu'Lia and Tavnazia.
+    UNLOCK_OUTPOST_WARPS           = 0,  -- Set to 1 to give starting characters all outpost warps.  2 to add Tu'Lia and Tavnazia.
 
     SHOP_PRICE      = 0.800, -- Multiplies prices in NPC shops.
     GIL_RATE        = 1.500, -- Multiplies gil earned from quests.  Won't always display in game.
@@ -117,7 +117,7 @@ xi.settings.main =
     -- Note: EXP rates are also influenced by conf setting
     EXP_RATE        = 2.500, -- Multiplies exp from script (except FoV/GoV).
     SCROLL_EXP_RATE = 10.00, -- Multiplies exp from single use XP Scrolls (e.g. Miratete's Memoirs).
-    BOOK_EXP_RATE   = 1.250, -- Multiplies exp from FoV/GoV book pages.
+    BOOK_EXP_RATE   = 1.000, -- Multiplies exp from FoV/GoV book pages.
     TABS_RATE       = 1.000, -- Multiplies tabs earned from fov.
     ROE_EXP_RATE    = 1.000, -- Multiplies exp earned from records of eminence.
     SPARKS_RATE     = 1.000, -- Multiplies sparks earned from records of eminence.
@@ -125,14 +125,14 @@ xi.settings.main =
     ELEMENTAL_POWER = 1.500, -- Multiplies damage dealt by Elemental and non-drain Dark Magic.
     DIVINE_POWER    = 1.500, -- Multiplies damage dealt by Divine Magic.
     NINJUTSU_POWER  = 1.500, -- Multiplies damage dealt by Ninjutsu Magic.
-    BLUE_POWER      = 1.250, -- Multiplies damage dealt by Blue Magic.
+    BLUE_POWER      = 1.000, -- Multiplies damage dealt by Blue Magic.
     DARK_POWER      = 1.750, -- Multiplies amount drained by Dark Magic.
     ITEM_POWER      = 2.000, -- Multiplies the effect of items such as Potions and Ethers.
     WEAPON_SKILL_POWER  = 1.000, -- Multiplies damage dealt by Weapon Skills.
     CHEST_GIL_MULT  = 2.000, -- Multiplier for gil drops from chests
 
     USE_ADOULIN_WEAPON_SKILL_CHANGES = true, -- true/false. Change to toggle new Adoulin weapon skill damage calculations
-    DISABLE_PARTY_EXP_PENALTY        = false, -- true/false.
+    DISABLE_PARTY_EXP_PENALTY        = true, -- true/false.
 
     -- TRUSTS
     ENABLE_TRUST_CASTING           = 0,
@@ -191,7 +191,7 @@ xi.settings.main =
     DYNA_MIDNIGHT_RESET         = false,     -- If true, makes the wait time count by number of server midnights instead of full 24 hour intervals
     DYNA_LEVEL_MIN              = 65,       -- Level min for entering in Dynamis
     TIMELESS_HOURGLASS_COST     = 50000,    -- Refund for the timeless hourglass for Dynamis.
-    PRISMATIC_HOURGLASS_COST    = 5000,     -- Cost of the prismatic hourglass for Dynamis.
+    PRISMATIC_HOURGLASS_COST    = 5000,    -- Cost of the prismatic hourglass for Dynamis.
     CURRENCY_EXCHANGE_RATE      = 100,      -- X Tier 1 ancient currency -> 1 Tier 2, and so on. Certain values may conflict with shop items. Not designed to exceed 198.
     RELIC_2ND_UPGRADE_WAIT_TIME = 7200,     -- Wait time for 2nd relic upgrade (stage 2 -> stage 3) in seconds. 7200s = 2 hours.
     RELIC_3RD_UPGRADE_WAIT_TIME = 3600,     -- Wait time for 3rd relic upgrade (stage 3 -> stage 4) in seconds. 3600s = 1 hour.

@@ -10,11 +10,11 @@ require("scripts/globals/status")
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.SILENCERES, 90)
-    mob:addMod(xi.mod.ATT, 155)
-    mob:addMod(xi.mod.DEF, 94)
-    mob:addMod(xi.mod.EVA, 104)
-    mob:addMod(xi.mod.VIT, 77)
+    mob:setMod(xi.mod.SILENCERES, 60)
+    mob:addMod(xi.mod.ATT, 45)
+    mob:addMod(xi.mod.DEF, 34)
+    mob:addMod(xi.mod.EVA, 34)
+    mob:addMod(xi.mod.VIT, 15)
     mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
     mob:setMobMod(xi.mobMod.MAGIC_COOL, 35)
 end

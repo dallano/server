@@ -1876,7 +1876,7 @@ INSERT INTO `mob_droplist` VALUES (192,0,0,1000,914,@VRARE); -- Vial Of Mercury 
 INSERT INTO `mob_droplist` VALUES (193,0,0,1000,954,@COMMON);    -- Magic Pot Shard (Common, 15%)
 INSERT INTO `mob_droplist` VALUES (193,0,0,1000,914,@UNCOMMON);  -- Vial Of Mercury (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (193,0,0,1000,1430,@UNCOMMON); -- Red Mages Testimony (Uncommon, 10%)
-INSERT INTO `mob_droplist` VALUES (193,0,0,1000,1195,@RARE);     -- Flask Of Romaeve Spring Water (Rare, 5%)
+INSERT INTO `mob_droplist` VALUES (193,0,0,1000,1195,@UNCOMMON); -- Flask Of Romaeve Spring Water (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (193,0,0,1000,4659,@RARE);     -- Scroll Of Shell Iv (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (193,0,0,1000,4774,@RARE);     -- Scroll Of Thunder Iii (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (193,0,0,1000,4775,@VRARE);    -- Scroll Of Thunder Iv (Very Rare, 1%)
@@ -1908,7 +1908,7 @@ INSERT INTO `mob_droplist` VALUES (195,0,0,1000,1474,@UNCOMMON); -- Infinity Cor
 INSERT INTO `mob_droplist` VALUES (195,0,0,1000,749,@RARE);      -- Mythril Beastcoin (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (195,0,0,1000,1470,@RARE);     -- Sparkling Stone (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (195,0,0,1000,748,20);         -- Gold Beastcoin (2.0%)
-INSERT INTO `mob_droplist` VALUES (195,0,0,1000,1449,20);        -- Tukuku Whiteshell (2.0%)
+INSERT INTO `mob_droplist` VALUES (195,0,0,1000,1449,@RARE);        -- Tukuku Whiteshell (2.0%)
 
 -- ZoneID: 253 - Awahondo
 INSERT INTO `mob_droplist` VALUES (196,0,0,1000,646,980);         -- Chunk Of Adaman Ore (98.0%)
@@ -2613,7 +2613,7 @@ INSERT INTO `mob_droplist` VALUES (264,2,0,1000,825,0);         -- Square Of Cot
 -- ZoneID: 134 - Puu Timu The Phantasmal
 INSERT INTO `mob_droplist` VALUES (265,0,0,1000,3357,@VCOMMON);  -- Leering Bijou (Very Common, 24%)
 INSERT INTO `mob_droplist` VALUES (265,0,0,1000,1466,@COMMON);   -- Pile Of Relic Iron (Common, 15%)
-INSERT INTO `mob_droplist` VALUES (265,0,0,1000,1449,@UNCOMMON); -- Tukuku Whiteshell (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (265,0,0,1000,1449,@COMMON); -- Tukuku Whiteshell (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (265,0,0,1000,1464,@RARE);     -- Lancewood Log (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (265,0,0,1000,1470,@RARE);     -- Sparkling Stone (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (265,0,0,1000,1518,@RARE);     -- Colossal Skull (Rare, 5%)
@@ -4590,7 +4590,7 @@ INSERT INTO `mob_droplist` VALUES (518,0,0,1000,4875,@RARE);     -- Scroll Of Ab
 INSERT INTO `mob_droplist` VALUES (519,0,0,1000,4249,@ALWAYS); -- Copy Of Schultz Stratagems (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (519,0,0,1000,3358,@COMMON); -- Shrouded Bijou (Common, 15%)
 INSERT INTO `mob_droplist` VALUES (519,0,0,1000,15107,90);     -- Assassins Armlets (9.0%)
-INSERT INTO `mob_droplist` VALUES (519,0,0,1000,1449,40);      -- Tukuku Whiteshell (4.0%)
+INSERT INTO `mob_droplist` VALUES (519,0,0,1000,1449,@RARE);      -- Tukuku Whiteshell (4.0%)
 INSERT INTO `mob_droplist` VALUES (519,0,0,1000,1455,30);      -- One Byne Bill (3.0%)
 INSERT INTO `mob_droplist` VALUES (519,0,0,1000,1456,@VRARE);  -- One Hundred Byne Bill (Very Rare, 1%)
 
@@ -20921,9 +20921,9 @@ INSERT INTO `mob_droplist` VALUES (2559,0,0,1000,1589,350);     -- Shard Of Necr
 INSERT INTO `mob_droplist` VALUES (2559,0,0,1000,1449,@COMMON); -- Tukuku Whiteshell (Common, 15%)
 INSERT INTO `mob_droplist` VALUES (2559,0,0,1000,1452,@COMMON); -- Ordelle Bronzepiece (Common, 15%)
 INSERT INTO `mob_droplist` VALUES (2559,0,0,1000,1455,@COMMON); -- One Byne Bill (Common, 15%)
-INSERT INTO `mob_droplist` VALUES (2559,0,0,1000,1450,@VRARE);  -- Lungo-Nango Jadeshell (Very Rare, 1%)
-INSERT INTO `mob_droplist` VALUES (2559,0,0,1000,1453,@VRARE);  -- Montiont Silverpiece (Very Rare, 1%)
-INSERT INTO `mob_droplist` VALUES (2559,0,0,1000,1456,@VRARE);  -- One Hundred Byne Bill (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (2559,0,0,1000,1450,@RARE);  -- Lungo-Nango Jadeshell (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (2559,0,0,1000,1453,@RARE);  -- Montiont Silverpiece (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (2559,0,0,1000,1456,@RARE);  -- One Hundred Byne Bill (Very Rare, 1%)
 
 -- ZoneID: 188 - Vanguard Enchanter
 -- ZoneID: 188 - Vanguard Enchanter
@@ -20958,9 +20958,9 @@ INSERT INTO `mob_droplist` VALUES (2560,2,0,1000,1455,0);       -- One Byne Bill
 INSERT INTO `mob_droplist` VALUES (2561,0,0,1000,4248,@UNCOMMON); -- Copy Of Ginuvas Battle Theory (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (2561,0,0,1000,749,40);         -- Mythril Beastcoin (4.0%)
 INSERT INTO `mob_droplist` VALUES (2561,0,0,1000,748,20);         -- Gold Beastcoin (2.0%)
-INSERT INTO `mob_droplist` VALUES (2561,0,0,1000,1449,@VRARE);    -- Tukuku Whiteshell (Very Rare, 1%)
-INSERT INTO `mob_droplist` VALUES (2561,0,0,1000,1452,@VRARE);    -- Ordelle Bronzepiece (Very Rare, 1%)
-INSERT INTO `mob_droplist` VALUES (2561,0,0,1000,1455,@VRARE);    -- One Byne Bill (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (2561,0,0,1000,1449,@RARE);    -- Tukuku Whiteshell (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (2561,0,0,1000,1452,@RARE);    -- Ordelle Bronzepiece (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (2561,0,0,1000,1455,@RARE);    -- One Byne Bill (Very Rare, 1%)
 
 -- ZoneID: 185 - Vanguard Neckchopper
 -- ZoneID: 185 - Vanguard Backstabber
@@ -21075,7 +21075,7 @@ INSERT INTO `mob_droplist` VALUES (2567,0,0,1000,19272,131);    -- Yagentoshiro 
 -- ZoneID: 136 - Vee Qiqa The Decreer
 -- ZoneID: 137 - Vee Qiqa The Decreer
 -- ZoneID: 164 - Vee Qiqa The Decreer
-INSERT INTO `mob_droplist` VALUES (2568,0,0,1000,1450,@VRARE); -- Lungo-Nango Jadeshell (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (2568,0,0,1000,1450,@RARE); -- Lungo-Nango Jadeshell (Very Rare, 1%)
 
 -- ZoneID:  99 - Vee Seju The Consumed
 -- ZoneID: 164 - Vee Seju The Consumed
@@ -23105,7 +23105,7 @@ INSERT INTO `mob_droplist` VALUES (2823,0,0,1000,1445,@RARE);    -- Freyas Tear 
 INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,644,@VCOMMON); -- Chunk Of Mythril Ore (Very Common, 24%)
 INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,955,@RARE);    -- Golem Shard (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,955,@RARE);    -- Golem Shard (Rare, 5%)
-INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,2388,@SRARE);   -- Chunk Of Diorite (Super Rare, 0.5%)
+INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,2388,@UNCOMMON);   -- Chunk Of Diorite (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,1132,@VRARE);  -- Square Of Raxa (Very Rare, 1%)
 
 -- ZoneID: 143 - Nighu Nestfender

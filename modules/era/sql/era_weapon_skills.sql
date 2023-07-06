@@ -208,6 +208,7 @@ DELETE FROM `weapon_skills` WHERE
     -- Swords
     name = "sanguine_blade"     or -- June 2010
     name = "chant_du_cygne"     or -- September 2010
+    name = "requiescat"         or -- December 2011
     name = "knights_of_rotund"  or -- July 2017
 
     -- Great Swords
@@ -218,40 +219,50 @@ DELETE FROM `weapon_skills` WHERE
     -- Axes
     name = "bora_axe"           or -- June 2010
     name = "cloudsplitter"      or -- September 2010
+    name = "ruinator"           or -- December 2011
 
     -- Great Axes
     name = "fell_cleave"        or -- June 2010
     name = "ukkos_fury"         or -- September 2010
+    name = "upheaval"           or -- December 2011
 
     -- Scythe
     name = "infernal_scythe"    or -- June 2010
     name = "quietus"            or -- September 2010
+    name = "entropy"            or -- December 2011
 
     -- Polearm
     name = "sonic_thrust"       or -- June 2010
     name = "camlanns_torment"   or -- September 2010
+    name = "stardiver"          or -- December 2011
 
     -- Katana
     name = "blade_yu"           or -- June 2010
     name = "blade_hi"           or -- September 2010
+    name = "blade_shun"         or -- December 2011
 
     -- Great Katana
     name = "tachi_ageha"        or -- June 2010
     name = "tachi_fudo"         or -- September 2010
+    name = "tachi_shoha"        or -- December 2011
     name = "tachi_suikawari"    or -- August 2018
 
     -- Clubs
     name = "flash_nova"         or -- June 2010
     name = "dagan"              or -- Sepember 2010
+    name = "realmrazer"         or -- December 2011
 
     -- Staffs
     name = "cataclysm"          or -- June 2010
     name = "myrkr"              or -- Sepember 2010
+    name = "shattersoul"        or -- December 2011
 
     -- Archery
     name = "refulgent_arrow"    or -- June 2010
     name = "jishnus_radiance"   or -- September 2010
+    name = "apex_arrow"         or -- December 2011
 
     -- Marksmanship
     name = "numbing_shot"       or -- June 2010
     name = "wildfire"           or -- September 2010
+    name = "last_stand";           -- December 2011

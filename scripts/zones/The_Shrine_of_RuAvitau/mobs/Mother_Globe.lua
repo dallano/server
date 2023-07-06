@@ -29,9 +29,6 @@ local slaveGlobes =
     ID.mob.MOTHER_GLOBE + 1,
     ID.mob.MOTHER_GLOBE + 2,
     ID.mob.MOTHER_GLOBE + 3,
-    ID.mob.MOTHER_GLOBE + 4,
-    ID.mob.MOTHER_GLOBE + 5,
-    ID.mob.MOTHER_GLOBE + 6,
 }
 
 local startingSpacingDistance = -1 -- how far apart to initially attempt to space the slaves
@@ -130,7 +127,7 @@ end
 -- zero helps to prevent insta spawning next slaves while
 -- in combat if at the start it had all 6 out already
 local setNextSpawnSlaveGlobe = function(mg, spawnCount, nowTime)
-    local nextSpawnTime = 35 -- 30 + 5 seconds for "cast time"
+    local nextSpawnTime = 55 -- 30 + 5 seconds for "cast time"
 
     if spawnCount < #slaveGlobes then
         mg:setLocalVar("nextSlaveSpawnTime", nowTime + nextSpawnTime)
@@ -179,7 +176,7 @@ entity.onMobSpawn = function(mob)
     mob:setLocalVar("posNum", math.random(1, 9))
     mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
     -- 60 damage spikes with duration of 1 hour (in case stolen by thf)
-    mob:addStatusEffectEx(xi.effect.SHOCK_SPIKES, 0, 60, 0, 3600)
+    mob:addStatusEffectEx(xi.effect.SHOCK_SPIKES, 0, 25, 0, 3600)
     mob:setSpeed(20)
 end
 
@@ -200,7 +197,7 @@ entity.onMobFight = function(mob, target)
 
     if not mob:hasStatusEffect(xi.effect.SHOCK_SPIKES) then
         -- 60 damage spikes with duration of 1 hour (in case stolen by thf)
-        mob:addStatusEffectEx(xi.effect.SHOCK_SPIKES, 0, 60, 0, 3600)
+        mob:addStatusEffectEx(xi.effect.SHOCK_SPIKES, 0, 25, 0, 3600)
     end
 end
 
@@ -251,7 +248,7 @@ entity.onMobRoam = function(mob)
 
     if not mob:hasStatusEffect(xi.effect.SHOCK_SPIKES) then
         -- 60 damage spikes with duration of 1 hour (in case stolen by thf)
-        mob:addStatusEffectEx(xi.effect.SHOCK_SPIKES, 0, 60, 0, 3600)
+        mob:addStatusEffectEx(xi.effect.SHOCK_SPIKES, 0, 25, 0, 3600)
     end
 end
 

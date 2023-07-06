@@ -31,13 +31,13 @@ zoneObject.onInitialize = function(zone)
 
     -- BCNM Warp NPCs
     local quadavStatue = zone:insertDynamicEntity({
-        objtype = xi.objType.NPC,
-        name = "Quadav Effigy",
-        x = -64.931,
-        y = 0.000,
-        z = 8.092,
+        objtype  = xi.objType.NPC,
+        name     = "Quadav Effigy",
+        x        = -64.931,
+        y        = 0.000,
+        z        = 8.092,
         rotation = 64,
-        look = 1058,
+        look     = 1058,
 
         releaseIdOnDisappear = true,
         specialSpawnAnimation = true,
@@ -49,6 +49,8 @@ zoneObject.onInitialize = function(zone)
                 npc:timer(3500, function(x)
                     xi.teleport.to(player, xi.teleport.id.WAUGHROON_SHRINE)
                 end)
+            else
+                player:PrintToPlayer("Fe-ed... m-e... or-bs...", 0, "Quadav Effigy")
             end
         end,
     })

@@ -46,7 +46,7 @@ entity.onMobWeaponSkillPrepare = function(mob, target)
     local panzerfaustMax = mob:getLocalVar("panzerfaustMax")
 
     if panzerfaustCounter == 0 and panzerfaustMax == 0 then
-        panzerfaustMax = math.random(2, 5)
+        panzerfaustMax = math.random(2, 3)
         mob:setLocalVar("panzerfaustMax", panzerfaustMax)
     end
 end

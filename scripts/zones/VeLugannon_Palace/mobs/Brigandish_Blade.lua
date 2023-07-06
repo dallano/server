@@ -12,19 +12,15 @@ entity.onMobInitialize = function(mob)
 end
 
 entity.onMobSpawn = function(mob)
-    mob:setUnkillable(true)
-    mob:setLocalVar("killable", 0)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.TERROR, { chance = 30 })
+    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.TERROR, { chance = 10 })
 end
 
 entity.onMobFight = function(mob, target)
-    local killable = mob:getLocalVar("killable")
-
-    if mob:getHPP() == 1 and mob:getMod(xi.mod.DMG) == 0 and not killable then
-        mob:setMod(xi.mod.DMG, -10000)
+    if mob:getHPP() < 15 then
+        mob:setMod(xi.mod.DMG, -9000)
     end
 end
 

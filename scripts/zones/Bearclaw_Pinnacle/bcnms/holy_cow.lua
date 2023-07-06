@@ -39,7 +39,7 @@ end
 
 battlefieldObject.onEventFinish = function(player, csid, option)
     if csid == 32001 then
-        player:addExp(4000)
+        player:addExp(3000)
     end
 end
 

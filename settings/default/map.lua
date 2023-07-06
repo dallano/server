@@ -153,7 +153,7 @@ xi.settings.map =
     -- Adjust max MP pool for NMs, regular mobs, players, and trusts/fellows. Acts as a multiplier, so default is 1.
     NM_MP_MULTIPLIER        = 1.0,
     MOB_MP_MULTIPLIER       = 1.0,
-    PLAYER_MP_MULTIPLIER    = 1.5,
+    PLAYER_MP_MULTIPLIER    = 1.0,
     ALTER_EGO_MP_MULTIPLIER = 1.5,
 
     -- Sets the fraction of MP a subjob provides to the main job. Retail is half and this acts as a divisor so default is 2

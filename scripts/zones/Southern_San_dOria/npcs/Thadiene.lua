@@ -26,6 +26,7 @@ entity.onTrigger = function(player, npc)
         17152,    38, 3,    -- Shortbow
         17318,     3, 3,    -- Wooden Arrow
         5029,   4320, 3,    -- Scroll of Battlefield Elegy
+        17216,   163, 3,    -- Light Crossbow
     }
 
     player:showText(npc, ID.text.ASH_THADI_ENE_SHOP_DIALOG)

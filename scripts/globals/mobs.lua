@@ -119,9 +119,6 @@ xi.mob.phOnDespawn = function(ph, phList, chance, cooldown, immediate)
         return
     end
 
-    print("killed PH")
-    print(ph)
-
     if type(immediate) ~= "boolean" then
         immediate = false
     end
@@ -143,6 +140,7 @@ xi.mob.phOnDespawn = function(ph, phList, chance, cooldown, immediate)
             local pop = nm:getLocalVar("pop")
 
             chance = math.ceil(chance * 10) -- chance / 1000.
+            print(chance)
             if
                 os.time() > pop and
                 not lotteryPrimed(phList) and

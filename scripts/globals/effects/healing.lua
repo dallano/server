@@ -72,7 +72,9 @@ effectObject.onEffectTick = function(target, effect)
         end
 
         if mpp >= 67 and mpNotice == 1 and mpSignals then
-            master:showText(target, ID.text.FELLOW_MESSAGE_OFFSET + 45 + personality)
+            if ID.text.FELLOW_MESSAGE_OFFSET + 45 + personality ~= nil then
+                master:showText(target, ID.text.FELLOW_MESSAGE_OFFSET + 45 + personality)
+            end
             target:setLocalVar("mpNotice", 0)
         elseif mpp < 67 and mpNotice ~= 1 then
             target:setLocalVar("mpNotice", 1)

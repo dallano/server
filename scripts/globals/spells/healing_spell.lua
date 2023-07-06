@@ -146,8 +146,12 @@ xi.spells.healing.doHealingSpell = function(caster, target, spell, isWhiteMagic)
     end
 
     if xi.magic.isValidHealTarget(caster, target) then
+        local mod = 1
+        if not caster:isMob() then
+            mod = mod * xi.settings.main.CURE_POWER
+        end
         final = xi.spells.healing.applyCasterBonuses(caster, base, spell:getElement(), isWhiteMagic)
-        final = (final + (final * target:getMod(xi.mod.CURE_POTENCY_RCVD))) * xi.settings.main.CURE_POWER
+        final = (final + (final * target:getMod(xi.mod.CURE_POTENCY_RCVD))) * mod
         xi.spells.healing.handleAfflatusSolace(caster, target, final)
     else
         if target:isUndead() then

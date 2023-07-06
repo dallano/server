@@ -81,7 +81,7 @@ quest.sections =
                     if npcUtil.tradeHasExactly(trade, xi.items.SWORD_OF_TRIALS) then
                         local wsPoints = trade:getItem(0):getWeaponskillPoints()
 
-                        if wsPoints < 300 then
+                        if wsPoints < 100 then
                             return quest:event(192) -- unfinished weapon
                         else
                             return quest:progressEvent(193) -- finished weapon
@@ -113,6 +113,7 @@ quest.sections =
                     player:delKeyItem(xi.ki.WEAPON_TRAINING_GUIDE)
                     player:addLearnedWeaponskill(xi.ws_unlock.RESOLUTION)
                     -- player:messageSpecial(bastokMinesID.text.GROUND_STRIKE_LEARNED)
+                    player:PrintToPlayer("You learned the weaponskill: Resolution!", 23)
                     quest:complete(player)
                 end,
             },
