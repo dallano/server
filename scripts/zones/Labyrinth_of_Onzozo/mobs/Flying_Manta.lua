@@ -21,8 +21,8 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    xi.mob.phOnDespawn(mob, ID.mob.LORD_OF_ONZOZO_PH, 15, 57600) -- 16 hour minimum
-    xi.mob.phOnDespawn(mob, ID.mob.PEG_POWLER_PH, 15, 7200) -- 2 hour minimum
+    xi.mob.phOnDespawn(mob, ID.mob.LORD_OF_ONZOZO_PH, 5, 57600) -- 16 hour minimum
+    xi.mob.phOnDespawn(mob, ID.mob.PEG_POWLER_PH, 5, 7200) -- 2 hour minimum
 end
 
 return entity

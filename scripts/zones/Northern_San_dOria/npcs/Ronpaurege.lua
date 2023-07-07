@@ -3,14 +3,13 @@
 --  NPC: Ronpaurege
 -- !pos 65.739 -0.199 74.275 231
 -----------------------------------
-require("scripts/globals/teleports")
------------------------------------
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
+    player:event(669)
 end
 
 entity.onEventUpdate = function(player, csid, option)

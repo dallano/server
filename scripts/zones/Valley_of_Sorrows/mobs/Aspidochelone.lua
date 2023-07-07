@@ -81,7 +81,7 @@ entity.onMobFight = function(mob, target)
 
     if mob:getHP() <= changeHP then
         if mob:getAnimationSub() == 1 then -- In shell
-            mob:setLocalVar("dmgToChange", mob:getHP() - 150)
+            mob:setLocalVar("dmgToChange", mob:getHP() - 1000)
             outOfShell(mob)
         elseif mob:getAnimationSub() == 2 then -- Out of shell
             intoShell(mob)

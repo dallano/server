@@ -12,10 +12,9 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    -- if player:sendGuild(5182, 3, 18, 5) then
-    --     player:showText(npc, ID.text.FISHING_SHOP_DIALOG)
-    -- end
-    xi.shop.generalGuild(player, xi.shop.generalGuildStock[xi.skill.FISHING], xi.skill.FISHING)
+    if player:sendGuild(5182, 3, 18, 5) then
+        player:showText(npc, ID.text.FISHING_SHOP_DIALOG)
+    end
 end
 
 entity.onEventUpdate = function(player, csid, option)

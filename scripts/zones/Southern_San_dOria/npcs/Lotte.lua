@@ -5,11 +5,6 @@
 -----------------------------------
 local entity = {}
 
-local stock =
-{
-
-}
-
 entity.onTrade = function(player, npc, trade)
 end
 
@@ -21,9 +16,7 @@ entity.onEventUpdate = function(player, csid, option)
 end
 
 entity.onEventFinish = function(player, csid, option)
-    if csid == 564 then
-        xi.shop.general(player, xi.shop.foodStock)
-    end
+    xi.shop.general(player, xi.shop.foodStock)
 end
 
 return entity

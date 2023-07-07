@@ -4194,7 +4194,7 @@ namespace charutils
     {
         if (settings::get<bool>("main.DISABLE_PARTY_EXP_PENALTY"))
         {
-            return 1.00;
+            return 1.00 * settings::get<float>("main.EXP_RATE");
         }
 
         // Alliance share

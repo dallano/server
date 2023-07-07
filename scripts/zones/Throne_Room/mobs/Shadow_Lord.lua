@@ -56,7 +56,7 @@ entity.onMobFight = function(mob, target)
                 mob:useMobAbility(673)
                 mob:setAnimationSub(2)
                 mob:delStatusEffect(xi.effect.MAGIC_SHIELD)
-                mob:setMod(xi.mod.UDMGPHYS, -2500)
+                mob:setMod(xi.mod.UDMGPHYS, -7500)
                 mob:setAutoAttackEnabled(true)
                 mob:setMagicCastingEnabled(false)
                 mob:setMobMod(xi.mobMod.MAGIC_COOL, 10)
@@ -80,7 +80,6 @@ entity.onMobDeath = function(mob, player, optParams)
     mob:setAutoAttackEnabled(true)
     mob:setMagicCastingEnabled(true)
     mob:delStatusEffect(xi.effect.MAGIC_SHIELD)
-    mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
 end
 
 entity.onMobDespawn = function(mob)
@@ -89,7 +88,6 @@ entity.onMobDespawn = function(mob)
     mob:setAutoAttackEnabled(true)
     mob:setMagicCastingEnabled(true)
     mob:delStatusEffect(xi.effect.MAGIC_SHIELD)
-    mob:delStatusEffect(xi.effect.PHYSICAL_SHIELD)
 end
 
 return entity

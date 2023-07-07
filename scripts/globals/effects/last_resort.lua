@@ -14,11 +14,6 @@ effectObject.onEffectGain = function(target, effect)
 
     -- Gear that affects this mod is handled by a Latent Effect because the gear must remain equipped
     target:addMod(xi.mod.DEFP, -15 - target:getMerit(xi.merit.LAST_RESORT_EFFECT))
-
-    -- xiSP
-    if not target:isMob() then
-        target:addHP(100 + (target:getSkillLevel(xi.skill.DARK_MAGIC) * 0.05))
-    end
 end
 
 effectObject.onEffectTick = function(target, effect)

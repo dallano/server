@@ -582,7 +582,7 @@ local loot =
 
         {
             { itemid =     0, droprate =  932 }, -- Nothing
-            { itemid = 18852, droprate =   13 }, -- Octave Club
+            { itemid = 17440, droprate =   13 }, -- Kraken Club
             { itemid = 15185, droprate =   55 }, -- Walkure Mask
         },
     },

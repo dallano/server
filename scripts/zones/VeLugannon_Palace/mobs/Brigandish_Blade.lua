@@ -19,7 +19,7 @@ entity.onAdditionalEffect = function(mob, target, damage)
 end
 
 entity.onMobFight = function(mob, target)
-    if mob:getHPP() < 15 then
+    if mob:getHPP() < 20 then
         mob:setMod(xi.mod.DMG, -9000)
     end
 end

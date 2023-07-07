@@ -88,7 +88,7 @@ entity.onEventFinish = function(player, csid, option)
         -- Finishing Quest: 'Always More Quoth The Ravenous'
         player:tradeComplete()
         player:completeQuest(xi.quest.log_id.ADOULIN, xi.quest.id.adoulin.ALWAYS_MORE_QUOTH_THE_RAVENOUS)
-        player:addExp(1500 * xi.settings.main.EXP_RATE)
+        player:addExp(1500)
         player:addCurrency('bayld', 1000 * xi.settings.main.BAYLD_RATE)
         player:messageSpecial(ID.text.BAYLD_OBTAINED, 1000 * xi.settings.main.BAYLD_RATE)
         player:addFame(xi.quest.fame_area.ADOULIN)
