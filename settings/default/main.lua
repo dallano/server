@@ -233,7 +233,7 @@ xi.settings.main =
     STARLIGHT_YEAR_ROUND            = 0,    -- Set to 1 to have the Starlight Celebration initialize outside of normal times.
     SUNBREEZE                       = 1,    -- Set to 1 to have the Sunbreeze Festival be active from Aug 1 to Aug 31.
     SUNBREEZE_VENDOR_ERA            = 2004, -- Set to any value between 2004 - 2005.
-    EGGHUNT =                               -- Egg Hunt Egg-stravanganza
+    EGGHUNT                         =       -- Egg Hunt Egg-stravanganza
     {
         START                       = { DAY = 6,  MONTH = 4 },
         FINISH                      = { DAY = 17, MONTH = 4 },
