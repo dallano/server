@@ -10798,7 +10798,7 @@ INSERT INTO `item_basic` VALUES (13465,0,'brass_ring','brass_ring',1,2084,25,0,5
 INSERT INTO `item_basic` VALUES (13466,0,'orichalcum_ring','orichalcum_ring',1,2084,25,0,28857);
 INSERT INTO `item_basic` VALUES (13467,0,'dragon_ring','dragon_ring',1,2084,25,0,3920);
 INSERT INTO `item_basic` VALUES (13468,0,'tourmaline_ring','tourmaline_ring',1,2084,25,0,250);
-INSERT INTO `item_basic` VALUES (13469,0,'leather_ring','leather_ring',1,2084,25,0,242);
+INSERT INTO `item_basic` VALUES (13469,0,'leather_ring','leather_ring',1,2084,25,0,1442);
 INSERT INTO `item_basic` VALUES (13470,0,'clear_ring','clear_ring',1,2084,25,0,250);
 INSERT INTO `item_basic` VALUES (13471,0,'amethyst_ring','amethyst_ring',1,2084,25,0,250);
 INSERT INTO `item_basic` VALUES (13472,0,'lapis_lazuli_ring','lapis_lazuli_ring',1,2084,25,0,250);
@@ -10828,7 +10828,7 @@ INSERT INTO `item_basic` VALUES (13495,0,'san_dorian_ring','san_dorian_ring',1,6
 INSERT INTO `item_basic` VALUES (13496,0,'windurstian_ring','windurstian_ring',1,63568,0,1,0);
 INSERT INTO `item_basic` VALUES (13497,0,'bastokan_ring','bastokan_ring',1,63568,0,1,0);
 INSERT INTO `item_basic` VALUES (13498,0,'platinum_ring_+1','platinum_ring_+1',1,2080,25,0,4611);
-INSERT INTO `item_basic` VALUES (13499,0,'leather_ring_+1','leather_ring_+1',1,2080,25,0,302);
+INSERT INTO `item_basic` VALUES (13499,0,'leather_ring_+1','leather_ring_+1',1,2080,25,0,1602);
 INSERT INTO `item_basic` VALUES (13500,0,'bone_ring_+1','bone_ring_+1',1,2080,25,0,377);
 INSERT INTO `item_basic` VALUES (13501,0,'beetle_ring_+1','beetle_ring_+1',1,2080,25,0,825);
 INSERT INTO `item_basic` VALUES (13502,0,'horn_ring_+1','horn_ring_+1',1,2080,25,0,1500);
@@ -13706,7 +13706,7 @@ INSERT INTO `item_basic` VALUES (16381,0,'tumbler_trunks','tumbler_trunks',1,348
 INSERT INTO `item_basic` VALUES (16382,0,'adapas_slacks','adapas_slacks',1,2052,20,0,0);
 INSERT INTO `item_basic` VALUES (16383,0,'mirador_trousers','mirador_trousers',1,34820,20,0,0);
 INSERT INTO `item_basic` VALUES (16385,0,'cesti','cesti',1,2084,1,0,24);
-INSERT INTO `item_basic` VALUES (16386,0,'lizard_cesti','lizard_cesti',1,2084,1,0,302);
+INSERT INTO `item_basic` VALUES (16386,0,'lizard_cesti','lizard_cesti',1,2084,1,0,702);
 INSERT INTO `item_basic` VALUES (16387,0,'poison_cesti','poison_cesti',1,2084,1,0,992);
 INSERT INTO `item_basic` VALUES (16388,0,'himantes','himantes',1,2084,1,0,1042);
 INSERT INTO `item_basic` VALUES (16389,0,'coeurl_cesti','coeurl_cesti',1,2084,1,0,2029);
@@ -13718,7 +13718,7 @@ INSERT INTO `item_basic` VALUES (16394,0,'darksteel_knuckles','dst._knuckles',1,
 INSERT INTO `item_basic` VALUES (16395,0,'diamond_knuckles','diamond_knuckles',1,2084,1,0,4223);
 INSERT INTO `item_basic` VALUES (16396,0,'koenigs_knuckles','koenigs_knuckles',1,2084,1,0,4461);
 INSERT INTO `item_basic` VALUES (16397,0,'behemoth_cesti','behemoth_cesti',1,2084,1,0,4163);
-INSERT INTO `item_basic` VALUES (16398,0,'burning_cesti','burning_cesti',1,2080,1,0,333);
+INSERT INTO `item_basic` VALUES (16398,0,'burning_cesti','burning_cesti',1,2080,1,0,933);
 INSERT INTO `item_basic` VALUES (16399,0,'katars','katars',1,2084,1,0,1936);
 INSERT INTO `item_basic` VALUES (16400,0,'darksteel_katars','darksteel_katars',1,2084,1,0,3509);
 INSERT INTO `item_basic` VALUES (16401,0,'jamadhars','jamadhars',1,2084,1,0,3628);
