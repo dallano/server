@@ -25,8 +25,8 @@ xi.settings.main =
 
     -- Enable Expansion (1 = Enabled, 0 = Disabled)
     ENABLE_COP       = 1,
-    ENABLE_TOAU      = 0,
-    ENABLE_WOTG      = 0,
+    ENABLE_TOAU      = 1,
+    ENABLE_WOTG      = 1,
     ENABLE_ACP       = 0,
     ENABLE_AMK       = 0,
     ENABLE_ASA       = 0,
@@ -213,7 +213,7 @@ xi.settings.main =
     -- SPELL SPECIFIC SETTINGS
     DIA_OVERWRITE                   = 1,     -- Set to 1 to allow Bio to overwrite same tier Dia.  Default is 1.
     BIO_OVERWRITE                   = 1,     -- Set to 1 to allow Dia to overwrite same tier Bio.  Default is 0.
-    STONESKIN_CAP                   = 1000,  -- Soft cap for hp absorbed by stoneskin
+    STONESKIN_CAP                   = 700,   -- Soft cap for hp absorbed by stoneskin
     BLINK_SHADOWS                   = 4,     -- Number of shadows supplied by Blink spell
     SPIKE_EFFECT_DURATION           = 180,   -- the duration of RDM, BLM spikes effects (not Reprisal)
     ELEMENTAL_DEBUFF_DURATION       = 120,   -- base duration of elemental debuffs

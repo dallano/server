@@ -4,6 +4,7 @@
 local ID = require('scripts/zones/Lower_Jeuno/IDs')
 local lowerJeunoGlobal = require('scripts/zones/Lower_Jeuno/globals')
 require('scripts/globals/events/starlight_celebrations')
+require("scripts/globals/teleports")
 require('scripts/globals/conquest')
 require('scripts/globals/keyitems')
 require('scripts/globals/missions')
@@ -17,6 +18,89 @@ local zoneObject = {}
 zoneObject.onInitialize = function(zone)
     zone:registerTriggerArea(1, 23, 0, -43, 44, 7, -39) -- Inside Tenshodo HQ. TODO: Find out if this is used other than in ZM 17 (not anymore). Remove if not.
     xi.chocobo.initZone(zone)
+
+    -- Crag Tele NPCs
+    local holly = zone:insertDynamicEntity({
+        objtype  = xi.objType.NPC,
+        name     = "Holly",
+        x        = -13.57,
+        y        = 0.000,
+        z        = 0.04,
+        rotation = 45,
+        look     = 1403,
+        releaseIdOnDisappear = true,
+        specialSpawnAnimation = true,
+        onTrade = function(player, npc, trade)
+            if npcUtil.tradeHasExactly(trade, { { "gil", 1000 } }) then
+                player:confirmTrade()
+                npc:injectActionPacket(player:getID(), 4, 122, 0, 0, 0, 10, 1)
+                player:PrintToPlayer("*gasp*", 0, "Holly")
+                player:PrintToPlayer("You rock! I can finally afford that scroll I've been eyeing on the auction house.", 0, "Holly")
+
+                npc:timer(3500, function(x)
+                    xi.teleport.to(player, xi.teleport.id.HOLLA)
+                end)
+            end
+        end,
+        onTrigger = function(player, npc)
+            player:PrintToPlayer("Hi! I'm Holly. Your local teleport gal!", 0, "Holly")
+            player:PrintToPlayer("With a generous donation, I will teleport you straight to the crag of Holla!", 0, "Holly")
+        end,
+    })
+    local dolly = zone:insertDynamicEntity({
+        objtype  = xi.objType.NPC,
+        name     = "Dolly",
+        x        = -15.75,
+        y        = 0.000,
+        z        = -0.22,
+        rotation = 69,
+        look     = 1404,
+        releaseIdOnDisappear = true,
+        specialSpawnAnimation = true,
+        onTrade = function(player, npc, trade)
+            if npcUtil.tradeHasExactly(trade, { { "gil", 1000 } }) then
+                player:confirmTrade()
+                npc:injectActionPacket(player:getID(), 4, 122, 0, 0, 0, 10, 1)
+                player:PrintToPlayer("Really?! You won't regret it. Up up and ~away!", 0, "Dolly")
+
+                npc:timer(3500, function(x)
+                    xi.teleport.to(player, xi.teleport.id.DEM)
+                end)
+            end
+        end,
+        onTrigger = function(player, npc)
+            player:PrintToPlayer("~Hello! I'm Dolly. Another one of your local teleport gals!", 0, "Dolly")
+            player:PrintToPlayer("With a boastful donation, I'd gladly teleport you to the Crag of Dem!", 0, "Dolly")
+        end,
+    })
+    local molly = zone:insertDynamicEntity({
+        objtype  = xi.objType.NPC,
+        name     = "Molly",
+        x        = -11.73,
+        y        = 0.000,
+        z        = 1.78,
+        rotation = 29,
+        look     = 1405,
+        releaseIdOnDisappear = true,
+        specialSpawnAnimation = true,
+        onTrade = function(player, npc, trade)
+            if npcUtil.tradeHasExactly(trade, { { "gil", 1000 } }) then
+                player:confirmTrade()
+                npc:injectActionPacket(player:getID(), 4, 122, 0, 0, 0, 10, 1)
+                player:PrintToPlayer("tyvm", 0, "Molly")
+
+                npc:timer(3500, function(x)
+                    xi.teleport.to(player, xi.teleport.id.MEA)
+                end)
+            end
+        end,
+        onTrigger = function(player, npc)
+            player:PrintToPlayer("(Teleport-Mea) (Do you need it?) 1k", 0, "Molly")
+        end,
+    })
+    holly:setStatus(xi.status.NORMAL)
+    molly:setStatus(xi.status.NORMAL)
+    dolly:setStatus(xi.status.NORMAL)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

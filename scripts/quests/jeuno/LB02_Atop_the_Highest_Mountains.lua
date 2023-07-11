@@ -93,6 +93,7 @@ quest.sections =
                         player:delKeyItem(xi.ki.TRIANGULAR_FRIGICITE)
                         player:setLevelCap(60)
                         player:setFellowValue("lvlcap", 60)
+                        player:setFellowValue("bondcap", 60)
                         player:messageSpecial(ruludeID.text.YOUR_LEVEL_LIMIT_IS_NOW_60)
                     end
                 end,

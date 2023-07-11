@@ -11,6 +11,7 @@ abilityObject.onAbilityCheck = function(player, target, ability)
 end
 
 abilityObject.onPetAbility = function(target, pet, skill)
+    local duration = math.min(60 + xi.summon.getSummoningSkillOverCap(pet) * 2, 180)
     local base = 47 + pet:getMainLvl() * 3
     local tp   = skill:getTP()
 
@@ -37,6 +38,7 @@ abilityObject.onPetAbility = function(target, pet, skill)
     end
 
     skill:setMsg(xi.msg.basic.SELF_HEAL)
+    target:addStatusEffect(xi.effect.REFRESH, 3, duration)
     target:addHP(base)
 
     pet:updateEnmityFromCure(pet, base)

@@ -131,6 +131,7 @@ mission.sections =
 
                 [101] = function(player, csid, option, npc)
                     if mission:complete(player) then
+                        npcUtil.giveKeyItem(player, xi.ki.AIRSHIP_PASS)
                         player:delKeyItem(xi.ki.KINDRED_REPORT)
                     end
                 end,

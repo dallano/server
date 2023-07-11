@@ -90,6 +90,7 @@ quest.sections =
                         player:delKeyItem(xi.ki.YAGUDO_CREST)
                         player:setLevelCap(65)
                         player:setFellowValue("lvlcap", 65)
+                        player:setFellowValue("bondcap", 70)
                         player:messageSpecial(ruludeID.text.YOUR_LEVEL_LIMIT_IS_NOW_65)
                     end
                 end,

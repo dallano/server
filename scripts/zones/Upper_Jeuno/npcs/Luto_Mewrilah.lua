@@ -208,7 +208,7 @@ entity.onTrigger = function(player, npc)
         player:startEvent(10033)
     elseif
         unlistedQualities == QUEST_ACCEPTED and
-        unlistedQualitiesProgress == 15
+        unlistedQualitiesProgress <= 15
     then
         player:startEvent(10032)
     elseif
@@ -222,15 +222,12 @@ entity.onTrigger = function(player, npc)
         lookingGlass == QUEST_AVAILABLE
     then
         player:startEvent(10039)
-    elseif
-        lookingGlass == QUEST_ACCEPTED and
-        lookingGlassProgress < 4
-    then
-        player:startEvent(10042)
-    elseif
-        lookingGlass == QUEST_ACCEPTED and
-        lookingGlassProgress == 4
-    then
+    -- elseif
+    --     lookingGlass == QUEST_ACCEPTED and
+    --     lookingGlassProgress < 4
+    -- then
+    --     player:startEvent(10042)
+    elseif lookingGlass == QUEST_ACCEPTED then
         player:startEvent(10043, 244, 0, 0, 0, 0, 0, 0, fellowParam)
     elseif
         lookingGlass == QUEST_COMPLETED and

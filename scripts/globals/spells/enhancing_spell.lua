@@ -240,12 +240,12 @@ xi.spells.enhancing.calculateEnhancingBasePower = function(caster, target, spell
     -- Phalanx
     elseif spellEffect == xi.effect.PHALANX then
         if skillLevel > 300 then -- Phalanx I and II over 300 skill
-            basePower = utils.clamp(math.floor((skillLevel - 300.5) / 28.5) + 28, 28, 35)
+            basePower = utils.clamp(math.floor(skillLevel / 28.5) + 28, 28, 55)
         else
             if spellId == xi.magic.spell.PHALANX then -- Phalanx
-                basePower = utils.clamp(math.floor(skillLevel / 10) - 2, 0, 35)
+                basePower = utils.clamp(math.floor(skillLevel / 7), 10, 100)
             else -- Phalanx II
-                basePower = utils.clamp(math.floor(skillLevel / 25) + 16, 16, 35)
+                basePower = utils.clamp(math.floor(skillLevel / 8), 16, 100)
             end
         end
 
@@ -265,7 +265,12 @@ xi.spells.enhancing.calculateEnhancingBasePower = function(caster, target, spell
         if skillLevel >= 360 then
             basePower = math.floor((skillLevel - 300) / 10)
         end
+
+    -- Blinkd
+    elseif spellEffect == xi.effect.BLINK then
+        basePower = xi.settings.main.BLINK_SHADOWS
     end
+
 
     return basePower
 end

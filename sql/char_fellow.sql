@@ -15,7 +15,7 @@ CREATE TABLE `char_fellow` (
   `level` tinyint(2) unsigned NOT NULL DEFAULT 20,
   `exp` smallint(5) unsigned NOT NULL DEFAULT 0,
   `job` tinyint(3) unsigned NOT NULL DEFAULT 1,
-  `bond` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `bond` tinyint(3) unsigned NOT NULL DEFAULT 5,
   `bondcap` tinyint(3) unsigned NOT NULL DEFAULT 30,
   `face` tinyint(2) unsigned NOT NULL DEFAULT 0,
   `size` tinyint(1) unsigned NOT NULL DEFAULT 0,

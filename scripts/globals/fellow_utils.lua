@@ -44,10 +44,7 @@ local tankJobAbilityTable =
 
 local meleeJobAbilityTable =
 {
-    { ability = xi.jobAbility.SOULEATER,    level = 30, recast = 440,  hppThreshold = 100, isValid = true, self = true,  recastVar = "[FELLOW]souleaterRecast"  },
-    { ability = xi.jobAbility.WEAPON_BASH,  level = 20, recast = 380,  hppThreshold = 100, isValid = true, self = false, recastVar = "[FELLOW]weaponBashRecast" },
     { ability = xi.jobAbility.BERSERK,      level = 15, recast = 380,  hppThreshold = 100, isValid = true, self = true,  recastVar = "[FELLOW]berserkRecast"    },
-    { ability = xi.jobAbility.LAST_RESORT,  level = 15, recast = 380,  hppThreshold = 100, isValid = true, self = true,  recastVar = "[FELLOW]lastResortRecast" },
     { ability = xi.jobAbility.BLOOD_WEAPON, level = 1,  recast = 7200, hppThreshold = 45,  isValid = true, self = true,  recastVar = "[FELLOW]twoHourRecast"    },
 }
 
@@ -161,7 +158,7 @@ local weaponskills =
         [32] = { 1,  false }, -- fast blade
         [33] = { 9, false }, -- burning blade
         [34] = { 16, false }, -- red lotus blade
-        [35] = { 24, false }, -- flat blade
+        -- [35] = { 24, false }, -- flat blade
         -- [36] = { 33, false }, -- shining blade
         [37] = { 41, false }, -- seraph blade
         [38] = { 49, true },  -- circle blade
@@ -302,15 +299,18 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
     fellow:setPos(mPos.x + math.random(-1.0, 1.0), mPos.y, mPos.z + math.random(-1.0, 1.0))
 
     if fellowType == fellowTypes.ATTACKER then
-        fellow:setMod(xi.mod.HAST_GEAR, 100)
-        fellow:setMod(xi.mod.ATTP, 10)
+        fellow:setMobMod(xi.mobMod.WEAPON_BONUS, fellow:getMainLvl())
+        fellow:setMod(xi.mod.ATT,  50 + fellow:getMainLvl())
+        fellow:setMod(xi.mod.HASTE_GEAR, 100)
         fellow:setMod(xi.mod.ACC,  10)
         fellow:setMod(xi.mod.STR,   7)
         fellow:setMod(xi.mod.DEX,   7)
 
     elseif fellowType == fellowTypes.FIERCE then
+        fellow:setMobMod(xi.mobMod.WEAPON_BONUS, fellow:getMainLvl() * 1.15)
+        fellow:setMod(xi.mod.ATT,  50 + fellow:getMainLvl())
         fellow:setMod(xi.mod.DOUBLE_ATTACK, 10)
-        fellow:setMod(xi.mod.HAST_GEAR, 1500)
+        fellow:setMod(xi.mod.HASTE_GEAR, 1500)
         fellow:setMod(xi.mod.STORETP, 15)
         fellow:setMod(xi.mod.GKATANA, 15)
         fellow:setMod(xi.mod.POLEARM, 15)
@@ -321,7 +321,6 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.AXE,     15)
         fellow:setMod(xi.mod.HTH,     15)
         fellow:setMod(xi.mod.PARRY,    5)
-        fellow:setMod(xi.mod.ATTP,    20)
         fellow:setMod(xi.mod.ACC,     25)
         fellow:setMod(xi.mod.STR,     15)
         fellow:setMod(xi.mod.DEX,     15)
@@ -464,7 +463,10 @@ xi.fellow_utils.buildPartyTable = function(master)
     local party = master:getParty()
 
     for _, member in pairs(party) do
-        if member:getFellow() ~= nil then
+        if
+            member:isPC() and
+            member:getFellow() ~= nil
+        then
             table.insert(party, member:getFellow())
         end
     end
@@ -538,7 +540,8 @@ xi.fellow_utils.checkJobAbility = function(fellow, master)
                 if
                     fellowLvl > ability.level and
                     hpp <= ability.hppThreshold and
-                    recast < os.time()
+                    recast < os.time() and
+                    fellow:isEngaged()
                 then
                     fellow:setLocalVar("abilityRecast", os.time() + math.random(3, 4))
                     master:setCharVar(ability.recastVar, os.time() + ability.recast)
@@ -1278,10 +1281,10 @@ xi.fellow_utils.upgradeArmor = function(fellow, master)
     local unlocked      = {}
     local armorTable    =
     {
-        [1] = { "hands" },
-        [2] = { "feet" },
-        [3] = { "legs" },
         [4] = { "body" },
+        [3] = { "legs" },
+        [2] = { "feet" },
+        [1] = { "hands" },
     }
 
     for i, v in ipairs(armorTable) do
