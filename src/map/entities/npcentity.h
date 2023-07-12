@@ -33,7 +33,7 @@ public:
     uint32       m_flags;
     uint8        name_prefix;
     uint8        widescan;
-    bool         m_triggerable = false;
+    bool         m_triggerable  = false;
     bool         m_alwaysRender = false;
     void         setAlwaysRender(bool alwaysRender); // Used for permanent features in a zone such as decorations / fireworks
     uint32       getEntityFlags() const;             // Returns the current value in m_flags

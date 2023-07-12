@@ -289,7 +289,7 @@ xi.events.sunbreeze_festival.goldfishVendorOnEventFinish = function(player, csid
         option <= 17
     then
         if option == 11 then -- Bag of Random Fireworks
-            npcUtil.giveItem(player, { { reward.item + math.random(0, 3), math.random(1, reward.amount ) } })
+            npcUtil.giveItem(player, { { reward.item + math.random(0, 3), math.random(1, reward.amount) } })
 
         elseif option == 12 then -- Colored Drop (Red - Black)
             npcUtil.giveItem(player, { { reward.item + math.random(0, 7), reward.amount } })
