@@ -63,6 +63,7 @@ namespace
 {
     const float CHARACTER_SYNC_DISTANCE                = 45.0f;
     const float CHARACTER_DESPAWN_DISTANCE             = 50.0f;
+    const float NPC_DESPAWN_DISTANCE                   = 50.0f;
     const int   CHARACTER_SWAP_MAX                     = 5;
     const int   CHARACTER_SYNC_LIMIT_MAX               = 32;
     const int   CHARACTER_SYNC_DISTANCE_SWAP_THRESHOLD = 30;
@@ -631,9 +632,18 @@ void CZoneEntities::SpawnNPCs(CCharEntity* PChar)
             if (PCurrentNpc->status == STATUS_TYPE::NORMAL || PCurrentNpc->status == STATUS_TYPE::MOB)
             {
                 // Is this npc "visible" to the player?
-                if (distance(PChar->loc.p, PCurrentNpc->loc.p) <= 50)
+                if (distance(PChar->loc.p, PCurrentNpc->loc.p) <= NPC_DESPAWN_DISTANCE)
                 {
                     // npc not in update list for player, add it in
+                    if (NPC == PChar->SpawnNPCList.end())
+                    {
+                        PChar->SpawnNPCList.insert(NPC, SpawnIDList_t::value_type(PCurrentNpc->id, PCurrentNpc));
+                        PChar->updateEntityPacket(PCurrentNpc, ENTITY_SPAWN, UPDATE_ALL_MOB);
+                    }
+                }
+                // Special case for NPCs that are always rendered in
+                else if (PCurrentNpc->m_alwaysRender)
+                {
                     if (NPC == PChar->SpawnNPCList.end())
                     {
                         PChar->SpawnNPCList.insert(NPC, SpawnIDList_t::value_type(PCurrentNpc->id, PCurrentNpc));

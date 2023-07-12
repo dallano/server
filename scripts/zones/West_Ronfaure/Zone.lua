@@ -2,6 +2,7 @@
 -- Zone: West_Ronfaure (100)
 -----------------------------------
 local ID = require('scripts/zones/West_Ronfaure/IDs')
+require('scripts/globals/events/sunbreeze_festival')
 require('scripts/quests/i_can_hear_a_rainbow')
 require('scripts/globals/chocobo_digging')
 require('scripts/globals/conquest')

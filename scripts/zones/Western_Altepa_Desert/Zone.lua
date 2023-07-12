@@ -2,6 +2,7 @@
 -- Zone: Western_Altepa_Desert (125)
 -----------------------------------
 local ID = require('scripts/zones/Western_Altepa_Desert/IDs')
+require('scripts/globals/events/sunbreeze_festival')
 require('scripts/quests/i_can_hear_a_rainbow')
 require('scripts/globals/chocobo_digging')
 require('scripts/globals/conquest')

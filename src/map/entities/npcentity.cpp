@@ -52,6 +52,11 @@ uint32 CNpcEntity::getEntityFlags() const
     return m_flags;
 }
 
+void CNpcEntity::setAlwaysRender(bool alwaysRender)
+{
+    m_alwaysRender = alwaysRender;
+}
+
 void CNpcEntity::setEntityFlags(uint32 EntityFlags)
 {
     m_flags = EntityFlags;

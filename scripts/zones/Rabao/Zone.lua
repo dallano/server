@@ -2,6 +2,7 @@
 -- Zone: Rabao (247)
 -----------------------------------
 local ID = require('scripts/zones/Rabao/IDs')
+require('scripts/globals/events/sunbreeze_festival')
 require('scripts/globals/conquest')
 require('scripts/globals/chocobo')
 -----------------------------------

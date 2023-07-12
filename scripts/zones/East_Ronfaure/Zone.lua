@@ -10,6 +10,7 @@ require('scripts/globals/helm')
 require('scripts/globals/zone')
 require('scripts/globals/events/harvest_festivals')
 require('scripts/globals/events/starlight_celebrations')
+require('scripts/globals/events/sunbreeze_festival')
 -----------------------------------
 local zoneObject = {}
 
