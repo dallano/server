@@ -26,7 +26,7 @@ xi.settings.main =
     -- Enable Expansion (1 = Enabled, 0 = Disabled)
     ENABLE_COP       = 1,
     ENABLE_TOAU      = 1,
-    ENABLE_WOTG      = 1,
+    ENABLE_WOTG      = 0,
     ENABLE_ACP       = 0,
     ENABLE_AMK       = 0,
     ENABLE_ASA       = 0,
@@ -275,6 +275,7 @@ xi.settings.main =
     ACTIVATE_LAMP_TIME   = 6000, -- Time in miliseconds for lamps to stay lit. TODO: Get retail confirmation.
 
     -- MISC
+    ENABLE_CHOCOBO_RAISING       = true,  -- Enable if chocobo raising is to be enabled.
     ERA_CHOCOBO_ZONE_DISMOUNT    = false, -- If true, forces players to dismount a chocobo before entering a city or dungeon.
     RIVERNE_PORTERS              = 120,  -- Time in seconds that Unstable Displacements in Cape Riverne stay open after trading a scale.
     LANTERNS_STAY_LIT            = 3600, -- time in seconds that lanterns in the Den of Rancor stay lit.

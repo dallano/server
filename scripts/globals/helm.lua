@@ -1319,12 +1319,12 @@ xi.helm.helmInfo =
             {
                 drops =
                 {
+                    { 1200,  643 }, -- Iron Ore
                     { 1200, 1155 }, -- Iron Sand
                     { 1200,  928 }, -- Bomb Ash
-                    { 1000,  646 }, -- Adaman Ore
-                    { 1000,  739 }, -- Orichalcum Ore
-                    {  850,  643 }, -- Iron Ore
-                    {  550,  645 }, -- Darksteel Ore
+                    {  800,  645 }, -- Darksteel Ore
+                    {  500,  646 }, -- Adaman Ore
+                    {  500,  739 }, -- Orichalcum Ore
                     {   80,  769 }, -- Colored Rock
                     {   50, 2126 }, -- Orpiment
                 },

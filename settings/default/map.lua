@@ -185,7 +185,7 @@ xi.settings.map =
     BLOOD_PACT_SHARED_TIMER = false,
 
     -- Adjust mob drop rate. Acts as a multiplier, so default is 1.
-    DROP_RATE_MULTIPLIER = 2.0,
+    DROP_RATE_MULTIPLIER = 1.0,
 
     -- Multiplier for gil naturally dropped by mobs. Does not apply to the bonus gil from all_mobs_gil_bonus. Default is 1.0.
     MOB_GIL_MULTIPLIER = 1.5,

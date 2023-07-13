@@ -732,88 +732,93 @@ xi.chocoboRaising.startCutscene = function(player, npc, trade)
 
     local chocoState = xi.chocoboRaising.initChocoboData(player)
 
-    if trade ~= nil then -- Trade
-        if
-            npcUtil.tradeHasExactly(trade, xi.items.CHOCOBO_EGG_FAINTLY_WARM) or
-            npcUtil.tradeHasExactly(trade, xi.items.CHOCOBO_EGG_SLIGHTLY_WARM) or
-            npcUtil.tradeHasExactly(trade, xi.items.CHOCOBO_EGG_A_BIT_WARM) or
-            npcUtil.tradeHasExactly(trade, xi.items.CHOCOBO_EGG_A_LITTLE_WARM) or
-            npcUtil.tradeHasExactly(trade, xi.items.CHOCOBO_EGG_SOMEWHAT_WARM)
-        then
-            if chocoState == nil then
-                -- Handed over egg, handled in onEventFinish and xi.chocoboRaising.newChocobo
-                player:startEvent(tradeCsid, 0, 0, 0, 0, 0, 0, 0, 1)
-            else -- Already has a chocobo
-                -- Check location
-                if chocoState.location ~= raisingLocation[player:getZoneID()] then
-                    player:startEvent(rejectionCsid, 1)
-                else
-                    player:startEvent(rejectionCsid, 0)
-                end
-            end
-
-            return
-        end
-
-        -- TODO: Confirm this on retail
-        -- "Your chocobo has not hatched, so you cannot feed it yet."
-        if chocoState.stage == stage.EGG then
-            player:messageSpecial(ID.text.CHOCOBO_FEEDING_STILL_EGG)
-            return
-        end
-
-        -- Validate traded items
-        local tradedItems = {}
-        for slotId = 0, 7 do
-            local item = trade:getItem(slotId)
-            if item then
-                local id = item:getID()
-                -- Invalid foods are skipped and valid foods are accepted
-                if validFoods[id] then
-                    local quantity = trade:getSlotQty(slotId)
-                    for _ = 1, quantity do
-                        table.insert(tradedItems, id)
+    if chocoState ~= nil then
+        if trade ~= nil then -- Trade
+            if
+                npcUtil.tradeHasExactly(trade, xi.items.CHOCOBO_EGG_FAINTLY_WARM) or
+                npcUtil.tradeHasExactly(trade, xi.items.CHOCOBO_EGG_SLIGHTLY_WARM) or
+                npcUtil.tradeHasExactly(trade, xi.items.CHOCOBO_EGG_A_BIT_WARM) or
+                npcUtil.tradeHasExactly(trade, xi.items.CHOCOBO_EGG_A_LITTLE_WARM) or
+                npcUtil.tradeHasExactly(trade, xi.items.CHOCOBO_EGG_SOMEWHAT_WARM)
+            then
+                if chocoState == nil then
+                    -- Handed over egg, handled in onEventFinish and xi.chocoboRaising.newChocobo
+                    player:startEvent(tradeCsid, 0, 0, 0, 0, 0, 0, 0, 1)
+                else -- Already has a chocobo
+                    -- Check location
+                    if chocoState.location ~= raisingLocation[player:getZoneID()] then
+                        player:startEvent(rejectionCsid, 1)
+                    else
+                        player:startEvent(rejectionCsid, 0)
                     end
-
-                    trade:confirmItem(id, quantity)
                 end
-            end
-        end
 
-        if #tradedItems > 0 then
-            chocoState.foodGiven = tradedItems
-        end
-    else -- Trigger
-        -- Trade an egg to me if you want to start raising a chocobo.
-        if chocoState == nil then
-            player:startEvent(reminderCsid, 1)
-            return
-        else
-            -- Check location
-            if chocoState.location ~= raisingLocation[player:getZoneID()] then
-                player:startEvent(reminderCsid, 1, 1, 1, 1)
                 return
             end
+
+            -- TODO: Confirm this on retail
+            -- "Your chocobo has not hatched, so you cannot feed it yet."
+            if
+                chocoState ~= nil and
+                chocoState.stage == stage.EGG
+            then
+                player:messageSpecial(ID.text.CHOCOBO_FEEDING_STILL_EGG)
+                return
+            end
+
+            -- Validate traded items
+            local tradedItems = {}
+            for slotId = 0, 7 do
+                local item = trade:getItem(slotId)
+                if item then
+                    local id = item:getID()
+                    -- Invalid foods are skipped and valid foods are accepted
+                    if validFoods[id] then
+                        local quantity = trade:getSlotQty(slotId)
+                        for _ = 1, quantity do
+                            table.insert(tradedItems, id)
+                        end
+
+                        trade:confirmItem(id, quantity)
+                    end
+                end
+            end
+
+            if #tradedItems > 0 then
+                chocoState.foodGiven = tradedItems
+            end
+        else -- Trigger
+            -- Trade an egg to me if you want to start raising a chocobo.
+            if chocoState == nil then
+                player:startEvent(reminderCsid, 1)
+                return
+            else
+                -- Check location
+                if chocoState.location ~= raisingLocation[player:getZoneID()] then
+                    player:startEvent(reminderCsid, 1, 1, 1, 1)
+                    return
+                end
+            end
         end
+
+        local isTradeEvent = 0
+        if #chocoState.foodGiven > 0 then
+            isTradeEvent = 8
+        end
+
+        -- 0: Hello, x. What brings you here today?
+        -- 1: Hello, x. I have some information to relay to you regarding your egg.
+        local infoFlag = 0
+        if #chocoState.report.events > 0 then
+            infoFlag = 1
+        end
+
+        -- Now that we're done modifiying it, write chocoState to cache
+        xi.chocoboRaising.chocoState[player:getID()] = chocoState
+
+        player:startEventString(mainCsid, chocoState.first_name, chocoState.last_name, chocoState.first_name, chocoState.last_name,
+            isTradeEvent, infoFlag, chocoState.sex, 0, 0, 0, 0, 0)
     end
-
-    local isTradeEvent = 0
-    if #chocoState.foodGiven > 0 then
-        isTradeEvent = 8
-    end
-
-    -- 0: Hello, x. What brings you here today?
-    -- 1: Hello, x. I have some information to relay to you regarding your egg.
-    local infoFlag = 0
-    if #chocoState.report.events > 0 then
-        infoFlag = 1
-    end
-
-    -- Now that we're done modifiying it, write chocoState to cache
-    xi.chocoboRaising.chocoState[player:getID()] = chocoState
-
-    player:startEventString(mainCsid, chocoState.first_name, chocoState.last_name, chocoState.first_name, chocoState.last_name,
-        isTradeEvent, infoFlag, chocoState.sex, 0, 0, 0, 0, 0)
 end
 
 xi.chocoboRaising.onTradeVCSTrainer = function(player, npc, trade)

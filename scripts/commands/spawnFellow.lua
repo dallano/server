@@ -39,10 +39,10 @@ function onTrigger(player)
         return
     end
 
-    if not player:canUseMisc(xi.zoneMisc.FELLOW) then
-        error(player, "Fellows are not allowed in this zone via zone settings misc.")
-        return
-    end
+    -- if not player:canUseMisc(xi.zoneMisc.FELLOW) then
+    --     error(player, "Fellows are not allowed in this zone via zone settings misc.")
+    --     return
+    -- end
 
     if player:getFellowValue("fellowid") == 0 then
         error(player, "Player does not have a fellow.")

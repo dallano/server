@@ -270,18 +270,17 @@ local weaponskills =
 
 local armorIndex =
 {
-    [0]   = 20,
-    [1]   = 25,
-    [2]   = 30,
-    [3]   = 35,
-    [4]   = 40,
-    [5]   = 45,
-    [6]   = 50,
-    [7]   = 55,
-    [8]   = 60,
-    [9]   = 65,
-    [10]  = 70,
-    [11]  = 75,
+    { 75, 11 },
+    { 70, 10 },
+    { 65, 9  },
+    { 60, 8  },
+    { 55, 7  },
+    { 50, 6  },
+    { 45, 5  },
+    { 40, 4  },
+    { 35, 3  },
+    { 30, 2  },
+    { 25, 1  },
 }
 
 xi.fellow_utils.onFellowSpawn = function(fellow)
@@ -700,7 +699,7 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                     end
 
                     -- Final Check before healing party member
-                    if (member:getMaxHP() - member:getHP()) * thresholdMod < cure.hpThreshold then
+                    if (member:getMaxHP() - member:getHP()) > cure.hpThreshold then
                         fellow:setLocalVar("castingCoolDown", os.time() + recast)
                         fellow:castSpell(cure.spell, member)
                         return
@@ -1277,7 +1276,6 @@ end
 xi.fellow_utils.upgradeArmor = function(fellow, master)
     local offset        = master:getCharVar("[FELLOW]armorOffset")
     local armorLock     = master:getFellowValue("armorLock")
-    local kills         = master:getFellowValue("kills")
     local unlocked      = {}
     local armorTable    =
     {
@@ -1292,22 +1290,13 @@ xi.fellow_utils.upgradeArmor = function(fellow, master)
             table.insert(unlocked, v[1])
         end
     end
-    local nextUpgrade = unlocked[1]
 
-    for i = 1, #unlocked do
-        if unlocked[i] < nextUpgrade then
-            nextUpgrade = unlocked[i]
-        end
-    end
+    for _, armorLevel in pairs(armorIndex) do
+        if fellow:getMainLvl() >= armorLevel[1] then
+            for i = 1, #unlocked do
+                master:setFellowValue(i, armorLevel[2] + offset)
+            end
 
-    for i = 1, #unlocked do
-        local rank = master:getFellowValue(unlocked[i]) % 100
-
-        if
-            armorIndex[rank] <= fellow:getMainLvl() and
-            kills >= rank * 5
-        then
-            master:setFellowValue(nextUpgrade, master:getFellowValue(nextUpgrade) + 1)
             return
         end
     end
