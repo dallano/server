@@ -45,7 +45,6 @@ xi.fishing.fish =
     { id = 4307, size = "Large", name = "jungle_catfish"      , realname = "Jungle Catfish"     , tag = "COP"     },
     { id = 4308, size = "Small", name = "giant_chirai"        , realname = "Giant Chirai"       , tag = "COP"     },
     { id = 4309, size = "Small", name = "cave_cherax"         , realname = "Cave Cherax"        , tag = "COP"     },
-    { id = 4310, size = "Small", name = "tiny_goldfish"       , realname = "Tiny Goldfish"      , tag = "TOAU"    },
     { id = 4313, size = "Small", name = "blindfish"           , realname = "Blindfish"          , tag = "COP"     },
     { id = 4314, size = "Small", name = "bibikibo"            , realname = "Bibikibo"           , tag = "COP"     },
     { id = 4315, size = "Small", name = "lungfish"            , realname = "Lungfish"           , tag = "COP"     },

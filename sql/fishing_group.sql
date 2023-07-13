@@ -1109,6 +1109,11 @@ INSERT INTO `fishing_group` VALUES (139,4469,900,190,6);
 INSERT INTO `fishing_group` VALUES (139,4472,1000,500,15);
 INSERT INTO `fishing_group` VALUES (139,5125,1000,500,15);
 INSERT INTO `fishing_group` VALUES (139,5126,1000,500,15);
+INSERT INTO `fishing_group` VALUES (140,4310,0,9999,999); -- Sunbreeze Festival
+INSERT INTO `fishing_group` VALUES (140,4311,0,9999,999); -- Sunbreeze Festival
+INSERT INTO `fishing_group` VALUES (140,4312,0,9999,999); -- Sunbreeze Festival
+INSERT INTO `fishing_group` VALUES (140,5714,0,9999,999); -- Sunbreeze Festival
+INSERT INTO `fishing_group` VALUES (140,5715,0,9999,999); -- Sunbreeze Festival
 /*!40000 ALTER TABLE `fishing_group` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

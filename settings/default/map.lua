@@ -125,7 +125,7 @@ xi.settings.map =
     CRAFT_SPECIALIZATION_POINTS = 400,
 
     -- Enables fishing. 0 = Disabled. 1 = Enable. ENABLE AT YOUR OWN RISK.
-    FISHING_ENABLE = false,
+    FISHING_ENABLE = true,
 
     -- Minimum level (across all jobs) required to for a player to fish.
     FISHING_MIN_LEVEL = 15,

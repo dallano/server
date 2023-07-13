@@ -683,6 +683,10 @@ namespace fishingutils
         {
             hookChance += 50;
         }
+        else if (bait->baitFlags * BAITFLAG_GOLDFISH_SCOOPING && fish->fishFlags & FISHFLAG_GOLDFISH)
+        {
+            hookChance += 50;
+        }
 
         // Fish rarity
         if (fish->rarity < 1000)
@@ -2246,7 +2250,7 @@ namespace fishingutils
         }
 
         // Build Hookable Item Pool
-        if (!ItemPool.empty())
+        if (!ItemPool.empty() && rod->rodID != GOLDFISH_BASKET)
         {
             for (auto* item : ItemPool)
             {
@@ -2294,7 +2298,7 @@ namespace fishingutils
         }
 
         // Build Hookable Mob Pool
-        if (!MobPool.empty())
+        if (!MobPool.empty() && rod->rodID != GOLDFISH_BASKET)
         {
             for (auto* mob : MobPool)
             {
@@ -2402,6 +2406,9 @@ namespace fishingutils
             FishPoolWeight -= (uint16)std::floor(FishPoolWeight * 0.25f);
             ItemPoolWeight = FishPoolWeight + (uint16)std::floor(FishPoolWeight * 0.10f);
             NoCatchWeight += (uint16)std::floor(NoCatchWeight * 0.25f);
+        }
+        else if (bait->baitFlags & BAITFLAG_GOLDFISH_SCOOPING && FishPoolWeight == 0)
+        {
         }
 
         // Select fish
