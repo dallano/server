@@ -12183,7 +12183,7 @@ INSERT INTO `mob_droplist` VALUES (1504,0,0,1000,852,@RARE);     -- Lizard Skin 
 INSERT INTO `mob_droplist` VALUES (1504,2,0,1000,4362,0);        -- Lizard Egg (Steal)
 
 -- ZoneID: 198 - Leech King
-INSERT INTO `mob_droplist` VALUES (1505,0,0,1000,13359,@UNCOMMONN); -- Bloodbead Earring (Common, 15%)
+INSERT INTO `mob_droplist` VALUES (1505,0,0,1000,13359,@UNCOMMON); -- Bloodbead Earring (Common, 15%)
 INSERT INTO `mob_droplist` VALUES (1505,0,0,1000,924,@VCOMMON);  -- Vial Of Fiend Blood (Very Common, 24%)
 INSERT INTO `mob_droplist` VALUES (1505,0,0,1000,1125,@RARE);    -- Carbuncles Ruby (Rare, 5%)
 
@@ -19907,7 +19907,7 @@ INSERT INTO `mob_droplist` VALUES (2535,2,0,1000,4409,0);         -- Hard-Boiled
 
 -- ZoneID: 103 - Valkurm Emperor
 INSERT INTO `mob_droplist` VALUES (2536,0,0,1000,846,@ALWAYS);   -- Insect Wing (Always, 100%)
-INSERT INTO `mob_droplist` VALUES (2536,0,0,1000,15224,@UCOMMON); -- Empress Hairpin (Uncommon, 15%)
+INSERT INTO `mob_droplist` VALUES (2536,0,0,1000,15224,@UNCOMMON); -- Empress Hairpin (Uncommon, 15%)
 
 -- ZoneID: 128 - Valley Manticore
 INSERT INTO `mob_droplist` VALUES (2537,0,0,1000,1163,@COMMON);   -- Lock Of Manticore Hair (Common, 15%)

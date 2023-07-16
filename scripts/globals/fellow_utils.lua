@@ -837,6 +837,8 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
     local coolDown = fellow:getLocalVar("castingCoolDown")
     local recast   = xi.fellow_utils.calculateRecast(fellow, fellowType)
     local target   = nil
+    local engaged  = false
+    local party    = xi.fellow_utils.buildPartyTable(master)
 
     if -- Return if not mage
         (fellowType ~= fellowTypes.HEALER and
@@ -855,14 +857,15 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
         coolDown < os.time() and
         fellow:getMPP() > 30
     then
-        if fellow:isEngaged() then
-            target = fellow:getTarget()
-        elseif master:isEngaged() then
-            target = master:getTarget()
+        for _, member in pairs(party) do
+            if member:isEngaged() then
+                target = member:getTarget()
+            end
         end
 
         if -- Return if mob is a weakling and not an NM
             target ~= nil and
+            fellow:checkDistance(target) <= 20 and
             target:getMainLvl() - master:getMainLvl() < -6 and
             not target:isNM()
         then
