@@ -738,7 +738,7 @@ INSERT INTO `item_basic` VALUES (822,0,'spool_of_silver_thread','silver_thread',
 INSERT INTO `item_basic` VALUES (823,0,'spool_of_gold_thread','gold_thread',12,4,40,0,1140);
 INSERT INTO `item_basic` VALUES (824,0,'square_of_grass_cloth','grass_cloth',12,4,40,0,80);
 INSERT INTO `item_basic` VALUES (825,0,'square_of_cotton_cloth','cotton_cloth',12,4,40,0,160);
-INSERT INTO `item_basic` VALUES (826,0,'square_of_linen_cloth','linen_cloth',12,4,40,0,582);
+INSERT INTO `item_basic` VALUES (826,0,'square_of_linen_cloth','linen_cloth',12,4,40,0,250);
 INSERT INTO `item_basic` VALUES (827,0,'square_of_wool_cloth','wool_cloth',12,4,40,0,1800);
 INSERT INTO `item_basic` VALUES (828,0,'square_of_velvet_cloth','velvet_cloth',12,4,40,0,561);
 INSERT INTO `item_basic` VALUES (829,0,'square_of_silk_cloth','silk_cloth',12,4,40,0,1050);
@@ -1083,7 +1083,7 @@ INSERT INTO `item_basic` VALUES (1190,0,'antican_tag','antican_tag',1,61524,0,1,
 INSERT INTO `item_basic` VALUES (1191,0,'kodoku','kodoku',99,4,49,0,25);
 INSERT INTO `item_basic` VALUES (1192,0,'fallen_star','fallen_star',1,61504,0,1,0);
 INSERT INTO `item_basic` VALUES (1193,0,'high-quality_crab_shell','h.q._crab_shell',12,4,42,0,3325);
-INSERT INTO `item_basic` VALUES (1194,0,'shinobi-tabi','shinobi-tabi',99,4,49,0,25);
+INSERT INTO `item_basic` VALUES (1194,0,'shinobi-tabi','shinobi-tabi',99,4,49,0,32);
 INSERT INTO `item_basic` VALUES (1195,0,'flask_of_romaeve_spring_water','romaeve_water',1,45140,0,1,0);
 INSERT INTO `item_basic` VALUES (1196,0,'qiqirn_cape','qiqirn_cape',12,4100,50,1,0);
 INSERT INTO `item_basic` VALUES (1197,0,'sahagin_key','sahagin_key',1,62544,0,1,0);
@@ -2441,7 +2441,7 @@ INSERT INTO `item_basic` VALUES (2549,0,'pinch_of_djinn_ash','djinn_ash',12,4,44
 INSERT INTO `item_basic` VALUES (2550,0,'sheet_of_vellum','vellum',12,4,41,0,200);
 INSERT INTO `item_basic` VALUES (2551,0,'electrum_chain','electrum_chain',12,4,39,0,740);
 INSERT INTO `item_basic` VALUES (2552,0,'campaign_voucher','campaign_voucher',99,28736,0,1,0);
-INSERT INTO `item_basic` VALUES (2553,0,'sanjaku-tenugui','sanjaku-tenugui',99,4,49,0,12);
+INSERT INTO `item_basic` VALUES (2553,0,'sanjaku-tenugui','sanjaku-tenugui',99,4,49,0,45);
 INSERT INTO `item_basic` VALUES (2554,0,'asphodel','asphodel',12,4,46,0,25);
 INSERT INTO `item_basic` VALUES (2555,0,'soshi','soshi',99,4,49,0,25);
 INSERT INTO `item_basic` VALUES (2556,0,'dancers_testimony','dnc._testimony',1,61504,0,1,0);
@@ -9940,9 +9940,9 @@ INSERT INTO `item_basic` VALUES (12604,0,'silk_coat','silk_coat',1,2084,18,0,703
 INSERT INTO `item_basic` VALUES (12605,0,'nobles_tunic','nobles_tunic',1,2084,18,0,10077);
 INSERT INTO `item_basic` VALUES (12606,0,'tactician_magicians_coat','tct.mgc._coat',1,2052,18,0,6460);
 INSERT INTO `item_basic` VALUES (12607,0,'bronze_harness_+1','bronze_harness_+1',1,2080,18,0,64);
-INSERT INTO `item_basic` VALUES (12608,0,'tunic','tunic',1,2084,18,0,280);
-INSERT INTO `item_basic` VALUES (12609,0,'black_tunic','black_tunic',1,2084,18,0,1622);
-INSERT INTO `item_basic` VALUES (12610,0,'cloak','cloak',1,2084,18,0,1748);
+INSERT INTO `item_basic` VALUES (12608,0,'tunic','tunic',1,2084,18,0,642);
+INSERT INTO `item_basic` VALUES (12609,0,'black_tunic','black_tunic',1,2084,18,0,2845);
+INSERT INTO `item_basic` VALUES (12610,0,'cloak','cloak',1,2084,18,0,5132);
 INSERT INTO `item_basic` VALUES (12611,0,'white_cloak','white_cloak',1,2084,18,0,7650);
 INSERT INTO `item_basic` VALUES (12612,0,'silk_cloak','silk_cloak',1,2084,18,0,6375);
 INSERT INTO `item_basic` VALUES (12613,0,'jurfu_cloak','jurfu_cloak',1,34820,18,0,7747);
@@ -10002,7 +10002,7 @@ INSERT INTO `item_basic` VALUES (12666,0,'silver_mail_+1','silver_mail_+1',1,208
 INSERT INTO `item_basic` VALUES (12667,0,'banded_mail_+1','banded_mail_+1',1,2080,18,0,9500);
 INSERT INTO `item_basic` VALUES (12668,0,'kenpogi_+1','kenpogi_+1',1,2080,18,0,280);
 INSERT INTO `item_basic` VALUES (12669,0,'great_doublet','great_doublet',1,2080,18,0,3800);
-INSERT INTO `item_basic` VALUES (12670,0,'cloak_+1','cloak_+1',1,2080,18,0,1829);
+INSERT INTO `item_basic` VALUES (12670,0,'cloak_+1','cloak_+1',1,2080,18,0,5589);
 INSERT INTO `item_basic` VALUES (12671,0,'soil_gi_+1','soil_gi_+1',1,2080,18,0,5988);
 INSERT INTO `item_basic` VALUES (12672,0,'gauntlets','gauntlets',1,2084,19,0,2952);
 INSERT INTO `item_basic` VALUES (12673,0,'mythril_gauntlets','mythril_gauntlets',1,2084,19,0,4039);
@@ -10519,7 +10519,7 @@ INSERT INTO `item_basic` VALUES (13186,0,'black_belt','black_belt',1,63568,0,1,0
 INSERT INTO `item_basic` VALUES (13187,0,'tiger_belt','tiger_belt',1,2048,23,0,4214);
 INSERT INTO `item_basic` VALUES (13188,0,'star_sash','star_sash',1,2080,23,0,4538);
 INSERT INTO `item_basic` VALUES (13189,0,'speed_belt','speed_belt',1,34820,23,0,8300);
-INSERT INTO `item_basic` VALUES (13190,0,'heko_obi_+1','heko_obi_+1',1,2080,23,0,134);
+INSERT INTO `item_basic` VALUES (13190,0,'heko_obi_+1','heko_obi_+1',1,2080,23,0,950);
 INSERT INTO `item_basic` VALUES (13191,0,'lizard_belt_+1','lizard_belt_+1',1,2080,23,0,548);
 INSERT INTO `item_basic` VALUES (13192,0,'leather_belt','leather_belt',1,2084,23,0,85);
 INSERT INTO `item_basic` VALUES (13193,0,'lizard_belt','lizard_belt',1,2084,23,0,439);
@@ -10533,7 +10533,7 @@ INSERT INTO `item_basic` VALUES (13200,0,'waistbelt','waistbelt',1,2084,23,0,171
 INSERT INTO `item_basic` VALUES (13201,0,'purple_belt','purple_belt',1,2052,23,0,506);
 INSERT INTO `item_basic` VALUES (13202,0,'brown_belt','brown_belt',1,2052,23,0,1980);
 INSERT INTO `item_basic` VALUES (13203,0,'barbarians_belt','barbarians_belt',1,2084,23,0,506);
-INSERT INTO `item_basic` VALUES (13204,0,'heko_obi','heko_obi',1,2084,23,0,99);
+INSERT INTO `item_basic` VALUES (13204,0,'heko_obi','heko_obi',1,2084,23,0,880);
 INSERT INTO `item_basic` VALUES (13205,0,'silver_obi','silver_obi',1,2084,23,0,613);
 INSERT INTO `item_basic` VALUES (13206,0,'gold_obi','gold_obi',1,2084,23,0,2204);
 INSERT INTO `item_basic` VALUES (13207,0,'brocade_obi','brocade_obi',1,2084,23,0,2982);
@@ -10912,8 +10912,8 @@ INSERT INTO `item_basic` VALUES (13579,0,'jesters_cape','jesters_cape',1,2084,26
 INSERT INTO `item_basic` VALUES (13580,0,'royal_army_mantle','ryl._army_mantle',1,26704,0,0,3600);
 INSERT INTO `item_basic` VALUES (13581,0,'federal_army_mantle','fed._army_mantle',1,26704,0,0,3600);
 INSERT INTO `item_basic` VALUES (13582,0,'republican_army_mantle','rep._army_mantle',1,26704,0,0,3600);
-INSERT INTO `item_basic` VALUES (13583,0,'cape','cape',1,2084,26,0,85);
-INSERT INTO `item_basic` VALUES (13584,0,'cotton_cape','cotton_cape',1,2084,26,0,490);
+INSERT INTO `item_basic` VALUES (13583,0,'cape','cape',1,2084,26,0,385);
+INSERT INTO `item_basic` VALUES (13584,0,'cotton_cape','cotton_cape',1,2084,26,0,890);
 INSERT INTO `item_basic` VALUES (13585,0,'white_cape','white_cape',1,2084,26,0,1292);
 INSERT INTO `item_basic` VALUES (13586,0,'red_cape','red_cape',1,2084,26,0,2178);
 INSERT INTO `item_basic` VALUES (13587,0,'rainbow_cape','rainbow_cape',1,2084,26,0,6625);
@@ -10930,11 +10930,11 @@ INSERT INTO `item_basic` VALUES (13597,0,'beak_mantle','beak_mantle',1,2084,26,0
 INSERT INTO `item_basic` VALUES (13598,0,'bat_cape','bat_cape',1,34820,26,0,4294);
 INSERT INTO `item_basic` VALUES (13599,0,'rabbit_mantle_+1','rabbit_mantle_+1',1,2080,26,0,56);
 INSERT INTO `item_basic` VALUES (13600,0,'dhalmel_mantle_+1','dhalmel_mantle_+1',1,2080,26,0,723);
-INSERT INTO `item_basic` VALUES (13601,0,'cotton_cape_+1','cotton_cape_+1',1,2080,26,0,674);
+INSERT INTO `item_basic` VALUES (13601,0,'cotton_cape_+1','cotton_cape_+1',1,2080,26,0,983);
 INSERT INTO `item_basic` VALUES (13602,0,'feral_mantle','feral_mantle',1,2080,26,0,1402);
 INSERT INTO `item_basic` VALUES (13603,0,'torama_mantle','torama_mantle',1,2080,26,0,2870);
 INSERT INTO `item_basic` VALUES (13604,0,'behemoth_mantle_+1','behem._mantle_+1',1,2080,26,0,9868);
-INSERT INTO `item_basic` VALUES (13605,0,'cape_+1','cape_+1',1,2080,26,0,106);
+INSERT INTO `item_basic` VALUES (13605,0,'cape_+1','cape_+1',1,2080,26,0,521);
 INSERT INTO `item_basic` VALUES (13606,0,'judges_cape','judges_cape',1,2050,0,0,131);
 INSERT INTO `item_basic` VALUES (13607,0,'mist_silk_cape','mist_silk_cape',1,34820,26,0,270);
 INSERT INTO `item_basic` VALUES (13608,0,'lizard_mantle_+1','lizard_mantle_+1',1,2080,26,0,95);

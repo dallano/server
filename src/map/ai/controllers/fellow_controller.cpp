@@ -124,7 +124,7 @@ void CFellowController::DoRoamTick(time_point tick)
             POwner->PAI->PathFind->StepTo(POwner->PMaster->loc.p, RoamDistance);
         }
     }
-    if (m_Tick >= m_LastRoamScript + 3s)
+    if (m_Tick >= m_LastRoamScript + 1s)
     {
         POwner->PAI->EventHandler.triggerListener("ROAM_TICK", POwner);
         luautils::OnMobRoam(POwner);

@@ -253,20 +253,12 @@ xi.helm.helmInfo =
                 drops =
                 {
                     { 1500, 1845 }, -- Red Moko Grass
-                    { 1430, 2713 }, -- Dyer's Woad
-                    { 1430,  835 }, -- Flax Flower
-                    { 1400,  834 }, -- Saruta Cotton
-                    { 1210, 1522 }, -- Fresh Marjoram
-                    { 1030,  833 }, -- Moko Grass
-                    {  570,  635 }, -- Windurstian Tea Leaves
-                    {  520, 4545 }, -- Gysahl Greens
-                    {  440, 1982 }, -- King Locust
-                    {  370,  951 }, -- Wijnruit
-                    {  230,  575 }, -- Grain Seeds
-                    {  210,  572 }, -- Herb Seeds
-                    {  200, 1524 }, -- Fresh Mugwort
-                    {  190,  839 }, -- Crawler Cocoon
-                    {  160,  573 }, -- Vegetable Seeds
+                    {  890,  839 }, -- Crawler Cocoon
+                    {  430, 2713 }, -- Dyer's Woad
+                    {  430,  835 }, -- Flax Flower
+                    {  400,  834 }, -- Saruta Cotton
+                    {  330,  833 }, -- Moko Grass
+                    {  220, 4545 }, -- Gysahl Greens
                 },
 
                 points =

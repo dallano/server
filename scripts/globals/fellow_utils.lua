@@ -459,14 +459,12 @@ xi.fellow_utils.onFellowFight = function(fellow, target)
 end
 
 xi.fellow_utils.buildPartyTable = function(master)
-    local party = master:getParty()
+    local members = master:getParty()
+    local party = {}
 
-    for _, member in pairs(party) do
-        if
-            member:isPC() and
-            member:getFellow() ~= nil
-        then
-            table.insert(party, member:getFellow())
+    for _, member in pairs(members) do
+        if member:isPC() then
+            table.insert(party, member)
         end
     end
 
@@ -507,7 +505,11 @@ xi.fellow_utils.checkJobAbility = function(fellow, master)
         if fellowType == fellowTypes.SHIELD or fellowType == fellowTypes.STALWART then
             for _, ability in pairs(tankJobAbilityTable) do
                 local recast = master:getCharVar(ability.recastVar)
-                local action = fellow:getTarget():getCurrentAction()
+                local action
+
+                if fellow:getTarget() ~= nil then
+                    local action = fellow:getTarget():getCurrentAction()
+                end
 
                 if
                     fellowLvl > ability.level and
@@ -674,12 +676,7 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                         return
                     end
 
-                    -- Heal more slowly on PLDs to allow them to heal themselves in order to maintain hate
-                    -- PLDs heal others and themselves less effectively
-                    -- Heal a little less effectively if target already has Regen
-                    if member:getMainJob() == xi.job.PLD and member:getHPP() > 40 then
-                        thresholdMod = thresholdMod + 1
-                    elseif
+                    if
                         fellow:getMainJob() == xi.job.PLD and
                         member ~= fellow and
                         member:getHPP() > 40
@@ -699,7 +696,7 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                     end
 
                     -- Final Check before healing party member
-                    if (member:getMaxHP() - member:getHP()) > cure.hpThreshold then
+                    if (member:getMaxHP() - member:getHP()) > cure.hpThreshold * thresholdMod then
                         fellow:setLocalVar("castingCoolDown", os.time() + recast)
                         fellow:castSpell(cure.spell, member)
                         return
@@ -893,6 +890,8 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
                         debuff.effect == xi.effect.DIA
                     then
                         debuff.check = false
+                    else
+                        debuff.check = true
                     end
 
                     if debuff.check then
