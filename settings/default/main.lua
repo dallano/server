@@ -226,9 +226,9 @@ xi.settings.main =
 
     -- CELEBRATIONS
     EXPLORER_MOOGLE_LV              = 0,    -- Enables Explorer Moogle teleports and sets required level. Zero to disable.
-    HALLOWEEN_2005                  = 0,    -- Set to 1 to Enable the 2005 version of Harvest Festival, will start on Oct. 20 and end Nov. 1.
+    HALLOWEEN_2005                  = 1,    -- Set to 1 to Enable the 2005 version of Harvest Festival, will start on Oct. 20 and end Nov. 1.
     HALLOWEEN_YEAR_ROUND            = 0,    -- Set to 1 to have Harvest Festival initialize outside of normal times.
-    STARLIGHT_2021                  = 0,    -- Set to 1 to enable the 2021 version of the Starlight Celebration. Dec. 16 through Dec. 31.
+    STARLIGHT_2021                  = 1,    -- Set to 1 to enable the 2021 version of the Starlight Celebration. Dec. 16 through Dec. 31.
     STARLIGHT_YEAR_ROUND            = 0,    -- Set to 1 to have the Starlight Celebration initialize outside of normal times.
     SUNBREEZE                       = 0,    -- Set to 1 to have the Sunbreeze Festival be active from Aug 1 to Aug 31.
     SUNBREEZE_YEAR_ROUND            = 0,    -- Set to 1 to have the Sunbreeze Festival initialize outside of normal times.

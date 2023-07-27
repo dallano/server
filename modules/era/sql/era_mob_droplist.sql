@@ -1581,7 +1581,7 @@ INSERT INTO `mob_droplist` VALUES (164,0,0,1000,19102,20);       -- Main Gauche 
 INSERT INTO `mob_droplist` VALUES (165,0,0,1000,914,@ALWAYS);     -- Vial Of Mercury (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (165,0,0,1000,939,@VCOMMON);    -- Hecteyes Eye (Very Common, 24%)
 INSERT INTO `mob_droplist` VALUES (165,0,0,1000,939,@VCOMMON);    -- Hecteyes Eye (Very Common, 24%)
-INSERT INTO `mob_droplist` VALUES (165,0,0,1000,15515,@UNCOMMON); -- Peacock Amulet (Very Common, 24%)
+INSERT INTO `mob_droplist` VALUES (165,0,0,1000,15515,@RARE); -- Peacock Amulet (Very Common, 24%)
 
 -- ZoneID:  15 - Arimaspi
 INSERT INTO `mob_droplist` VALUES (166,0,0,1000,4377,390);        -- Slice Of Coeurl Meat (39.0%)
