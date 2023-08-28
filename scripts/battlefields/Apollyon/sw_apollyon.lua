@@ -8,8 +8,6 @@
 local ID = require("scripts/zones/Apollyon/IDs")
 require("scripts/globals/battlefield")
 require("scripts/globals/limbus")
-require("scripts/globals/items")
-require("scripts/globals/keyitems")
 -----------------------------------
 
 local content = Limbus:new({
@@ -381,7 +379,7 @@ content.groups =
                         swapWithCrate(GetMobByID(ID.SW_APOLLYON.npc.RECOVER_CRATES[3]))
                     else
                         mob:hideName(false)
-                        mob:setStatus(xi.status.MOB)
+                        mob:setStatus(xi.status.UPDATE)
                         mob:setAnimationSub(1)
                         mob:setMobMod(xi.mobMod.NO_AGGRO, 0)
                         mob:updateClaim(player)

@@ -7,7 +7,6 @@ require("scripts/globals/quests")
 require("scripts/globals/magic")
 require("scripts/globals/utils")
 require("scripts/globals/zone")
-require("scripts/globals/msg")
 -----------------------------------
 
 xi = xi or {}
@@ -178,7 +177,8 @@ end
 xi.mob.skills =
 {
     RECOIL_DIVE = 641,
-    CYTOKINESIS = 2514
+    CYTOKINESIS = 2514,
+    DISSOLVE = 2550,
 }
 
 -----------------------------------

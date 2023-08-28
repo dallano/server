@@ -1,8 +1,6 @@
 ------------------------------------
 -- Starlight Celebration
 ------------------------------------
-require("scripts/globals/settings")
-------------------------------------
 xi = xi or {}
 xi.events = xi.events or {}
 xi.events.sunbreeze_festival = xi.events.sunbreeze_festival or {}
@@ -10,7 +8,7 @@ xi.events.sunbreeze_festival = xi.events.sunbreeze_festival or {}
 local event = SeasonalEvent:new("SunbreezeFestival")
 
 xi.events.sunbreeze_festival.enabledCheck = function()
-    return tonumber(os.date("%m")) == 8 and xi.settings.main.SUNBREEZE == 1 or xi.settings.main.SUNBREEZE_YEAR_ROUND
+    return tonumber(os.date("%m")) == 8 and xi.settings.main.SUNBREEZE == 1 or xi.settings.main.SUNBREEZE_YEAR_ROUND == 1
 end
 
 event:setEnableCheck(xi.events.sunbreeze_festival.enabledCheck)

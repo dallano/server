@@ -13,9 +13,7 @@
 -- Combos: Clear Mind
 -----------------------------------
 require("scripts/globals/bluemagic")
-require("scripts/globals/status")
 require("scripts/globals/magic")
-require("scripts/globals/msg")
 -----------------------------------
 local spellObject = {}
 
@@ -31,7 +29,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     local power = 1500
     local resistThreshold = 0.5
 
-    local resist = applyResistance(caster, target, spell, params)
+    local resist = xi.magic.applyResistance(caster, target, spell, params)
     if resist >= resistThreshold then
         if target:getTP() == 0 then
             spell:setMsg(xi.msg.basic.MAGIC_NO_EFFECT)
