@@ -146,7 +146,7 @@ xi.settings.map =
 
     -- Adjust max HP pool for NMs, regular mobs, players, and trusts/fellows. Acts as a multiplier, so default is 1.
     NM_HP_MULTIPLIER        = 1.0,
-    MOB_HP_MULTIPLIER       = 0.75,
+    MOB_HP_MULTIPLIER       = 1.0,
     PLAYER_HP_MULTIPLIER    = 1.00,
     ALTER_EGO_HP_MULTIPLIER = 1.00,
 
@@ -154,7 +154,7 @@ xi.settings.map =
     NM_MP_MULTIPLIER        = 1.0,
     MOB_MP_MULTIPLIER       = 1.0,
     PLAYER_MP_MULTIPLIER    = 1.0,
-    ALTER_EGO_MP_MULTIPLIER = 1.5,
+    ALTER_EGO_MP_MULTIPLIER = 1.0,
 
     -- Sets the fraction of MP a subjob provides to the main job. Retail is half and this acts as a divisor so default is 2
     SJ_MP_DIVISOR = 2.0,
@@ -171,7 +171,7 @@ xi.settings.map =
 
     -- Adjust base stats (str/vit/etc.) for NMs, regular mobs, players, and trusts/fellows. Acts as a multiplier, so default is 1.
     NM_STAT_MULTIPLIER        = 1.0,
-    MOB_STAT_MULTIPLIER       = 0.85,
+    MOB_STAT_MULTIPLIER       = 1.0,
     PLAYER_STAT_MULTIPLIER    = 1.0,
     ALTER_EGO_STAT_MULTIPLIER = 1.0,
 
