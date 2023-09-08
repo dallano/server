@@ -79,7 +79,7 @@ xi.settings.map =
     LEVEL_SYNC_ENABLE = true,
 
     -- Disables ability to equip higher level gear when level cap/sync effect is on player.
-    DISABLE_GEAR_SCALING = false,
+    DISABLE_GEAR_SCALING = true,
 
     -- Weaponskill point base (before skillchain) for breaking latent - whole numbers only. retail is 1.
     WS_POINTS_BASE = 1,
@@ -96,7 +96,7 @@ xi.settings.map =
 
     -- Modifier to apply to mount speed. 0 is the retail accurate default. Negative numbers will reduce it.
     -- Note retail treats the mounted speed as double what it actually is.
-    MOUNT_SPEED_MOD = 10,
+    MOUNT_SPEED_MOD = 0,
 
     -- Modifier to apply to agro'd monster speed. 0 is the retail accurate default. Negative numbers will reduce it.
     MOB_SPEED_MOD = -5,

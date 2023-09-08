@@ -109,6 +109,7 @@ void CFellowController::DoRoamTick(time_point tick)
 
     if (FellowIsHealing() || FellowIsSitting())
     {
+        return;
     }
 
     float currentDistance = distance(POwner->loc.p, POwner->PMaster->loc.p);

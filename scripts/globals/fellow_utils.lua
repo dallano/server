@@ -55,9 +55,9 @@ local mageJobAbilityTable =
 
 local regenTable =
 {
-    { spell = xi.magic.spell.REGEN_III, level = 66, mpCost = 64 },
-    { spell = xi.magic.spell.REGEN_II,  level = 44, mpCost = 36 },
-    { spell = xi.magic.spell.REGEN,     level = 21, mpCost = 15 },
+    { effect = xi.effect.REGEN, spell = xi.magic.spell.REGEN_III, level = 66, mpCost = 64 },
+    { effect = xi.effect.REGEN, spell = xi.magic.spell.REGEN_II,  level = 44, mpCost = 36 },
+    { effect = xi.effect.REGEN, spell = xi.magic.spell.REGEN,     level = 21, mpCost = 15 },
 }
 
 local cureTable =
@@ -410,6 +410,14 @@ xi.fellow_utils.onFellowRoam = function(fellow)
         return
     end
 
+    if
+        master:isEngaged() and
+        master:getTarget():isEngaged() and
+        master:getCharVar("fellowAttackControl") == 0
+    then
+        master:fellowAttack(master:getTarget())
+    end
+
     if fellow:checkDistance(master) >= 50 then
         local mPos = master:getPos()
         fellow:setPos(mPos.x + math.random(-1, 1), mPos.y, mPos.z + math.random(-1, 1))
@@ -476,6 +484,11 @@ xi.fellow_utils.spellCheck = function(fellow, master)
     local fellowType = master:getFellowValue("job")
     local fellowLvl  = fellow:getMainLvl()
     local mp         = fellow:getMP()
+
+    -- Prevent queuing of spells
+    if fellow:getCurrentAction() == xi.act.MAGIC_CASTING then
+        return
+    end
 
     xi.fellow_utils.checkAilment(fellow, master, fellowLvl, mp, fellowType)
     xi.fellow_utils.checkRegen(fellow, master, fellowLvl, mp, fellowType)
@@ -1134,13 +1147,13 @@ xi.fellow_utils.calculateRecast = function(fellow, fellowType)
     local recast = math.random(4, 6)
 
     if fellowType == fellowTypes.SOOTHING then
-        recast = recast + math.random(2, 4)
+        recast = recast - math.random(2, 4)
     elseif fellowType == fellowTypes.HEALER then
-        recast = recast + math.random(4, 6)
+        recast = recast - math.random(1, 2)
     elseif fellowType == fellowTypes.STALWART then
-        recast = recast + math.random(6, 8)
+        recast = recast + math.random(1, 2)
     elseif fellowType == fellowTypes.SHIELD then
-        recast = recast + math.random(8, 12)
+        recast = recast + math.random(2, 4)
     end
 
     return recast

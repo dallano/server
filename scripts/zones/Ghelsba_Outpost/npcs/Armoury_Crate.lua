@@ -18,41 +18,28 @@ local loot =
         },
 
         {
-            { itemid = 4744, droprate = 319 }, -- Scroll Of Invisible
-            { itemid = 4745, droprate = 125 }, -- Scroll Of Sneak
-            { itemid = 4746, droprate = 222 }, -- Scroll Of Deodorize
-            { itemid = 4900, droprate = 306 }, -- Thunder Spirit Pact
+            { itemid = 4744, droprate = 400 }, -- Scroll Of Invisible
+            { itemid = 4745, droprate = 200 }, -- Scroll Of Sneak
+            { itemid = 4900, droprate = 400 }, -- Thunder Spirit Pact
         },
 
         {
-            { itemid =   749, droprate = 444 }, -- Mythril Beastcoin
-            { itemid =   773, droprate =  56 }, -- Translucent Rock
-            { itemid = 16687, droprate =  83 }, -- Platoon Axe
-            { itemid = 17571, droprate =  97 }, -- Platoon Pole
-            { itemid = 17786, droprate = 153 }, -- Ganko
-            { itemid = 17993, droprate = 125 }, -- Platoon Dagger
-            { itemid = 18170, droprate = 139 }, -- Platoon Edge
+            { itemid = 16687, droprate = 333 }, -- Platoon Axe
+            { itemid = 17571, droprate = 333 }, -- Platoon Pole
+            { itemid = 17786, droprate = 333 }, -- Ganko
         },
 
         {
-            { itemid =   770, droprate =  69 }, -- Blue Rock
-            { itemid =   771, droprate =  14 }, -- Yellow Rock
-            { itemid =   772, droprate =  28 }, -- Green Rock
-            { itemid =   775, droprate =  28 }, -- Black Rock
-            { itemid =   776, droprate =  14 }, -- White Rock
-            { itemid =   769, droprate =  69 }, -- Red Rock
-            { itemid =   774, droprate =  97 }, -- Purple Rock
-            { itemid = 16959, droprate = 181 }, -- Platoon Sword
-            { itemid = 17993, droprate = 139 }, -- Platoon Dagger
-            { itemid = 17820, droprate = 111 }, -- Gunromaru
-            { itemid = 18085, droprate =  42 }, -- Platoon Lance
-            { itemid = 18170, droprate = 139 }, -- Platoon Edge
+            { itemid = 16959, droprate = 200 }, -- Platoon Sword
+            { itemid = 17993, droprate = 200 }, -- Platoon Dagger
+            { itemid = 17820, droprate = 200 }, -- Gunromaru
+            { itemid = 18085, droprate = 200 }, -- Platoon Lance
+            { itemid = 18170, droprate = 200 }, -- Platoon Edge
         },
 
         {
-            { itemid =     0, droprate = 389 }, -- nothing
-            { itemid =   922, droprate = 444 }, -- bat_wing
-            { itemid = 13548, droprate = 167 }, -- astral_ring
+            { itemid =   922, droprate = 500 }, -- bat_wing
+            { itemid = 13548, droprate = 500 }, -- astral_ring
         },
     },
 
