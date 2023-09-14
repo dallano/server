@@ -146,7 +146,7 @@ xi.settings.map =
 
     -- Adjust max HP pool for NMs, regular mobs, players, and trusts/fellows. Acts as a multiplier, so default is 1.
     NM_HP_MULTIPLIER        = 1.0,
-    MOB_HP_MULTIPLIER       = 1.0,
+    MOB_HP_MULTIPLIER       = 0.8,
     PLAYER_HP_MULTIPLIER    = 1.00,
     ALTER_EGO_HP_MULTIPLIER = 1.00,
 

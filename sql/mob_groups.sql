@@ -717,7 +717,7 @@ INSERT INTO `mob_groups` VALUES (18,3539,18,'Seether',960,0,2192,0,0,31,32,0);
 INSERT INTO `mob_groups` VALUES (19,4283,18,'Wanderer',960,0,2612,0,0,30,31,0);
 INSERT INTO `mob_groups` VALUES (20,3897,18,'Thinker',960,0,2398,0,0,31,32,0);
 INSERT INTO `mob_groups` VALUES (21,681,18,'Cerebrator',14400,0,447,3000,0,31,32,0);
-INSERT INTO `mob_groups` VALUES (22,298,18,'Woeful_Weeper',960,0,0,0,0,83,84,0);
+INSERT INTO `mob_groups` VALUES (22,298,18,'Woeful_Weeper',960,0,0,0,0,24,26,0);
 INSERT INTO `mob_groups` VALUES (23,4527,18,'Livid_Seether',960,0,0,0,0,83,84,0);
 
 -- ------------------------------------------------------------

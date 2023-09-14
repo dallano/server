@@ -299,7 +299,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMobMod(xi.mobMod.WEAPON_BONUS, fellow:getMainLvl())
         fellow:setMod(xi.mod.ATT,  50 + fellow:getMainLvl())
         fellow:setMod(xi.mod.HASTE_GEAR, 100)
-        fellow:setMod(xi.mod.ACC,  10)
+        fellow:setMod(xi.mod.ACC,  15)
         fellow:setMod(xi.mod.STR,   7)
         fellow:setMod(xi.mod.DEX,   7)
 
@@ -318,7 +318,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.AXE,     15)
         fellow:setMod(xi.mod.HTH,     15)
         fellow:setMod(xi.mod.PARRY,    5)
-        fellow:setMod(xi.mod.ACC,     25)
+        fellow:setMod(xi.mod.ACC,     35)
         fellow:setMod(xi.mod.STR,     15)
         fellow:setMod(xi.mod.DEX,     15)
 
@@ -328,14 +328,14 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.ATTP,  -10)
 
     elseif fellowType == fellowTypes.STALWART then
-        fellow:setMod(xi.mod.REFRESH, refreshPower)
+        fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.SHIELD, 15)
         fellow:setMod(xi.mod.ENMITY, 10)
         fellow:setMod(xi.mod.SWORD,  15)
         fellow:setMod(xi.mod.DEFP,   20)
 
     elseif fellowType == fellowTypes.HEALER then
-        fellow:setMod(xi.mod.REFRESH, refreshPower)
+        fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.ENMITY, -5)
         fellow:setMod(xi.mod.ATTP,  -20)
         fellow:setMod(xi.mod.DEFP,  -15)
@@ -1027,6 +1027,7 @@ xi.fellow_utils.checkWeaponSkill = function(fellow, target, fellowLvl)
     local optionsMask   = master:getFellowValue("optionsMask")
     local randomWS      = {}
     local aoeEnabled    = false
+
     if bit.band(optionsMask, bit.lshift(1, 0)) == 1 then
         aoeEnabled = true
     end

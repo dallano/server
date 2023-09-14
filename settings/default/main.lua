@@ -15,7 +15,7 @@ xi.settings.main =
     SERVER_NAME = "Singleplayer XI",
 
     SERVER_MESSAGE =
-        "Welcome to Singleplayer FFXI. A tailored experience that strives to give a laid-back experience for the solo player.",
+        "Welcome to Singleplayer FFXI. A tailored experience that strives to give a laid-back, yet challenging experience for the solo player.",
 
     -- Setting to lock content more accurately to the expansions defined below.
     -- This generally results in a more accurate presentation of your selected expansions,
@@ -172,7 +172,7 @@ xi.settings.main =
     CHEST_MIN_ILLUSION_TIME  = 60,  -- 1 minute
 
     -- Multiplier to NM lottery spawn chance. (Default 1.0) eg. 0 = disable lottery spawns. -1 for always 100% chance.
-    NM_LOTTERY_CHANCE = 3.0,
+    NM_LOTTERY_CHANCE = 2.0,
     -- Multiplier to NM lottery cooldown time (Default 1.0) eg. 2.0 = twice as long. 0 = no cooldowns.
     NM_LOTTERY_COOLDOWN = 1.0,
 

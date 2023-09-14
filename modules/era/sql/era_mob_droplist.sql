@@ -15093,7 +15093,7 @@ INSERT INTO `mob_droplist` VALUES (1871,0,0,1000,2525,20); -- Bottled Pixie (2.0
 INSERT INTO `mob_droplist` VALUES (1871,2,0,1000,751,0);   -- Platinum Beastcoin (Steal)
 
 -- ZoneID: 140 - Orcish Barricader
-INSERT INTO `mob_droplist` VALUES (1872,0,0,1000,12342,@RARE); -- Lantern Shield (Rare, 5%)
+INSERT INTO `mob_droplist` VALUES (1872,0,0,1000,12342,@COMMON); -- Lantern Shield (COMMON, 30%)
 
 -- ZoneID: 105 - Orcish Beastrider
 -- INSERT INTO `mob_droplist` VALUES (1873,0,0,1000,1706,@RARE);   -- Nyumomo Doll (Rare, 5%) WOTG item
@@ -23104,7 +23104,7 @@ INSERT INTO `mob_droplist` VALUES (2823,0,0,1000,1445,@RARE);    -- Freyas Tear 
 INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,644,@VCOMMON); -- Chunk Of Mythril Ore (Very Common, 24%)
 INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,955,@RARE);    -- Golem Shard (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,955,@RARE);    -- Golem Shard (Rare, 5%)
-INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,2388,@UNCOMMON);   -- Chunk Of Diorite (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,2388,@UNCOMMON);   -- Chunk Of Diorite (Uncommon, 15%)
 INSERT INTO `mob_droplist` VALUES (2824,0,0,1000,1132,@VRARE);  -- Square Of Raxa (Very Rare, 1%)
 
 -- ZoneID: 143 - Nighu Nestfender
