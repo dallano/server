@@ -286,6 +286,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
     local fellowType    = master:getFellowValue("job")
     local level         = fellow:getMainLvl()
     local refreshPower  = math.ceil(level * 0.05)
+    local attkBonus     = master:getFellowValue("weaponlvl") * 5
     fellow:setLocalVar("masterID", master:getID())
     fellow:setLocalVar("castingCoolDown", os.time() + 15)
     master:setLocalVar("chatCounter", 0)
@@ -297,15 +298,15 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
 
     if fellowType == fellowTypes.ATTACKER then
         fellow:setMobMod(xi.mobMod.WEAPON_BONUS, fellow:getMainLvl())
-        fellow:setMod(xi.mod.ATT,  50 + fellow:getMainLvl())
+        fellow:setMod(xi.mod.ATT, 25 + fellow:getMainLvl() * 0.75 + attkBonus)
         fellow:setMod(xi.mod.HASTE_GEAR, 100)
-        fellow:setMod(xi.mod.ACC,  15)
+        fellow:setMod(xi.mod.ACC,  50)
         fellow:setMod(xi.mod.STR,   7)
         fellow:setMod(xi.mod.DEX,   7)
 
     elseif fellowType == fellowTypes.FIERCE then
         fellow:setMobMod(xi.mobMod.WEAPON_BONUS, fellow:getMainLvl() * 1.15)
-        fellow:setMod(xi.mod.ATT,  50 + fellow:getMainLvl())
+        fellow:setMod(xi.mod.ATT, 30 + fellow:getMainLvl() * 1.25 + attkBonus)
         fellow:setMod(xi.mod.DOUBLE_ATTACK, 10)
         fellow:setMod(xi.mod.HASTE_GEAR, 1500)
         fellow:setMod(xi.mod.STORETP, 15)
@@ -318,16 +319,18 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.AXE,     15)
         fellow:setMod(xi.mod.HTH,     15)
         fellow:setMod(xi.mod.PARRY,    5)
-        fellow:setMod(xi.mod.ACC,     35)
+        fellow:setMod(xi.mod.ACC,    100)
         fellow:setMod(xi.mod.STR,     15)
         fellow:setMod(xi.mod.DEX,     15)
 
     elseif fellowType == fellowTypes.SHIELD then
+        fellow:setMod(xi.mod.ATT, attkBonus)
         fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.ENMITY,  5)
         fellow:setMod(xi.mod.ATTP,  -10)
 
     elseif fellowType == fellowTypes.STALWART then
+        fellow:setMod(xi.mod.ATT, attkBonus * 1.25)
         fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.SHIELD, 15)
         fellow:setMod(xi.mod.ENMITY, 10)
@@ -335,6 +338,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.DEFP,   20)
 
     elseif fellowType == fellowTypes.HEALER then
+        fellow:setMod(xi.mod.ATT, attkBonus * 0.75)
         fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.ENMITY, -5)
         fellow:setMod(xi.mod.ATTP,  -20)
@@ -343,6 +347,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.MACC,    7)
 
     elseif fellowType == fellowTypes.SOOTHING then
+        fellow:setMod(xi.mod.ATT, attkBonus)
         fellow:setMod(xi.mod.REFRESH, refreshPower)
         fellow:setMod(xi.mod.ATTP,     -10)
         fellow:setMod(xi.mod.CLUB,      15)
@@ -1284,9 +1289,6 @@ xi.fellow_utils.onDespawn = function(fellow)
     end
 end
 
--- Players must kill a number of mobs greater than 15x the selected
--- armor rank. This scales from 15 -> 165. Requiring 3,960 kills for
--- completion - as well as lvl 75.
 xi.fellow_utils.upgradeArmor = function(fellow, master)
     local offset        = master:getCharVar("[FELLOW]armorOffset")
     local armorLock     = master:getFellowValue("armorLock")
@@ -1306,9 +1308,9 @@ xi.fellow_utils.upgradeArmor = function(fellow, master)
     end
 
     for _, armorLevel in pairs(armorIndex) do
-        if fellow:getMainLvl() >= armorLevel[1] then
+        if master:getFellowValue("level") >= armorLevel[1] then
             for i = 1, #unlocked do
-                master:setFellowValue(i, armorLevel[2] + offset)
+                master:setFellowValue(unlocked[i], armorLevel[2] + offset)
             end
 
             return
@@ -1366,65 +1368,23 @@ xi.fellow_utils.changeJob = function(master, pJob, job)
 end
 
 xi.fellow_utils.checkPersonality = function(fellow)
-    local master = fellow:getMaster()
-    if master == nil then
-        return
-    end
-
-    local personality   = master:getFellowValue("personality")
-
-    switch (personality) : caseof
+    local personalityTable =
     {
-        [4]  = function(x)
-            personality = 0
-        end,
-
-        [8]  = function(x)
-            personality = 1
-        end,
-
-        [12] = function(x)
-            personality = 2
-        end,
-
-        [16] = function(x)
-            personality = 3
-        end,
-
-        [40] = function(x)
-            personality = 4
-        end,
-
-        [44] = function(x)
-            personality = 5
-        end,
-
-        [20] = function(x)
-            personality = 7
-        end,
-
-        [24] = function(x)
-            personality = 8
-        end,
-
-        [28] = function(x)
-            personality = 9
-        end,
-
-        [32] = function(x)
-            personality = 10
-        end,
-
-        [36] = function(x)
-            personality = 11
-        end,
-
-        [48] = function(x)
-            personality = 12
-        end,
+        [4]  = 0,
+        [8]  = 1,
+        [12] = 2,
+        [16] = 3,
+        [40] = 4,
+        [44] = 5,
+        [20] = 7,
+        [24] = 8,
+        [28] = 9,
+        [32] = 10,
+        [36] = 11,
+        [48] = 12,
     }
 
-    return personality
+    return personalityTable[fellow:getMaster():getFellowValue("personality")]
 end
 
 xi.fellow_utils.getStyleParam = function(player)

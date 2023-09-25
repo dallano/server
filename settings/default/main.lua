@@ -115,14 +115,14 @@ xi.settings.main =
     GIL_RATE        = 1.500, -- Multiplies gil earned from quests.  Won't always display in game.
     BAYLD_RATE      = 1.000, -- Multiples bayld earned from quests.
     -- Note: EXP rates are also influenced by conf setting
-    EXP_RATE        = 1.750, -- Multiplies exp from script (except FoV/GoV).
+    EXP_RATE        = 2.000, -- Multiplies exp from script (except FoV/GoV).
     SCROLL_EXP_RATE = 5.000, -- Multiplies exp from single use XP Scrolls (e.g. Miratete's Memoirs).
     BOOK_EXP_RATE   = 1.000, -- Multiplies exp from FoV/GoV book pages.
     TABS_RATE       = 1.000, -- Multiplies tabs earned from fov.
     ROE_EXP_RATE    = 1.000, -- Multiplies exp earned from records of eminence.
     SPARKS_RATE     = 1.000, -- Multiplies sparks earned from records of eminence.
     CURE_POWER      = 1.000, -- Multiplies amount healed from Healing Magic, including the relevant Blue Magic.
-    ELEMENTAL_POWER = 1.000, -- Multiplies damage dealt by Elemental and non-drain Dark Magic.
+    ELEMENTAL_POWER = 1.250, -- Multiplies damage dealt by Elemental and non-drain Dark Magic.
     DIVINE_POWER    = 1.500, -- Multiplies damage dealt by Divine Magic.
     NINJUTSU_POWER  = 1.500, -- Multiplies damage dealt by Ninjutsu Magic.
     BLUE_POWER      = 1.000, -- Multiplies damage dealt by Blue Magic.
