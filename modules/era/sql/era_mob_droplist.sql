@@ -22944,8 +22944,9 @@ INSERT INTO `mob_droplist` VALUES (2798,0,0,1000,2727,@VRARE); -- Argute Loafers
 INSERT INTO `mob_droplist` VALUES (2798,2,0,1000,1455,0);      -- One Byne Bill (Steal)
 
 -- ZoneID:  79 - Zikko
-INSERT INTO `mob_droplist` VALUES (2799,0,0,1000,15896,@UNCOMMON); -- Immortals Sash (Uncommon, 10%)
-INSERT INTO `mob_droplist` VALUES (2799,0,0,1000,18390,@UNCOMMON); -- Templar Hammer (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (2799,0,0,1000,18390,@VCOMMON);  -- Templar Hammer (Very Common, 24%)
+INSERT INTO `mob_droplist` VALUES (2799,0,0,1000,15896,@COMMON); -- Immortals Sash (Common, 15%)
+INSERT INTO `mob_droplist` VALUES (2799,0,0,1000,2157,@COMMON);   -- Imp Horn (Common, 15%)
 
 -- ZoneID: 177 - Zipacna
 INSERT INTO `mob_droplist` VALUES (2800,0,0,1000,1424,@ALWAYS);  -- Gem Of The North (Always, 100%)

@@ -2634,9 +2634,9 @@ INSERT INTO `mob_skill_lists` VALUES ('Alkonost',786,1330); -- hoof volley
 INSERT INTO `mob_skill_lists` VALUES ('Alkonost',786,2828); -- jettatura
 -- 787: free
 -- 788: free
-INSERT INTO `mob_skill_lists` VALUES ('Bakka',789,1711); -- frentic rip
-INSERT INTO `mob_skill_lists` VALUES ('Bakka',789,2003); -- grating tantra
-INSERT INTO `mob_skill_lists` VALUES ('Bakka',789,2004); -- stifling tantra
+INSERT INTO `mob_skill_lists` VALUES ('Imp_NM_Special',789,1711); -- frentic rip
+INSERT INTO `mob_skill_lists` VALUES ('Imp_NM_Special',789,2003); -- grating tantra
+INSERT INTO `mob_skill_lists` VALUES ('Imp_NM_Special',789,2004); -- stifling tantra
 INSERT INTO `mob_skill_lists` VALUES ('Balaur_Pre_50',790,819); -- blizzard breath
 INSERT INTO `mob_skill_lists` VALUES ('Balaur_Pre_50',790,820); -- thunder breath
 INSERT INTO `mob_skill_lists` VALUES ('Balaur_Post_50',791,819); -- blizzard breath -- chance of ice spikes effect
