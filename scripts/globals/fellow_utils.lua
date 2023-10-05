@@ -284,9 +284,7 @@ local armorIndex =
 xi.fellow_utils.onFellowSpawn = function(fellow)
     local master        = fellow:getMaster()
     local fellowType    = master:getFellowValue("job")
-    local level         = fellow:getMainLvl()
-    local refreshPower  = math.ceil(level * 0.05)
-    local attkBonus     = master:getFellowValue("weaponlvl") * 5
+    local wepBonus      = master:getFellowValue("weaponlvl") * 5
     fellow:setLocalVar("masterID", master:getID())
     fellow:setLocalVar("castingCoolDown", os.time() + 15)
     master:setLocalVar("chatCounter", 0)
@@ -298,15 +296,18 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
 
     if fellowType == fellowTypes.ATTACKER then
         fellow:setMobMod(xi.mobMod.WEAPON_BONUS, fellow:getMainLvl())
-        fellow:setMod(xi.mod.ATT, 25 + fellow:getMainLvl() * 0.75 + attkBonus)
+        fellow:setMod(xi.mod.ATTP, 50 + fellow:getMainLvl() * 0.75 + wepBonus)
+        fellow:setMod(xi.mod.ATT, fellow:getMainLvl() + wepBonus)
+        fellow:setMod(xi.mod.ACC, 50 + wepBonus)
         fellow:setMod(xi.mod.HASTE_GEAR, 100)
-        fellow:setMod(xi.mod.ACC,  50)
         fellow:setMod(xi.mod.STR,   7)
         fellow:setMod(xi.mod.DEX,   7)
 
     elseif fellowType == fellowTypes.FIERCE then
         fellow:setMobMod(xi.mobMod.WEAPON_BONUS, fellow:getMainLvl() * 1.15)
-        fellow:setMod(xi.mod.ATT, 30 + fellow:getMainLvl() * 1.25 + attkBonus)
+        fellow:setMod(xi.mod.ATTP, 75 + fellow:getMainLvl() * 1.25 + wepBonus)
+        fellow:setMod(xi.mod.ATT, fellow:getMainLvl() * 1.25 + wepBonus)
+        fellow:setMod(xi.mod.ACC, 100 + wepBonus)
         fellow:setMod(xi.mod.DOUBLE_ATTACK, 10)
         fellow:setMod(xi.mod.HASTE_GEAR, 1500)
         fellow:setMod(xi.mod.STORETP, 15)
@@ -319,26 +320,28 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.AXE,     15)
         fellow:setMod(xi.mod.HTH,     15)
         fellow:setMod(xi.mod.PARRY,    5)
-        fellow:setMod(xi.mod.ACC,    100)
         fellow:setMod(xi.mod.STR,     15)
         fellow:setMod(xi.mod.DEX,     15)
 
     elseif fellowType == fellowTypes.SHIELD then
-        fellow:setMod(xi.mod.ATT, attkBonus)
+        fellow:setMod(xi.mod.ATT, wepBonus)
+        fellow:setMod(xi.mod.ACC, wepBonus)
         fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.ENMITY,  5)
         fellow:setMod(xi.mod.ATTP,  -10)
 
     elseif fellowType == fellowTypes.STALWART then
-        fellow:setMod(xi.mod.ATT, attkBonus * 1.25)
-        fellow:setMod(xi.mod.REFRESH, 1)
+        fellow:setMod(xi.mod.ATT, wepBonus * 1.25)
+        fellow:setMod(xi.mod.ACC, wepBonus * 1.25)
+        fellow:setMod(xi.mod.REFRESH, 2)
         fellow:setMod(xi.mod.SHIELD, 15)
         fellow:setMod(xi.mod.ENMITY, 10)
         fellow:setMod(xi.mod.SWORD,  15)
         fellow:setMod(xi.mod.DEFP,   20)
 
     elseif fellowType == fellowTypes.HEALER then
-        fellow:setMod(xi.mod.ATT, attkBonus * 0.75)
+        fellow:setMod(xi.mod.ATT, wepBonus * 0.75)
+        fellow:setMod(xi.mod.ACC, wepBonus * 0.75)
         fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.ENMITY, -5)
         fellow:setMod(xi.mod.ATTP,  -20)
@@ -347,8 +350,9 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.MACC,    7)
 
     elseif fellowType == fellowTypes.SOOTHING then
-        fellow:setMod(xi.mod.ATT, attkBonus)
-        fellow:setMod(xi.mod.REFRESH, refreshPower)
+        fellow:setMod(xi.mod.ATT, wepBonus)
+        fellow:setMod(xi.mod.ACC, wepBonus)
+        fellow:setMod(xi.mod.REFRESH,    2)
         fellow:setMod(xi.mod.ATTP,     -10)
         fellow:setMod(xi.mod.CLUB,      15)
         fellow:setMod(xi.mod.SWORD,     15)
@@ -361,25 +365,6 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:setMod(xi.mod.MDEF,      20)
         fellow:setMod(xi.mod.MACC,      15)
     end
-
-    -- local mob = fellow:getZone():insertDynamicEntity({
-    --     objtype = xi.objType.MOB,
-    --     allegiance = xi.allegiance.PLAYER,
-    --     name = "Moblin Boi",
-    --     x = fellow:getPos().x + math.random(-1, 1),
-    --     y = fellow:getPos().y,
-    --     z = fellow:getPos().z + math.random(-1, 1),
-    --     rotation = fellow:getPos().rotation,
-    --     look = 699,
-
-    --     releaseIdOnDisappear = true,
-    --     specialSpawnAnimation = true,
-    -- })
-
-    -- local pos = mob:getPos()
-
-    -- mob:setSpawn(pos.x, pos.y, pos.z)
-    -- mob:spawn()
 end
 
 xi.fellow_utils.onTrigger = function(player, fellow)

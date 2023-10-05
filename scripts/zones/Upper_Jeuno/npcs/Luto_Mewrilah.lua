@@ -270,27 +270,27 @@ entity.onTrigger = function(player, npc)
             then
                 player:startEvent(10051, 0, 0, 0, 0, 0, 0, 0, fellowParam)
             elseif
-                bond >= 40 and
+                bond >= 30 and
                 weaponlevel == 2
             then
                 player:startEvent(10068, 0, 0, 0, 0, 0, 0, 0, fellowParam)
             elseif
-                bond >= 50 and
+                bond >= 30 and
                 weaponlevel == 3
             then
                 player:startEvent(10069, 0, 0, 0, 0, 0, 0, 0, fellowParam)
             elseif
-                bond >= 60 and
+                bond >= 30 and
                 weaponlevel == 4
             then
                 player:startEvent(10070, 0, 0, 0, 0, 0, 0, 0, fellowParam)
             elseif
-                bond >= 90 and
+                bond >= 30 and
                 weaponlevel == 5
             then
                 player:startEvent(10076, 0, 0, 0, 0, 0, 0, 0, fellowParam)
             elseif
-                bond >= 110 and
+                bond >= 30 and
                 weaponlevel == 6
             then
                 player:startEvent(10077, 0, 0, 0, 0, 0, 0, 0, fellowParam)

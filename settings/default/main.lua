@@ -276,7 +276,7 @@ xi.settings.main =
 
     -- MISC
     ENABLE_CHOCOBO_RAISING       = true,  -- Enable if chocobo raising is to be enabled.
-    ERA_CHOCOBO_ZONE_DISMOUNT    = false, -- If true, forces players to dismount a chocobo before entering a city or dungeon.
+    ERA_CHOCOBO_ZONE_DISMOUNT    = true, -- If true, forces players to dismount a chocobo before entering a city or dungeon.
     RIVERNE_PORTERS              = 120,  -- Time in seconds that Unstable Displacements in Cape Riverne stay open after trading a scale.
     LANTERNS_STAY_LIT            = 3600, -- time in seconds that lanterns in the Den of Rancor stay lit.
     ENABLE_COP_ZONE_CAP          = 1,    -- Enable or disable lvl cap

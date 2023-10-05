@@ -13,8 +13,8 @@ local loot =
     [1] =
     {
         {
-            { itemid = 13553, droprate = 150 }, -- blitz Ring
-            { itemid =     0, droprate = 850 }, -- Nothing
+            { itemid = 13553, droprate = 600 }, -- blitz Ring
+            { itemid =     0, droprate = 400 }, -- Nothing
         },
 
         {

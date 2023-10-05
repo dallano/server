@@ -35,7 +35,11 @@ zoneObject.onInitialize = function(zone)
                 player:PrintToPlayer("You rock! I can finally afford that scroll I've been eyeing on the auction house.", 0, "Holly")
 
                 npc:timer(3500, function(x)
-                    xi.teleport.to(player, xi.teleport.id.HOLLA)
+                    for _, member in pairs(player:getParty()) do
+                        if npc:checkDistance(member) <= 15 then
+                            xi.teleport.to(member, xi.teleport.id.HOLLA)
+                        end
+                    end
                 end)
             end
         end,
@@ -60,9 +64,11 @@ zoneObject.onInitialize = function(zone)
                 npc:injectActionPacket(player:getID(), 4, 122, 0, 0, 0, 10, 1)
                 player:PrintToPlayer("Really?! You won't regret it. Up up and ~away!", 0, "Dolly")
 
-                npc:timer(3500, function(x)
-                    xi.teleport.to(player, xi.teleport.id.DEM)
-                end)
+                for _, member in pairs(player:getParty()) do
+                    if npc:checkDistance(member) <= 15 then
+                        xi.teleport.to(member, xi.teleport.id.DEM)
+                    end
+                end
             end
         end,
         onTrigger = function(player, npc)
@@ -86,9 +92,11 @@ zoneObject.onInitialize = function(zone)
                 npc:injectActionPacket(player:getID(), 4, 122, 0, 0, 0, 10, 1)
                 player:PrintToPlayer("tyvm", 0, "Molly")
 
-                npc:timer(3500, function(x)
-                    xi.teleport.to(player, xi.teleport.id.MEA)
-                end)
+                for _, member in pairs(player:getParty()) do
+                    if npc:checkDistance(member) <= 15 then
+                        xi.teleport.to(member, xi.teleport.id.MEA)
+                    end
+                end
             end
         end,
         onTrigger = function(player, npc)

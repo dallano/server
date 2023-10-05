@@ -14,7 +14,7 @@ local quest = Quest:new(xi.quest.log_id.BASTOK, xi.quest.id.bastok.FEAR_OF_FLYIN
 
 quest.reward =
 {
-    fame     = 30,
+    fame     = 120,
     fameArea = xi.quest.fame_area.BASTOK,
     item     = xi.items.BLACK_SILK_NECKERCHIEF,
     title    = xi.title.AIRSHIP_DENOUNCER,
