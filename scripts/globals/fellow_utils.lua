@@ -461,6 +461,12 @@ xi.fellow_utils.buildPartyTable = function(master)
     for _, member in pairs(members) do
         if member:isPC() then
             table.insert(party, member)
+            if
+                member:getFellow() ~= nil and
+                member ~= master
+            then
+                table.insert(party, member:getFellow())
+            end
         end
     end
 
@@ -678,22 +684,19 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                     end
 
                     if
-                        fellow:getMainJob() == xi.job.PLD and
-                        member ~= fellow and
+                        member:getMainJob() == xi.job.PLD and
                         member:getHPP() > 40
                     then
-                        thresholdMod = thresholdMod + 1.5
-                    elseif
-                        fellow:getMainJob() == xi.job.PLD and
-                        member == fellow and
-                        member:getHPP() > 40
-                    then
-                        thresholdMod = thresholdMod + 0.5
+                        thresholdMod = thresholdMod + 1
+
                     elseif
                         member:hasStatusEffect(xi.effect.REGEN) and
                         member:getHPP() > 50
                     then
                         thresholdMod = thresholdMod + 0.5
+
+                    elseif member:getHPP() < 35 then
+                        thresholdMod = 1
                     end
 
                     -- Final Check before healing party member

@@ -111,7 +111,7 @@ bool CFellowEntity::ValidTarget(CBattleEntity* PInitiator, uint16 targetFlags)
     {
         return false;
     }
-    if (targetFlags & TARGET_PLAYER_PARTY && PInitiator->objtype == TYPE_FELLOW && PInitiator->allegiance == allegiance)
+    if ((targetFlags & TARGET_PLAYER_PARTY) && PInitiator->objtype == TYPE_FELLOW)
     {
         return true;
     }
