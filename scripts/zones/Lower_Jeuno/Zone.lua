@@ -16,7 +16,28 @@ zoneObject.onInitialize = function(zone)
     zone:registerTriggerArea(1, 23, 0, -43, 44, 7, -39) -- Inside Tenshodo HQ. TODO: Find out if this is used other than in ZM 17 (not anymore). Remove if not.
     xi.chocobo.initZone(zone)
 
+    -----------------------------------
+    -- OP Warp NPC
+    -----------------------------------
+    local mammet = zone:insertDynamicEntity({
+        objtype  = xi.objType.NPC,
+        name     = "Mammet-6",
+        x        = -74.5,
+        y        = 6.0,
+        z        = -99.5,
+        rotation = 22,
+        look     = 1004,
+        releaseIdOnDisappear = true,
+        specialSpawnAnimation = true,
+
+        onTrigger = function(player, npc)
+            xi.teleport.triggerOPWarp(player, npc)
+        end,
+    })
+
+    -----------------------------------
     -- Crag Tele NPCs
+    -----------------------------------
     local holly = zone:insertDynamicEntity({
         objtype  = xi.objType.NPC,
         name     = "Holly",
@@ -28,13 +49,17 @@ zoneObject.onInitialize = function(zone)
         releaseIdOnDisappear = true,
         specialSpawnAnimation = true,
         onTrade = function(player, npc, trade)
-            if npcUtil.tradeHasExactly(trade, { { "gil", 1000 } }) then
+            if
+                npcUtil.tradeHasExactly(trade, { { "gil", 1000 } }) and
+                player:hasKeyItem(xi.ki.MEA_GATE_CRYSTAL)
+            then
                 player:confirmTrade()
-                npc:injectActionPacket(player:getID(), 4, 122, 0, 0, 0, 10, 1)
                 player:PrintToPlayer("*gasp*", 0, "Holly")
                 player:PrintToPlayer("You rock! I can finally afford that scroll I've been eyeing on the auction house.", 0, "Holly")
 
                 npc:timer(3500, function(x)
+                    npc:injectActionPacket(player:getID(), 4, 122, 0, 0, 0, 10, 1)
+
                     for _, member in pairs(player:getParty()) do
                         if npc:checkDistance(member) <= 15 then
                             xi.teleport.to(member, xi.teleport.id.HOLLA)
@@ -59,16 +84,21 @@ zoneObject.onInitialize = function(zone)
         releaseIdOnDisappear = true,
         specialSpawnAnimation = true,
         onTrade = function(player, npc, trade)
-            if npcUtil.tradeHasExactly(trade, { { "gil", 1000 } }) then
+            if
+                npcUtil.tradeHasExactly(trade, { { "gil", 1000 } }) and
+                player:hasKeyItem(xi.ki.DEM_GATE_CRYSTAL)
+            then
                 player:confirmTrade()
-                npc:injectActionPacket(player:getID(), 4, 122, 0, 0, 0, 10, 1)
                 player:PrintToPlayer("Really?! You won't regret it. Up up and ~away!", 0, "Dolly")
+                npc:injectActionPacket(player:getID(), 4, 122, 0, 0, 0, 10, 1)
 
-                for _, member in pairs(player:getParty()) do
-                    if npc:checkDistance(member) <= 15 then
-                        xi.teleport.to(member, xi.teleport.id.DEM)
+                npc:timer(3500, function(x)
+                    for _, member in pairs(player:getParty()) do
+                        if npc:checkDistance(member) <= 15 then
+                            xi.teleport.to(member, xi.teleport.id.DEM)
+                        end
                     end
-                end
+                end)
             end
         end,
         onTrigger = function(player, npc)
@@ -87,16 +117,21 @@ zoneObject.onInitialize = function(zone)
         releaseIdOnDisappear = true,
         specialSpawnAnimation = true,
         onTrade = function(player, npc, trade)
-            if npcUtil.tradeHasExactly(trade, { { "gil", 1000 } }) then
+            if
+                npcUtil.tradeHasExactly(trade, { { "gil", 1000 } }) and
+                player:hasKeyItem(xi.ki.HOLLA_GATE_CRYSTAL)
+            then
                 player:confirmTrade()
-                npc:injectActionPacket(player:getID(), 4, 122, 0, 0, 0, 10, 1)
                 player:PrintToPlayer("tyvm", 0, "Molly")
+                npc:injectActionPacket(player:getID(), 4, 122, 0, 0, 0, 10, 1)
 
-                for _, member in pairs(player:getParty()) do
-                    if npc:checkDistance(member) <= 15 then
-                        xi.teleport.to(member, xi.teleport.id.MEA)
+                npc:timer(3500, function(x)
+                    for _, member in pairs(player:getParty()) do
+                        if npc:checkDistance(member) <= 15 then
+                            xi.teleport.to(member, xi.teleport.id.MEA)
+                        end
                     end
-                end
+                end)
             end
         end,
         onTrigger = function(player, npc)
@@ -106,6 +141,7 @@ zoneObject.onInitialize = function(zone)
     holly:setStatus(xi.status.NORMAL)
     molly:setStatus(xi.status.NORMAL)
     dolly:setStatus(xi.status.NORMAL)
+    mammet:setStatus(xi.status.NORMAL)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
