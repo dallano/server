@@ -51,7 +51,7 @@ zoneObject.onInitialize = function(zone)
         onTrade = function(player, npc, trade)
             if
                 npcUtil.tradeHasExactly(trade, { { "gil", 1000 } }) and
-                player:hasKeyItem(xi.ki.MEA_GATE_CRYSTAL)
+                player:hasKeyItem(xi.ki.HOLLA_GATE_CRYSTAL)
             then
                 player:confirmTrade()
                 player:PrintToPlayer("*gasp*", 0, "Holly")
@@ -119,7 +119,7 @@ zoneObject.onInitialize = function(zone)
         onTrade = function(player, npc, trade)
             if
                 npcUtil.tradeHasExactly(trade, { { "gil", 1000 } }) and
-                player:hasKeyItem(xi.ki.HOLLA_GATE_CRYSTAL)
+                player:hasKeyItem(xi.ki.MEA_GATE_CRYSTAL)
             then
                 player:confirmTrade()
                 player:PrintToPlayer("tyvm", 0, "Molly")

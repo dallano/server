@@ -67,6 +67,8 @@ zones[xi.zone.VALKURM_DUNES] =
         VALKURM_EMPEROR_PH =
         {
             [17199434] = 17199438, -- -228.957 2.776 -101.226
+            [17199437] = 17199438,
+            [17199435] = 17199438,
         },
         GOLDEN_BAT_PH      =
         {

@@ -4417,7 +4417,7 @@ namespace charutils
                         exp = std::fmin(exp, 300.f);
                     }
 
-                    if (mobCheck > EMobDifficulty::DecentChallenge)
+                    if (mobCheck >= EMobDifficulty::DecentChallenge)
                     {
                         if (PMember->expChain.chainTime > gettick() || PMember->expChain.chainTime == 0)
                         {

@@ -80,7 +80,7 @@ local debuffTable =
 
 local buffTable =
 {
-    { effect = xi.effect.REFRESH,   spell = xi.magic.spell.REFRESH,       level = 41, mpCost = 40, targetOther = false },
+    { effect = xi.effect.REFRESH,   spell = xi.magic.spell.REFRESH,       level = 41, mpCost = 40, targetOther = true  },
     { effect = xi.effect.PROTECT,   spell = xi.magic.spell.PROTECTRA_IV,  level = 68, mpCost = 65, targetOther = false },
     { effect = xi.effect.PROTECT,   spell = xi.magic.spell.PROTECTRA_III, level = 47, mpCost = 46, targetOther = false },
     { effect = xi.effect.PROTECT,   spell = xi.magic.spell.PROTECTRA_II,  level = 27, mpCost = 28, targetOther = false },
@@ -89,7 +89,7 @@ local buffTable =
     { effect = xi.effect.SHELL,     spell = xi.magic.spell.SHELLRA_III,   level = 57, mpCost = 56, targetOther = false },
     { effect = xi.effect.SHELL,     spell = xi.magic.spell.SHELLRA_II,    level = 37, mpCost = 37, targetOther = false },
     { effect = xi.effect.SHELL,     spell = xi.magic.spell.SHELLRA,       level = 17, mpCost = 18, targetOther = false },
-    { effect = xi.effect.HASTE,     spell = xi.magic.spell.HASTE,         level = 40, mpCost = 40, targetOther = false },
+    { effect = xi.effect.HASTE,     spell = xi.magic.spell.HASTE,         level = 40, mpCost = 40, targetOther = true  },
     { effect = xi.effect.STONESKIN, spell = xi.magic.spell.STONESKIN,     level = 28, mpCost = 29, targetOther = false },
     { effect = xi.effect.BLINK,     spell = xi.magic.spell.BLINK,         level = 19, mpCost = 20, targetOther = false },
 }
@@ -668,9 +668,10 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
         recast = xi.fellow_utils.calculateRecast(fellow, fellowType)
 
         for _, cure in pairs(cureTable) do
+
             if
-                cure.level <= fellowLvl and
-                cure.mpCost <= mp
+            cure.level <= fellowLvl and
+            cure.mpCost <= mp
             then
                 for _, member in pairs(party) do
                     -- Prioritize poison if target is okay HP wise
@@ -680,6 +681,12 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                     then
                         fellow:setLocalVar("castingCoolDown", os.time() + recast)
                         fellow:castSpell(xi.magic.spell.POISONA, member)
+                        return
+
+                    elseif
+                        cure.spell == xi.magic.spell.CURE and
+                        member:getMainLvl() >= 35
+                    then
                         return
                     end
 
@@ -800,14 +807,17 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
                         member:getMPP() > 90
                     then
                         check = false
+
                     elseif
                         buff.effect == xi.effect.HASTE and
                         not member:isEngaged()
                     then
                         check = false
-                    end
 
-                    if not fellow:hasStatusEffect(buff.effect) then
+                    if
+                        not fellow:hasStatusEffect(buff.effect) and
+                        check == true
+                    then
                         fellow:setLocalVar("castingCoolDown", os.time() + recast)
                         fellow:castSpell(buff.spell, fellow)
                         return
@@ -838,7 +848,6 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
     local coolDown = fellow:getLocalVar("castingCoolDown")
     local recast   = xi.fellow_utils.calculateRecast(fellow, fellowType)
     local target   = nil
-    local engaged  = false
     local party    = xi.fellow_utils.buildPartyTable(master)
 
     if -- Return if not mage
@@ -864,10 +873,18 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
             end
         end
 
-        if -- Return if mob is a weakling and not an NM
-            target ~= nil and
+        if target == nil then
+            return
+
+        elseif -- Return if mob is a weakling and not an NM
             fellow:checkDistance(target) <= 20 and
             target:getMainLvl() - master:getMainLvl() < -6 and
+            not target:isNM()
+        then
+            return
+
+        elseif -- Return if mob is almost dead and isn't an NM
+            target:getHPP() < 20 and
             not target:isNM()
         then
             return
