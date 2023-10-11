@@ -24,7 +24,7 @@ entity.onTrigger = function(player, npc)
 
         local item = 18246 + playerRace - raceOffset
         GetMobByID(ID.mob.AROMA_CRAWLER):addListener("ITEM_DROPS", "ITEM_DROPS_RSE", function(mob, loot)
-            loot:addItemFixed(item, 500)
+            loot:addItem(item, xi.drop_rate.VERY_COMMON)
         end)
 
         local newSpawn = math.random(1, 3) -- determine new spawn point for ???
