@@ -794,9 +794,9 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
             if buff.effect == xi.effect.STONESKIN or buff.effect == xi.effect.BLINK then
                 recast = recast * 2
             end
+
             for _, member in pairs(party) do
                 local check = true
-
                 if
                     buff.level <= fellowLvl and
                     buff.mpCost <= mp
@@ -813,6 +813,7 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
                         not member:isEngaged()
                     then
                         check = false
+                    end
 
                     if
                         not fellow:hasStatusEffect(buff.effect) and
