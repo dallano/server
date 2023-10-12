@@ -111,7 +111,7 @@ xi.shop =
             4150, 2595, -- Eye Drops
             4112,  910, -- Potion
         }
-        xi.shop.general(player, stock)
+        xi.shop.general(player, stock, 1)
     end,
 
     -- send celebratory chest shop dialog to player
@@ -133,7 +133,7 @@ xi.shop =
             4240, 3000, -- Cyclone Crystal
             4241, 3000, -- Terra Crystal
         }
-        xi.shop.general(player, stock)
+        xi.shop.general(player, stock, 1)
     end,
 
     -- stock for guild vendors that are open 24/8

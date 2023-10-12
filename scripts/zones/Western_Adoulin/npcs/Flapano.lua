@@ -75,7 +75,7 @@ entity.onTrigger = function(player, npc)
             4405, 160,   -- Rice Ball
             5676, 76475, -- Mushroom Saute
         }
-        xi.shop.general(player, stock)
+        xi.shop.general(player, stock, 1)
 
         if exoticDelicacies ~= QUEST_COMPLETED then
             player:setCharVar("Flapano_Odd_Even", 0)

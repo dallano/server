@@ -38,7 +38,7 @@ entity.onTrigger = function(player, npc)
     end
 
     player:showText(npc, ID.text.NILEROUCHE_SHOP_DIALOG)
-    xi.shop.general(player, stock)
+    xi.shop.general(player, stock, 1)
 end
 
 entity.onEventUpdate = function(player, csid, option)

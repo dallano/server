@@ -17,7 +17,7 @@ end
 
 entity.onTrigger = function(player, npc)
     player:PrintToPlayer("Welcome to the Abjuration Store!", 0, "Esqualea")
-    xi.shop.general(player, stock)
+    xi.shop.general(player, stock, 1)
 end
 
 entity.onEventUpdate = function(player, csid, option)

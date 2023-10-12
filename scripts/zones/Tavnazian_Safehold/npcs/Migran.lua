@@ -34,7 +34,7 @@ entity.onTrigger = function(player, npc)
     end
 
     player:showText(npc, ID.text.MIGRAN_SHOP_DIALOG) -- 10914 with 2 items available, may change
-    xi.shop.general(player, stock)
+    xi.shop.general(player, stock, 1)
 end
 
 entity.onEventUpdate = function(player, csid, option)

@@ -613,23 +613,17 @@ local loot =
         },
 
         {
-            { itemid =    0, droprate = 875 }, -- nothing
-            { itemid = 1441, droprate = 125 }, -- scroll_of_freeze
+            { itemid = 18175, droprate = 250 }, -- optical_needle
+            { itemid = 18177, droprate = 250 }, -- kakanpu
+            { itemid = 18174, droprate = 250 }, -- mantra_coin
+            { itemid = 18176, droprate = 250 }, -- nazar_bonjuk
         },
 
         {
-            { itemid =     0, droprate = 200 }, -- nothing
-            { itemid = 18175, droprate = 200 }, -- optical_needle
-            { itemid = 18177, droprate = 200 }, -- kakanpu
-            { itemid = 18174, droprate = 200 }, -- mantra_coin
-            { itemid = 18176, droprate = 200 }, -- nazar_bonjuk
-        },
-
-        {
-            { itemid =   0, droprate = 100 }, -- nothing
-            { itemid = 644, droprate = 300 }, -- chunk_of_mythril_ore
-            { itemid = 745, droprate = 300 }, -- gold_ingot
-            { itemid = 746, droprate = 300 }, -- platinum_ingot
+            { itemid = 1441, droprate = 250 }, -- scroll_of_freeze
+            { itemid = 644,  droprate = 250 }, -- chunk_of_mythril_ore
+            { itemid = 745,  droprate = 250 }, -- gold_ingot
+            { itemid = 746,  droprate = 250 }, -- platinum_ingot
         },
     },
 
@@ -641,45 +635,40 @@ local loot =
         },
 
         {
-            { itemid =     0, droprate = 500 }, -- nothing
-            { itemid = 15149, droprate = 250 }, -- rival_ribbon
-            { itemid = 15151, droprate = 250 }, -- super_ribbon
+            { itemid = 15149, droprate = 500 }, -- rival_ribbon
+            { itemid = 15151, droprate = 500 }, -- super_ribbon
         },
 
         {
-            { itemid =     0, droprate = 250 }, -- nothing
-            { itemid = 14842, droprate = 250 }, -- ivory_mitts
-            { itemid = 14844, droprate = 250 }, -- rush_gloves
-            { itemid = 14845, droprate = 250 }, -- sly_gauntlets
+            { itemid = 14842, droprate = 334 }, -- ivory_mitts
+            { itemid = 14844, droprate = 333 }, -- rush_gloves
+            { itemid = 14845, droprate = 333 }, -- sly_gauntlets
         },
 
         {
-            { itemid =     0, droprate = 200 }, -- nothing
-            { itemid = 13676, droprate = 200 }, -- heavy_mantle
-            { itemid = 13677, droprate = 200 }, -- esoteric_mantle
-            { itemid = 13678, droprate = 200 }, -- snipers_mantle
-            { itemid = 13679, droprate = 200 }, -- templars_mantle
+            { itemid = 13676, droprate = 250 }, -- heavy_mantle
+            { itemid = 13677, droprate = 250 }, -- esoteric_mantle
+            { itemid = 13678, droprate = 250 }, -- snipers_mantle
+            { itemid = 13679, droprate = 250 }, -- templars_mantle
         },
 
         {
-            { itemid =     0, droprate = 200 }, -- nothing
-            { itemid = 13166, droprate = 200 }, -- hateful_collar
-            { itemid = 13167, droprate = 200 }, -- storm_gorget
-            { itemid = 13168, droprate = 200 }, -- intellect_torque
-            { itemid = 13169, droprate = 200 }, -- benign_necklace
+            { itemid = 13166, droprate = 250 }, -- hateful_collar
+            { itemid = 13167, droprate = 250 }, -- storm_gorget
+            { itemid = 13168, droprate = 250 }, -- intellect_torque
+            { itemid = 13169, droprate = 250 }, -- benign_necklace
         },
 
         {
-            { itemid =   0, droprate = 200 }, -- nothing
-            { itemid = 654, droprate = 200 }, -- darksteel_ingot
-            { itemid = 702, droprate = 200 }, -- ebony_log
-            { itemid = 703, droprate = 200 }, -- petrified_log
-            { itemid = 745, droprate = 200 }, -- gold_ingot
+            { itemid = 654, droprate = 250 }, -- darksteel_ingot
+            { itemid = 702, droprate = 250 }, -- ebony_log
+            { itemid = 703, droprate = 250 }, -- petrified_log
+            { itemid = 745, droprate = 250 }, -- gold_ingot
         },
 
         {
-            { itemid =    0, droprate = 875 }, -- nothing
-            { itemid = 4818, droprate = 125 }, -- scroll_of_quake
+            { itemid =    0, droprate = 750 }, -- nothing
+            { itemid = 4818, droprate = 250 }, -- scroll_of_quake
         },
     },
 

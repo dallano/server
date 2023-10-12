@@ -31,7 +31,7 @@ entity.onTrigger = function(player, npc)
     end
 
     player:showText(npc, ID.text.MELLEUPAUX_SHOP_DIALOG) -- 10910 without ch4 complete, may change
-    xi.shop.general(player, stock)
+    xi.shop.general(player, stock, 1)
 end
 
 entity.onEventUpdate = function(player, csid, option)

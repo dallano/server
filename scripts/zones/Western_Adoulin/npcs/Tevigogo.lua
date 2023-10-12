@@ -24,7 +24,7 @@ entity.onTrigger = function(player, npc)
         17308, 60,     -- Hawkeye
         17320, 8,      -- Iron Arrow
     }
-    xi.shop.general(player, stock)
+    xi.shop.general(player, stock, 1)
 end
 
 entity.onEventUpdate = function(player, csid, option)

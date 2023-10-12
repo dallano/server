@@ -32,7 +32,7 @@ entity.onTrigger = function(player, npc)
         6093, 703800, -- Scroll of Indi-Fade
         6131, 709716, -- Scroll of Indi-Haste
     }
-    xi.shop.general(player, stock)
+    xi.shop.general(player, stock, 1)
 end
 
 entity.onEventUpdate = function(player, csid, option)

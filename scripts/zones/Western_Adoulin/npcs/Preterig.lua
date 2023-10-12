@@ -22,7 +22,7 @@ entity.onTrigger = function(player, npc)
         4421, 1560,   -- Melon Pie
         4422, 200,    -- Orange Juice
     }
-    xi.shop.general(player, stock)
+    xi.shop.general(player, stock, 1)
 end
 
 entity.onEventUpdate = function(player, csid, option)
