@@ -45,6 +45,11 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:setPos(-181.969, -35.542, 19.995, 254)
     end
 
+    if not player:hasTeleport(player:getNation(), xi.region.VALDEAUNIA + 5) then
+        player:PrintToPlayer("Congratulations! You have unlocked the Valdeaunia outpost.", 20)
+        player:addTeleport(player:getNation(), xi.region.VALDEAUNIA + 5)
+    end
+
     return cs
 end
 

@@ -38,7 +38,7 @@ quest.sections =
             ['Maat'] =
             {
                 onTrigger = function(player, npc)
-                    if player:getMainLvl() >= 56 then
+                    if player:getMainLvl() >= 55 then
                         return quest:progressEvent(85)
                     else
                         return quest:message(ruludeID.text.MAAT_LB3_PLACEHOLDER)

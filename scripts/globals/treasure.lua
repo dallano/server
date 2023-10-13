@@ -1477,7 +1477,7 @@ local function moveChest(npc, zoneId, chestType, mimicSpawned)
         npc:hideNPC(5)
     end
 
-    npc:queue(3000, doMove(npc, unpack(point)))
+    npc:queue(60, doMove(npc, unpack(point)))
 end
 
 local function spawnMimic(player, npc)
@@ -1706,7 +1706,7 @@ xi.treasure.onTrade = function(player, npc, trade, chestType)
         end
 
         local gilAmount = math.random(info.gil[2], info.gil[3])
-        local gil = gilAmount / #membersInZone
+        local gil = gilAmount
         for i = 1, #membersInZone do
             npcUtil.giveCurrency(membersInZone[i], 'gil', gil * xi.settings.main.CHEST_GIL_MULT)
         end

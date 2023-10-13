@@ -32,6 +32,11 @@ zoneObject.onZoneIn = function(player, prevZone)
         cs = 29
     end
 
+    if not player:hasTeleport(player:getNation(), xi.region.FAUREGANDI + 5) then
+        player:PrintToPlayer("Congratulations! You have unlocked the Fauregandi outpost.", 20)
+        player:addTeleport(player:getNation(), xi.region.FAUREGANDI + 5)
+    end
+
     return cs
 end
 

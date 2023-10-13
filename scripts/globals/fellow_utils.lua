@@ -419,7 +419,6 @@ xi.fellow_utils.onFellowRoam = function(fellow)
 
     xi.fellow_utils.spellCheck(fellow, master)
     xi.fellow_utils.checkJobAbility(fellow, master)
-    xi.fellow_utils.timeWarning(fellow, master)
     xi.fellow_utils.onslaught(fellow, master)
 end
 
@@ -455,7 +454,6 @@ xi.fellow_utils.onFellowFight = function(fellow, target)
     xi.fellow_utils.spellCheck(fellow, master)
     xi.fellow_utils.weaponskill(fellow, target, master)
     xi.fellow_utils.battleMessaging(fellow, master)
-    xi.fellow_utils.timeWarning(fellow, master)
 end
 
 xi.fellow_utils.buildPartyTable = function(master)
@@ -1234,41 +1232,6 @@ xi.fellow_utils.battleMessaging = function(fellow, master)
         mpNotice ~= 1
     then
         fellow:setLocalVar("mpNotice", 1)
-    end
-end
-
-xi.fellow_utils.timeWarning = function(fellow, master)
-    local master        = fellow:getMaster()
-    local ID            = require("scripts/zones/"..master:getZoneName().."/IDs")
-    local personality   = xi.fellow_utils.checkPersonality(fellow)
-    local maxTime       = master:getFellowValue("maxTime")
-    local spawnTime     = master:getFellowValue("spawnTime")
-    local timeWarning   = fellow:getLocalVar("timeWarning")
-    if
-        os.time() > spawnTime + maxTime - 300 and
-        timeWarning == 0
-    then
-        if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
-            master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.FIVE_MIN_WARNING + personality)
-        end
-        fellow:setLocalVar("timeWarning", 1)
-    elseif
-        os.time() > spawnTime + maxTime - 4 and
-        timeWarning == 1
-    then
-        if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
-            master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.TIME_EXPIRED + personality)
-        end
-        fellow:setLocalVar("timeWarning", 2)
-    elseif
-        os.time() > spawnTime + maxTime and
-        timeWarning == 2
-    then
-        if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
-            master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.LEAVE + personality)
-        end
-        fellow:setLocalVar("timeWarning", 3)
-        master:despawnFellow()
     end
 end
 

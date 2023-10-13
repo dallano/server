@@ -1196,6 +1196,7 @@ xi.conquest.overseerOnTrigger = function(player, npc, guardNation, guardType, gu
     local pNation = player:getNation()
 
     -- XISP (Ronfaure, Gustaberg, Sarutabaruta)
+    -- Players don't need to own this region in order to unlock OP
     if
         (guardRegion == xi.region.RONFAURE or
         guardRegion == xi.region.GUSTABERG or

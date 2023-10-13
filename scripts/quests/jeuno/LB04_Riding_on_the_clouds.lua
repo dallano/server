@@ -58,7 +58,7 @@ quest.sections =
     {
         check = function(player, status, vars)
             return status == QUEST_AVAILABLE and
-                player:getMainLvl() >= 61 and
+                player:getMainLvl() >= 60 and
                 player:getLevelCap() == 65 and
                 xi.settings.main.MAX_LEVEL >= 70
         end,
