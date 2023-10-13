@@ -6634,7 +6634,7 @@ INSERT INTO `mob_droplist` VALUES (799,0,0,1000,1107,@UNCOMMON); -- Pinch Of Gli
 -- ZoneID: 197 - Exoray
 INSERT INTO `mob_droplist` VALUES (800,0,0,1000,4374,@ALWAYS);   -- Sleepshroom (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (800,0,0,1000,4373,@VCOMMON);  -- Woozyshroom (Very Common, 24%)
-INSERT INTO `mob_droplist` VALUES (800,0,0,1000,1089,@UNCOMMON); -- Clump Of Exoray Mold (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (800,0,0,1000,1089,@COMMON);   -- Clump Of Exoray Mold (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (800,0,0,1000,4375,@RARE);     -- Danceshroom (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (800,0,0,1000,1040,@RARE);     -- Nest Chest Key (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (800,2,0,1000,4374,0);         -- Sleepshroom (Steal)

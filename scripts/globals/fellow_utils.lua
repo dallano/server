@@ -326,6 +326,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
     elseif fellowType == fellowTypes.SHIELD then
         fellow:setMod(xi.mod.ATT, wepBonus)
         fellow:setMod(xi.mod.ACC, wepBonus)
+        fellow:setMod(xi.mod.SPELLINTERRUPT, 50)
         fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.ENMITY,  5)
         fellow:setMod(xi.mod.ATTP,  -10)
@@ -333,6 +334,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
     elseif fellowType == fellowTypes.STALWART then
         fellow:setMod(xi.mod.ATT, wepBonus * 1.25)
         fellow:setMod(xi.mod.ACC, wepBonus * 1.25)
+        fellow:setMod(xi.mod.SPELLINTERRUPT, 85)
         fellow:setMod(xi.mod.REFRESH, 2)
         fellow:setMod(xi.mod.SHIELD, 15)
         fellow:setMod(xi.mod.ENMITY, 10)
@@ -342,6 +344,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
     elseif fellowType == fellowTypes.HEALER then
         fellow:setMod(xi.mod.ATT, wepBonus * 0.75)
         fellow:setMod(xi.mod.ACC, wepBonus * 0.75)
+        fellow:setMod(xi.mod.SPELLINTERRUPT, 50)
         fellow:setMod(xi.mod.REFRESH, 1)
         fellow:setMod(xi.mod.ENMITY, -5)
         fellow:setMod(xi.mod.ATTP,  -20)
@@ -352,6 +355,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
     elseif fellowType == fellowTypes.SOOTHING then
         fellow:setMod(xi.mod.ATT, wepBonus)
         fellow:setMod(xi.mod.ACC, wepBonus)
+        fellow:setMod(xi.mod.SPELLINTERRUPT, 65)
         fellow:setMod(xi.mod.REFRESH,    2)
         fellow:setMod(xi.mod.ATTP,     -10)
         fellow:setMod(xi.mod.CLUB,      15)
@@ -694,15 +698,17 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                         member:getMainJob() == xi.job.PLD and
                         member:getHPP() > 40
                     then
-                        thresholdMod = thresholdMod + 1
+                        thresholdMod = thresholdMod + 0.75
+                    end
 
-                    elseif
+                    if
                         member:hasStatusEffect(xi.effect.REGEN) and
                         member:getHPP() > 50
                     then
-                        thresholdMod = thresholdMod + 0.5
+                        thresholdMod = thresholdMod + 0.25
+                    end
 
-                    elseif member:getHPP() < 35 then
+                    if member:getHPP() < 50 then
                         thresholdMod = 1
                     end
 
@@ -817,13 +823,15 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
 
                     if
                         not fellow:hasStatusEffect(buff.effect) and
+                        not buff.targetOther and
                         check == true
                     then
                         fellow:setLocalVar("castingCoolDown", os.time() + recast)
                         fellow:castSpell(buff.spell, fellow)
                         return
+                    end
 
-                    elseif
+                    if
                         not member:hasStatusEffect(buff.effect) and
                         buff.targetOther and
                         check
