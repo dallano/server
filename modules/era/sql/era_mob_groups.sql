@@ -443,6 +443,16 @@ UPDATE mob_groups SET HP = 6000 WHERE name = "Nightmare_Leech" and zoneid = 42;
 UPDATE mob_groups SET HP = 6000 WHERE name = "Nightmare_Cluster" and zoneid = 42;
 
 -- ------------------------------------------------------------
+-- Open_sea_route_to_Al_Zahbi (Zone 46)
+-- ------------------------------------------------------------
+UPDATE mob_groups SET dropid='6068' WHERE name ='Northern_Piranu' AND zoneid='46';
+
+-- ------------------------------------------------------------
+-- Open_sea_route_to_Mhaura (Zone 47)
+-- ------------------------------------------------------------
+UPDATE mob_groups SET dropid='6069' WHERE name ='Southern_Piranu' AND zoneid='47';
+
+-- ------------------------------------------------------------
 -- Bhaflau_Thickets (Zone 52)
 -- ------------------------------------------------------------
 

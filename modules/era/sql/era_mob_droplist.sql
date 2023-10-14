@@ -7896,7 +7896,7 @@ INSERT INTO `mob_droplist` VALUES (968,0,0,1000,1199,@RARE); -- Northern Fur (Ra
 -- ZoneID:  58 - Orobon Fished
 -- ZoneID:  59 - Orobon Fished
 -- ZoneID:  61 - Giant Orobon
-INSERT INTO `mob_droplist` VALUES (969,0,0,1000,2154,@UNCOMMON); -- Orobon Lure (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (969,0,0,1000,5563,@UNCOMMON); -- Orobon Meat (UNCOMMON, 10%)
 
 -- ZoneID:   1 - Giant Pugil
 INSERT INTO `mob_droplist` VALUES (970,0,0,1000,868,@COMMON); -- Handful Of Pugil Scales (Common, 15%)
@@ -10163,7 +10163,6 @@ INSERT INTO `mob_droplist` VALUES (1248,0,0,1000,881,@VRARE);     -- Crab Shell 
 INSERT INTO `mob_droplist` VALUES (1248,0,0,1000,1193,@VRARE);    -- High-Quality Crab Shell (Very Rare, 1%)
 
 -- ZoneID:  46 - Gugru Orobon
-INSERT INTO `mob_droplist` VALUES (1249,0,0,1000,2154,210);       -- Orobon Lure (21.0%)
 INSERT INTO `mob_droplist` VALUES (1249,0,0,1000,5563,@UNCOMMON); -- Chunk Of Orobon Meat (Uncommon, 10%)
 
 -- ZoneID:  15 - Guimauve
@@ -24063,9 +24062,8 @@ INSERT INTO `mob_droplist` VALUES (2957,0,0,1000,856,213);  -- Rabbit Hide (21.3
 INSERT INTO `mob_droplist` VALUES (2957,0,0,1000,3011,33);  -- Square Of Bristly Hard Leather (3.3%)
 
 -- ZoneID: 261 - Deathmaw Orobon
-INSERT INTO `mob_droplist` VALUES (2958,0,0,1000,2154,550); -- Orobon Lure (55.0%)
-INSERT INTO `mob_droplist` VALUES (2958,0,0,1000,5563,107); -- Chunk Of Orobon Meat (10.7%)
-INSERT INTO `mob_droplist` VALUES (2958,0,0,1000,6012,80);  -- Celadon Yggrete Shard Ii (8.0%)
+INSERT INTO `mob_droplist` VALUES (2958,0,0,1000,5563,@UNCOMMON); -- Chunk Of Orobon Meat (Uncommon 10%)
+INSERT INTO `mob_droplist` VALUES (2958,0,0,1000,6012,@RARE);     -- Celadon Yggrete Shard II (Rare 5%)
 
 -- ZoneID: 261 - Fernfelling Chapuli
 INSERT INTO `mob_droplist` VALUES (2959,0,0,1000,3941,204); -- Chapuli Wing (20.4%)
@@ -24172,8 +24170,7 @@ INSERT INTO `mob_droplist` VALUES (2982,0,0,1000,6016,90); -- Zaffre Yggrete Sha
 INSERT INTO `mob_droplist` VALUES (2983,0,0,1000,11493,@COMMON); -- Precision Bandana (Common, 15%)
 
 -- ZoneID: 262 - Primordial Orobon
-INSERT INTO `mob_droplist` VALUES (2984,0,0,1000,2154,384); -- Orobon Lure (38.4%)
-INSERT INTO `mob_droplist` VALUES (2984,0,0,1000,5563,93);  -- Chunk Of Orobon Meat (9.3%)
+INSERT INTO `mob_droplist` VALUES (2984,0,0,1000,5563,@UNCOMMON);  -- Chunk Of Orobon Meat (Uncommon, 10%)
 
 -- ZoneID: 262 - Vorst Gnat
 INSERT INTO `mob_droplist` VALUES (2985,0,0,1000,2522,488); -- Gnat Wing (48.8%)
@@ -27001,6 +26998,14 @@ INSERT INTO `mob_droplist` VALUES (6067,0,0,1000,12673,@SRARE); -- Mythril Gaunt
 INSERT INTO `mob_droplist` VALUES (6067,0,0,1000,12801,@SRARE); -- Mythril Cuisses (Super Rare, .5%)
 INSERT INTO `mob_droplist` VALUES (6067,0,0,1000,12929,@SRARE); -- Mythril Leggings (Super Rare, .5%)
 INSERT INTO `mob_droplist` VALUES (6067,2,0,1000,749,0);        -- Mythril Beastcoin (Steal)
+
+-- Northern Piranu
+INSERT INTO `mob_droplist` VALUES (6068,0,0,1000,15702,@UNCOMMON); -- Spagyric Nails (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (6068,0,0,1000,18418,@UNCOMMON); -- Otori (Uncommon, 10%)
+
+-- Southern Piranu
+INSERT INTO `mob_droplist` VALUES (6069,0,0,1000,15702,@UNCOMMON); -- Spagyric Nails (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (6069,0,0,1000,18419,@UNCOMMON); -- Kugui (Uncommon, 10%)
 
 /*!40000 ALTER TABLE `mob_droplist` ENABLE KEYS */;
 UNLOCK TABLES;

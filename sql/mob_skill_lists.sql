@@ -4139,6 +4139,15 @@ INSERT INTO `mob_skill_lists` VALUES ('Nightmare_Worm',4081,1887); -- Sandspin (
 INSERT INTO `mob_skill_lists` VALUES ('Nightmare_Worm',4081,1888); -- Tremors (Larger dmg)
 INSERT INTO `mob_skill_lists` VALUES ('Nightmare_Worm',4081,1889); -- Spirit Vacuum
 INSERT INTO `mob_skill_lists` VALUES ('Nightmare_Worm',4081,1890); -- Sound Vacuum
+
+-- Orobon NM
+INSERT INTO `mob_skill_lists` VALUES ('NM_Orobon',4082,1693); -- Gnash
+INSERT INTO `mob_skill_lists` VALUES ('NM_Orobon',4082,1694); -- Vile Belch
+INSERT INTO `mob_skill_lists` VALUES ('NM_Orobon',4082,1695); -- Hypnic Lamp
+INSERT INTO `mob_skill_lists` VALUES ('NM_Orobon',4082,1696); -- Seismic Tail
+INSERT INTO `mob_skill_lists` VALUES ('NM_Orobon',4082,1697); -- Seaspray
+INSERT INTO `mob_skill_lists` VALUES ('NM_Orobon',4082,1698); -- Leeching Current
+
 -- End of AirSkyBoat section
 
 -- ------------------------------------------------------------

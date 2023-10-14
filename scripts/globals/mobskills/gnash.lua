@@ -1,0 +1,31 @@
+-----------------------------------
+-- Gnash
+-- Deals damage equal to 1/2 player's HP
+-- Need confirmation on whether this is 1/2 player's total HP
+-- or 1/2 player's current HP.
+-- Currently set to player's current HP.
+-----------------------------------
+require("scripts/globals/mobskills")
+-----------------------------------
+local mobskillObject = {}
+
+mobskillObject.onMobSkillCheck = function(target, mob, skill)
+    return 0
+end
+
+mobskillObject.onMobWeaponSkill = function(target, mob, skill)
+    local numhits = 1
+    local accmod = 1
+    local damage = target:getHP() * 0.5
+
+    local info = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, 1, xi.mobskills.magicalTpBonus.NO_EFFECT, 1, 1.5, 2)
+    local dmg = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.BLUNT, info.hitslanded)
+
+    if not skill:hasMissMsg() then
+        target:takeDamage(dmg, mob, xi.attackType.PHYSICAL, xi.damageType.BLUNT)
+    end
+
+    return dmg
+end
+
+return mobskillObject
