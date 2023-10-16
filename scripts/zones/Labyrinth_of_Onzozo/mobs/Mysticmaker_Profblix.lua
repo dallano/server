@@ -8,7 +8,7 @@ require("scripts/globals/regimes")
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:addMod(xi.mod.SILENCERES, 80)
+    mob:addMod(xi.mod.SILENCERES, 25)
 end
 
 entity.onMobDeath = function(mob, player, optParams)

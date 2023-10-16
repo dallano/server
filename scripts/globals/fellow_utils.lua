@@ -71,7 +71,7 @@ local cureTable =
 
 local debuffTable =
 {
-    { effect = xi.effect.SILENCE,   spell = xi.magic.spell.SILENCE,  level = 15, mpCost = 16, immunity = xi.immunity.SILENCE,  check = true },
+    { effect = xi.effect.SILENCE,   spell = xi.magic.spell.SILENCE,  level = 15, mpCost = 16, immunity = xi.immunity.SILENCE,  check = false },
     { effect = xi.effect.DIA,       spell = xi.magic.spell.DIA_II,   level = 36, mpCost = 30, immunity = xi.immunity.NONE,     check = true },
     { effect = xi.effect.DIA,       spell = xi.magic.spell.DIA,      level =  3, mpCost =  7, immunity = xi.immunity.NONE,     check = true },
     { effect = xi.effect.PARALYSIS, spell = xi.magic.spell.PARALYZE, level =  4, mpCost =  6, immunity = xi.immunity.PARALYZE, check = true },
@@ -135,7 +135,7 @@ local weaponskills =
         [3] = { 24, false }, -- one inch punch
         [4] = { 33, false }, -- backhand blow
         [5] = { 41, false }, -- raging fists
-        [6] = { 49, true }, -- spinning attack
+        [6] = { 49, true  }, -- spinning attack
         [7] = { 60, false }, -- howling fist
         [8] = { 65, false }, -- dragon kick
     },
@@ -145,7 +145,7 @@ local weaponskills =
         [17] = { 13, false }, -- gust slash
         [18] = { 23, false }, -- shadowstitch
         [19] = { 33, false }, -- viper bite
-        [20] = { 41, true }, -- cyclone
+        [20] = { 41, true  }, -- cyclone
         [21] = { 49, false }, -- energy steal
         [22] = { 55, false }, -- energy drain
         [23] = { 60, false }, -- dancing edge
@@ -154,13 +154,13 @@ local weaponskills =
     [xi.skill.SWORD] =
     {
         [32] = { 1,  false }, -- fast blade
-        [33] = { 9, false }, -- burning blade
+        -- [33] = { 9,  false }, -- burning blade
         [34] = { 16, false }, -- red lotus blade
         -- [35] = { 24, false }, -- flat blade
         -- [36] = { 33, false }, -- shining blade
-        [37] = { 41, false }, -- seraph blade
-        [38] = { 49, true },  -- circle blade
-        [39] = { 55, false }, -- spirits within
+        -- [37] = { 41, false }, -- seraph blade
+        [38] = { 49, true  },  -- circle blade
+        -- [39] = { 55, false }, -- spirits within
         [40] = { 60, false }, -- vorpal blade
         [41] = { 65, false }, -- swift blade
     },
@@ -168,8 +168,8 @@ local weaponskills =
     {
         [48] = { 1,  false }, -- hard slash
         [49] = { 9,  false }, -- power slash
-        [50] = { 23, false }, -- frostbite
-        [51] = { 33, false }, -- freezebite
+        -- [50] = { 23, false }, -- frostbite
+        -- [51] = { 33, false }, -- freezebite
         [52] = { 49,  true }, -- shockwave
         [53] = { 55, false }, -- crescent moon
         [54] = { 60, false }, -- sickle moon
@@ -178,10 +178,10 @@ local weaponskills =
     [xi.skill.AXE] =
     {
         [64] = { 1,  false }, -- raging axe
-        [65] = { 13, false }, -- smash axe
-        [66] = { 23, false }, -- gale axe
+        -- [65] = { 13, false }, -- smash axe
+        -- [66] = { 23, false }, -- gale axe
         [67] = { 33, false }, -- avalanche axe
-        [68] = { 49, false }, -- spinning axe
+        -- [68] = { 49, false }, -- spinning axe
         [69] = { 55, false }, -- rampage
         [70] = { 60, false }, -- calamity
         [71] = { 66, false }, -- mistral axe
@@ -189,33 +189,33 @@ local weaponskills =
     [xi.skill.GREAT_AXE] =
     {
         [80] = { 1,  false }, -- shield break
-        [81] = { 13, false }, -- iron tempest
+        -- [81] = { 13, false }, -- iron tempest
         [82] = { 23, false }, -- sturmwind
         [83] = { 33, false }, -- armor break
-        [84] = { 49, false }, -- keen edge
-        [85] = { 55, false }, -- weapon break
+        -- [84] = { 49, false }, -- keen edge
+        -- [85] = { 55, false }, -- weapon break
         [86] = { 60, false }, -- raging rush
-        [87] = { 65, false }, -- full break
+        -- [87] = { 65, false }, -- full break
     },
     [xi.skill.SCYTHE] =
     {
         [96]  = { 1,  false }, -- slice
-        [97]  = { 9,  false }, -- dark harvest
+        -- [97]  = { 9,  false }, -- dark harvest
         [98]  = { 23, false }, -- shadow of death
         [99]  = { 33, false }, -- nightmare scythe
         [100] = { 41,  true }, -- spinning scythe
-        [101] = { 49, false }, -- vorpal scythe
+        -- [101] = { 49, false }, -- vorpal scythe
         [102] = { 60, false }, -- guillotine
         [103] = { 65, false }, -- cross reaper
     },
     [xi.skill.POLEARM] =
     {
         [112] = { 1,  false }, -- double thrust
-        [113] = { 9,  false }, -- thunder thrust
+        -- [113] = { 9,  false }, -- thunder thrust
         [114] = { 23, false }, -- raiden thrust
-        [115] = { 33, false }, -- leg sweep
+        -- [115] = { 33, false }, -- leg sweep
         [116] = { 49, false }, -- penta thrust
-        [117] = { 55, false }, -- vorpal thrust
+        -- [117] = { 55, false }, -- vorpal thrust
         [118] = { 60, false }, -- skewer
         [119] = { 65, false }, -- wheeling thrust
     },
@@ -244,8 +244,8 @@ local weaponskills =
     [xi.skill.CLUB] =
     {
         [160] = { 1,  false }, -- shining strike
-        [161] = { 13, false }, -- seraph strike
-        [162] = { 23, false }, -- brainshaker
+        -- [161] = { 13, false }, -- seraph strike
+        -- [162] = { 23, false }, -- brainshaker
         [163] = { 33, false }, -- starlight
         [164] = { 41, false }, -- moonlight
         [165] = { 49, false }, -- skullbreaker
@@ -463,12 +463,6 @@ xi.fellow_utils.buildPartyTable = function(master)
     for _, member in pairs(members) do
         if member:isPC() then
             table.insert(party, member)
-            if
-                member:getFellow() ~= nil and
-                member ~= master
-            then
-                table.insert(party, member:getFellow())
-            end
         end
     end
 
@@ -489,10 +483,10 @@ xi.fellow_utils.spellCheck = function(fellow, master)
     end
 
     xi.fellow_utils.checkAilment(fellow, master, fellowLvl, mp, fellowType)
-    xi.fellow_utils.checkRegen(fellow, master, fellowLvl, mp, fellowType)
     xi.fellow_utils.checkCure(fellow, master, fellowLvl, mp, fellowType)
-    xi.fellow_utils.checkBuff(fellow, master, fellowLvl, mp, fellowType)
+    xi.fellow_utils.checkRegen(fellow, master, fellowLvl, mp, fellowType)
     xi.fellow_utils.checkDebuff(fellow, master, fellowLvl, mp, fellowType)
+    xi.fellow_utils.checkBuff(fellow, master, fellowLvl, mp, fellowType)
 
     if
         fellow:getLocalVar("mpNotice") == 0 and
@@ -649,43 +643,26 @@ end
 xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
     local cooldown      = fellow:getLocalVar("castingCoolDown")
     local party         = xi.fellow_utils.buildPartyTable(master)
+    local recast        = xi.fellow_utils.calculateRecast(fellow, fellowType)
     local thresholdMod  = 1
+
 
     if
         fellowType == fellowTypes.ATTACKER or
         fellowType == fellowTypes.FIERCE
     then
         return
-
-    elseif
-        (fellowType == fellowTypes.HEALER or
-        fellowType == fellowTypes.SOOTHING) and
-        fellow:getMainLvl() >= 41 and
-        not fellow:hasStatusEffect(xi.effect.REFRESH)
-    then
-        return
     end
 
     if cooldown < os.time() then
-        recast = xi.fellow_utils.calculateRecast(fellow, fellowType)
-
         for _, cure in pairs(cureTable) do
-
             if
-            cure.level <= fellowLvl and
-            cure.mpCost <= mp
+                cure.level <= fellowLvl and
+                cure.mpCost <= mp
             then
                 for _, member in pairs(party) do
-                    -- Prioritize poison if target is okay HP wise
-                    if
-                        member:hasStatusEffect(xi.effect.POISON) and
-                        member:getHPP() > 50
-                    then
-                        fellow:setLocalVar("castingCoolDown", os.time() + recast)
-                        fellow:castSpell(xi.magic.spell.POISONA, member)
-                        return
 
-                    elseif
+                    if
                         cure.spell == xi.magic.spell.CURE and
                         member:getMainLvl() >= 35
                     then
@@ -733,20 +710,6 @@ xi.fellow_utils.checkAilment = function(fellow, master, fellowLvl, mp, fellowTyp
     local coolDown = fellow:getLocalVar("castingCoolDown")
     local recast   = xi.fellow_utils.calculateRecast(fellow, fellowType)
     local party    = xi.fellow_utils.buildPartyTable(master)
-
-    if
-        (fellowType ~= fellowTypes.HEALER and
-        fellowType ~= fellowTypes.SOOTHING) or
-        master:getHPP() < 40
-    then
-        return
-
-    elseif
-        fellow:getMainLvl() >= 41 and
-        not fellow:hasStatusEffect(xi.effect.REFRESH)
-    then
-        return
-    end
 
     if coolDown < os.time() then
         for _, debuff in pairs(ailmentTable) do
@@ -801,11 +764,11 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
 
             for _, member in pairs(party) do
                 local check = true
+
                 if
                     buff.level <= fellowLvl and
                     buff.mpCost <= mp
                 then
-                    -- Don't cast refresh if member has near full MP
                     if
                         buff.effect == xi.effect.REFRESH and
                         member:getMPP() > 90
@@ -821,8 +784,7 @@ xi.fellow_utils.checkBuff = function(fellow, master, fellowLvl, mp, fellowType)
 
                     if
                         not fellow:hasStatusEffect(buff.effect) and
-                        not buff.targetOther and
-                        check == true
+                        (not buff.targetOther or buff.effect == xi.effect.REFRESH)
                     then
                         fellow:setLocalVar("castingCoolDown", os.time() + recast)
                         fellow:castSpell(buff.spell, fellow)
@@ -870,10 +832,7 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
         return
     end
 
-    if
-        coolDown < os.time() and
-        fellow:getMPP() > 30
-    then
+    if coolDown < os.time() then
         for _, member in pairs(party) do
             if member:isEngaged() then
                 target = member:getTarget()
@@ -883,15 +842,8 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
         if target == nil then
             return
 
-        elseif -- Return if mob is a weakling and not an NM
-            fellow:checkDistance(target) <= 20 and
-            target:getMainLvl() - master:getMainLvl() < -6 and
-            not target:isNM()
-        then
-            return
-
         elseif -- Return if mob is almost dead and isn't an NM
-            target:getHPP() < 20 and
+            target:getHPP() < 15 and
             not target:isNM()
         then
             return
@@ -910,16 +862,14 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
                 then
                     if
                         debuff.effect == xi.effect.SILENCE and
-                        not target:hasSpellList()
+                        target:hasSpellList()
                     then
-                        debuff.check = false
+                        debuff.check = true
                     elseif
                         target:hasStatusEffect(xi.effect.BIO) and
                         debuff.effect == xi.effect.DIA
                     then
                         debuff.check = false
-                    else
-                        debuff.check = true
                     end
 
                     if debuff.check then
