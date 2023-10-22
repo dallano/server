@@ -194,7 +194,7 @@ mission.sections =
             ['_6r9'] =
             {
                 onTrigger = function(player, npc)
-                    if magiciteCounter(player) == 3 then
+                    if magiciteCounter(player) >= 1 then
                         if player:hasKeyItem(xi.ki.AIRSHIP_PASS) then
                             return mission:progressEvent(60, 1, 1)
                         else

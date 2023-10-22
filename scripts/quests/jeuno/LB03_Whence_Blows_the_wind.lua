@@ -69,8 +69,8 @@ quest.sections =
             {
                 onTrigger = function(player, npc)
                     if
-                        player:hasKeyItem(xi.ki.ORCISH_CREST) and
-                        player:hasKeyItem(xi.ki.QUADAV_CREST) and
+                        player:hasKeyItem(xi.ki.ORCISH_CREST) or
+                        player:hasKeyItem(xi.ki.QUADAV_CREST) or
                         player:hasKeyItem(xi.ki.YAGUDO_CREST)
                     then
                         return quest:progressEvent(87)

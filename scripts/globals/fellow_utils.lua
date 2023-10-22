@@ -42,8 +42,9 @@ local tankJobAbilityTable =
 
 local meleeJobAbilityTable =
 {
-    { ability = xi.jobAbility.BERSERK,      level = 15, recast = 380,  hppThreshold = 100, isValid = true, self = true,  recastVar = "[FELLOW]berserkRecast"    },
-    { ability = xi.jobAbility.BLOOD_WEAPON, level = 1,  recast = 7200, hppThreshold = 45,  isValid = true, self = true,  recastVar = "[FELLOW]twoHourRecast"    },
+    { ability = xi.jobAbility.BERSERK,      level = 15, recast = 380,  hppThreshold = 100, isValid = true, self = true,  recastVar = "[FELLOW]berserkRecast" },
+    { ability = xi.jobAbility.BLOOD_WEAPON, level = 1,  recast = 7200, hppThreshold = 45,  isValid = true, self = true,  recastVar = "[FELLOW]twoHourRecast" },
+    { ability = xi.jobAbility.AGGRESSOR,    level = 45, recast = 300,  hppThreshold = 100, isValid = true, self = true,  recastVar = "[FELLOW]agressorRecast" },
 }
 
 local mageJobAbilityTable =

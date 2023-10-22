@@ -216,8 +216,8 @@ xi.events.harvest.onHalloweenTrade = function(player, npc, trade)
     local ID         = zones[player:getZoneID()]
     local itemReward = halloweenItemsCheck(player)
     local item       = trade:getItemId()
-    local list      = costumeList[math.random(1, #costumeList)]
-    local costume   = math.random(list[1], list[2])
+    local list       = costumeList[math.random(1, #costumeList)]
+    local costume    = math.random(list[1], list[2])
     -----------------------------------
     -- 2005 edition
     -----------------------------------
