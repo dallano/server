@@ -179,7 +179,7 @@ xi.spells.healing.doHealingSpell = function(caster, target, spell, isWhiteMagic)
         else
             if caster:isMob() and target:isMob() then
                 final = xi.spells.healing.applyCasterBonuses(caster, base, spell:getElement(), isWhiteMagic)
-                final = (final + (final * target:getMod(xi.mod.CURE_POTENCY_RCVD))) * xi.settings.main.CURE_POWER
+                final = (final * (1.0 + target:getMod(xi.mod.CURE_POTENCY_RCVD) / 100)) * xi.settings.main.CURE_POWER
             end
         end
     end
