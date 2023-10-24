@@ -37,7 +37,7 @@ INSERT INTO `fellow_armor` VALUES (104,  44,  13,  13,  13); -- Brigandine + Roy
 INSERT INTO `fellow_armor` VALUES (105,  12,  12,  12,  12); -- banded mail, mufflers, breeches, sollerets
 INSERT INTO `fellow_armor` VALUES (106,  52,  52,  52,  52); -- Iron Armor
 INSERT INTO `fellow_armor` VALUES (107,  13,  13,  13,  13); -- Royal Knight Gear
-INSERT INTO `fellow_armor` VALUES (108,  81,  81,  81,  81); -- DRK AF
+INSERT INTO `fellow_armor` VALUES (108,  78,  78,  78,  78); -- DRK AF
 INSERT INTO `fellow_armor` VALUES (109, 150,  81,  81,  81); -- Alumine Haubert + DRK AF
 INSERT INTO `fellow_armor` VALUES (110,  40, 150, 150, 150); -- Haubergeon, alumine moufles, alumine brayettes, alumine sollerets
 INSERT INTO `fellow_armor` VALUES (111,  58,  58,  58,  58); -- Hauberk Gear
@@ -146,8 +146,8 @@ INSERT INTO `fellow_armor` VALUES (311, 161, 161, 161, 161); -- black trader gea
 -- 75
 -- 76 Paladin AF
 -- 78 Paladin Relic
--- 79 Paladin AF
--- 80 Paladin Relic
+-- 79 DRK AF
+-- 80 DRK Relic
 -- 81
 -- 82
 -- 83

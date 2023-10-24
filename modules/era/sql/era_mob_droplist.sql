@@ -23549,35 +23549,35 @@ INSERT INTO `mob_droplist` VALUES (2868,0,0,1000,16303,@VCOMMON); -- Larans Pend
 
 -- ZoneID: 195 - Lich C Magnus
 INSERT INTO `mob_droplist` VALUES (2869,0,0,1000,880,@ALWAYS);     -- Bone Chip (Always, 100%)
-INSERT INTO `mob_droplist` VALUES (2869,0,0,1000,17072,@UNCOMMON); -- Liliths Rod  (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (2869,0,0,1000,17072,@COMMON); -- Liliths Rod  (Uncommon, 10%)
 
 -- ZoneID: 195 - Skull Of Envy
 INSERT INTO `mob_droplist` VALUES (2870,0,0,1000,784,@ALWAYS);     -- Jadeite (Always, 100%)
-INSERT INTO `mob_droplist` VALUES (2870,0,0,1000,16870,@UNCOMMON); -- Envy Spear (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (2870,0,0,1000,16870,@COMMON); -- Envy Spear (Uncommon, 10%)
 
 -- ZoneID: 195 - Skull Of Gluttony
 INSERT INTO `mob_droplist` VALUES (2871,0,0,1000,801,@ALWAYS);     -- Chrysoberyl (Always, 100%)
-INSERT INTO `mob_droplist` VALUES (2871,0,0,1000,16830,@UNCOMMON); -- Gluttony Sword (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (2871,0,0,1000,16830,@COMMON); -- Gluttony Sword (Uncommon, 10%)
 
 -- ZoneID: 195 - Skull Of Greed
 INSERT INTO `mob_droplist` VALUES (2872,0,0,1000,810,@ALWAYS);     -- Fluorite (Always, 100%)
-INSERT INTO `mob_droplist` VALUES (2872,0,0,1000,16831,@UNCOMMON); -- Greed Scimitar (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (2872,0,0,1000,16831,@COMMON); -- Greed Scimitar (Uncommon, 10%)
 
 -- ZoneID: 195 - Skull Of Lust
 INSERT INTO `mob_droplist` VALUES (2873,0,0,1000,797,@ALWAYS);     -- Painite (Always, 100%)
-INSERT INTO `mob_droplist` VALUES (2873,0,0,1000,16765,@UNCOMMON); -- Lust Dagger (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (2873,0,0,1000,16765,@COMMON); -- Lust Dagger (Uncommon, 10%)
 
 -- ZoneID: 195 - Skull Of Pride
 INSERT INTO `mob_droplist` VALUES (2874,0,0,1000,791,@ALWAYS);     -- Aquamarine (Always, 100%)
-INSERT INTO `mob_droplist` VALUES (2874,0,0,1000,17522,@UNCOMMON); -- Pride Staff (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (2874,0,0,1000,17522,@COMMON); -- Pride Staff (Uncommon, 10%)
 
 -- ZoneID: 195 - Skull Of Sloth
 INSERT INTO `mob_droplist` VALUES (2875,0,0,1000,805,@ALWAYS);     -- Zircon (Always, 100%)
-INSERT INTO `mob_droplist` VALUES (2875,0,0,1000,17136,@UNCOMMON); -- Sloth Wand (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (2875,0,0,1000,17136,@COMMON); -- Sloth Wand (Uncommon, 10%)
 
 -- ZoneID: 195 - Skull Of Wrath
 INSERT INTO `mob_droplist` VALUES (2876,0,0,1000,803,@ALWAYS);     -- Sunstone (Always, 100%)
-INSERT INTO `mob_droplist` VALUES (2876,0,0,1000,16679,@UNCOMMON); -- Wrath Tabar (Uncommon, 10%)
+INSERT INTO `mob_droplist` VALUES (2876,0,0,1000,16679,@COMMON); -- Wrath Tabar (Uncommon, 10%)
 
 -- ZoneID:  27 - Fomor Paladin
 INSERT INTO `mob_droplist` VALUES (2877,0,0,1000,15386,@COMMON); -- Pisces Subligar (Common, 15%)

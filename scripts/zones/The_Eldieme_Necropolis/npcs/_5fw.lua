@@ -10,7 +10,7 @@ require('scripts/globals/npc_util')
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    func.candleOnTrade(player, npc, trade)
+    func.candleOnTrade(player, npc, trade, 3)
 end
 
 entity.onTrigger = function(player, npc)
