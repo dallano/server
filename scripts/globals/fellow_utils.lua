@@ -132,11 +132,11 @@ local weaponskills =
     [xi.skill.HAND_TO_HAND] =
     {
         [1] = { 1,  false }, -- combo
-        [2] = { 13, false }, -- shoulder tackle
-        [3] = { 24, false }, -- one inch punch
-        [4] = { 33, false }, -- backhand blow
+        -- [2] = { 13, false }, -- shoulder tackle
+        -- [3] = { 24, false }, -- one inch punch
+        -- [4] = { 33, false }, -- backhand blow
         [5] = { 41, false }, -- raging fists
-        [6] = { 49, true  }, -- spinning attack
+        -- [6] = { 49, true  }, -- spinning attack
         [7] = { 60, false }, -- howling fist
         [8] = { 65, false }, -- dragon kick
     },
@@ -168,9 +168,9 @@ local weaponskills =
     [xi.skill.GREAT_SWORD] =
     {
         [48] = { 1,  false }, -- hard slash
-        [49] = { 9,  false }, -- power slash
+        -- [49] = { 9,  false }, -- power slash
         -- [50] = { 23, false }, -- frostbite
-        -- [51] = { 33, false }, -- freezebite
+        [51] = { 33, false }, -- freezebite
         [52] = { 49,  true }, -- shockwave
         [53] = { 55, false }, -- crescent moon
         [54] = { 60, false }, -- sickle moon

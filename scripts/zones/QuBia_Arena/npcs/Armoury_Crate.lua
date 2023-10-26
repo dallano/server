@@ -707,15 +707,13 @@ local loot =
         },
 
         {
-            { itemid = 14761, droprate = 250 }, -- elusive_earring
-            { itemid = 13691, droprate = 250 }, -- knightly_mantle
-            { itemid = 13689, droprate = 250 }, -- hi-ether_tank
-            { itemid = 13688, droprate = 250 }, -- hi-potion_tank
+            { itemid = 14761, droprate = 500 }, -- elusive_earring
+            { itemid = 13691, droprate = 500 }, -- knightly_mantle
         },
 
         {
-            { itemid =     0, droprate = 950 }, -- nothing
-            { itemid = 15185, droprate =  50 }, -- walkure_mask
+            { itemid =     0, droprate = 750 }, -- nothing
+            { itemid = 15185, droprate = 250 }, -- walkure_mask
         },
 
         {
