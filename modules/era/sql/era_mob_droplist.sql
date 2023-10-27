@@ -37,9 +37,9 @@ SET @VCOMMON = 500;  -- Very common, 50%
 SET @COMMON = 300;   -- Common, 30%
 SET @UNCOMMON = 150; -- Uncommon, 15%
 SET @RARE = 50;      -- Rare, 5%
-SET @VRARE = 10;     -- Very rare, 1%
-SET @SRARE = 5;      -- Super Rare, 0.5%
-SET @URARE = 1;      -- Ultra rare, 0.1%
+SET @VRARE = 20;     -- Very rare, 2%
+SET @SRARE = 10;      -- Super Rare, 1%
+SET @URARE = 5;      -- Ultra rare, 0.5%
 
 --
 -- Dumping data for table `mob_droplist`
@@ -1168,7 +1168,7 @@ INSERT INTO `mob_droplist` VALUES (128,0,0,1000,1118,@ALWAYS);    -- Antican Pau
 INSERT INTO `mob_droplist` VALUES (128,2,0,1000,748,0);           -- Gold Beastcoin (Steal)
 
 -- ZoneID: 208 - Antican Praefectus
-INSERT INTO `mob_droplist` VALUES (129,0,0,1000,16604,@RARE);  -- Save The Queen (Rare, 5%)
+INSERT INTO `mob_droplist` VALUES (129,0,0,1000,16604,@UNCOMMON);  -- Save The Queen (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (129,0,0,1000,644,@ALWAYS);  -- Chunk Of Mythril Ore (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (129,0,0,1000,1118,@ALWAYS); -- Antican Pauldron (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (129,2,0,1000,748,0);        -- Gold Beastcoin (Steal)
@@ -6058,12 +6058,12 @@ INSERT INTO `mob_droplist` VALUES (729,0,0,1000,4249,@ALWAYS); -- Copy Of Schult
 
 -- ZoneID: 135 - Dynamis Lord
 -- ZoneID: 135 - Arch Dynamis Lord
-INSERT INTO `mob_droplist` VALUES (730,0,0,1000,13658,520);   -- Shadow Mantle (52.0%)
-INSERT INTO `mob_droplist` VALUES (730,0,0,1000,1450,350);    -- Lungo-Nango Jadeshell (35.0%)
-INSERT INTO `mob_droplist` VALUES (730,0,0,1000,14646,210);   -- Shadow Ring (21.0%)
-INSERT INTO `mob_droplist` VALUES (730,0,0,1000,1453,180);    -- Montiont Silverpiece (18.0%)
-INSERT INTO `mob_droplist` VALUES (730,0,0,1000,1456,130);    -- One Hundred Byne Bill (13.0%)
-INSERT INTO `mob_droplist` VALUES (730,0,0,1000,3429,@VRARE); -- Fiendish Tome Chapter 26 (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (730,0,0,1000,13658,@VCOMMON); -- Shadow Mantle (52.0%)
+INSERT INTO `mob_droplist` VALUES (730,0,0,1000,14646,@COMMON);  -- Shadow Ring (21.0%)
+INSERT INTO `mob_droplist` VALUES (730,0,0,1000,1450,@ALWAYS);   -- Lungo-Nango Jadeshell (35.0%)
+INSERT INTO `mob_droplist` VALUES (730,0,0,1000,1453,@ALWAYS);   -- Montiont Silverpiece (18.0%)
+INSERT INTO `mob_droplist` VALUES (730,0,0,1000,1456,@ALWAYS);   -- One Hundred Byne Bill (13.0%)
+INSERT INTO `mob_droplist` VALUES (730,0,0,1000,3429,@RARE);     -- Fiendish Tome Chapter 26 (Very Rare, 1%)
 
 -- ZoneID: 216 - Dynamo Cluster
 INSERT INTO `mob_droplist` VALUES (731,0,0,1000,1667,@ALWAYS); -- Cluster Core (Always, 100%)

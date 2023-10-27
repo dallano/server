@@ -22,7 +22,7 @@ end
 
 entity.onMobDespawn = function(mob)
     xi.mob.phOnDespawn(mob, ID.mob.SAGITTARIUS_X_XIII_PH, 10, 14400) -- 4 hours
-    xi.mob.phOnDespawn(mob, ID.mob.ANTICAN_PRAEFECTUS_PH, 10, 3600) -- 1 hour
+    xi.mob.phOnDespawn(mob, ID.mob.ANTICAN_PRAEFECTUS_PH, 10, 1300) -- 30 min (xiSP)
 end
 
 return entity

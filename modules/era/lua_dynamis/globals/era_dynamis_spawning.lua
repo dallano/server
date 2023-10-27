@@ -2678,11 +2678,14 @@ xi.dynamis.setMobStats = function(mob)
         mob:setTrueDetection(true)
 
         if     mob:getFamily() == 359 then -- If Hydra
-            mob:setMobLevel(math.random(80, 82))
+            mob:setMobLevel(math.random(72, 75))
+            mob:addMod(xi.mod.HPP, -20)
         elseif mob:getFamily() == 358 then -- If Kindred
-            mob:setMobLevel(math.random(77, 80))
+            mob:setMobLevel(math.random(72, 75))
+            mob:addMod(xi.mod.HPP, -20)
         else
-            mob:setMobLevel(math.random(77, 78))
+            mob:setMobLevel(math.random(62, 65))
+            mob:addMod(xi.mod.HPP, -50)
         end
 
         if     job == xi.job.WAR then
@@ -2691,6 +2694,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.MIGHTY_STRIKES
             params.specials.skill.hpp = math.random(55, 80)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.MNK then
             local params = {  }
@@ -2698,6 +2702,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.HUNDRED_FISTS
             params.specials.skill.hpp = math.random(55, 70)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.WHM then
             local params = {  }
@@ -2705,6 +2710,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.BENEDICTION
             params.specials.skill.hpp = math.random(40, 60)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.BLM then
             local params = {  }
@@ -2712,6 +2718,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.MANAFONT
             params.specials.skill.hpp = math.random(55, 80)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.RDM then
             local params = {  }
@@ -2719,6 +2726,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.CHAINSPELL
             params.specials.skill.hpp = math.random(55, 80)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.THF then
             local params = {  }
@@ -2726,6 +2734,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.PERFECT_DODGE
             params.specials.skill.hpp = math.random(55, 75)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.PLD then
             local params = {  }
@@ -2733,6 +2742,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.INVINCIBLE
             params.specials.skill.hpp = math.random(55, 75)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.DRK then
             local params = {  }
@@ -2740,6 +2750,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.BLOOD_WEAPON
             params.specials.skill.hpp = math.random(55, 75)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.BST then
         elseif job == xi.job.BRD then
@@ -2748,6 +2759,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.SOUL_VOICE
             params.specials.skill.hpp = math.random(55, 80)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.RNG then
             local params = {  }
@@ -2755,6 +2767,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = familyEES[mob:getFamily()]
             params.specials.skill.hpp = math.random(55, 75)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.SAM then
             local params = {  }
@@ -2762,6 +2775,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.MEIKYO_SHISUI
             params.specials.skill.hpp = math.random(55, 80)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.NIN then
             local params = {  }
@@ -2769,6 +2783,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.MIJIN_GAKURE
             params.specials.skill.hpp = math.random(25, 35)
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.DRG then
             local params = {  }
@@ -2776,6 +2791,7 @@ xi.dynamis.setMobStats = function(mob)
             params.specials.skill = {  }
             params.specials.skill.id = xi.jsa.CALL_WYVERN
             params.specials.skill.hpp = 100
+            params.specials.skill.chance = 50
             xi.mix.jobSpecial.config(mob, params)
         elseif job == xi.job.SMN then
         end
@@ -2795,6 +2811,8 @@ xi.dynamis.setNightmareStats = function(mob)
         mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
         mob:setMobLevel(math.random(78, 80))
         mob:setTrueDetection(true)
+
+        mob:addMod(xi.mod.HPP, -60)
 
         xi.dynamis.addParentListeners(mob)
 
@@ -2831,7 +2849,7 @@ xi.dynamis.setNMStats = function(mob)
     mob:addStatusEffect(xi.effect.BATTLEFIELD, 1, 0, 0, true)
     xi.dynamis.setSpecialSkill(mob)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 2)
-    mob:setMobLevel(math.random(80, 82))
+    mob:setMobLevel(math.random(77, 79))
     mob:setTrueDetection(true)
     xi.dynamis.setMDB(mob)
 
@@ -2843,6 +2861,7 @@ xi.dynamis.setNMStats = function(mob)
         params.specials.skill = {  }
         params.specials.skill.id = xi.jsa.MIJIN_GAKURE
         params.specials.skill.hpp = math.random(15, 25)
+        params.specials.skill.chance = 50
         xi.mix.jobSpecial.config(mob, params)
     end
 end
@@ -2854,8 +2873,8 @@ xi.dynamis.setStatueStats = function(mob, mobIndex)
     mob:setMobType(xi.mobskills.mobType.BATTLEFIELD)
     mob:addStatusEffect(xi.effect.BATTLEFIELD, 1, 0, 0, true)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 2)
-    mob:setMobLevel(math.random(82, 84))
-    mob:setMod(xi.mod.DMG, -5000)
+    mob:setMobLevel(math.random(60, 65))
+    mob:setMod(xi.mod.DMG, 5000)
     -- if an eye then does not have slow movement speed and has lower HP in xarc
     if mob:getFamily() == 4 then
         -- base hp of eyes is 2600 for beauc, xarc eyes have about 1040
@@ -2873,6 +2892,8 @@ xi.dynamis.setStatueStats = function(mob, mobIndex)
     mob:setMod(xi.mod.MPHEAL, 0)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 2)
     mob:setSpeed(10)
+
+    mob:addMod(xi.mod.HPP, -60)
 
     xi.dynamis.setMDB(mob)
     xi.dynamis.addParentListeners(mob)
@@ -2920,11 +2941,11 @@ xi.dynamis.setAnimatedWeaponStats = function(mob)
     mob:setMobMod(xi.mobMod.NO_MOVE, 0)
     mob:setMobMod(xi.mobMod.HP_HEAL_CHANCE, 90)
     mob:setMod(xi.mod.STUNRES, 75)
-    mob:setMod(xi.mod.PARALYZERES, 100)
-    mob:setMod(xi.mod.SLOWRES, 100)
-    mob:setMod(xi.mod.SILENCERES, 100)
-    mob:setMod(xi.mod.LULLABYRES, 100)
-    mob:setMod(xi.mod.SLEEPRES, 100)
+    mob:addImmunity(xi.immunity.PARALYZE)
+    mob:addImmunity(xi.immunity.SLOW)
+    mob:addImmunity(xi.immunity.SILENCE)
+    mob:addImmunity(xi.immunity.LULLABY)
+    mob:addImmunity(xi.immunity.SLEEP)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 2)
 
     xi.dynamis.addParentListeners(mob)

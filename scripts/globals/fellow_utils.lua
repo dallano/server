@@ -200,13 +200,13 @@ local weaponskills =
     },
     [xi.skill.SCYTHE] =
     {
-        [96]  = { 1,  false }, -- slice
+        -- [96]  = { 1,  false }, -- slice
         -- [97]  = { 9,  false }, -- dark harvest
-        [98]  = { 23, false }, -- shadow of death
-        [99]  = { 33, false }, -- nightmare scythe
-        [100] = { 41,  true }, -- spinning scythe
+        -- [98]  = { 23, false }, -- shadow of death
+        -- [99]  = { 33, false }, -- nightmare scythe
+        -- [100] = { 41,  true }, -- spinning scythe
         -- [101] = { 49, false }, -- vorpal scythe
-        [102] = { 60, false }, -- guillotine
+        -- [102] = { 60, false }, -- guillotine
         [103] = { 65, false }, -- cross reaper
     },
     [xi.skill.POLEARM] =
@@ -600,6 +600,18 @@ xi.fellow_utils.checkRegen = function(fellow, master, fellowLvl, mp, fellowType)
     local recast    = xi.fellow_utils.calculateRecast(fellow, fellowType)
     local party     = xi.fellow_utils.buildPartyTable(master)
 
+    -- Include fellows in this party list as fellows can inter-cast regen
+    for _, member in pairs(party) do
+        if
+            member:isPC() and
+            member:getFellow() ~= nil and
+            member:getFellow() ~= fellow
+        then
+            table.insert(party, member:getFellow())
+            break
+        end
+    end
+
     if
         fellowType ~= fellowTypes.HEALER and
         fellowType ~= fellowTypes.SOOTHING
@@ -620,6 +632,14 @@ xi.fellow_utils.checkRegen = function(fellow, master, fellowLvl, mp, fellowType)
                     then
                         fellow:setLocalVar("castingCoolDown", os.time() + recast)
                         fellow:castSpell(regen.spell, member)
+                        return
+
+                    elseif
+                        not fellow:hasStatusEffect(regen.effect) and
+                        fellow:getHPP() <= 90
+                    then
+                        fellow:setLocalVar("castingCoolDown", os.time() + recast)
+                        fellow:castSpell(regen.spell, fellow)
                         return
                     end
                 end
@@ -668,7 +688,8 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
 
                     if
                         cure.spell == xi.magic.spell.CURE and
-                        member:getMainLvl() >= 35
+                        (member:getMainLvl() >= 35 or
+                        fellow:getMainLvl() >= 35)
                     then
                         return
                     end
@@ -682,7 +703,9 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
 
                     if
                         member:hasStatusEffect(xi.effect.REGEN) and
-                        member:getHPP() > 50
+                        member:getHPP() > 50 or
+                        fellow:hasStatusEffect(xi.effect.REGEN) and
+                        fellow:getHPP() > 50
                     then
                         thresholdMod = thresholdMod + 0.25
                     end
@@ -695,6 +718,16 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                     if (member:getMaxHP() - member:getHP()) > cure.hpThreshold * thresholdMod then
                         fellow:setLocalVar("castingCoolDown", os.time() + recast)
                         fellow:castSpell(cure.spell, member)
+                        return
+                    end
+
+                    if fellow:getHPP() < 40 then
+                        thresholdMod = 1
+                    end
+
+                    if (fellow:getMaxHP() - fellow:getHP()) > cure.hpThreshold * thresholdMod then
+                        fellow:setLocalVar("castingCoolDown", os.time() + recast)
+                        fellow:castSpell(cure.spell, fellow)
                         return
                     end
                 end
@@ -866,7 +899,11 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
                 then
                     if
                         debuff.effect == xi.effect.SILENCE and
-                        target:hasSpellList()
+                        target:hasSpellList() and
+                        (target:getMainJob() == xi.job.RDM or
+                        target:getMainJob() == xi.job.WHM or
+                        target:getMainJob() == xi.job.RDM or
+                        target:getMainJob() == xi.job.BRD)
                     then
                         debuff.check = true
                     elseif

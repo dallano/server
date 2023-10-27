@@ -49,7 +49,8 @@ entity.onTrade = function(player, npc, trade)
     if player:hasKeyItem(xi.ki.VIAL_OF_SHROUDED_SAND) then
         -- buy prismatic hourglass
         if
-            gil == xi.settings.main.PRISMATIC_HOURGLASS_COST and
+            gil == 50000 and
+            -- gil == xi.settings.main.PRISMATIC_HOURGLASS_COST and
             count == 1 and
             not player:hasKeyItem(xi.ki.PRISMATIC_HOURGLASS)
         then

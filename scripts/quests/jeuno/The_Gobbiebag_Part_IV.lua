@@ -17,6 +17,7 @@ local params =
     startInventorySize = 45,
     fame               = 5,
     tradeStew          = xi.items.BOWL_OF_GOBLIN_STEW_880,
+    gil                = 55000,
 
     tradeItems =
     {

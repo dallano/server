@@ -81,7 +81,8 @@ function xi.jeuno.helpers.GobbiebagQuest:new(params)
                     onTrade = function(player, npc, trade)
                         if
                             npcUtil.tradeHasExactly(trade, params.tradeItems) or
-                            npcUtil.tradeHasExactly(trade, params.tradeStew)
+                            npcUtil.tradeHasExactly(trade, params.tradeStew) or
+                            npcUtil.tradeHasExactly(trade, { { "gil", params.gil } })
                         then
                             return quest:progressEvent(73, getCompleteDiaglogueId(player))
                         else

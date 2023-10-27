@@ -18398,6 +18398,7 @@ INSERT INTO `item_mods` VALUES (13803,1,43);  -- DEF: 43
 INSERT INTO `item_mods` VALUES (13803,5,25);  -- MP: 25
 INSERT INTO `item_mods` VALUES (13803,12,4);  -- INT: 4
 INSERT INTO `item_mods` VALUES (13803,114,5); -- ENFEEBLE: 5
+INSERT INTO `item_mods` VALUES (13803,369,1); -- REFRESH: 1
 INSERT INTO `item_mods` VALUES (13803,115,5); -- ELEM: 5
 
 -- Minstrels Coat
