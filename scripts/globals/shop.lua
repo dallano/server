@@ -105,11 +105,35 @@ xi.shop =
     outpost = function(player)
         local stock =
         {
-            4148,  316, -- Antidote
-            4151,  800, -- Echo Drops
-            4128, 4832, -- Ether
-            4150, 2595, -- Eye Drops
-            4112,  910, -- Potion
+            4148,  123, -- Antidote
+            4151,  350, -- Echo Drops
+            4128,  713, -- Ether
+            4150,  821, -- Eye Drops
+            4112,  214, -- Potion
+            -- Melee
+            4381, 650,   -- Meat Mithkabob
+            4574, 1300,  -- Meat Chiefkabob
+            4398, 650,   -- Fish Mithkabob
+            4575, 1300,  -- Fish Chiefkabob
+            4488, 1200,  -- Jack-o-Lantern
+            5149, 2500,  -- Sole Sushi
+            5163, 5000,  -- Sole Sushi +1
+            5146, 8500,  -- Hedgehog Pie
+            5156, 15000, -- Porcupine Pie
+
+            -- Mage
+            4394, 50,    -- Ginger Cookie
+            4576, 125,   -- Wizard Cookie
+            4424, 250,   -- Melon Juice
+            4558, 1350,  -- Yagudo Juice
+            4410, 450,   -- Roast Mushroom
+            4343, 865,   -- Witch Kabob
+            4413, 250,   -- Apple Pie
+            4320, 750,   -- Apple Pie +1
+            4421, 380,   -- Melon Pie
+            4523, 850,   -- Melon Pie +1
+            4414, 650,   -- Rolanberry Pie
+            4339, 1200,  -- Rolanberry Pie +1
         }
         xi.shop.general(player, stock, 1)
     end,

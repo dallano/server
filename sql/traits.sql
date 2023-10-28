@@ -180,8 +180,8 @@ INSERT INTO `traits` VALUES (9,'auto regen',22,35,1,370,1,'SOA',0);
 INSERT INTO `traits` VALUES (9,'auto regen',22,65,2,370,2,'SOA',0);
 INSERT INTO `traits` VALUES (9,'auto regen',22,95,3,370,3,'SOA',0);
 INSERT INTO `traits` VALUES (10,'auto refresh',7,35,1,369,1,NULL,0);
-INSERT INTO `traits` VALUES (10,'auto refresh',8,45,1,369,1,NULL,0);
 INSERT INTO `traits` VALUES (10,'auto refresh',15,25,1,369,1,NULL,0);
+INSERT INTO `traits` VALUES (10,'auto refresh',8,45,1,369,1,NULL,0); -- drk (xiSP)
 INSERT INTO `traits` VALUES (10,'auto refresh',15,90,2,369,2,'ABYSSEA',0);
 INSERT INTO `traits` VALUES (11,'rapid shot',11,15,1,359,25,NULL,0);
 INSERT INTO `traits` VALUES (11,'rapid shot',11,71,2,359,30,'SOA',0);

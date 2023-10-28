@@ -8082,8 +8082,8 @@ INSERT INTO `mob_groups` VALUES (3,6768,113,'Stygian_Pugil_fished',0,128,147,0,0
 INSERT INTO `mob_groups` VALUES (4,6778,113,'Devil_Manta_fished',0,128,0,0,0,68,70,0);
 
 INSERT INTO `mob_groups` VALUES (5,1687,113,'Goblin_Mercenary',330,0,1114,0,0,65,68,0);
-INSERT INTO `mob_groups` VALUES (6,5643,113,'Sand_Lizard',330,0,2152,0,0,62,67,0);
-INSERT INTO `mob_groups` VALUES (7,378,113,'Beach_Bunny',330,0,247,0,0,62,67,0);
+INSERT INTO `mob_groups` VALUES (6,5643,113,'Sand_Lizard',330,0,2152,0,0,62,64,0);
+INSERT INTO `mob_groups` VALUES (7,378,113,'Beach_Bunny',330,0,247,0,0,62,64,0);
 INSERT INTO `mob_groups` VALUES (8,1711,113,'Goblin_Shepherd',330,0,1155,0,0,65,68,0);
 INSERT INTO `mob_groups` VALUES (9,1730,113,'Goblins_Rabbit',0,128,0,0,0,48,50,0);
 INSERT INTO `mob_groups` VALUES (10,1637,113,'Goblin_Bandit',330,0,1022,0,0,65,68,0);

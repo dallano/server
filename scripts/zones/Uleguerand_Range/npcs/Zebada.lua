@@ -9,28 +9,25 @@ local ID = require("scripts/zones/Uleguerand_Range/IDs")
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    -- Trade Chamnaet Ice
-    if trade:hasItemQty(1780, 1) and trade:getItemCount() == 1 then
-        player:tradeComplete()
-        player:startEvent(13)
-    end
+    -- -- Trade Chamnaet Ice
+    -- if trade:hasItemQty(1780, 1) and trade:getItemCount() == 1 then
+    --     player:tradeComplete()
+    --     player:startEvent(13)
+    -- end
 end
 
 entity.onTrigger = function(player, npc)
     local zephyrFanCD = player:getCharVar("[ENM]ZephyrFan")
 
     if player:hasKeyItem(xi.ki.ZEPHYR_FAN) then
-        player:startEvent(12)
+        -- Teleport Player to Bearclaw
+        player:setPos(-679, 18.5, -539, 129, 6)
     else
         if zephyrFanCD >= VanadielTime() then
             -- Both Vanadiel time and unix timestamps are based on seconds. Add the difference to the event.
             player:startEvent(15, zephyrFanCD)
         else
-            if player:hasItem(1780) or player:hasItem(1779) then -- Chamnaet Ice -- Cotton Pouch
-                player:startEvent(16)
-            else
-                player:startEvent(14)
-            end
+            player:startEvent(13)
         end
     end
 end

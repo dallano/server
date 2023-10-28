@@ -1195,12 +1195,9 @@ end
 xi.conquest.overseerOnTrigger = function(player, npc, guardNation, guardType, guardEvent, guardRegion)
     local pNation = player:getNation()
 
-    -- XISP (Ronfaure, Gustaberg, Sarutabaruta)
-    -- Players don't need to own this region in order to unlock OP
+    -- Players don't need to own the region in order to unlock OP (xiSP)
+    -- Beaucedine and Xarcabard are acquired by enterin fei'yin and castle zvahl
     if
-        (guardRegion == xi.region.RONFAURE or
-        guardRegion == xi.region.GUSTABERG or
-        guardRegion == xi.region.SARUTABARUTA) and
         guardType >= xi.conquest.guard.OUTPOST and
         not player:hasTeleport(player:getNation(), guardRegion + 5)
     then

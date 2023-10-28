@@ -54,6 +54,7 @@ local regimeInfo =
         {
             [ 1] = { review = true },
             [ 6] = { details = true },
+            [ 7] = { prowess = true },
         },
         finishOptions =
         {
@@ -244,11 +245,11 @@ local regimeInfo =
                 event = 61,
                 page =
                 {
-                    { 4, 4, 0, 0, 62, 66, 1300, 104 },
-                    { 4, 5, 0, 0, 64, 68, 1320, 105 },
-                    { 4, 5, 0, 0, 64, 69, 1340, 106 },
-                    { 7, 3, 0, 0, 66, 74, 1390, 107 },
-                    { 4, 5, 0, 0, 71, 79, 1450, 108 },
+                    { 3, 3, 0, 0, 62, 66, 1800, 104 },
+                    { 4, 5, 0, 0, 64, 68, 1820, 105 },
+                    { 4, 5, 0, 0, 64, 69, 1840, 106 },
+                    { 7, 3, 0, 0, 66, 74, 1890, 107 },
+                    { 4, 5, 0, 0, 71, 79, 1950, 108 },
                 },
             },
             [xi.zone.EASTERN_ALTEPA_DESERT] =
@@ -1461,18 +1462,17 @@ xi.regime.checkRegime = function(player, mob, regimeId, index, regimeType)
         reward = math.floor(reward * avgCapLevel / avgMobLevel)
     end
 
-    -- prowess buffs from completing Grounds regimes
-    if regimeType == xi.regime.type.GROUNDS then
+    -- prowess buffs from completing any regime
         addGovProwessBonusEffect(player)
 
         -- repeat clears bonus
         if player:hasStatusEffect(xi.effect.PROWESS) then
-            -- increase reward based on number of clears. hard caps at 2x base reward.
+            -- increase reward based on number of clears. hard caps at 5x base reward. (xiSP)
             local govClears  = player:getStatusEffect(xi.effect.PROWESS):getPower()
             local baseReward = reward
 
             reward = reward * (100 + (govClears * 4)) / 100
-            reward = utils.clamp(reward, 0, baseReward * 2)
+            reward = utils.clamp(reward, 0, baseReward * 3.5)
 
             -- increment clears
             player:delStatusEffectSilent(xi.effect.PROWESS)
@@ -1482,7 +1482,6 @@ xi.regime.checkRegime = function(player, mob, regimeId, index, regimeType)
             -- keep track of number of clears
             player:addStatusEffect(xi.effect.PROWESS, 1, 0, 0)
         end
-    end
 
     -- award gil and tabs once per day, or at every page completion if REGIME_WAIT is 0 in settings.lua
     local vanadielEpoch = vanaDay()

@@ -9,28 +9,24 @@ local ID = require("scripts/zones/Attohwa_Chasm/IDs")
 local entity = {}
 
 entity.onTrade = function(player, npc, trade)
-    -- Trade Parradamo Stones
-    if trade:hasItemQty(1778, 1) and trade:getItemCount() == 1 then
-        player:tradeComplete()
-        player:startEvent(12)
-    end
+    -- -- Trade Parradamo Stones
+    -- if trade:hasItemQty(1778, 1) and trade:getItemCount() == 1 then
+    --     player:tradeComplete()
+    --     player:startEvent(12)
+    -- end
 end
 
 entity.onTrigger = function(player, npc)
     local miasmaFilterCD = player:getCharVar("[ENM]MiasmaFilter")
 
     if player:hasKeyItem(xi.ki.MIASMA_FILTER) then
-        player:startEvent(11)
+        player:setPos(-709.5, 20.5, 456, 24, 8)
     else
         if miasmaFilterCD >= VanadielTime() then
             -- Both Vanadiel time and unix timestamps are based on seconds. Add the difference to the event.
             player:startEvent(14, miasmaFilterCD)
         else
-            if player:hasItem(1778) or player:hasItem(1777) then -- Parradamo Stones, Flaxen Pouch
-                player:startEvent(15)
-            else
-                player:startEvent(13)
-            end
+            player:startEvent(12)
         end
     end
 end
