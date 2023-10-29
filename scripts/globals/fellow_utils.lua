@@ -131,139 +131,139 @@ local weaponskills =
 {
     [xi.skill.HAND_TO_HAND] =
     {
-        [1] = { 1,  false }, -- combo
+        { id = 8, level = 65, }, -- dragon kick
+        { id = 7, level = 60, }, -- howling fist
+        { id = 5, level = 41, }, -- raging fists
+        { id = 1, level = 1,  }, -- combo
         -- [2] = { 13, false }, -- shoulder tackle
         -- [3] = { 24, false }, -- one inch punch
         -- [4] = { 33, false }, -- backhand blow
-        [5] = { 41, false }, -- raging fists
         -- [6] = { 49, true  }, -- spinning attack
-        [7] = { 60, false }, -- howling fist
-        [8] = { 65, false }, -- dragon kick
     },
     [xi.skill.DAGGER] =
     {
-        [16] = { 1,  false }, -- wasp sting
-        [17] = { 13, false }, -- gust slash
-        [18] = { 23, false }, -- shadowstitch
-        [19] = { 33, false }, -- viper bite
-        [20] = { 41, true  }, -- cyclone
-        [21] = { 49, false }, -- energy steal
-        [22] = { 55, false }, -- energy drain
-        [23] = { 60, false }, -- dancing edge
-        [24] = { 66, false }, -- shark bite
+        { id = 24, level = 66, }, -- shark bite
+        { id = 23, level = 60, }, -- dancing edge
+        { id = 19, level = 33, }, -- viper bite
+        { id = 16, level = 1,  }, -- wasp sting
+        -- [17] = { 13, false }, -- gust slash
+        -- [18] = { 23, false }, -- shadowstitch
+        -- [20] = { 41, true  }, -- cyclone
+        -- [21] = { 49, false }, -- energy steal
+        -- [22] = { 55, false }, -- energy drain
     },
     [xi.skill.SWORD] =
     {
-        [32] = { 1,  false }, -- fast blade
+        { id = 41, level = 65, }, -- swift blade
+        { id = 40, level = 60, }, -- vorpal blade
+        { id = 34, level = 16, }, -- red lotus blade
+        { id = 32, level = 1,  }, -- fast blade
+        -- [38] = { 49, true  },  -- circle blade
         -- [33] = { 9,  false }, -- burning blade
-        [34] = { 16, false }, -- red lotus blade
         -- [35] = { 24, false }, -- flat blade
         -- [36] = { 33, false }, -- shining blade
         -- [37] = { 41, false }, -- seraph blade
-        [38] = { 49, true  },  -- circle blade
         -- [39] = { 55, false }, -- spirits within
-        [40] = { 60, false }, -- vorpal blade
-        [41] = { 65, false }, -- swift blade
     },
     [xi.skill.GREAT_SWORD] =
     {
-        [48] = { 1,  false }, -- hard slash
+        { id = 55, level = 65, }, -- spinning slash
+        { id = 53, level = 55, }, -- crescent moon
+        { id = 51, level = 33, }, -- freezebite
+        { id = 48, level = 1,  }, -- hard slash
         -- [49] = { 9,  false }, -- power slash
         -- [50] = { 23, false }, -- frostbite
-        [51] = { 33, false }, -- freezebite
-        [52] = { 49,  true }, -- shockwave
-        [53] = { 55, false }, -- crescent moon
-        [54] = { 60, false }, -- sickle moon
-        [55] = { 65, false }, -- spinning slash
+        -- [52] = { 49,  true }, -- shockwave
+        -- [54] = { 60, false }, -- sickle moon
     },
     [xi.skill.AXE] =
     {
-        [64] = { 1,  false }, -- raging axe
+        { id = 71, level = 66, }, -- mistral axe
+        { id = 69, level = 55, }, -- rampage
+        { id = 67, level = 33, }, -- avalanche axe
+        { id = 64, level = 1,  }, -- raging axe
         -- [65] = { 13, false }, -- smash axe
         -- [66] = { 23, false }, -- gale axe
-        [67] = { 33, false }, -- avalanche axe
         -- [68] = { 49, false }, -- spinning axe
-        [69] = { 55, false }, -- rampage
-        [70] = { 60, false }, -- calamity
-        [71] = { 66, false }, -- mistral axe
+        -- [70] = { 60, false }, -- calamity
     },
     [xi.skill.GREAT_AXE] =
     {
-        [80] = { 1,  false }, -- shield break
+        { id = 87, level = 65, }, -- full break
+        { id = 86, level = 60, }, -- raging rush
+        { id = 83, level = 33, }, -- armor break
+        { id = 82, level = 23, }, -- sturmwind
+        { id = 80, level = 1,  }, -- shield break
         -- [81] = { 13, false }, -- iron tempest
-        [82] = { 23, false }, -- sturmwind
-        [83] = { 33, false }, -- armor break
         -- [84] = { 49, false }, -- keen edge
         -- [85] = { 55, false }, -- weapon break
-        [86] = { 60, false }, -- raging rush
-        -- [87] = { 65, false }, -- full break
     },
     [xi.skill.SCYTHE] =
     {
-        -- [96]  = { 1,  false }, -- slice
-        -- [97]  = { 9,  false }, -- dark harvest
+        { id = 103, level = 65, }, -- cross reaper
+        { id = 102, level = 60, }, -- guillotine
+        { id = 99,  level = 33, }, -- nightmare scythe
+        { id = 96,  level = 1,  }, -- slice
         -- [98]  = { 23, false }, -- shadow of death
-        -- [99]  = { 33, false }, -- nightmare scythe
+        -- [97]  = { 9,  false }, -- dark harvest
         -- [100] = { 41,  true }, -- spinning scythe
         -- [101] = { 49, false }, -- vorpal scythe
-        -- [102] = { 60, false }, -- guillotine
-        [103] = { 65, false }, -- cross reaper
     },
     [xi.skill.POLEARM] =
     {
-        [112] = { 1,  false }, -- double thrust
+        { id = 119, level = 65, }, -- wheeling thrust
+        { id = 116, level = 49, }, -- penta thrust
+        { id = 114, level = 23, }, -- raiden thrust
+        { id = 112, level = 1,  }, -- double thrust
         -- [113] = { 9,  false }, -- thunder thrust
-        [114] = { 23, false }, -- raiden thrust
         -- [115] = { 33, false }, -- leg sweep
-        [116] = { 49, false }, -- penta thrust
         -- [117] = { 55, false }, -- vorpal thrust
-        [118] = { 60, false }, -- skewer
-        [119] = { 65, false }, -- wheeling thrust
+        -- [118] = { 60, false }, -- skewer
     },
     [xi.skill.KATANA] =
     {
-        [128] = { 1,  false }, -- blade: rin
-        [129] = { 9,  false }, -- blade: retsu
-        [130] = { 23, false }, -- blade: teki
-        [131] = { 33, false }, -- blade: to
-        [132] = { 49, false }, -- blade: chi
-        [133] = { 55, false }, -- blade: ei
-        [134] = { 60, false }, -- blade: jin
-        [135] = { 66, false }, -- blade: ten
+        { id = 135, level = 66, }, -- blade: ten
+        { id = 134, level = 60, }, -- blade: jin
+        { id = 133, level = 55, }, -- blade: ei
+        { id = 132, level = 49, }, -- blade: chi
+        { id = 131, level = 33, }, -- blade: to
+        { id = 130, level = 23, }, -- blade: teki
+        { id = 129, level = 9,  }, -- blade: retsu
+        { id = 128, level = 1,  }, -- blade: rin
     },
     [xi.skill.GREAT_KATANA] =
     {
-        [144] = { 1,  false }, -- tachi: enpi
-        [145] = { 9,  false }, -- tachi: hobaku
-        [146] = { 23, false }, -- tachi: goten
-        [147] = { 33, false }, -- tachi: kagero
-        [148] = { 49, false }, -- tachi: jinpu
-        [149] = { 55, false }, -- tachi: koki
-        [150] = { 60, false }, -- tachi: yukikaze
-        [151] = { 65, false }, -- tachi: gekko
+        { id = 151, level = 65, }, -- tachi: gekko
+        { id = 150, level = 60, }, -- tachi: yukikaze
+        { id = 149, level = 55, }, -- tachi: koki
+        { id = 148, level = 49, }, -- tachi: jinpu
+        { id = 147, level = 33, }, -- tachi: kagero
+        { id = 146, level = 23, }, -- tachi: goten
+        { id = 145, level = 9,  }, -- tachi: hobaku
+        { id = 144, level = 1,  }, -- tachi: enpi
     },
     [xi.skill.CLUB] =
     {
-        [160] = { 1,  false }, -- shining strike
+        { id = 168, level = 67, }, -- hexa strike
+        { id = 167, level = 60, }, -- judgment
+        { id = 164, level = 41, }, -- moonlight
+        { id = 163, level = 33, }, -- starlight
+        { id = 160, level = 1,  }, -- shining strike
         -- [161] = { 13, false }, -- seraph strike
         -- [162] = { 23, false }, -- brainshaker
-        [163] = { 33, false }, -- starlight
-        [164] = { 41, false }, -- moonlight
-        [165] = { 49, false }, -- skullbreaker
-        [166] = { 55, false }, -- true strike
-        [167] = { 60, false }, -- judgment
-        [168] = { 67, false }, -- hexa strike
+        -- [165] = { 49, false }, -- skullbreaker
+        -- [166] = { 55, false }, -- true strike
     },
     [xi.skill.STAFF] =
     {
-        [176] = { 1,  false }, -- heavy swing
-        [177] = { 13, false }, -- rock crusher
-        [178] = { 23,  true }, -- earth crusher
-        [179] = { 33, false }, -- starburst
-        [180] = { 49, false }, -- sunburst
-        [181] = { 55, false }, -- shell crusher
-        [182] = { 60, false }, -- full swing
-        [183] = { 63, false }, -- spirit taker
+        { id = 183, level = 63, }, -- spirit taker
+        { id = 182, level = 60, }, -- full swing
+        { id = 181, level = 55, }, -- shell crusher
+        { id = 180, level = 49, }, -- sunburst
+        { id = 179, level = 33, }, -- starburst
+        { id = 178, level = 23, }, -- earth crusher
+        { id = 177, level = 13, }, -- rock crusher
+        { id = 176, level = 1,  }, -- heavy swing
     },
 }
 
@@ -426,37 +426,13 @@ xi.fellow_utils.onFellowRoam = function(fellow)
     xi.fellow_utils.onslaught(fellow, master)
 end
 
-xi.fellow_utils.onslaught = function(fellow, master)
-    if
-        fellow:getLocalVar("onslaught") == 1 and
-        fellow:getHPP() >= 60
-    then
-        local zone    = fellow:getZone()
-        local mobs    = zone:getMobs()
-
-        for _, mob in pairs(mobs) do
-            local yOffset = master:getPos().y - mob:getPos().y
-
-            if
-                master:checkDistance(mob) < 40 and
-                master:getMainLvl() - mob:getMainLvl() >= 2 and
-                yOffset >= -5 and
-                yOffset <= 5 and
-                not mob:isNM()
-            then
-                master:fellowAttack(mob)
-            end
-        end
-    end
-end
-
 xi.fellow_utils.onFellowFight = function(fellow, target)
     local master = fellow:getMaster()
 
     xi.fellow_utils.checkJobAbility(fellow, master)
     xi.fellow_utils.checkProvoke(fellow, target, master)
     xi.fellow_utils.spellCheck(fellow, master)
-    xi.fellow_utils.weaponskill(fellow, target, master)
+    xi.fellow_utils.checkWeaponskill(fellow, target, master)
     xi.fellow_utils.battleMessaging(fellow, master)
 end
 
@@ -924,163 +900,97 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
     end
 end
 
-xi.fellow_utils.weaponskill = function(fellow, target, master)
-    local ID            = require("scripts/zones/"..master:getZoneName().."/IDs")
-    local personality   = xi.fellow_utils.checkPersonality(fellow)
-    local optionsMask   = master:getFellowValue("optionsMask")
-    local wsReady       = fellow:getLocalVar("wsReady")
-    local wsTime        = fellow:getLocalVar("wsTime")
-    local fellowType    = master:getFellowValue("job")
-    local fellowLvl     = fellow:getMainLvl()
-    local wsSignals     = false
-    local otherSignals  = false
-
-    if bit.band(optionsMask, bit.lshift(1, 4)) == 16 then
-        otherSignals = true
-    end
-
-    if bit.band(optionsMask, bit.lshift(1, 3)) == 8 then
-        wsSignals = true
-    end
+xi.fellow_utils.getWSDelay = function(fellow)
+    local fellowType = fellow:getMaster():getFellowValue("job")
+    local delay      = 5
 
     if
-        (fellowType == fellowTypes.ATTACKER or
-        fellowType == fellowTypes.FIERCE)
+        fellowType == fellowTypes.FIERCE or
+        fellowType == fellowTypes.ATTACKER
     then
-        if fellow:getTP() == 3000 then
-            if
-                xi.fellow_utils.checkWeaponSkill(fellow, target, fellowLvl) and
-                otherSignals
-            then
-                if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
-                    master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
-                end
-            end
-
-        elseif fellow:getTP() > 1000 then
-            if
-                wsSignals and
-                wsReady == 0 and
-                master:getTP() < 1000 and
-                master:getTP() > 500
-            then
-                if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
-                    master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WS_READY + personality)
-                end
-                fellow:setLocalVar("wsReady", 1)
-
-            elseif
-                (fellowType == fellowTypes.ATTACKER and
-                (master:getTP() > 1000 or
-                master:getTP() < 500)) or
-                (fellowType == fellowTypes.FIERCE and
-                master:getTP() < 500)
-            then
-                if
-                    xi.fellow_utils.checkWeaponSkill(fellow, target, fellowLvl) and
-                    otherSignals
-                then
-                    if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
-                        master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
-                    end
-                end
-
-            elseif
-                fellowType == fellowTypes.FIERCE and
-                master:getTP() > 1000 and
-                wsReady == 0 and
-                target:getHPP() > 15
-            then
-                if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
-                    master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL2 + personality)
-                end
-                fellow:setLocalVar("wsTime", os.time() + 5)
-                fellow:setLocalVar("wsReady", 1)
-
-            elseif
-                fellowType == fellowTypes.FIERCE and
-                master:getTP() > 1000 and
-                wsTime <= os.time()
-            then
-                if
-                    xi.fellow_utils.checkWeaponSkill(fellow, target, fellowLvl) and
-                    otherSignals
-                then
-                    if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
-                        master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
-                    end
-                end
-            end
-        end
-
-    elseif fellow:getTP() > 1000 then
-        if
-            xi.fellow_utils.checkWeaponSkill(fellow, target, fellowLvl) and
-            otherSignals
-        then
-            if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
-                master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.WEAPONSKILL + personality)
-            end
-        end
+        delay = 15
     end
+
+    return delay
 end
 
 xi.fellow_utils.checkWeaponSkill = function(fellow, target, fellowLvl)
-    local master = fellow:getMaster()
-    if master == nil then
-        return false
-    end
+    local weaponskillTable = weaponskills[fellow:getWeaponSkillType(xi.slot.MAIN)]
+    local skillControl     = fellow:getLocalVar("skillControl")
+    local chatControl      = fellow:getLocalVar("chatControl")
+    local master           = fellow:getMaster()
+    local wsDelay          = utils.clamp(fellow:getBattleTime() - xi.fellow_utils.getWSDelay(fellow), 0, 15)
+    local tp               = fellow:getTP()
+    local party            = xi.fellow_utils.buildPartyTable(master)
+    local chosenSkill      = 0
 
-    local skill         = fellow:getWeaponSkillType(xi.slot.MAIN)
-    local optionsMask   = master:getFellowValue("optionsMask")
-    local randomWS      = {}
-    local aoeEnabled    = false
-
-    if bit.band(optionsMask, bit.lshift(1, 0)) == 1 then
-        aoeEnabled = true
-    end
-
-    for i, ws in pairs(weaponskills[skill]) do
+    -- Include fellows in this party list
+    for _, member in pairs(party) do
         if
-            fellowLvl >= ws[1] and
-            (aoeEnabled == ws[2] or
-            not ws[2])
+            member:isPC() and
+            member:getFellow() ~= nil and
+            member:getFellow() ~= fellow
         then
-            table.insert(randomWS, i)
+            table.insert(party, member:getFellow())
+            break
         end
     end
 
-    -- Building in a delay as on local this can be triggered fast enough that
-    -- fellow:actionQueueEmpty() is false for 2-3 calls in a row, letting the fellow queue up to 3 ws
-    -- Also accounting for disengage/re-engage
-    local wsTime = fellow:getLocalVar("wsTime")
     if
-        fellow:getBattleTime() > wsTime + 10 or
-        wsTime > fellow:getBattleTime() + 30
+        chatControl == 0 and
+        tp >= 1000 and
+        skillControl < os.time()
     then
-        fellow:setLocalVar("wsTime", 0)
-    end
+        fellow:setLocalVar("wsWait", os.time() + 3)
+        fellow:setLocalVar("chatControl", 1)
 
-    if
-        fellow:actionQueueEmpty() and
-        fellow:getLocalVar("wsTime") == 0 and
-        fellow:checkDistance(target) < 5
-    then
-        fellow:setLocalVar("wsTime", fellow:getBattleTime())
-        local ws = randomWS[math.random(#randomWS)]
-
-        -- Starlight and Moonlight target the fellow
-        if ws == 163 or ws == 164 then
-            target = fellow
+        for _, member in pairs(master:getParty()) do
+            if member:isPC() then
+                member:PrintToPlayer("Ready to weaponskill!", xi.msg.channel.PARTY, fellow:getName())
+            end
         end
-
-        fellow:useMobAbility(ws, target)
-
-        fellow:setLocalVar("wsReady", 0)
-        return true
     end
 
-    return false
+    -- Proceed to WS if we've warned party of our TP, it's been 3 seconds, and we're sufficient time into party
+    if
+        fellow:getLocalVar("chatControl") == 1 and
+        fellow:getLocalVar("wsWait") < os.time() and
+        wsDelay < fellow:getBattleTime()
+    then
+        -- Waits for party member to have TP if said member is also engaged to the same target as fellow
+        for _, member in pairs(party) do
+            if
+                member:isEngaged() and
+                member:getTP() > 1000 and
+                member:getTarget() == target
+            then
+                for _, member in pairs(master:getParty()) do
+                    if member:isPC() then
+                        member:PrintToPlayer("Using weaponskill. Let's roll!", xi.msg.channel.PARTY, fellow:getName())
+                    end
+                end
+
+                -- Finds highest level WS to use
+                for _, skill in pairs(weaponskillTable) do
+                    if fellow:getMainLevel() > skill.level then
+                        chosenSkill = skill.id
+                        break
+                    end
+                end
+
+                -- Use skill control to ensure this isn't called multiple times for extra measure
+                if
+                    fellow:getLocalVar("skillControl") < os.time() and
+                    chosenSkill > 0
+                then
+                    fellow:useMobAbility(chosenSkill, target)
+                    fellow:setLocalVar("chatControl", 0)
+                    fellow:setLocalVar("skillControl", os.time() + 5)
+                    return
+                end
+            end
+        end
+    end
 end
 
 xi.fellow_utils.checkProvoke = function(fellow, target, master)
@@ -1127,6 +1037,7 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
                 end
             end
         end
+
     elseif
         (fellowType == fellowTypes.SHIELD or
         fellowType == fellowTypes.STALWART) and
@@ -1143,6 +1054,7 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
         then
             fellow:castSpell(xi.magic.spell.FLASH, target)
             fellow:setLocalVar("flash", os.time() + 45)
+
             if ID.text.FELLOW_MESSAGE_OFFSET ~= nil then
                 master:showText(fellow, ID.text.FELLOW_MESSAGE_OFFSET + fellowMessageOffsets.PROVOKE + personality)
             end
