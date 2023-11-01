@@ -22,6 +22,7 @@ function onTrigger(player)
         target:isMob()
     then
         player:fellowAttack(target)
+        player:setCharVar("fellowAttackControl", 1)
     else
         error(player)
     end

@@ -18,4 +18,5 @@ end
 
 function onTrigger(player)
     player:fellowRetreat()
+    player:setCharVar("fellowAttackControl", 0)
 end

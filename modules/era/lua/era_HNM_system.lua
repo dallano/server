@@ -44,10 +44,7 @@ hnmSystem:addOverride("xi.zones.Dragons_Aery.Zone.onInitialize", function(zone)
     -- Calculate monster to pop.
     local monster = dragonsAeryID.mob.FAFNIR
 
-    if
-        hnmKillCount > 3 and
-        (math.random(1, 5) == 3 or hnmKillCount > 6)
-    then
+    if math.random(1, 5) == 3 or hnmKillCount > 6 then
         monster = dragonsAeryID.mob.NIDHOGG
     end
 
@@ -89,10 +86,7 @@ hnmSystem:addOverride("xi.zones.Dragons_Aery.mobs.Fafnir.onMobDespawn", function
     -- Mob setup.
     local monster = dragonsAeryID.mob.FAFNIR
 
-    if
-        hnmKillCount > 3 and
-        (math.random(1, 5) == 3 or hnmKillCount > 6)
-    then
+    if math.random(1, 5) == 3 or hnmKillCount > 6 then
         monster = dragonsAeryID.mob.NIDHOGG
     end
 
@@ -134,10 +128,7 @@ hnmSystem:addOverride("xi.zones.Valley_of_Sorrows.Zone.onInitialize", function(z
     -- Calculate monster to pop.
     local monster = valleySorrowsID.mob.ADAMANTOISE
 
-    if
-        hnmKillCount > 3 and
-        (math.random(1, 5) == 3 or hnmKillCount > 6)
-    then
+    if math.random(1, 5) == 3 or hnmKillCount > 6 then
         monster = valleySorrowsID.mob.ASPIDOCHELONE
     end
 
@@ -179,10 +170,7 @@ hnmSystem:addOverride("xi.zones.Valley_of_Sorrows.mobs.Adamantoise.onMobDespawn"
     -- Mob setup.
     local monster = valleySorrowsID.mob.ADAMANTOISE
 
-    if
-        hnmKillCount > 3 and
-        (math.random(1, 5) == 3 or hnmKillCount > 6)
-    then
+    if math.random(1, 5) == 3 or hnmKillCount > 6 then
         monster = valleySorrowsID.mob.ASPIDOCHELONE
     end
 
@@ -224,10 +212,7 @@ hnmSystem:addOverride("xi.zones.Behemoths_Dominion.Zone.onInitialize", function(
     -- Calculate monster to pop.
     local monster = behemothDomID.mob.BEHEMOTH
 
-    if
-        hnmKillCount > 3 and
-        (math.random(1, 5) == 3 or hnmKillCount > 6)
-    then
+    if math.random(1, 5) == 3 or hnmKillCount > 6 then
         monster = behemothDomID.mob.KING_BEHEMOTH
     end
 
@@ -271,10 +256,7 @@ hnmSystem:addOverride("xi.zones.Behemoths_Dominion.mobs.Behemoth.onMobDespawn", 
     -- Mob setup.
     local monster = behemothDomID.mob.BEHEMOTH
 
-    if
-        hnmKillCount > 3 and
-        (math.random(1, 5) == 3 or hnmKillCount > 6)
-    then
+    if math.random(1, 5) == 3 or hnmKillCount > 6 then
         monster = behemothDomID.mob.KING_BEHEMOTH
     end
 

@@ -83,6 +83,11 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:setPos(-0.008, -33.595, 123.478, 62)
     end
 
+    if not player:hasTeleport(player:getNation(), xi.region.LITELOR + 5) then
+        player:PrintToPlayer("Congratulations! You have unlocked the Li'Telor outpost.", 20)
+        player:addTeleport(player:getNation(), xi.region.LITELOR + 5)
+    end
+
     return cs
 end
 

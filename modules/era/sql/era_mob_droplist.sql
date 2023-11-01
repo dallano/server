@@ -6676,7 +6676,7 @@ INSERT INTO `mob_droplist` VALUES (805,0,0,1000,4486,@VCOMMON);   -- Dragon Hear
 INSERT INTO `mob_droplist` VALUES (805,0,0,1000,16942,@UNCOMMON); -- Balmung (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (805,0,0,1000,17653,@UNCOMMON); -- Hrotti (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (805,0,0,1000,3340,@RARE);      -- Cup Of Sweet Tea (Rare, 5%)
-INSERT INTO `mob_droplist` VALUES (805,0,0,1000,16555,@VRARE);    -- Ridill (Very Rare, 1%)
+INSERT INTO `mob_droplist` VALUES (805,0,0,1000,16555,@RARE);     -- Ridill (xiSP)
 INSERT INTO `mob_droplist` VALUES (805,0,0,1000,1526,@RARE);      -- Wyrm Beard (Rare, 5%)
 INSERT INTO `mob_droplist` VALUES (805,1,1,@VCOMMON,1321,250);    -- Earthen Abjuration Hands (Group 1 - 25.0%)
 INSERT INTO `mob_droplist` VALUES (805,1,1,@VCOMMON,1326,250);    -- Aquarian Abjuration Hands (Group 1 - 25.0%)
@@ -11784,6 +11784,7 @@ INSERT INTO `mob_droplist` VALUES (1449,0,0,1000,15899,@RARE);   -- Velocious Be
 -- ZoneID: 127 - King Behemoth
 INSERT INTO `mob_droplist` VALUES (1450,0,0,1000,1527,@ALWAYS);  -- Behemoth Tongue (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (1450,0,0,1000,831,@VCOMMON);  -- Square Of Shining Cloth (Very Common, 24%)
+INSERT INTO `mob_droplist` VALUES (1450,0,0,1000,18129,@UNCOMMON);  -- Dabo (xiSP)
 INSERT INTO `mob_droplist` VALUES (1450,0,0,1000,860,@ALWAYS);   -- Behemoth Hide (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (1450,0,0,1000,860,@COMMON);   -- Behemoth Hide (Common, 15%)
 INSERT INTO `mob_droplist` VALUES (1450,0,0,1000,883,@ALWAYS);   -- Behemoth Horn (Always, 100%)
@@ -12478,7 +12479,7 @@ INSERT INTO `mob_droplist` VALUES (1548,2,0,1000,832,0);        -- Clump Of Shee
 INSERT INTO `mob_droplist` VALUES (1549,0,0,1000,4172,@ALWAYS);    -- Reraiser (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (1549,0,0,1000,4174,@ALWAYS);    -- Vile Elixir (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (1549,0,0,1000,13617,@ALWAYS);   -- Lightning Mantle (Always, 100%)
-INSERT INTO `mob_droplist` VALUES (1549,0,0,1000,16580,@RARE);     -- Bloodsword (Rare, 5%)
+INSERT INTO `mob_droplist` VALUES (1549,0,0,1000,17721,@RARE);   -- Sanguine Sword (Rare, 5%) (xiSP)
 INSERT INTO `mob_droplist` VALUES (1549,0,0,1000,1110,@UNCOMMON);  -- Vial Of Black Beetle Blood (Uncommon, 10%)
 
 -- ZoneID:  29 - Lunantishee
@@ -13933,6 +13934,7 @@ INSERT INTO `mob_droplist` VALUES (1780,4,0,1000,4409,0);   -- Hard-Boiled Egg (
 INSERT INTO `mob_droplist` VALUES (1780,4,0,1000,4552,0);   -- Serving Of Herb Crawler Eggs (Despoil)
 
 -- ZoneID: 154 - Nidhogg
+INSERT INTO `mob_droplist` VALUES (1781,0,0,1000,19163,@UNCOMMON); -- Nightfall (xiSP)
 INSERT INTO `mob_droplist` VALUES (1781,0,0,1000,1526,@ALWAYS); -- Wyrm Beard (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (1781,0,0,1000,1133,@ALWAYS); -- Vial Of Dragon Blood (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (1781,0,0,1000,1133,@COMMON); -- Vial Of Dragon Blood (Common, 15%)
@@ -23057,8 +23059,7 @@ INSERT INTO `mob_droplist` VALUES (2818,0,0,1000,495,@VCOMMON);  -- Quadav Charm
 
 -- ZoneID: 178 - Kirin
 INSERT INTO `mob_droplist` VALUES (2819,0,0,1000,12562,@COMMON);  -- Kirins Osode (Common, 15%)
-INSERT INTO `mob_droplist` VALUES (2819,0,0,1000,17567,@COMMON);  -- Kirins Pole (Common, 15%)
-INSERT INTO `mob_droplist` VALUES (2819,0,0,1000,17721,@COMMON);  -- Sanguine Sword (Common, 24%) (xiSP)
+INSERT INTO `mob_droplist` VALUES (2819,0,0,1000,17567,@UNCOMMON); -- Kirins Pole (Uncommon, 10%) (Reduced xiSP)
 INSERT INTO `mob_droplist` VALUES (2819,0,0,1000,658,@COMMON);    -- Damascus Ingot (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (2819,0,0,1000,658,@COMMON);    -- Damascus Ingot (Uncommon, 10%)
 INSERT INTO `mob_droplist` VALUES (2819,0,0,1000,747,@COMMON);    -- Orichalcum Ingot (Uncommon, 10%)

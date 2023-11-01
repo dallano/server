@@ -9,7 +9,7 @@ effectObject.onEffectGain = function(target, effect)
     local power = 0
 
     if target:isPC() then
-        power = target:getSkillLevel(xi.skill.SHIELD) * 0.20
+        power = target:getSkillLevel(xi.skill.SHIELD) * 0.15
         target:setCharVar("[DEFENDER]spxiPower", power)
     end
 

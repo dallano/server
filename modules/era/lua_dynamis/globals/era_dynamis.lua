@@ -46,7 +46,7 @@ local dynamisPerpetual = 4237
 local dynamisMinLvl = 65
 local dynamisReservationCancel = 180
 local dynamisReentryDays = 3
-local dynamisReentryHours = 71
+local dynamisReentryHours = 21
 
 local gmFlags =
 {
@@ -1314,7 +1314,8 @@ xi.dynamis.entryNpcOnTrade = function(player, npc, trade)
     end
 
     if
-        npcUtil.tradeHasExactly(trade, { dynamisTimelessHourglass }) -- Check for timeless hourglass to trade for perpetual hourglass to start instance
+        npcUtil.tradeHasExactly(trade, { dynamisTimelessHourglass }) or  -- Check for timeless hourglass to trade for perpetual hourglass to start instance
+        npcUtil.tradeHasExactly(trade, { { 'gil', xi.settings.main.TIMELESS_HOURGLASS_COST } }) -- (xiSP)
     then
         if dynamisTimeRemaining > 0 then -- Check if another group is present.
             player:messageSpecial(xi.dynamis.dynaIDLookup[zoneID].text.ANOTHER_GROUP, xi.dynamis.entryInfoEra[zoneID].csBit)

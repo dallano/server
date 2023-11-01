@@ -433,7 +433,7 @@ xi.dynamis.normalDynamicSpawn = function(oMob, oMobIndex, target)
                 end,
 
                 onMobDeath = function(mobArg, player, optParams)
-                    xi.dynamis.mobOnDeath(mobArg)
+                    xi.dynamis.mobOnDeath(mobArg, player)
                 end,
 
                 onMobDespawn = function(mob)
@@ -746,7 +746,7 @@ xi.dynamis.nonStandardDynamicSpawn = function(mobIndex, oMob, forceLink, zoneID,
         onMobFight = mobFunctions[mobMobType]["onMobFight"][1],
         onMobRoam =  mobFunctions[mobMobType]["onMobRoam"][1],
         onMobDeath = function(mob, player, optParams)
-            xi.dynamis.mobOnDeath(mob)
+            xi.dynamis.mobOnDeath(mob, player)
         end,
 
         onMobDespawn = function(mob)
@@ -2061,7 +2061,8 @@ xi.dynamis.nmDynamicSpawn = function(mobIndex, oMobIndex, forceLink, zoneID, tar
             ["onMobWeaponSkill"] = { function(mob)
             end },
 
-            ["onMobDeath"] = { function(mob, player, optParams) xi.dynamis.mobOnDeathDiabolosSpade(mob, player, optParams)
+            ["onMobDeath"] = { function(mob, player, optParams)
+                xi.dynamis.mobOnDeathDiabolosSpade(mob, player, optParams)
             end },
 
             ["mixins"] = {   },
@@ -2679,13 +2680,13 @@ xi.dynamis.setMobStats = function(mob)
 
         if     mob:getFamily() == 359 then -- If Hydra
             mob:setMobLevel(math.random(72, 75))
-            mob:addMod(xi.mod.HPP, -20)
+            mob:addMod(xi.mod.DMG, 5000)
         elseif mob:getFamily() == 358 then -- If Kindred
             mob:setMobLevel(math.random(72, 75))
-            mob:addMod(xi.mod.HPP, -20)
+            mob:addMod(xi.mod.DMG, 5000)
         else
             mob:setMobLevel(math.random(62, 65))
-            mob:addMod(xi.mod.HPP, -50)
+            mob:addMod(xi.mod.DMG, 10000)
         end
 
         if     job == xi.job.WAR then
@@ -2812,7 +2813,7 @@ xi.dynamis.setNightmareStats = function(mob)
         mob:setMobLevel(math.random(78, 80))
         mob:setTrueDetection(true)
 
-        mob:addMod(xi.mod.HPP, -60)
+        mob:setMod(xi.mod.DMG, 5000)
 
         xi.dynamis.addParentListeners(mob)
 
@@ -2855,6 +2856,8 @@ xi.dynamis.setNMStats = function(mob)
 
     xi.dynamis.addParentListeners(mob)
 
+    mob:setMod(xi.mod.DMG, 7000) -- (xiSP)
+
     if job == xi.job.NIN then
         local params = {  }
         params.specials = {  }
@@ -2874,15 +2877,8 @@ xi.dynamis.setStatueStats = function(mob, mobIndex)
     mob:addStatusEffect(xi.effect.BATTLEFIELD, 1, 0, 0, true)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 2)
     mob:setMobLevel(math.random(60, 65))
-    mob:setMod(xi.mod.DMG, 5000)
-    -- if an eye then does not have slow movement speed and has lower HP in xarc
-    if mob:getFamily() == 4 then
-        -- base hp of eyes is 2600 for beauc, xarc eyes have about 1040
-        if mob:getZoneID() == xi.zone.DYNAMIS_XARCABARD then
-            mob:addMod(xi.mod.HPP, -60)
-        end
-    -- all other statues have slow movement speed
-    else
+    -- if an eye then does not have slow movement speed
+    if mob:getFamily() ~= 4 then
         mob:setSpeed(20)
     end
 
@@ -2893,7 +2889,7 @@ xi.dynamis.setStatueStats = function(mob, mobIndex)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 2)
     mob:setSpeed(10)
 
-    mob:addMod(xi.mod.HPP, -60)
+    mob:setMod(xi.mod.DMG, 10000)
 
     xi.dynamis.setMDB(mob)
     xi.dynamis.addParentListeners(mob)
@@ -2931,6 +2927,10 @@ xi.dynamis.setPetStats = function(mob)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
     mob:setMobMod(xi.mobMod.CHARMABLE, 0)
     mob:setTrueDetection(true)
+
+    mob:setMobLevel(math.random(60, 62))
+            mob:addMod(xi.mod.DMG, 10000)
+
     xi.dynamis.setMDB(mob)
 end
 
@@ -3030,6 +3030,7 @@ xi.dynamis.mobOnDeath = function(mob, player, optParams)
             end
         end
 
+        player:setLocalVar("dynamisKills", player:getLocalVar("dynamisKills") + 1)
         mob:setLocalVar("dynamisMobOnDeathTriggered", 1) -- onDeath lua happens once per party member that killed the mob, but we want this to only run once per mob
     end
 

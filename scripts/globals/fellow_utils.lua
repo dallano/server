@@ -411,7 +411,7 @@ xi.fellow_utils.onFellowRoam = function(fellow)
     if
         master:isEngaged() and
         master:getTarget():isEngaged() and
-        master:getCharVar("fellowAttackControl") == 0
+        master:getCharVar("fellowAttackControl") == 1
     then
         master:fellowAttack(master:getTarget())
     end
@@ -423,7 +423,6 @@ xi.fellow_utils.onFellowRoam = function(fellow)
 
     xi.fellow_utils.spellCheck(fellow, master)
     xi.fellow_utils.checkJobAbility(fellow, master)
-    xi.fellow_utils.onslaught(fellow, master)
 end
 
 xi.fellow_utils.onFellowFight = function(fellow, target)
@@ -879,7 +878,8 @@ xi.fellow_utils.checkDebuff = function(fellow, master, fellowLvl, mp, fellowType
                         (target:getMainJob() == xi.job.RDM or
                         target:getMainJob() == xi.job.WHM or
                         target:getMainJob() == xi.job.RDM or
-                        target:getMainJob() == xi.job.BRD)
+                        target:getMainJob() == xi.job.BRD or
+                        target:getMainJob() == xi.job.DRK)
                     then
                         debuff.check = true
                     elseif
@@ -914,7 +914,7 @@ xi.fellow_utils.getWSDelay = function(fellow)
     return delay
 end
 
-xi.fellow_utils.checkWeaponSkill = function(fellow, target, fellowLvl)
+xi.fellow_utils.checkWeaponskill = function(fellow, target, fellowLvl)
     local weaponskillTable = weaponskills[fellow:getWeaponSkillType(xi.slot.MAIN)]
     local skillControl     = fellow:getLocalVar("skillControl")
     local chatControl      = fellow:getLocalVar("chatControl")
@@ -961,8 +961,8 @@ xi.fellow_utils.checkWeaponSkill = function(fellow, target, fellowLvl)
         for _, member in pairs(party) do
             if
                 member:isEngaged() and
-                member:getTP() > 1000 and
-                member:getTarget() == target
+                member:getTP() >= 1000 and
+                target:getHPP() > 15
             then
                 for _, member in pairs(master:getParty()) do
                     if member:isPC() then
@@ -972,7 +972,7 @@ xi.fellow_utils.checkWeaponSkill = function(fellow, target, fellowLvl)
 
                 -- Finds highest level WS to use
                 for _, skill in pairs(weaponskillTable) do
-                    if fellow:getMainLevel() > skill.level then
+                    if fellow:getMainLvl() > skill.level then
                         chosenSkill = skill.id
                         break
                     end
