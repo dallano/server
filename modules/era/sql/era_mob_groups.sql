@@ -467,6 +467,18 @@ UPDATE mob_groups SET content_tag='ABYSSEA' WHERE name='Orichalcumshell' AND gro
 UPDATE mob_groups SET content_tag='ABYSSEA' WHERE name='Scoriaceous_Eruca' AND groupid='35' AND zoneid='61';
 
 -- ------------------------------------------------------------
+-- Mamook (Zone 65)
+-- ------------------------------------------------------------
+
+UPDATE mob_groups SET HP='20000' WHERE name='Devout_Radol_Ja' AND groupid='19' AND zoneid='65';
+UPDATE mob_groups SET HP='17500' WHERE name='Dragonscaled_Bugaal_Ja' AND groupid='26' AND zoneid='65';
+UPDATE mob_groups SET HP='5000' WHERE name='Tyrannobugard' AND groupid='27' AND zoneid='65';
+UPDATE mob_groups SET HP='18000', minlevel='82', maxlevel='85' WHERE name='Hundredfaced_Hapool_Ja' AND groupid='29' AND zoneid='65';
+UPDATE mob_groups SET HP='10000', minlevel='82', maxlevel='85' WHERE name='Hundredfaced_clone' AND groupid='72' AND zoneid='65';
+UPDATE mob_groups SET HP='21000' WHERE name='Darting_Kachaal_Ja' AND groupid='41' AND zoneid='65';
+UPDATE mob_groups SET HP='7000' WHERE name='Mamool_Ja_Treasurer' AND groupid='49' AND zoneid='65';
+
+-- ------------------------------------------------------------
 -- Mamool_Ja_Training_Grounds (Zone 66)
 -- ------------------------------------------------------------
 

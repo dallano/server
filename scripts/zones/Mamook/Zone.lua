@@ -8,6 +8,14 @@ local zoneObject = {}
 
 zoneObject.onInitialize = function(zone)
     xi.helm.initZone(zone, xi.helm.type.LOGGING)
+
+    if xi.settings.main.ENABLE_TOAU then
+        xi.mob.nmTODPersistCache(zone, ID.mob.HUNDREDFACED_HAPOOL_JA)
+        xi.mob.nmTODPersistCache(zone, ID.mob.DRAGONSCALED_BUGAAL_JA)
+        xi.mob.nmTODPersistCache(zone, ID.mob.DARTING_KACHAAL_JA)
+        xi.mob.nmTODPersistCache(zone, ID.mob.DEVOUT_RADOL_JA)
+        xi.mob.nmTODPersistCache(zone, ID.mob.GULOOL_JA_JA)
+    end
 end
 
 zoneObject.onZoneIn = function(player, prevZone)
