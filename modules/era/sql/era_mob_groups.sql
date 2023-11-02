@@ -477,6 +477,8 @@ UPDATE mob_groups SET HP='3500', minLevel='77', maxLevel='78' WHERE name='Mamool
 -- Aydeewa_Subterrane (Zone 68)
 -- ------------------------------------------------------------
 
+UPDATE mob_groups SET HP='8500' WHERE name='Crystal_Eater' AND groupid='26' AND zoneid='68';
+UPDATE mob_groups SET HP='11000' WHERE name='Bluestreak_Gyugyuroon' AND groupid='27' AND zoneid='68';
 UPDATE mob_groups SET content_tag='ABYSSEA' WHERE name='Mycohopper' AND groupid='16' AND zoneid='68';
 UPDATE mob_groups SET content_tag='ABYSSEA' WHERE name='Slime_Eater' AND groupid='24' AND zoneid='68';
 UPDATE mob_groups SET content_tag='ABYSSEA' WHERE name='Deforester' AND groupid='18' AND zoneid='68';
