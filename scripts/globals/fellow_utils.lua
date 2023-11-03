@@ -960,6 +960,7 @@ xi.fellow_utils.checkWeaponskill = function(fellow, target, fellowLvl)
         -- Waits for party member to have TP if said member is also engaged to the same target as fellow
         for _, member in pairs(party) do
             if
+                member:isPC() and
                 member:isEngaged() and
                 member:getTP() >= 1000 and
                 target:getHPP() > 15

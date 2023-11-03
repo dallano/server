@@ -36,7 +36,7 @@ SET @ALWAYS = 1000;  -- Always, 100%
 SET @VCOMMON = 500;  -- Very common, 50%
 SET @COMMON = 300;   -- Common, 30%
 SET @UNCOMMON = 150; -- Uncommon, 15%
-SET @RARE = 50;      -- Rare, 5%
+SET @RARE = 70;      -- Rare, 7%
 SET @VRARE = 20;     -- Very rare, 2%
 SET @SRARE = 10;      -- Super Rare, 1%
 SET @URARE = 5;      -- Ultra rare, 0.5%
@@ -1768,6 +1768,7 @@ INSERT INTO `mob_droplist` VALUES (182,0,0,1000,529,@RARE);       -- Luminicloth
 INSERT INTO `mob_droplist` VALUES (182,2,0,1000,825,0);           -- Square Of Cotton Cloth (Steal)
 
 -- ZoneID: 128 - Aspidochelone
+INSERT INTO `mob_droplist` VALUES (183,0,0,1000,14577,@RARE);   -- Valhalla Breastplate (xiSP)
 INSERT INTO `mob_droplist` VALUES (183,0,0,1000,1525,@ALWAYS);  -- Adamantoise Egg (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (183,0,0,1000,646,@ALWAYS);   -- Chunk Of Adaman Ore (Always, 100%)
 INSERT INTO `mob_droplist` VALUES (183,0,0,1000,646,@VCOMMON);  -- Chunk Of Adaman Ore (Very Common, 24%)
