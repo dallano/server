@@ -38,6 +38,16 @@ zoneObject.onZoneIn = function(player, prevZone)
         cs = 2
     end
 
+    if
+        (prevZone == xi.zone.NORTHERN_SAN_DORIA or
+        prevZone == xi.zone.BASTOK_MINES or
+        prevZone == xi.zone.PORT_WINDURST or
+        prevZone == xi.zone.LOWER_JEUNO) and
+        player:hasKeyItem(xi.ki.CHOCOBO_LICENSE)
+    then
+        player:addStatusEffectEx(xi.effect.MOUNTED, xi.effect.MOUNTED, 0, 0, 1800, true)
+    end
+
     return cs
 end
 

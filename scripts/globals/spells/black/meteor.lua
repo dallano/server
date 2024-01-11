@@ -37,7 +37,7 @@ spellObject.onSpellCast = function(caster, target, spell)
     elseif caster:isMob() and caster:getName() == "Promathia_2" then
         dmg = ((100 + caster:getMod(xi.mod.MATT)) / (100 + target:getMod(xi.mod.MDEF))) * (caster:getStat(xi.mod.INT) + (caster:getMaxSkillLevel(caster:getMainLvl(), xi.job.BLM, xi.skill.ELEMENTAL_MAGIC)) / 6) * 5
     elseif caster:isMob() and caster:getName() == "King_Behemoth" then
-        dmg = 14 + caster:getMainLvl() * 30
+        dmg = 14 + caster:getMainLvl() * 8
     else
         dmg = ((100 + caster:getMod(xi.mod.MATT)) / (100 + target:getMod(xi.mod.MDEF))) * (caster:getStat(xi.mod.INT) + (caster:getMaxSkillLevel(caster:getMainLvl(), xi.job.BLM, xi.skill.ELEMENTAL_MAGIC)) / 6) * 9.4
     end

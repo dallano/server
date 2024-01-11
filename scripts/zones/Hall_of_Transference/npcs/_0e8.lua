@@ -20,11 +20,9 @@ end
 
 entity.onTrigger = function(player, npc)
     if player:getCharVar("MeaChipRegistration") == 1 then
-        player:messageSpecial(ID.text.NO_RESPONSE_OFFSET + 6) -- Device seems to be functioning correctly.
-    elseif player:checkDistance(npc) <= 2.71 then
         player:startEvent(167) -- Hexagonal Cones
     else
-        player:messageSpecial(ID.text.YOU_MUST_MOVE_CLOSER)
+        player:startEvent(164)
     end
 end
 

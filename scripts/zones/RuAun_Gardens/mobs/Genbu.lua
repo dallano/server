@@ -9,8 +9,9 @@ require("scripts/globals/mobs")
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.SILENCERES, 60)
-    mob:addMod(xi.mod.EVA, 39)
+    mob:setMod(xi.mod.SILENCERES, 30)
+    mob:addMod(xi.mod.EVA, 30)
+    mob:addMod(xi.mod.ACC, 75)
     mob:addMod(xi.mod.DEF, 110)
     mob:addMod(xi.mod.VIT, 24)
     mob:addMod(xi.mod.DOUBLE_ATTACK, 10)
@@ -41,7 +42,7 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENWATER)
+    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENWATER, { power = math.random(15, 50) })
 end
 
 entity.onMobDeath = function(mob, player, optParams)

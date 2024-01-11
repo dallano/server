@@ -179,7 +179,7 @@ xi.job_utils.paladin.useShieldBash = function(player, target, ability)
     local shieldSize = player:getShieldSize()
     local jpValue = player:getJobPointLevel(xi.jp.SHIELD_BASH_EFFECT)
     local damage = 0
-    local chance = 90
+    local chance = 95
 
     damage = player:getMod(xi.mod.SHIELD_BASH)
 
@@ -198,13 +198,9 @@ xi.job_utils.paladin.useShieldBash = function(player, target, ability)
         damage = math.floor(damage)
     else
         damage = math.floor(damage / 2.2)
-        chance = 80
     end
 
     damage = damage + jpValue * 10
-
-    -- Calculate stun proc chance
-    chance = chance + (player:getMainLvl() - target:getMainLvl()) * 5
 
     if math.random() * 100 < chance then
         target:addStatusEffect(xi.effect.STUN, 1, 0, 6)

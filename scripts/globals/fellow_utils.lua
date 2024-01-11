@@ -66,7 +66,7 @@ local cureTable =
     { spell = xi.magic.spell.CURE_V,   level = 61, mpCost = 135, hpThreshold = 500 },
     { spell = xi.magic.spell.CURE_IV,  level = 41, mpCost =  88, hpThreshold = 350 },
     { spell = xi.magic.spell.CURE_III, level = 21, mpCost =  46, hpThreshold = 180 },
-    { spell = xi.magic.spell.CURE_II,  level = 11, mpCost =  24, hpThreshold = 120 },
+    { spell = xi.magic.spell.CURE_II,  level = 11, mpCost =  24, hpThreshold = 100 },
     { spell = xi.magic.spell.CURE,     level =  1, mpCost =   8, hpThreshold = 45  },
 }
 
@@ -82,10 +82,12 @@ local debuffTable =
 local buffTable =
 {
     { effect = xi.effect.REFRESH,   spell = xi.magic.spell.REFRESH,       level = 41, mpCost = 40, targetOther = true  },
+    { effect = xi.effect.PROTECT,   spell = xi.magic.spell.PROTECTRA_V,   level = 75, mpCost = 84, targetOther = false },
     { effect = xi.effect.PROTECT,   spell = xi.magic.spell.PROTECTRA_IV,  level = 68, mpCost = 65, targetOther = false },
     { effect = xi.effect.PROTECT,   spell = xi.magic.spell.PROTECTRA_III, level = 47, mpCost = 46, targetOther = false },
     { effect = xi.effect.PROTECT,   spell = xi.magic.spell.PROTECTRA_II,  level = 27, mpCost = 28, targetOther = false },
     { effect = xi.effect.PROTECT,   spell = xi.magic.spell.PROTECTRA,     level =  7, mpCost =  9, targetOther = false },
+    { effect = xi.effect.SHELL,     spell = xi.magic.spell.SHELLRA_V,     level = 75, mpCost = 93, targetOther = false },
     { effect = xi.effect.SHELL,     spell = xi.magic.spell.SHELLRA_IV,    level = 68, mpCost = 75, targetOther = false },
     { effect = xi.effect.SHELL,     spell = xi.magic.spell.SHELLRA_III,   level = 57, mpCost = 56, targetOther = false },
     { effect = xi.effect.SHELL,     spell = xi.magic.spell.SHELLRA_II,    level = 37, mpCost = 37, targetOther = false },
@@ -98,9 +100,9 @@ local buffTable =
 local ailmentTable =
 {
     { effect = xi.effect.DOOM,          spell = xi.magic.spell.ERASE,    level = 32, mpCost = 18, selfTarget =  true },
-    { effect = xi.effect.SLEEP_I,       spell = xi.magic.spell.CURE_I,   level =  1, mpCost =  8, selfTarget = false },
-    { effect = xi.effect.SLEEP_II,      spell = xi.magic.spell.CURE_I,   level =  1, mpCost =  8, selfTarget = false },
-    { effect = xi.effect.LULLABY,       spell = xi.magic.spell.CURE_I,   level =  1, mpCost =  8, selfTarget = false },
+    { effect = xi.effect.SLEEP_I,       spell = xi.magic.spell.CURE,     level =  1, mpCost =  8, selfTarget = false },
+    { effect = xi.effect.SLEEP_II,      spell = xi.magic.spell.CURE,     level =  1, mpCost =  8, selfTarget = false },
+    { effect = xi.effect.LULLABY,       spell = xi.magic.spell.CURE,     level =  1, mpCost =  8, selfTarget = false },
     { effect = xi.effect.PETRIFICATION, spell = xi.magic.spell.STONA,    level = 40, mpCost = 12, selfTarget = false },
     { effect = xi.effect.CURSE_II,      spell = xi.magic.spell.CURSNA,   level = 29, mpCost = 30, selfTarget =  true },
     { effect = xi.effect.CURSE_I,       spell = xi.magic.spell.CURSNA,   level = 29, mpCost = 30, selfTarget =  true },
@@ -307,13 +309,14 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
 
     elseif fellowType == fellowTypes.FIERCE then
         fellow:addMobMod(xi.mobMod.WEAPON_BONUS, fellow:getMainLvl() * 1.15)
-        fellow:addMod(xi.mod.ATTP, 75 + lvl * 1.25 + wepBonus)
+        fellow:addMod(xi.mod.ATTP, 40 + lvl + wepBonus)
         fellow:addMod(xi.mod.ATT, lvl * 1.25 + wepBonus)
         fellow:addMod(xi.mod.ACC, lvl + 150 + wepBonus)
         fellow:addMod(xi.mod.DOUBLE_ATTACK, 10)
         fellow:addMod(xi.mod.HASTE_GEAR, 1500)
         fellow:addMod(xi.mod.STR, lvl * 0.5)
         fellow:addMod(xi.mod.DEX, lvl * 0.5)
+        fellow:addMod(xi.mod.ENMITY, -15)
         fellow:addMod(xi.mod.STORETP, 15)
         fellow:addMod(xi.mod.GKATANA, 15)
         fellow:addMod(xi.mod.POLEARM, 15)
@@ -329,7 +332,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:addMod(xi.mod.SPELLINTERRUPT, 50)
         fellow:addMod(xi.mod.ATT, wepBonus)
         fellow:addMod(xi.mod.ACC, wepBonus)
-        fellow:addMod(xi.mod.REFRESH, 1)
+        fellow:addMod(xi.mod.REFRESH, 3)
         fellow:addMod(xi.mod.ENMITY,  5)
         fellow:addMod(xi.mod.ATTP,  -10)
 
@@ -337,7 +340,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:addMod(xi.mod.ATT, wepBonus * 1.25)
         fellow:addMod(xi.mod.ACC, 100 + wepBonus * 1.25)
         fellow:addMod(xi.mod.SPELLINTERRUPT, 85)
-        fellow:addMod(xi.mod.REFRESH, 2)
+        fellow:addMod(xi.mod.REFRESH, 5)
         fellow:addMod(xi.mod.SHIELD, 15)
         fellow:addMod(xi.mod.ENMITY, 10)
         fellow:addMod(xi.mod.SWORD,  15)
@@ -353,10 +356,11 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:addMod(xi.mod.ATTP,  -20)
         fellow:addMod(xi.mod.DEFP,  -15)
         fellow:addMod(xi.mod.MDEF,   10)
+        fellow:addMod(xi.mod.MP,    100)
         fellow:addMod(xi.mod.MND, lvl * 0.25)
 
     elseif fellowType == fellowTypes.SOOTHING then
-        fellow:addMod(xi.mod.MACC,      wepBonus * 0.25 + 15)
+        fellow:addMod(xi.mod.MACC, wepBonus * 0.25 + 15)
         fellow:addMod(xi.mod.ATT, wepBonus)
         fellow:addMod(xi.mod.ACC, wepBonus)
         fellow:addMod(xi.mod.SPELLINTERRUPT, 65)
@@ -371,6 +375,7 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
         fellow:addMod(xi.mod.ENMITY,   -10)
         fellow:addMod(xi.mod.DEFP,     -10)
         fellow:addMod(xi.mod.MDEF,      20)
+        fellow:addMod(xi.mod.MP,       250)
         fellow:addMod(xi.mod.MND, lvl * 0.5)
     end
 end
@@ -1082,16 +1087,16 @@ xi.fellow_utils.calculateRecast = function(fellow, fellowType)
 end
 
 xi.fellow_utils.battleMessaging = function(fellow, master)
-    local ID            = require("scripts/zones/"..master:getZoneName().."/IDs")
-    local personality   = xi.fellow_utils.checkPersonality(fellow)
-    local optionsMask   = master:getFellowValue("optionsMask")
-    local hpWarning     = fellow:getLocalVar("hpWarning")
-    local mpWarning     = fellow:getLocalVar("mpWarning")
-    local mpNotice      = fellow:getLocalVar("mpNotice")
-    local mp            = fellow:getMP()
-    local mpp           = mp / fellow:getMaxMP() * 100
-    local hpSignals     = false
-    local mpSignals     = false
+    local ID          = require("scripts/zones/"..master:getZoneName().."/IDs")
+    local personality = xi.fellow_utils.checkPersonality(fellow)
+    local optionsMask = master:getFellowValue("optionsMask")
+    local hpWarning   = fellow:getLocalVar("hpWarning")
+    local mpWarning   = fellow:getLocalVar("mpWarning")
+    local mpNotice    = fellow:getLocalVar("mpNotice")
+    local mp          = fellow:getMP()
+    local mpp         = mp / fellow:getMaxMP() * 100
+    local hpSignals   = false
+    local mpSignals   = false
 
     if bit.band(optionsMask, bit.lshift(1, 2)) == 4 then
         mpSignals = true

@@ -12400,7 +12400,6 @@ INSERT INTO `item_mods` VALUES (12445,2,30);    -- HP: 30
 INSERT INTO `item_mods` VALUES (12445,10,5);    -- VIT: 5
 INSERT INTO `item_mods` VALUES (12445,25,5);    -- ACC: 5
 INSERT INTO `item_mods` VALUES (12445,68,5);    -- EVA: 5
-INSERT INTO `item_mods` VALUES (12445,169,-12); -- MOVE: -12
 
 -- Tiger Helm
 INSERT INTO `item_mods` VALUES (12446,1,21);  -- DEF: 21
@@ -12992,7 +12991,6 @@ INSERT INTO `item_mods` VALUES (12572,20,-1); -- WATER_RES: -1
 INSERT INTO `item_mods` VALUES (12573,1,50);    -- DEF: 50
 INSERT INTO `item_mods` VALUES (12573,2,40);    -- HP: 40
 INSERT INTO `item_mods` VALUES (12573,25,2);    -- ACC: 2
-INSERT INTO `item_mods` VALUES (12573,169,-12); -- MOVE: -12
 INSERT INTO `item_mods` VALUES (12573,370,1);   -- REGEN: 1
 
 -- Tiger Jerkin
@@ -13583,7 +13581,6 @@ INSERT INTO `item_mods` VALUES (12700,20,-1); -- WATER_RES: -1
 INSERT INTO `item_mods` VALUES (12701,1,24);    -- DEF: 24
 INSERT INTO `item_mods` VALUES (12701,2,20);    -- HP: 20
 INSERT INTO `item_mods` VALUES (12701,23,5);    -- ATT: 5
-INSERT INTO `item_mods` VALUES (12701,169,-12); -- MOVE: -12
 INSERT INTO `item_mods` VALUES (12701,384,300); -- HASTE_GEAR: 300
 
 -- Tiger Gloves
@@ -14342,7 +14339,6 @@ INSERT INTO `item_mods` VALUES (12879,1,47);    -- DEF: 47
 INSERT INTO `item_mods` VALUES (12879,2,35);    -- HP: 35
 INSERT INTO `item_mods` VALUES (12879,23,14);   -- ATT: 14
 INSERT INTO `item_mods` VALUES (12879,26,10);   -- RACC: 10
-INSERT INTO `item_mods` VALUES (12879,169,-12); -- MOVE: -12
 
 -- Ogre Trousers
 INSERT INTO `item_mods` VALUES (12880,1,31);   -- DEF: 31
@@ -14662,7 +14658,6 @@ INSERT INTO `item_mods` VALUES (12956,20,-1); -- WATER_RES: -1
 INSERT INTO `item_mods` VALUES (12957,1,23);    -- DEF: 23
 INSERT INTO `item_mods` VALUES (12957,2,25);    -- HP: 25
 INSERT INTO `item_mods` VALUES (12957,23,4);    -- ATT: 4
-INSERT INTO `item_mods` VALUES (12957,169,-12); -- MOVE: -12
 INSERT INTO `item_mods` VALUES (12957,384,200); -- HASTE_GEAR: 200
 
 -- Tiger Ledelsens
@@ -19127,7 +19122,6 @@ INSERT INTO `item_mods` VALUES (13938,2,32);    -- HP: 32
 INSERT INTO `item_mods` VALUES (13938,10,6);    -- VIT: 6
 INSERT INTO `item_mods` VALUES (13938,25,6);    -- ACC: 6
 INSERT INTO `item_mods` VALUES (13938,68,6);    -- EVA: 6
-INSERT INTO `item_mods` VALUES (13938,169,-12); -- MOVE: -12
 
 -- Austere Hat
 INSERT INTO `item_mods` VALUES (13939,1,13);  -- DEF: 13
@@ -20468,7 +20462,6 @@ INSERT INTO `item_mods` VALUES (14187,27,2); -- ENMITY: 2
 INSERT INTO `item_mods` VALUES (14188,1,24);    -- DEF: 24
 INSERT INTO `item_mods` VALUES (14188,2,27);    -- HP: 27
 INSERT INTO `item_mods` VALUES (14188,23,5);    -- ATT: 5
-INSERT INTO `item_mods` VALUES (14188,169,-12); -- MOVE: -12
 INSERT INTO `item_mods` VALUES (14188,384,300); -- HASTE_GEAR: 300
 
 -- Austere Sabots
@@ -21187,7 +21180,6 @@ INSERT INTO `item_mods` VALUES (14307,1,48);    -- DEF: 48
 INSERT INTO `item_mods` VALUES (14307,2,37);    -- HP: 37
 INSERT INTO `item_mods` VALUES (14307,23,15);   -- ATT: 15
 INSERT INTO `item_mods` VALUES (14307,26,11);   -- RACC: 11
-INSERT INTO `item_mods` VALUES (14307,169,-12); -- MOVE: -12
 
 -- Hecatomb Subligar
 INSERT INTO `item_mods` VALUES (14308,1,42);      -- DEF: 42
@@ -21700,7 +21692,6 @@ INSERT INTO `item_mods` VALUES (14390,289,12);    -- SUBTLE_BLOW: 12
 INSERT INTO `item_mods` VALUES (14391,1,51);    -- DEF: 51
 INSERT INTO `item_mods` VALUES (14391,2,42);    -- HP: 42
 INSERT INTO `item_mods` VALUES (14391,25,3);    -- ACC: 3
-INSERT INTO `item_mods` VALUES (14391,169,-12); -- MOVE: -12
 INSERT INTO `item_mods` VALUES (14391,370,1);   -- REGEN: 1
 
 -- Carpenters Apron
@@ -23755,7 +23746,6 @@ INSERT INTO `item_mods` VALUES (14824,289,3); -- SUBTLE_BLOW: 3
 INSERT INTO `item_mods` VALUES (14825,1,25);    -- DEF: 25
 INSERT INTO `item_mods` VALUES (14825,2,22);    -- HP: 22
 INSERT INTO `item_mods` VALUES (14825,23,6);    -- ATT: 6
-INSERT INTO `item_mods` VALUES (14825,169,-12); -- MOVE: -12
 INSERT INTO `item_mods` VALUES (14825,384,400); -- HASTE_GEAR: 400
 
 -- Austere Cuffs
@@ -28948,7 +28938,6 @@ INSERT INTO `item_mods` VALUES (15758,296,3); -- CONSERVE_MP: 3
 INSERT INTO `item_mods` VALUES (15759,1,9);      -- DEF: 9
 INSERT INTO `item_mods` VALUES (15759,28,2);     -- MATT: 2
 INSERT INTO `item_mods` VALUES (15759,29,2);     -- MDEF: 2
-INSERT INTO `item_mods` VALUES (15759,169,-12);  -- MOVE: -12
 INSERT INTO `item_mods` VALUES (15759,384,-500); -- HASTE_GEAR: -500
 
 -- Marabout Sandals
@@ -35664,11 +35653,11 @@ INSERT INTO `item_mods` VALUES (17718,950,8);  -- ITEM_ADDEFFECT_ELEMENT: 8
 INSERT INTO `item_mods` VALUES (17721,2,20); -- HP: 20
 INSERT INTO `item_mods` VALUES (17721,5,20); -- MP: 20
 INSERT INTO `item_mods` VALUES (17721,10,4); -- VIT: 4
-INSERT INTO `item_mods` VALUES (17651,431,5);  -- ITEM_ADDEFFECT_TYPE: 5 (Drain xiSP)
-INSERT INTO `item_mods` VALUES (17651,499,21); -- ITEM_SUBEFFECT: 21
-INSERT INTO `item_mods` VALUES (17651,500,50); -- ITEM_ADDEFFECT_DMG: 50
-INSERT INTO `item_mods` VALUES (17651,501,10); -- ITEM_ADDEFFECT_CHANCE: 25
-INSERT INTO `item_mods` VALUES (17651,950,8);  -- ITEM_ADDEFFECT_ELEMENT: 8
+INSERT INTO `item_mods` VALUES (17721,431,5);  -- ITEM_ADDEFFECT_TYPE: 5 (Drain xiSP)
+INSERT INTO `item_mods` VALUES (17721,499,21); -- ITEM_SUBEFFECT: 21
+INSERT INTO `item_mods` VALUES (17721,500,50); -- ITEM_ADDEFFECT_DMG: 50
+INSERT INTO `item_mods` VALUES (17721,501,10); -- ITEM_ADDEFFECT_CHANCE: 25
+INSERT INTO `item_mods` VALUES (17721,950,8);  -- ITEM_ADDEFFECT_ELEMENT: 8
 
 -- Phantom Fleuret
 INSERT INTO `item_mods` VALUES (17722,24,5);  -- RATT: 5

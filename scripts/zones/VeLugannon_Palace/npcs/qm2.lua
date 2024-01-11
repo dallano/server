@@ -19,7 +19,10 @@ entity.onTrade = function(player, npc, trade)
 end
 
 entity.onTrigger = function(player, npc)
-    player:messageSpecial(ID.text.EVIL_PRESENCE)
+    if GetServerVariable("[SPAWN]brigandishBlade") < os.time () then
+        SetServerVariable("[SPAWN]brigandishBlade", os.time() + math.random(10800, 21600)) -- 3 to 6 hrs
+        npcUtil.popFromQM(player, npc, ID.mob.BRIGANDISH_BLADE)
+    end
 end
 
 entity.onEventUpdate = function(player, csid, option)

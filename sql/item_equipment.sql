@@ -6291,7 +6291,7 @@ INSERT INTO `item_equipment` VALUES (16551,'sapara',7,0,34977,255,0,0,3,0,0,255)
 INSERT INTO `item_equipment` VALUES (16552,'scimitar',13,0,34977,256,0,0,3,0,0,255);
 INSERT INTO `item_equipment` VALUES (16553,'tulwar',36,0,34977,257,0,0,3,0,0,255);
 INSERT INTO `item_equipment` VALUES (16554,'hanger',57,0,34977,258,0,0,3,0,0,255);
-INSERT INTO `item_equipment` VALUES (16555,'ridill',70,0,3489,259,0,0,3,0,0,255);
+INSERT INTO `item_equipment` VALUES (16555,'ridill',70,0,3553,259,0,0,3,0,0,255);
 INSERT INTO `item_equipment` VALUES (16556,'bloody_blade',58,0,36257,262,0,0,3,0,0,255);
 INSERT INTO `item_equipment` VALUES (16557,'msk.cmd._falchion',55,0,36257,262,0,0,3,0,0,255);
 INSERT INTO `item_equipment` VALUES (16558,'falchion',44,0,36257,262,0,0,3,0,0,255);

@@ -109,8 +109,8 @@ INSERT INTO `mob_pool_mods` VALUES (559,302,40,30); -- TATT
 -- Byakko
 INSERT INTO `mob_pool_mods` VALUES (592,3,100,1);  -- MP_BASE: 100
 INSERT INTO `mob_pool_mods` VALUES (592,68,15,0);  -- EVA: 15
-INSERT INTO `mob_pool_mods` VALUES (592,302,45,0); -- TRIPLE_ATTACK: 45
-INSERT INTO `mob_pool_mods` VALUES (592,59,55,1); -- WEAPON_BONUS: 55
+INSERT INTO `mob_pool_mods` VALUES (592,302,5,0); -- TRIPLE_ATTACK: 5
+INSERT INTO `mob_pool_mods` VALUES (592,59,15,1); -- WEAPON_BONUS: 15
 
 -- Capricious Cassie
 INSERT INTO `mob_pool_mods` VALUES (630,59,18,1); -- WEAPON_BONUS: 18 (90 Total)
@@ -200,7 +200,7 @@ INSERT INTO `mob_pool_mods` VALUES (1461,4,4,1); -- SIGHT_RANGE: 4
 
 -- Genbu
 INSERT INTO `mob_pool_mods` VALUES (1491,3,100,1); -- MP_BASE: 100
-INSERT INTO `mob_pool_mods` VALUES (1491,59,29,1); -- WEAPON_BONUS: 29
+INSERT INTO `mob_pool_mods` VALUES (1491,59,10,1); -- WEAPON_BONUS: 10
 
 -- Goblin Digger Near
 INSERT INTO `mob_pool_mods` VALUES (1648,17,1,1);  -- NO_DESPAWN: 1
@@ -282,15 +282,15 @@ INSERT INTO `mob_pool_mods` VALUES (2254,407,100,0); -- UFASTCAST: 100
 INSERT INTO `mob_pool_mods` VALUES (2255,3,100,1);  -- MP_BASE: 100
 INSERT INTO `mob_pool_mods` VALUES (2255,34,60,1);  -- MAGIC_COOL: 60
 INSERT INTO `mob_pool_mods` VALUES (2255,368,70,0); -- REGAIN: 70
-INSERT INTO `mob_pool_mods` VALUES (2255,59,58,1); -- WEAPON_BONUS: 58
+INSERT INTO `mob_pool_mods` VALUES (2255,59,30,1); -- WEAPON_BONUS: 30
 
 -- King Vinegarroon
 INSERT INTO `mob_pool_mods` VALUES (2262,370,125,0); -- REGEN: 125
 
 -- Kirin
-INSERT INTO `mob_pool_mods` VALUES (2265,368,150,0); -- REGAIN: 150
-INSERT INTO `mob_pool_mods` VALUES (2265,370,50,0);  -- REGEN: 50
-INSERT INTO `mob_pool_mods` VALUES (2265,59,46,1); -- WEAPON_BONUS: 46
+INSERT INTO `mob_pool_mods` VALUES (2265,368,100,0); -- REGAIN: 100
+INSERT INTO `mob_pool_mods` VALUES (2265,370,10,0);  -- REGEN: 10
+INSERT INTO `mob_pool_mods` VALUES (2265,59,25,1); -- WEAPON_BONUS: 25
 
 -- Knight Crab
 INSERT INTO `mob_pool_mods` VALUES (2271,64,15,0);  -- COMBAT_SKILLUP_RATE: 15
@@ -446,7 +446,7 @@ INSERT INTO `mob_pool_mods` VALUES (3483,59,5,1); -- WEAPON_BONUS: (Level 38 + 2
 
 -- Seiryu
 INSERT INTO `mob_pool_mods` VALUES (3540,3,100,1); -- MP_BASE: 100
-INSERT INTO `mob_pool_mods` VALUES (3540,59,54,1); -- WEAPON_BONUS: 54
+INSERT INTO `mob_pool_mods` VALUES (3540,59,15,1); -- WEAPON_BONUS: 15
 
 -- Serket
 INSERT INTO `mob_pool_mods` VALUES (3549,370,50,0); -- REGEN: 50
@@ -488,7 +488,7 @@ INSERT INTO `mob_pool_mods` VALUES (3796,21,97,1); -- PET_SPELL_LIST: 97
 
 -- Suzaku
 INSERT INTO `mob_pool_mods` VALUES (3816,3,100,1); -- MP_BASE: 100
-INSERT INTO `mob_pool_mods` VALUES (3816,59,53,1); -- WEAPON_BONUS: 53
+INSERT INTO `mob_pool_mods` VALUES (3816,59,10,1); -- WEAPON_BONUS: 10
 
 -- Swashstox Beadblinker
 INSERT INTO `mob_pool_mods` VALUES (3824,29,2,1); -- ASSIST: 2

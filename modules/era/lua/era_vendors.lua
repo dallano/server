@@ -173,6 +173,7 @@ xi.eraShops.Arlenne =
     17088,    57, 3, -- Ash Staff
     16833,   792, 3, -- Brass Baghnakhs
     16768,   309, 3, -- Bronze Zaghnal
+    16832,    97, 3, -- Harpoon
 }
 
 xi.eraShops.Tavourine =

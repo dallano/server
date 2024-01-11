@@ -18,10 +18,11 @@ end
 entity.onMobSpawn = function(mob)
     mob:setLocalVar("[rage]timer", 3600) -- 60 minutes
     mob:setMod(xi.mod.MDEF, 20)
-    mob:setMod(xi.mod.ATT, 516)
+    mob:addMod(xi.mod.ATT, 75)
     mob:setMod(xi.mod.DEF, 500)
     mob:setMod(xi.mod.EVA, 400)
-    mob:addMod(xi.mod.GRAVITYRESBUILD, 30)
+    mob:setMod(xi.mod.DELAY, -200)
+    -- mob:addMod(xi.mod.GRAVITYRESBUILD, 30)
     mob:setMod(xi.mod.POISONRES, 10)
     mob:setMod(xi.mod.SLOWRES, 10)
     mob:setMod(xi.mod.GRAVITYRES, 10)
@@ -31,13 +32,17 @@ entity.onMobSpawn = function(mob)
     mob:addImmunity(xi.immunity.SILENCE)
     mob:addImmunity(xi.immunity.SLEEP)
     mob:setMod(xi.mod.TRIPLE_ATTACK, 5)
-    mob:setLocalVar("delay", os.time())
+    mob:setSpeed(40)
 
     -- Despawn the ???
     local questionMarks = GetNPCByID(ID.npc.BEHEMOTH_QM)
     if questionMarks ~= nil then
         questionMarks:setStatus(xi.status.DISAPPEAR)
     end
+end
+
+entity.onMobEngaged = function(mob, target)
+    mob:setLocalVar("delay", os.time() + math.random(60, 80))
 end
 
 entity.onMobFight = function(mob, target)
@@ -53,17 +58,17 @@ entity.onMobFight = function(mob, target)
     }
 
     if mob:getHPP() >= 50 then
-        mob:setMod(xi.mod.REGAIN, 160)
-    elseif mob:getHPP() < 50 and mob:getHPP() > 25 then
-        mob:setMod(xi.mod.REGAIN, 100)
-    else
         mob:setMod(xi.mod.REGAIN, 80)
+    elseif mob:getHPP() < 50 and mob:getHPP() > 25 then
+        mob:setMod(xi.mod.REGAIN, 50)
+    else
+        mob:setMod(xi.mod.REGAIN, 40)
     end
 
     local delay = mob:getLocalVar("delay")
     if os.time() > delay then -- Use Meteor every 40s, based on capture
         mob:castSpell(218, target) -- meteor
-        mob:setLocalVar("delay", os.time() + 40)
+        mob:setLocalVar("delay", os.time() + math.random(60, 80))
     end
 
     utils.arenaDrawIn(mob, target, drawInTableNorth)
@@ -72,8 +77,8 @@ end
 
 entity.onAdditionalEffect = function(mob, target, damage)
     local params = {}
-    params.chance = 20
-    params.duration = math.random(4, 8) -- Based on captures
+    params.chance = 5
+    params.duration = math.random(2, 3) -- Based on captures
     return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.STUN, params)
 end
 
@@ -81,7 +86,7 @@ entity.onSpellPrecast = function(mob, spell)
     if spell:getID() == 218 then
         spell:setAoE(xi.magic.aoe.RADIAL)
         spell:setFlag(xi.magic.spellFlag.HIT_ALL)
-        spell:setRadius(30)
+        spell:setRadius(12)
         spell:setAnimation(280)
         spell:setMPCost(0)
     end

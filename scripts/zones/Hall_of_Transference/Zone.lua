@@ -132,13 +132,10 @@ zoneObject.onEventFinish = function(player, csid, option)
 
         xi.teleport.to(player, xi.teleport.id.SKY)
     elseif csid == 169 and option == 1 then
-        player:setCharVar("MeaChipRegistration", 0)
         xi.teleport.to(player, xi.teleport.id.SKY)
     elseif csid == 170 and option == 1 then
-        player:setCharVar("HollaChipRegistration", 0)
         xi.teleport.to(player, xi.teleport.id.SKY)
     elseif csid == 171 and option == 1 then
-        player:setCharVar("DemChipRegistration", 0)
         xi.teleport.to(player, xi.teleport.id.SKY)
     end
 end

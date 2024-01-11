@@ -6,7 +6,7 @@ local entity = {}
 
 entity.onMobInitialize = function(mob)
     mob:setMod(xi.mod.REGAIN, 200)
-    mob:setMod(xi.mod.MOVE, 80)
+    mob:setMod(xi.mod.MOVE, 40)
     mob:setMobMod(xi.mobMod.SIGHT_RANGE, 30)
 end
 

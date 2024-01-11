@@ -14,12 +14,12 @@ entity.onMobInitialize = function(mob)
     mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
     mob:addMod(xi.mod.DEF, 120)
     mob:addMod(xi.mod.EVA, 100)
-    mob:setMod(xi.mod.REGAIN, 1000)
+    mob:setMod(xi.mod.REGAIN, 100)
 end
 
 entity.onMobSpawn = function(mob)
     mob:setMod(xi.mod.WIND_MEVA, -64) -- Todo: Move to mob_resists.sql
-    mob:setMod(xi.mod.SILENCERES, 35)
+    mob:setMod(xi.mod.SILENCERES, 25)
     mob:setMod(xi.mod.STUNRES, 35)
     mob:setMod(xi.mod.BINDRES, 35)
     mob:setMod(xi.mod.GRAVITYRES, 35)
@@ -89,7 +89,7 @@ entity.onMobFight = function(mob, target)
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENSTONE)
+    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENSTONE, { power = math.random(15, 50)})
 end
 
 entity.onMobDeath = function(mob, player, optParams)

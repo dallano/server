@@ -9,14 +9,11 @@ require("scripts/globals/mobs")
 local entity = {}
 
 entity.onMobInitialize = function(mob)
-    mob:setMod(xi.mod.SILENCERES, 60)
-    mob:addMod(xi.mod.ATT, 10)
-    mob:addMod(xi.mod.EVA, 30)
+    mob:setMod(xi.mod.SILENCERES, 30)
+    mob:addMod(xi.mod.EVA, 80)
     mob:addMod(xi.mod.DOUBLE_ATTACK, 10)
     mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
     mob:setMobMod(xi.mobMod.MAGIC_COOL, 35)
-    -- TP move about every 9 seconds without TP feed
-    mob:setMod(xi.mod.REGAIN, 750)
 end
 
 entity.onMobSpawn = function(mob, target)
@@ -33,21 +30,17 @@ end
 
 entity.onMobFight = function(mob, target)
     -- adjust when below 50% and 25% as Seiryu has the same TP move rate
-    if mob:getHPP() <= 25 and mob:getMod(xi.mod.REGAIN) ~= 250 then
-        mob:setMod(xi.mod.REGAIN, 250)
-    elseif
-        mob:getHPP() > 25 and
-        mob:getHPP() <= 50 and
-        mob:getMod(xi.mod.REGAIN) ~= 500
-    then
-        mob:setMod(xi.mod.REGAIN, 500)
-    elseif mob:getHPP() > 50 and mob:getMod(xi.mod.REGAIN) ~= 750 then
-        mob:setMod(xi.mod.REGAIN, 750)
+    if mob:getHPP() < 25 then
+        mob:setMod(xi.mod.REGAIN, 150)
+    elseif mob:getHPP() > 25 then
+        mob:setMod(xi.mod.REGAIN, 200)
+    elseif mob:getHPP() > 50 then
+        mob:setMod(xi.mod.REGAIN, 350)
     end
 end
 
 entity.onAdditionalEffect = function(mob, target, damage)
-    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENAERO)
+    return xi.mob.onAddEffect(mob, target, damage, xi.mob.ae.ENAERO, { power = math.random(15, 50) })
 end
 
 entity.onMobDeath = function(mob, player, optParams)

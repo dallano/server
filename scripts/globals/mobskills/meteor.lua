@@ -3,8 +3,6 @@
 --
 --  Description: Hardcore non-elemental damage
 --  Type: Magical
---
---
 -----------------------------------
 require("scripts/globals/mobskills")
 -----------------------------------
@@ -15,9 +13,9 @@ mobskillObject.onMobSkillCheck = function(target, mob, skill)
 end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
-    local damage = 14 + mob:getMainLvl() * 30
-    local info = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.magic.ele.NONE, 1, xi.mobskills.magicalTpBonus.PDIF_BONUS, 0, 0, 1, 1, 1)
-    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.NONE, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+    local dmgmod = 1
+    local info = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getWeaponDmg() * 4, xi.magic.ele.FIRE, dmgmod, xi.mobskills.magicalTpBonus.PDIF_BONUS, 0, 0, 1, 1, 1)
+    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.FIRE, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
     target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.NONE)
     return dmg
 end
