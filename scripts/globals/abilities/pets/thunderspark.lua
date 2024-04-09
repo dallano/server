@@ -22,7 +22,10 @@ abilityObject.onPetAbility = function(target, pet, skill)
 
     local damage = xi.summon.avatarMagicSkill(pet, target, skill, params)
 
+    local dMND = pet:getStat(xi.mod.MND) - target:getStat(xi.mod.MND)
+
     local effectParams = {}
+    effectParams.dStat = dMND
     effectParams.element = xi.magic.ele.ICE
     effectParams.effect = xi.effect.PARALYSIS
     effectParams.duration = 60
@@ -37,7 +40,7 @@ abilityObject.onPetAbility = function(target, pet, skill)
         xi.magic.applyAbilityResistance(pet, target, effectParams)
     end
 
-    xi.magic.handleSMNBurstMsg(pet, target, skill, params.element, 379)
+    xi.magic.handleSMNBurstMsg(pet, target, skill, params.element, xi.msg.basic.PET_MAGIC_BURST)
 
     return totaldamage
 end

@@ -998,17 +998,17 @@ uint16 CBattleEntity::EVA()
     else // If it is a player then evasion = SKILL_EVASION
     {
         evasion = GetSkill(SKILL_EVASION);
-    }
 
-    // Both mobs and players follow the same formula for over 200 evasion
-    if (evasion > 200)
-    {
-        evasion = 200 + (evasion - 200) * 0.9;
+        // Player only evasion calculation
+        if (evasion > 200)
+        {
+            evasion = 200 + (evasion - 200) * 0.9;
+        }
     }
 
     evasion += AGI() / 2;
 
-    return std::max(0, evasion + (this->objtype == TYPE_MOB || this->objtype == TYPE_PET ? 0 : m_modStat[Mod::EVA])); // The mod for a pet or mob is already calclated in the above so return 0
+    return std::max(1, evasion + (this->objtype == TYPE_MOB || this->objtype == TYPE_PET ? 0 : m_modStat[Mod::EVA])); // The mod for a pet or mob is already calclated in the above so return 0
 }
 
 /************************************************************************
@@ -1814,7 +1814,8 @@ void CBattleEntity::OnCastFinished(CMagicState& state, action_t& action)
         }
 
         // TODO: this is really hacky and should eventually be moved into lua, and spellFlags should probably be in the spells table..
-        if (PSpell->canHitShadow() && aoeType == SPELLAOE_NONE && battleutils::IsAbsorbByShadow(PTarget, this) && !(PSpell->getFlag() & SPELLFLAG_IGNORE_SHADOWS))
+        // Also need to have IsAbsorbByShadow last in conditional because that has side effects including removing a shadow
+        if (PSpell->canHitShadow() && aoeType == SPELLAOE_NONE && !(PSpell->getFlag() & SPELLFLAG_IGNORE_SHADOWS) && battleutils::IsAbsorbByShadow(PTarget, this))
         {
             // take shadow
             msg                = MSGBASIC_SHADOW_ABSORB;

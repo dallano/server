@@ -139,7 +139,7 @@ end)
 m:addOverride("xi.globals.mobskills.acid_mist.onMobWeaponSkill", function(target, mob, skill)
     local power = 50
     if skill:getID() == 1872 then -- Nightmare Leech - Reduces to 1 attack
-        power = 999
+        power = 99
     end
 
     xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.ATTACK_DOWN, power, 0, math.random(60, 120))
@@ -807,7 +807,7 @@ m:addOverride("xi.globals.mobskills.astral_flow_pet.onMobWeaponSkill", function(
     skill:setMsg(xi.msg.basic.USES)
 
     -- no effect if pet is inactive
-    if petInactive(pet) then
+    if pet and petInactive(pet) then
         return xi.effect.ASTRAL_FLOW
     end
 
@@ -940,6 +940,7 @@ m:addOverride("xi.globals.mobskills.auroral_drape.onMobWeaponSkill", function(ta
 end)
 
 m:addOverride("xi.globals.mobskills.auroral_uppercut.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     mob:showText(mob, ID.text.PRISHE_TEXT + 4)
     local numhits = 1
     local accmod  = 1
@@ -1195,6 +1196,7 @@ m:addOverride("xi.globals.mobskills.barrier_tusk.onMobWeaponSkill", function(tar
 end)
 
 m:addOverride("xi.globals.mobskills.bastion_of_twilight.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     mob:showText(mob, ID.text.PROMATHIA_TEXT + 5)
     mob:addStatusEffect(xi.effect.MAGIC_SHIELD, 1, 0, 0)
     mob:setAnimationSub(2)
@@ -2145,8 +2147,12 @@ end)
 
 m:addOverride("xi.globals.mobskills.cacodemonia.onMobWeaponSkill", function(target, mob, skill)
     local typeEffect = xi.effect.CURSE_I
+    local power = 40
+    if mob:getZoneID() == xi.zone.DYNAMIS_TAVNAZIA then -- Diabolos Dynamis Tavnazia - 48%
+        power = 48
+    end
 
-    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, typeEffect, 40, 0, 360))
+    skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, typeEffect, power, 0, 360))
 
     return typeEffect
 end)
@@ -2231,9 +2237,23 @@ m:addOverride("xi.globals.mobskills.camisado.onMobWeaponSkill", function(target,
     local accmod = 1
     local dmgmod = 1
 
+    -- Diabolos Dynamis Tavnazia - covering skill IDs: single target 656 and AoE 1903
+    if mob:getZoneID() == xi.zone.DYNAMIS_TAVNAZIA then
+        accmod = 4
+        dmgmod = 4
+    end
+
     local info = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT)
 
-    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.BLUNT, info.hitslanded)
+    local shadows = info.hitslanded
+    if
+        mob:getZoneID() == xi.zone.DYNAMIS_TAVNAZIA and
+        skill:getID() == 1903
+    then
+        shadows = xi.mobskills.shadowBehavior.WIPE_SHADOWS
+    end
+
+    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.BLUNT, shadows)
 
     if not skill:hasMissMsg() then
         target:takeDamage(dmg, mob, xi.attackType.PHYSICAL, xi.damageType.BLUNT)
@@ -2644,13 +2664,11 @@ m:addOverride("xi.globals.mobskills.circle_blade.onMobWeaponSkill", function(tar
 end)
 
 m:addOverride("xi.globals.mobskills.circle_of_flames.onMobWeaponSkill", function(target, mob, skill)
-    local numberOfBombs = 7 - mob:getAnimationSub()
-    local bombNum = 0.5 -- Base damage
+    local numberOfBombs = 3 - mob:getAnimationSub()
+    local bombNum = 50 * numberOfBombs
 
-    if mob:getAnimationSub() == 4 then -- 3 bombs
-        bombNum = bombNum + 25 * 3
-    elseif mob:getAnimationSub() == 5 then -- 2 bombs
-        bombNum = bombNum + 25 * 2
+    if mob:getZoneID() == xi.zone.DYNAMIS_TAVNAZIA then
+        bombNum = bombNum * 1.75
     end
 
     local info = xi.mobskills.mobMagicalMove(mob, target, skill, bombNum, xi.magic.ele.FIRE, 1, xi.mobskills.magicalTpBonus.NO_EFFECT, 0, 0, 1, 1.1, 1.2)
@@ -3157,9 +3175,10 @@ end)
 
 m:addOverride("xi.globals.mobskills.core_meltdown.onMobWeaponSkill", function(target, mob, skill)
     local dmgmod = 1
+    local damage = skill:getMobHP() / 2
 
-    -- TODO: The damage type should be based off of the Ghrah's element
-    local info = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getWeaponDmg() * math.random(7, 15), xi.magic.ele.NONE, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT)
+    -- TODO: The damage type should be based off of the Ghrah's element <-- needs verification
+    local info = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.magic.ele.NONE, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT)
     local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.ELEMENTAL, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
     mob:setHP(0)
     target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.ELEMENTAL)
@@ -3717,6 +3736,26 @@ m:addOverride("xi.globals.mobskills.daze.onMobWeaponSkill", function(target, mob
     end
 
     return dmg
+end)
+
+m:addOverride("xi.globals.mobskills.daydream.onMobWeaponSkill", function(target, mob, skill)
+    local typeEffect = xi.effect.CHARM_I
+    local power = 0
+
+    if not target:isPC() then
+        skill:setMsg(xi.msg.basic.SKILL_MISS)
+        return typeEffect
+    end
+
+    local msg = xi.mobskills.mobStatusEffectMove(mob, target, typeEffect, power, 3, 60)
+    if msg == xi.msg.basic.SKILL_ENFEEB_IS then
+        target:delStatusEffect(xi.effect.SLEEP_I)
+        mob:charm(target)
+    end
+
+    skill:setMsg(msg)
+
+    return typeEffect
 end)
 
 m:addOverride("xi.globals.mobskills.deadeye.onMobWeaponSkill", function(target, mob, skill)
@@ -4485,6 +4524,26 @@ m:addOverride("xi.globals.mobskills.dream_flower.onMobWeaponSkill", function(tar
     return xi.effect.SLEEP_I
 end)
 
+m:addOverride("xi.globals.mobskills.dream_shroud.onMobWeaponSkill", function(target, mob, skill)
+    local duration = 180
+    local hour = VanadielHour()
+    local buffvalue = 0
+    local multiplier = 1
+
+    -- Diabolos Dynamis Tavnazia
+    if mob:getZoneID() == xi.zone.DYNAMIS_TAVNAZIA then
+        multiplier = 2
+    end
+
+    buffvalue = math.abs(12 - hour) + 1
+    target:delStatusEffect(xi.effect.MAGIC_ATK_BOOST)
+    target:delStatusEffect(xi.effect.MAGIC_DEF_BOOST)
+    target:addStatusEffect(xi.effect.MAGIC_ATK_BOOST, buffvalue * multiplier, 0, duration)
+    target:addStatusEffect(xi.effect.MAGIC_DEF_BOOST, (14 - buffvalue) * multiplier, 0, duration)
+    skill:setMsg(xi.msg.basic.NONE)
+    return 0
+end)
+
 m:addOverride("xi.globals.mobskills.drill_branch.onMobWeaponSkill", function(target, mob, skill)
     local numhits = 1
     local accmod = 1
@@ -4662,7 +4721,7 @@ end)
 m:addOverride("xi.globals.mobskills.eagle_eye_shot.onMobWeaponSkill", function(target, mob, skill)
     local numhits = 1
     local accmod = 2
-    local dmgmod = 1 + math.random()
+    local dmgmod = 9 + math.random()
 
     local info = xi.mobskills.mobRangedMove(mob, target, skill, numhits, accmod, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT)
 
@@ -5663,7 +5722,7 @@ end)
 m:addOverride("xi.globals.mobskills.flame_blast_alt.onMobWeaponSkill", function(target, mob, skill)
     local dmgmod = 2.5
     local info = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getMobWeaponDmg(xi.slot.MAIN), xi.magic.ele.FIRE, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT)
-    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.FIRE)
+    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.FIRE, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
     target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.FIRE)
     skill:setMsg(xi.msg.basic.HIT_DMG)
     return dmg
@@ -5871,9 +5930,9 @@ m:addOverride("xi.globals.mobskills.formation_attack.onMobWeaponSkill", function
     local accmod = 1
     local bombNum = 2 -- Base FTP
 
-    if mob:getAnimationSub() == 4 then
+    if mob:getAnimationSub() == 0 then
         bombNum = bombNum + 3
-    elseif mob:getAnimationSub() == 5 then
+    elseif mob:getAnimationSub() == 1 then
         bombNum = bombNum + 2
     end
 
@@ -6699,7 +6758,7 @@ m:addOverride("xi.globals.mobskills.guided_missile.onMobWeaponSkill", function(t
     local ftp300 = 3
     local numhits = math.random(1, 3)
     local accmod = 1
-    local info = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, 1, xi.mobskills.magicalTpBonus.NO_EFFECT, numhits * ftp100, numhits * ftp200, numhits * ftp300)
+    local info = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, 1, xi.mobskills.magicalTpBonus.NO_EFFECT, ftp100, ftp200, ftp300)
     local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.SLASHING, info.hitslanded)
 
     if not skill:hasMissMsg() then
@@ -7519,6 +7578,23 @@ m:addOverride("xi.globals.mobskills.hyper_pulse.onMobWeaponSkill", function(targ
     xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.BIND, 1, 0, math.random(5, 15))
     xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.WEIGHT, 50, 0, 30)
 
+    return dmg
+end)
+
+m:addOverride("xi.globals.mobskills.hypnogenesis.onMobWeaponSkill", function(target, mob, skill)
+    -- Deals a large percent of hp dmg, can be resisted (rarely), and cannot kill
+    local percent = math.random(0, 10) -- percent hp remaining - no joke https://youtu.be/Bvp-T3_U7xA?t=31
+    local damage = math.max(0, target:getHP() - target:getHP() * (percent / 100))
+    local dmg = xi.mobskills.mobFinalAdjustments(damage, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.DARK, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+
+    -- only allow a maximum of % damage even if modifiers would increase the damage
+    dmg = math.min(damage, dmg)
+
+    if dmg >= target:getHP() then
+        dmg = target:getHP() - 1
+    end
+
+    target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.DARK)
     return dmg
 end)
 
@@ -8468,6 +8544,7 @@ m:addOverride("xi.globals.mobskills.luminous_drape.onMobWeaponSkill", function(t
 end)
 
 m:addOverride("xi.globals.mobskills.luminous_lance.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     mob:showText(mob, ID.text.SELHTEUS_TEXT + 1)
 
     local numhits = 1
@@ -8773,6 +8850,7 @@ m:addOverride("xi.globals.mobskills.mantle_pierce.onMobWeaponSkill", function(ta
 end)
 
 m:addOverride("xi.globals.mobskills.marionette_dice_2hr.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Mine_Shaft_2716/IDs")
     local ability = ID.jobTable[target:getMainJob()].twoHour
 
     if ability > 0 then
@@ -8838,6 +8916,7 @@ m:addOverride("xi.globals.mobskills.marionette_dice_hp_mp.onMobWeaponSkill", fun
 end)
 
 m:addOverride("xi.globals.mobskills.marionette_dice_ja_reset.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Mine_Shaft_2716/IDs")
     mob:timer(5000, function(mobArg)
         mobArg:showText(mobArg, ID.text.NOT_HOW)
         target:resetRecasts()
@@ -8859,6 +8938,7 @@ m:addOverride("xi.globals.mobskills.marionette_dice_mp.onMobWeaponSkill", functi
 end)
 
 m:addOverride("xi.globals.mobskills.marionette_dice_special.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Mine_Shaft_2716/IDs")
     local ability = ID.jobTable[target:getMainJob()].ability
     local spells = ID.jobTable[target:getMainJob()].spellListID
 
@@ -8889,6 +8969,7 @@ m:addOverride("xi.globals.mobskills.marionette_dice_special.onMobWeaponSkill", f
 end)
 
 m:addOverride("xi.globals.mobskills.marionette_dice_tp.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Mine_Shaft_2716/IDs")
     -- Force Fantoccini to use an ability
     local skillList = ID.jobTable[target:getLocalVar("job")].skillList
     target:setTP(3000)
@@ -9679,7 +9760,29 @@ m:addOverride("xi.globals.mobskills.netherspikes.onMobWeaponSkill", function(tar
 end)
 
 m:addOverride("xi.globals.mobskills.nether_blast.onMobWeaponSkill", function(target, mob, skill)
-    local dmg = mob:getMainLvl() * 5 + 10 -- http://wiki.ffo.jp/html/4045.html
+    local multiplier = 5
+    -- Diabolos Dynamis Tavnazia tosses nether blast for ~1k
+    if mob:getZoneID() == xi.zone.DYNAMIS_TAVNAZIA then
+        multiplier = 10
+    end
+
+    local dmg = mob:getMainLvl() * multiplier + 10 -- http://wiki.ffo.jp/html/4045.html
+    local dmgmod = 1
+    local ignoreres = true
+
+    local info = xi.mobskills.mobMagicalMove(mob, target, skill, dmg, xi.magic.ele.DARK, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT, ignoreres)
+
+    dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.DARK, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
+
+    target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.DARK)
+    return dmg
+end)
+
+m:addOverride("xi.globals.mobskills.nether_tempest.onMobWeaponSkill", function(target, mob, skill)
+    -- Diabolos Dynamis Tavnazia tosses nether tempest for a reported 661 dmg
+    -- Diabolos are lvl 85.   A multiplier of 7.77 hits 661
+    local multiplier = 7.77
+    local dmg = mob:getMainLvl() * multiplier -- http://wiki.ffo.jp/html/4045.html
     local dmgmod = 1
     local ignoreres = true
 
@@ -9705,6 +9808,11 @@ m:addOverride("xi.globals.mobskills.nightmare.onMobWeaponSkill", function(target
         power = 10
         duration = 30
         subPower = 14       -- Unresisted, 10 ticks at 14 hp/tick = 140hp per target
+    end
+
+    if mob:getZoneID() == xi.zone.DYNAMIS_TAVNAZIA then -- Diabolos Dynamis Tavnazia - 35/tick, at least 60s
+        duration = 60
+        subPower = 35
     end
 
     skill:setMsg(xi.mobskills.mobStatusEffectMove(mob, target, typeEffect, power, tick, duration, subEffect, subPower))
@@ -9754,7 +9862,13 @@ m:addOverride("xi.globals.mobskills.nimble_snap.onMobWeaponSkill", function(targ
 end)
 
 m:addOverride("xi.globals.mobskills.noctoshield.onMobWeaponSkill", function(target, mob, skill)
-    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.PHALANX, 13, 0, 120))
+    local power = 13
+    -- Diabolos Dynamis Tavnazia
+    if mob:getZoneID() == xi.zone.DYNAMIS_TAVNAZIA then
+        power = 35
+    end
+
+    skill:setMsg(xi.mobskills.mobBuffMove(mob, xi.effect.PHALANX, power, 0, 120))
     return xi.effect.PHALANX
 end)
 
@@ -9791,6 +9905,7 @@ m:addOverride("xi.globals.mobskills.nuclear_waste.onMobWeaponSkill", function(ta
 end)
 
 m:addOverride("xi.globals.mobskills.nullifying_dropkick.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     mob:showText(mob, ID.text.PRISHE_TEXT + 5)
     local numhits = 1
     local accmod = 1
@@ -10535,10 +10650,10 @@ end)
 
 m:addOverride("xi.globals.mobskills.pit_ambush.onMobWeaponSkill", function(target, mob, skill)
     local numhits = 1
-    local accmod = 100
+    local accmod = 10
     local dmgmod = 3
     if skill:getID() == 1844 then -- Nightmare Antlion - Reported to almost one shot paladins
-        dmgmod = 15
+        dmgmod = 10
     end
 
     local info = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT)
@@ -10918,6 +11033,7 @@ m:addOverride("xi.globals.mobskills.primal_drill.onMobWeaponSkill", function(tar
 end)
 
 m:addOverride("xi.globals.mobskills.prishe_item_1.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     skill:setMsg(xi.msg.basic.NONE)
     if mob:getTarget() and mob:getTarget():getFamily() == 478 then
         -- using Ambrosia!
@@ -10933,6 +11049,7 @@ m:addOverride("xi.globals.mobskills.prishe_item_1.onMobWeaponSkill", function(ta
 end)
 
 m:addOverride("xi.globals.mobskills.prishe_item_2.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     skill:setMsg(xi.msg.basic.NONE)
     if
         mob:hasStatusEffect(xi.effect.PLAGUE) or
@@ -11860,6 +11977,14 @@ m:addOverride("xi.globals.mobskills.ruinous_omen.onMobWeaponSkill", function(tar
     local hppMax = 75
     local dmgmod = 0.7   -- Estimated from keeping with a max of ~72% reduction
     local ratio = 4
+
+    -- Diabolos Dynamis Tavnazia - Observed 60%-95%, with most being above 80%
+    if mob:getZoneID() == xi.zone.DYNAMIS_TAVNAZIA then
+        hppTarget = 80
+        hppMax = 95
+        hppMin = 60
+    end
+
     if dINT >= 0 then
         ratio = 6
     end  -- Tilt the curve so that a small dINT doesn't tip too far in Diabolos' favour.
@@ -12265,6 +12390,7 @@ m:addOverride("xi.globals.mobskills.scythe_tail.onMobWeaponSkill", function(targ
 end)
 
 m:addOverride("xi.globals.mobskills.seal_of_quiescence.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     mob:showText(mob, ID.text.PROMATHIA_TEXT + 6)
     local typeEffect = xi.effect.MUTE
     local power = 30
@@ -12369,7 +12495,7 @@ m:addOverride("xi.globals.mobskills.self-destruct_2.onMobWeaponSkill", function(
     local info = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.magic.ele.FIRE, 1, xi.mobskills.magicalTpBonus.MAB_BONUS, 1, 0, 1, 1.1, 1.2)
     local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.FIRE, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
 
-    mob:setAnimationSub(6)
+    mob:setAnimationSub(2)
 
     target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.FIRE)
     return dmg
@@ -12400,7 +12526,7 @@ m:addOverride("xi.globals.mobskills.self-destruct_3.onMobWeaponSkill", function(
     local info = xi.mobskills.mobMagicalMove(mob, target, skill, damage, xi.magic.ele.FIRE, 1, xi.mobskills.magicalTpBonus.MAB_BONUS, 1, 0, 1, 1.1, 1.2)
     local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.FIRE, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
 
-    mob:setAnimationSub(5)
+    mob:setAnimationSub(1)
 
     target:takeDamage(dmg, mob, xi.attackType.MAGICAL, xi.damageType.FIRE)
     return dmg
@@ -12931,7 +13057,16 @@ m:addOverride("xi.globals.mobskills.sickle_slash.onMobWeaponSkill", function(tar
     local crit = 0.4
     local attmod = 1.5
     local info = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, 1, xi.mobskills.physicalTpBonus.CRIT_VARIES, 1, 1.5, 2, crit, attmod)
-    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.SLASHING, info.hitslanded)
+    local shadows = info.hitslanded
+
+    if
+        mob:getFamily() >= 122 and -- Ghrah
+        mob:getFamily() <= 124
+    then
+        shadows = xi.mobskills.shadowBehavior.IGNORE_SHADOWS
+    end
+
+    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.SLASHING, shadows)
 
     if not skill:hasMissMsg() then
         target:takeDamage(dmg, mob, xi.attackType.PHYSICAL, xi.damageType.SLASHING)
@@ -14330,6 +14465,21 @@ m:addOverride("xi.globals.mobskills.sweeping_flail.onMobWeaponSkill", function(t
     return dmg
 end)
 
+m:addOverride("xi.globals.mobskills.sweeping_somnolence.onMobWeaponSkill", function(target, mob, skill)
+    local numhits = 1
+    local accmod = 1
+    local dmgmod = 4
+    local info = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, dmgmod, xi.mobskills.magicalTpBonus.NO_EFFECT)
+    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.SLASHING, xi.mobskills.shadowBehavior.WIPE_SHADOWS)
+
+    if not skill:hasMissMsg() then
+        xi.mobskills.mobPhysicalStatusEffectMove(mob, target, skill, xi.effect.WEIGHT, 50, 0, 120)
+        target:takeDamage(dmg, mob, xi.attackType.PHYSICAL, xi.damageType.SLASHING)
+    end
+
+    return dmg
+end)
+
 m:addOverride("xi.globals.mobskills.sweet_breath.onMobWeaponSkill", function(target, mob, skill)
     local dmgmod = 1
     local info = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getMobWeaponDmg(xi.slot.MAIN), xi.magic.ele.DARK, dmgmod, xi.mobskills.magicalTpBonus.MAB_BONUS, 0, 0, 1, 1.5, 2)
@@ -15326,7 +15476,7 @@ m:addOverride("xi.globals.mobskills.tremors.onMobWeaponSkill", function(target, 
     xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.DEX_DOWN, 10, 10, 180)
     local damageMod = 1
     if skill:getID() == 1888 then -- Nightmare Worm - increased damage
-        damageMod = 2
+        damageMod = 3
     end
 
     local info = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getMobWeaponDmg(xi.slot.MAIN) * damageMod, xi.magic.ele.EARTH, 1, xi.mobskills.magicalTpBonus.NO_EFFECT, 0, 0, 1.5, 1.75, 2)
@@ -15557,6 +15707,11 @@ m:addOverride("xi.globals.mobskills.tyrannic_blare.onMobWeaponSkill", function(t
 end)
 
 m:addOverride("xi.globals.mobskills.ultimate_terror.onMobWeaponSkill", function(target, mob, skill)
+    -- Diabolos Dynamis Tavnazia -- adds TERROR
+    if mob:getZoneID() == xi.zone.DYNAMIS_TAVNAZIA then
+        xi.mobskills.mobStatusEffectMove(mob, target, xi.effect.TERROR, 1, 0, 30)
+    end
+
     local drained = 0
     local threshold = 3 / 7
 
@@ -15798,9 +15953,9 @@ end)
 
 m:addOverride("xi.globals.mobskills.venom.onMobWeaponSkill", function(target, mob, skill)
     local typeEffect = xi.effect.POISON
-    local power = math.max(1, (mob:getMainLvl() - 3) / 2)
+    local power = 1
 
-    xi.mobskills.mobStatusEffectMove(mob, target, typeEffect, power, 3, 60)
+    xi.mobskills.mobStatusEffectMove(mob, target, typeEffect, power, 3, 240)
 
     local info = xi.mobskills.mobMagicalMove(mob, target, skill, mob:getMobWeaponDmg(xi.slot.MAIN), xi.magic.ele.WATER, 1, xi.mobskills.magicalTpBonus.NO_EFFECT, 0, 0, 1.5, 1.75, 2)
     local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.MAGICAL, xi.damageType.WATER, xi.mobskills.shadowBehavior.IGNORE_SHADOWS)
@@ -16077,7 +16232,16 @@ m:addOverride("xi.globals.mobskills.vorpal_blade.onMobWeaponSkill", function(tar
     local accmod = 1
     local dmgmod = 1.25
     local info = xi.mobskills.mobPhysicalMove(mob, target, skill, numhits, accmod, dmgmod, xi.mobskills.physicalTpBonus.CRIT_VARIES, 1.1, 1.2, 1.3)
-    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.SLASHING, info.hitslanded)
+    local shadows = info.hitslanded
+
+    if
+        mob:getFamily() >= 122 and -- Ghrah
+        mob:getFamily() <= 124
+    then
+        shadows = xi.mobskills.shadowBehavior.IGNORE_SHADOWS
+    end
+
+    local dmg = xi.mobskills.mobFinalAdjustments(info.dmg, mob, skill, target, xi.attackType.PHYSICAL, xi.damageType.SLASHING, shadows)
 
     if not skill:hasMissMsg() then
         -- AA EV: Approx 900 damage to 75 DRG/35 THF.  400 to a NIN/WAR in Arhat, but took shadows.
@@ -16360,6 +16524,7 @@ m:addOverride("xi.globals.mobskills.wheeling_thrust.onMobWeaponSkill", function(
 end)
 
 m:addOverride("xi.globals.mobskills.wheel_of_impregnability.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     mob:showText(mob, ID.text.PROMATHIA_TEXT + 5)
     -- local typeEffect = xi.effect.PHYSICAL_SHIELD
 
@@ -16573,6 +16738,7 @@ m:addOverride("xi.globals.mobskills.wild_rage.onMobWeaponSkill", function(target
 end)
 
 m:addOverride("xi.globals.mobskills.winds_of_oblivion.onMobWeaponSkill", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     mob:showText(mob, ID.text.PROMATHIA_TEXT + 6)
     local typeEffect = xi.effect.AMNESIA
     local power = 30

@@ -313,7 +313,10 @@ xi.magic.calculateMagicHitRate = function(magicacc, magiceva, target, element, s
 
     if target and element and element ~= xi.magic.ele.NONE and target:isMob() then
         eemTier = xi.magic.calculateEEMTier(target, element, skillchainCount)
-        resBuild = utils.ternary(target:isNM() and isDamageSpell, xi.magic.tryBuildResistance(target, xi.magic.resistMod[element], false, caster), 0)
+        if target:isNM() and isDamageSpell then
+            resBuild = xi.magic.tryBuildNukeWall(target, xi.magic.resistMod[element], caster)
+        end
+
         mevaMult = xi.magic.calculateMEVAMult(utils.clamp(eemTier + resBuild, -18, 11))
         eemBonus = (target:getMod(xi.mod.MEVA) * mevaMult) - target:getMod(xi.mod.MEVA)
     end
@@ -781,8 +784,18 @@ xi.magic.applyAbilityResistance = function(player, target, params)
         -- this will allow effects like shell crusher to overwrite lower power defense down
         -- note: the final decision on if an effect is applied occurs in CStatusEffectContainer::AddStatusEffect
         if params.power <= existingEffect:getPower() then
-            return
+            return 0
         end
+    end
+
+    local subEffect = 0
+    if params.subEffect then
+        subEffect = params.subEffect
+    end
+
+    local subPower = 0
+    if params.subPower then
+        subPower = params.subPower
     end
 
     if not params.element then
@@ -791,14 +804,6 @@ xi.magic.applyAbilityResistance = function(player, target, params)
 
     if not params.skillType then
         params.skillType = nil
-    end
-
-    if params.effect and not params.tick then
-        params.tick = 0
-    end
-
-    if params.effect and not params.power then
-        params.power = 1
     end
 
     local effectRes = 0
@@ -817,7 +822,7 @@ xi.magic.applyAbilityResistance = function(player, target, params)
         skillchainCount = params.skillchainCount
     end
 
-    local p = xi.magic.getMagicHitRate(player, target, params.skillType, params.element, params.effect, effectRes, params.maccBonus, dStat, utils.ternary(params.damageSpell))
+    local p = xi.magic.getMagicHitRate(player, target, params.skillType, params.element, params.effect, effectRes, params.maccBonus, dStat, skillchainCount, utils.ternary(params.damageSpell, true, false))
 
     -- Nether blast does not have a hit check so return a hit
     if params.netherBlast then
@@ -830,18 +835,18 @@ xi.magic.applyAbilityResistance = function(player, target, params)
         params.effect and
         params.chance and
         params.chance * resist > math.random() * 150 and
-        params.duration * resist > 0
+        resist >= 0.5
     then
-        target:addStatusEffect(params.effect, params.power, params.tick, params.duration * resist)
+        target:addStatusEffect(params.effect, params.power, params.tick, params.duration * resist, subEffect, subPower)
     elseif
         params.effect and
-        params.duration * resist > 0 and
+        resist >= 0.5 and
         not params.chance
     then
-        target:addStatusEffect(params.effect, params.power, params.tick, params.duration * resist)
-    else
-        return resist
+        target:addStatusEffect(params.effect, params.power, params.tick, params.duration * resist, subEffect, subPower)
     end
+
+    return resist
 end
 
 -- TODO: Reduce complexity
@@ -985,6 +990,35 @@ xi.magic.getMagicHitRate = function(caster, target, skillType, element, effect, 
         local elementBonus = caster:getMod(spellAcc[element])
         xi.msg.debugValue(caster, "Elemental Bonus", elementBonus)
         bonusAcc = bonusAcc + affinityBonus + elementBonus
+        if
+            math.random(1, 100) <= 33 or
+            caster:getMod(xi.magic.elementalObi[element]) >= 1
+        then
+            local dayElement = VanadielDayElement()
+            -- Strong day.
+            if dayElement == element then
+                bonusAcc = bonusAcc + 5
+
+            -- Weak day.
+            elseif dayElement == xi.magic.elementDescendant[element] then
+                bonusAcc = bonusAcc - 5
+            end
+
+            local weather = caster:getWeather()
+            -- Strong weathers.
+            if weather == xi.magic.singleWeatherStrong[element] then
+                bonusAcc = bonusAcc + caster:getMod(xi.mod.IRIDESCENCE) * 5 + 5
+            elseif weather == xi.magic.doubleWeatherStrong[element] then
+                bonusAcc = bonusAcc + caster:getMod(xi.mod.IRIDESCENCE) * 5 + 10
+
+            -- Weak weathers.
+            elseif weather == xi.magic.singleWeatherWeak[element] then
+                bonusAcc = bonusAcc - caster:getMod(xi.mod.IRIDESCENCE) * 5 - 5
+            elseif weather == xi.magic.doubleWeatherWeak[element] then
+                bonusAcc = bonusAcc - caster:getMod(xi.mod.IRIDESCENCE) * 5 - 10
+            end
+        end
+
         xi.msg.debugValue(caster, "Bonus Magic Accuracy", bonusAcc)
     end
 
@@ -1034,6 +1068,11 @@ xi.magic.getMagicHitRate = function(caster, target, skillType, element, effect, 
     if target:isPC() then
         magiceva = magiceva + resMod
         xi.msg.debugValue(caster, "PC Magic Evasion", magiceva)
+    elseif caster:isPet() then
+        -- dLvl only helps pets
+        dLvl = math.min(dLvl, 0)
+        xi.msg.debugValue(caster, "dLvl", dLvl)
+        magiceva = magiceva + (4 * dLvl) + resMod
     else
         dLvl = math.max(dLvl, 0) -- Mobs should not have a disadvantage when targeted
         xi.msg.debugValue(caster, "dLvl", dLvl)
@@ -1058,8 +1097,11 @@ xi.magic.getMagicResist = function(magicHitRate, target, element, effectRes, ski
     local eemVal = 1
     local resMod = 0
     local eemTier = 0
-    local resistTier = utils.ternary(target:isNM(), xi.magic.getBuildResistance(target, xi.magic.resistMod[element]), 0)
     local damageSpell = utils.ternary(isDamageSpell, true, false)
+    local resistTier = 0
+    if target:isNM() and damageSpell then
+        resistTier = xi.magic.getBuildNukeWall(target, xi.magic.resistMod[element])
+    end
 
     xi.msg.debugValue(caster, "Base Resist Tier", resistTier)
     xi.msg.debugValue(caster, "Damaging Spell?", utils.ternary(damageSpell, "Yes", "No"))
@@ -1208,7 +1250,7 @@ xi.magic.getMagicResist = function(magicHitRate, target, element, effectRes, ski
     return resist
 end
 
-xi.magic.tryBuildResistance = function(target, resistance, isEnfeeb, caster)
+xi.magic.tryBuildNukeWall = function(target, resistance, caster)
     local baseRes = target:getLocalVar(string.format("[RES]Base_%s", resistance))
     local castCool = target:getLocalVar(string.format("[RES]CastCool_%s", resistance))
     local resBuilt = target:getLocalVar(string.format("[RES]ResTier_%s", resistance))
@@ -1230,7 +1272,7 @@ xi.magic.tryBuildResistance = function(target, resistance, isEnfeeb, caster)
     end
 end
 
-xi.magic.getBuildResistance = function(target, resistance)
+xi.magic.getBuildNukeWall = function(target, resistance)
     local castCool = target:getLocalVar(string.format("[RES]CastCool_%s", resistance))
     local coolTime = 20
 
@@ -1842,7 +1884,7 @@ xi.magic.incrementBuildDuration = function(target, effect, caster)
 
         local buildResMod = target:getMod(resType)
 
-        if buildResMod ~= nil then
+        if buildResMod > 0 then
             local durationDecrease = target:getLocalVar(string.format("[RESBUILD]Base_%s", resType))
             local spellCount = target:getLocalVar(string.format("[RESBUILD]Base_%s_Count", resType))
 
@@ -1865,7 +1907,7 @@ xi.magic.calculateBuildDuration = function(target, duration, effect, caster)
 
         local buildResMod = target:getMod(resType)
 
-        if buildResMod ~= nil then
+        if buildResMod > 0 then
             local durationDecrease = target:getLocalVar(string.format("[RESBUILD]Base_%s", resType))
             duration = utils.clamp(duration - durationDecrease, 0, 65535) -- Used to add more fidelity to the build. Adding a mod of 30 will be -3 seconds per cast.
         end

@@ -19,9 +19,6 @@ entity.onMobInitialize = function(mob)
     mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
     mob:setMobMod(xi.mobMod.MAGIC_COOL, 15)
     mob:setLocalVar('defaultATT', mob:getMod(xi.mod.ATT))
-end
-
-entity.onMobSpawn = function(mob, target)
     GetNPCByID(ID.npc.PORTAL_TO_GENBU):setAnimation(xi.anim.CLOSE_DOOR)
     mob:setMagicCastingEnabled(false)
 end

@@ -450,13 +450,13 @@ void CAttack::ProcessDamage(bool isCritical, bool isGuarded, bool isKick)
         (behind(m_attacker->loc.p, m_victim->loc.p, 64) || m_attacker->StatusEffectContainer->HasStatusEffect(EFFECT_HIDE) ||
          m_victim->StatusEffectContainer->HasStatusEffect(EFFECT_DOUBT)))
     {
-        m_trickAttackDamage += m_attacker->DEX() * (1 + m_attacker->getMod(Mod::SNEAK_ATK_DEX) / 100);
+        m_trickAttackDamage += m_attacker->DEX() * (1.0f + m_attacker->getMod(Mod::SNEAK_ATK_DEX) / 100.0f);
     }
 
     // Trick attack.
     if (m_attacker->GetMJob() == JOB_THF && m_isFirstSwing && m_attackRound->GetTAEntity() != nullptr)
     {
-        m_trickAttackDamage += m_attacker->AGI() * (1 + m_attacker->getMod(Mod::TRICK_ATK_AGI) / 100);
+        m_trickAttackDamage += m_attacker->AGI() * (1.0f + m_attacker->getMod(Mod::TRICK_ATK_AGI) / 100.0f);
     }
 
     SLOTTYPE slot = (SLOTTYPE)GetWeaponSlot();
@@ -471,24 +471,24 @@ void CAttack::ProcessDamage(bool isCritical, bool isGuarded, bool isKick)
         {
             // mobdamage = (floor((level + 2 + fstr) * .9) / 2) * pdif
             int8 mobH2HDamage = m_attacker->GetMLevel() + 2;
-            m_damage          = (uint32)((std::floor((mobH2HDamage + battleutils::GetFSTR(m_attacker, m_victim, slot)) * 0.9f) / 2) * battleutils::GetDamageRatio(m_attacker, m_attacker->GetBattleTarget(), isCritical, 1, slot, 0, isGuarded));
+            m_damage          = (uint32)((std::floor((mobH2HDamage + battleutils::GetFSTR(m_attacker, m_victim, slot)) * 0.9f) / 2) * battleutils::GetDamageRatio(m_attacker, m_victim, isCritical, 1, slot, 0, isGuarded));
         }
         else
         {
-            m_damage = (uint32)(((m_baseDamage + m_naturalH2hDamage + m_trickAttackDamage + battleutils::GetFSTR(m_attacker, m_victim, slot)) * battleutils::GetDamageRatio(m_attacker, m_attacker->GetBattleTarget(), isCritical, 1, slot, 0, isGuarded)));
+            m_damage = (uint32)(((m_baseDamage + m_naturalH2hDamage + m_trickAttackDamage + battleutils::GetFSTR(m_attacker, m_victim, slot)) * battleutils::GetDamageRatio(m_attacker, m_victim, isCritical, 1, slot, 0, isGuarded)));
         }
     }
     else if (slot == SLOT_MAIN)
     {
-        m_damage = (uint32)(((m_attacker->GetMainWeaponDmg() + m_trickAttackDamage + battleutils::GetFSTR(m_attacker, m_victim, slot)) * battleutils::GetDamageRatio(m_attacker, m_attacker->GetBattleTarget(), isCritical, 1, slot, 0, isGuarded)));
+        m_damage = (uint32)(((m_attacker->GetMainWeaponDmg() + m_trickAttackDamage + battleutils::GetFSTR(m_attacker, m_victim, slot)) * battleutils::GetDamageRatio(m_attacker, m_victim, isCritical, 1, slot, 0, isGuarded)));
     }
     else if (slot == SLOT_SUB)
     {
-        m_damage = (uint32)(((m_attacker->GetSubWeaponDmg() + m_trickAttackDamage + battleutils::GetFSTR(m_attacker, m_victim, slot)) * battleutils::GetDamageRatio(m_attacker, m_attacker->GetBattleTarget(), isCritical, 1, slot, 0, isGuarded)));
+        m_damage = (uint32)(((m_attacker->GetSubWeaponDmg() + m_trickAttackDamage + battleutils::GetFSTR(m_attacker, m_victim, slot)) * battleutils::GetDamageRatio(m_attacker, m_victim, isCritical, 1, slot, 0, isGuarded)));
     }
     else if (slot == SLOT_AMMO || slot == SLOT_RANGED)
     {
-        m_damage = (uint32)((m_attacker->GetRangedWeaponDmg() + battleutils::GetFSTR(m_attacker, m_victim, slot)) * battleutils::GetRangedDamageRatio(m_attacker, m_attacker->GetBattleTarget(), isCritical, 0));
+        m_damage = (uint32)((m_attacker->GetRangedWeaponDmg() + battleutils::GetFSTR(m_attacker, m_victim, slot)) * battleutils::GetRangedDamageRatio(m_attacker, m_victim, isCritical, 0));
     }
 
     // Apply Scarlet Delirium damage bonus
@@ -529,14 +529,14 @@ void CAttack::ProcessDamage(bool isCritical, bool isGuarded, bool isKick)
         SetAttackType(PHYSICAL_ATTACK_TYPE::SAMBA);
     }
 
-    if (m_attacker->objtype == TYPE_PET && m_attacker->GetBattleTarget() != nullptr && m_attacker->GetBattleTarget()->getMod(Mod::PET_DMG_TAKEN_PHYSICAL) != 0)
+    if (m_attacker->objtype == TYPE_PET && m_victim != nullptr && m_victim->getMod(Mod::PET_DMG_TAKEN_PHYSICAL) != 0)
     {
-        m_damage *= m_attacker->GetBattleTarget()->getMod(Mod::PET_DMG_TAKEN_PHYSICAL) / 100;
+        m_damage *= m_victim->getMod(Mod::PET_DMG_TAKEN_PHYSICAL) / 100.0f;
     }
 
     // Get damage multipliers.
     m_damage =
-        attackutils::CheckForDamageMultiplier((CCharEntity*)m_attacker, dynamic_cast<CItemWeapon*>(m_attacker->m_Weapons[slot]), m_damage, m_attackType, slot);
+        attackutils::CheckForDamageMultiplier((CCharEntity*)m_attacker, dynamic_cast<CItemWeapon*>(m_attacker->m_Weapons[slot]), m_damage, m_attackType, slot, m_isFirstSwing);
 
     // Apply Sneak Attack Augment Mod
     if (m_attacker->getMod(Mod::AUGMENTS_SA) > 0 && m_trickAttackDamage > 0 && m_attacker->StatusEffectContainer->HasStatusEffect(EFFECT_SNEAK_ATTACK))

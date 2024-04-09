@@ -67,9 +67,7 @@ entity.onMobDespawn = function(mob)
 end
 
 entity.onMobRoam = function(mob)
-    if not mob:isFollowingPath() then
-        xi.path.randomPath(mob, pathNodes, 10, 70)
-    end
+    xi.path.randomPath(mob, pathNodes)
 end
 
 return entity

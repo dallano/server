@@ -310,26 +310,26 @@ void SmallPacket0x00A(map_session_data_t* const PSession, CCharEntity* const PCh
         char session_key[20 * 2 + 1];
         bin2hex(session_key, (uint8*)PSession->blowfish.key, 20);
 
-        uint16 destination = MAX_ZONEID + 1; // Forces the function to fail closed
-
-        if (PChar != nullptr)
+        if (!PChar)
         {
-            destination = PChar->loc.destination; // Only sets destination if PChar isn't nullptr
-        }
-
-        if (destination >= MAX_ZONEID) // Fails to putting player back to it's previous zone
-        {
-            ShowWarning("packet_system::SmallPacket0x00A GetZone Bad Args for IncreaseZoneCounter, MITIGATING: Sending %s to loc.prevzone.", PChar->GetName());
-            destination = PChar->loc.prevzone;
-        }
-
-        auto zone = zoneutils::GetZone(destination);
-        if (zone == nullptr)
-        {
+            ShowWarning("packet_system::SmallPacket0x00A tried to zone a player that doesn't exist!");
             return;
         }
 
-        zone->IncreaseZoneCounter(PChar);
+        uint16 destination = PChar->loc.destination;
+
+        if (destination >= MAX_ZONEID)
+        {
+            // TODO: work out how to drop player in moghouse that exits them to the zone they were in before this happened, like we used to.
+            ShowWarning("packet_system::SmallPacket0x00A player tried to enter zone out of range: %d", destination);
+            ShowWarning("packet_system::SmallPacket0x00A dumping player `%s` to homepoint!", PChar->GetName());
+            charutils::HomePoint(PChar);
+        }
+
+        if (auto zone = zoneutils::GetZone(destination))
+        {
+            zone->IncreaseZoneCounter(PChar);
+        }
 
         PChar->m_ZonesList[PChar->getZone() >> 3] |= (1 << (PChar->getZone() % 8));
 
@@ -380,20 +380,15 @@ void SmallPacket0x00A(map_session_data_t* const PSession, CCharEntity* const PCh
         {
             PChar->m_charHistory.mhEntrances++;
             gardenutils::UpdateGardening(PChar, false);
-        }
-    }
 
-    // Only release client from "Downloading Data" if the packet sequence came in without a drop on 0x00D
-    // It is also possible that the client also never received our packets to release themselves from the loading screen.
-    // TODO: Need further research into the relationship between 0x00D and 0x00A, if any.
-    if (PChar->loc.zone != nullptr)
-    {
-        // Push Downloading Data before inventory count packets...
-        // This is how it happens on retail.
-        PChar->pushPacket(new CDownloadingDataPacket());
+            // Only release client from "Downloading Data" if the packet sequence came in without a drop on 0x00D
+            // It is also possible that the client also never received our packets to release themselves from the loading screen.
+            // TODO: Need further research into the relationship between 0x00D and 0x00A, if any.
 
-        if (PChar->m_moghouseID != 0)
-        {
+            // Push Downloading Data before inventory count packets...
+            // This is how it happens on retail.
+            PChar->pushPacket(new CDownloadingDataPacket());
+
             // Update any mannequins that might be placed on zonein
             // Build Mannequin model id list
             auto getModelIdFromStorageSlot = [](CCharEntity* PChar, uint8 slot) -> uint16
@@ -1117,6 +1112,7 @@ void SmallPacket0x01A(map_session_data_t* const PSession, CCharEntity* const PCh
             {
                 return;
             }
+            PChar->setCharVar("expLost", 0);
             charutils::HomePoint(PChar);
         }
         break;
@@ -2711,7 +2707,7 @@ void SmallPacket0x04D(map_session_data_t* const PSession, CCharEntity* const PCh
 
             if (quantity > 0 && PItem && PItem->getQuantity() >= quantity && PChar->UContainer->IsSlotEmpty(slotID))
             {
-                int32 ret = sql->Query("SELECT charid, accid FROM chars WHERE charname = '%s' LIMIT 1;", data[0x10]);
+                int32 ret = sql->Query("SELECT charid, accid FROM chars WHERE charname = '%s' LIMIT 1;", str(data[0x10]));
                 if (ret != SQL_ERROR && sql->NumRows() > 0 && sql->NextRow() == SQL_SUCCESS)
                 {
                     uint32 charid = sql->GetUIntData(0);
@@ -2755,7 +2751,7 @@ void SmallPacket0x04D(map_session_data_t* const PSession, CCharEntity* const PCh
                     ret = sql->Query(
                         "INSERT INTO delivery_box(charid, charname, box, slot, itemid, itemsubid, quantity, extra, senderid, sender) VALUES(%u, "
                         "'%s', 2, %u, %u, %u, %u, '%s', %u, '%s'); ",
-                        PChar->id, PChar->GetName(), slotID, PItem->getID(), PItem->getSubID(), quantity, extra, charid, data[0x10]);
+                        PChar->id, PChar->GetName(), slotID, PItem->getID(), PItem->getSubID(), quantity, extra, charid, str(data[0x10]));
 
                     if (ret != SQL_ERROR && sql->AffectedRows() == 1 && charutils::UpdateItem(PChar, LOC_INVENTORY, invslot, -(int32)quantity))
                     {
@@ -3278,7 +3274,7 @@ void SmallPacket0x04D(map_session_data_t* const PSession, CCharEntity* const PCh
                 return;
             }
 
-            int32 ret = sql->Query("SELECT accid FROM chars WHERE charname = '%s' LIMIT 1", data[0x10]);
+            int32 ret = sql->Query("SELECT accid FROM chars WHERE charname = '%s' LIMIT 1", str(data[0x10]));
 
             if (ret != SQL_ERROR && sql->NumRows() > 0 && sql->NextRow() == SQL_SUCCESS)
             {
@@ -3681,8 +3677,7 @@ void SmallPacket0x050(map_session_data_t* const PSession, CCharEntity* const PCh
     }
 
     charutils::EquipItem(PChar, slotID, equipSlotID, containerID); // current
-    charutils::SaveCharEquip(PChar);
-    charutils::SaveCharLook(PChar);
+    PChar->RequestPersist(CHAR_PERSIST::EQUIP);
     luautils::CheckForGearSet(PChar); // check for gear set on gear change
     PChar->UpdateHealth();
     PChar->retriggerLatentsAfterPacketParsing = true; // retrigger all latents after all equip packets are parsed
@@ -3714,8 +3709,7 @@ void SmallPacket0x051(map_session_data_t* const PSession, CCharEntity* const PCh
             charutils::EquipItem(PChar, slotID, equipSlotID, containerID);
         }
     }
-    charutils::SaveCharEquip(PChar);
-    charutils::SaveCharLook(PChar);
+    PChar->RequestPersist(CHAR_PERSIST::EQUIP);
     luautils::CheckForGearSet(PChar); // check for gear set on gear change
     PChar->UpdateHealth();
 }
@@ -3754,7 +3748,7 @@ void SmallPacket0x053(map_session_data_t* const PSession, CCharEntity* const PCh
     if (type == 0 && PChar->getStyleLocked()) // /lockstyle off (Turns off Lockstyle)
     {
         charutils::SetStyleLock(PChar, false);
-        charutils::SaveCharLook(PChar);
+        PChar->RequestPersist(CHAR_PERSIST::EQUIP);
     }
     else if (type == 1) // Login (Also appears on Zone)
     {
@@ -3836,13 +3830,13 @@ void SmallPacket0x053(map_session_data_t* const PSession, CCharEntity* const PCh
             }
         }
         charutils::UpdateRemovedSlots(PChar);
-        charutils::SaveCharLook(PChar);
+        PChar->RequestPersist(CHAR_PERSIST::EQUIP);
     }
     else if (type == 4) // /lockstyle on (Turns on Lockstyle)
     {
         charutils::SetStyleLock(PChar, true);
         charutils::UpdateRemovedSlots(PChar);
-        charutils::SaveCharLook(PChar);
+        PChar->RequestPersist(CHAR_PERSIST::EQUIP);
     }
 
     if (type != 1 && type != 2)
@@ -4788,7 +4782,7 @@ void SmallPacket0x071(map_session_data_t* const PSession, CCharEntity* const PCh
                         if (sql->Query("DELETE FROM accounts_parties WHERE partyid = %u AND charid = %u;", PChar->id, id) == SQL_SUCCESS &&
                             sql->AffectedRows())
                         {
-                            ShowDebug("%s has removed %s from party", PChar->GetName(), data[0x0C]);
+                            ShowDebug("%s has removed %s from party", PChar->GetName(), str(data[0x0C]));
 
                             uint8 reloadData[4]{};
                             if (PChar->PParty && PChar->PParty->m_PAlliance)
@@ -4892,7 +4886,7 @@ void SmallPacket0x071(map_session_data_t* const PSession, CCharEntity* const PCh
                                            PARTY_SECOND | PARTY_THIRD, partyid) == SQL_SUCCESS &&
                                 sql->AffectedRows())
                             {
-                                ShowDebug("%s has removed %s party from alliance", PChar->GetName(), data[0x0C]);
+                                ShowDebug("%s has removed %s party from alliance", PChar->GetName(), str(data[0x0C]));
                                 // notify party they were removed
                                 uint8 removeData[4]{};
                                 ref<uint32>(removeData, 0) = partyid;
@@ -5068,7 +5062,7 @@ void SmallPacket0x077(map_session_data_t* const PSession, CCharEntity* const PCh
                 char memberName[PacketNameLength] = {};
                 memcpy(&memberName, data[0x04], PacketNameLength - 1);
 
-                ShowDebug("(Party)Altering permissions of %s to %d", data[0x04], data[0x15]);
+                ShowDebug(fmt::format("(Party)Altering permissions of {} to {}", str(memberName), str(data[0x15])));
                 PChar->PParty->AssignPartyRole(memberName, data.ref<uint8>(0x15));
             }
         }
@@ -5104,8 +5098,11 @@ void SmallPacket0x077(map_session_data_t* const PSession, CCharEntity* const PCh
             if (PChar->PParty && PChar->PParty->m_PAlliance && PChar->PParty->GetLeader() == PChar &&
                 PChar->PParty->m_PAlliance->getMainParty() == PChar->PParty)
             {
-                ShowDebug("(Alliance)Changing leader to %s", data[0x04]);
-                PChar->PParty->m_PAlliance->assignAllianceLeader((const char*)data[0x04]);
+                char memberName[PacketNameLength] = {};
+                memcpy(&memberName, data[0x04], PacketNameLength - 1);
+
+                ShowDebug(fmt::format("(Alliance)Changing leader to {}", str(memberName)));
+                PChar->PParty->m_PAlliance->assignAllianceLeader(str(data[0x04]).c_str());
 
                 uint8 allianceData[4]{};
                 ref<uint32>(allianceData, 0) = PChar->PParty->m_PAlliance->m_AllianceID;
@@ -7336,7 +7333,7 @@ void SmallPacket0x0FC(map_session_data_t* const PSession, CCharEntity* const PCh
         PPotItem->cleanPot();
         PPotItem->setPlant(CItemFlowerpot::getPlantFromSeed(itemID));
         PPotItem->setPlantTimestamp(CVanaTime::getInstance()->getVanaTime());
-        PPotItem->setStrength(xirand::GetRandomNumber(32));
+        PPotItem->setStrength(xirand::GetRandomNumber(33));
         gardenutils::GrowToNextStage(PPotItem);
     }
     else if (itemID >= 4096 && itemID <= 4111)
@@ -7646,8 +7643,7 @@ void SmallPacket0x100(map_session_data_t* const PSession, CCharEntity* const PCh
         charutils::BuildingCharAbilityTable(PChar);
         charutils::BuildingCharWeaponSkills(PChar);
         charutils::LoadJobChangeGear(PChar);
-        charutils::SaveCharEquip(PChar);
-        charutils::SaveCharLook(PChar);
+        PChar->RequestPersist(CHAR_PERSIST::EQUIP);
 
         PChar->StatusEffectContainer->DelStatusEffectsByFlag(EFFECTFLAG_DISPELABLE | EFFECTFLAG_ROLL | EFFECTFLAG_ON_JOBCHANGE);
 

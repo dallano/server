@@ -669,12 +669,13 @@ enum class Mod
     LIFE_CYCLE_EFFECT    = 1029, // Adds bonus HP% returned to the luopan when using Life Cycle
     AURA_SIZE            = 1030, // Used to extend aura size, the formula is 6.25 + (PEntity->getMod(Mod::AURA_SIZE) / 100) so adding 100 will make this 7.25
 
-    ENSPELL           = 341, // stores the type of enspell active (0 if nothing)
-    ENSPELL_DMG       = 343, // stores the base damage of the enspell before reductions
-    ENSPELL_DMG_BONUS = 432, //
-    ENSPELL_CHANCE    = 856, // Chance of enspell activating (0 = 100%, 10 = 10%, 30 = 30%, ...)
-    SPIKES            = 342, // store the type of spike spell active (0 if nothing)
-    SPIKES_DMG        = 344, // stores the base damage of the spikes before reductions
+    ENSPELL           = 341,  // stores the type of enspell active (0 if nothing)
+    ENSPELL_DMG       = 343,  // stores the base damage of the enspell before reductions
+    ENSPELL_DMG_BONUS = 432,  //
+    ENSPELL_CHANCE    = 856,  // Chance of enspell activating (0 = 100%, 10 = 10%, 30 = 30%, ...)
+    SPIKES            = 342,  // store the type of spike spell active (0 if nothing)
+    SPIKES_DMG        = 344,  // stores the base damage of the spikes before reductions
+    SPIKES_DMG_BONUS  = 1079, // Increases Blaze/Ice/Shock spikes damage by percentage (e.g. mod value 50 = +50% spikes damage)
 
     TP_BONUS    = 345, //
     SAVETP      = 880, // SAVETP Effect for Miser's Roll / ATMA / Hagakure.
@@ -1011,8 +1012,10 @@ enum class Mod
     UDMG                 = 1170,   // Uncapped dmg taken (all types)
 
     // Per PR comment - New ASB section starting at 2000
-    TANDEM_STRIKE = 2000, // Beastmaster trait - provides acc/macc to master and pet when both engage the same target
-    TANDEM_BLOW   = 2001, // Beastmaster trait - provides subtle blow to master and pet when both engage the same target
+    TANDEM_STRIKE         = 2000, // Beastmaster trait - provides acc/macc to master and pet when both engage the same target
+    TANDEM_BLOW           = 2001, // Beastmaster trait - provides subtle blow to master and pet when both engage the same target
+    INVISIBLE_EQUIP_BOOST = 2002, // boost for invisible duration (base of 0 means no change, 50 means 50% boost in duration, -50 means 50% reduction in duration)
+    SNEAK_EQUIP_BOOST     = 2003, // boost for invisible duration (base of 0 means no change, 50 means 50% boost in duration, -50 means 50% reduction in duration)
 
     // IF YOU ADD ANY NEW MODIFIER HERE, ADD IT IN scripts/enum/mod.lua ASWELL!
 
@@ -1026,7 +1029,7 @@ enum class Mod
     // 217 to 223
     // 271 to 280
     //
-    // 1079 and onward are RESERVED for LSB/core values
+    // SPARE = 1080 and onward
     //
     // ANY ASB ADDITIONS SHOULD BE 2002++
 };

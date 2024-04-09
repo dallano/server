@@ -324,7 +324,7 @@ void CCharEntity::pushPacket(CBasicPacket* packet)
     TracyZoneString(GetName());
     TracyZoneHex16(packet->getType());
 
-    moduleutils::OnPushPacket(packet);
+    moduleutils::OnPushPacket(this, packet);
 
     if (packet->getType() == 0x5B)
     {
@@ -1404,6 +1404,11 @@ void CCharEntity::OnAbility(CAbilityState& state, action_t& action)
             action.recast = PAbility->getRecastTime() - meritRecastReduction;
         }
 
+        if (PAbility->getID() == ABILITY_THIRD_EYE && this->StatusEffectContainer->HasStatusEffect(EFFECT_SEIGAN))
+        {
+            action.recast /= 2;
+        }
+
         if (PAbility->getID() == ABILITY_LIGHT_ARTS || PAbility->getID() == ABILITY_DARK_ARTS || PAbility->getRecastId() == 231) // stratagems
         {
             if (this->StatusEffectContainer->HasStatusEffect(EFFECT_TABULA_RASA))
@@ -1653,14 +1658,7 @@ void CCharEntity::OnAbility(CAbilityState& state, action_t& action)
         }
         else
         {
-            if (this->StatusEffectContainer->HasStatusEffect(EFFECT_SEIGAN) && PAbility->getID() == 62)
-            {
-                PRecastContainer->Add(RECAST_ABILITY, PAbility->getRecastId(), action.recast / 2);
-            }
-            else
-            {
-                PRecastContainer->Add(RECAST_ABILITY, PAbility->getRecastId(), action.recast);
-            }
+            PRecastContainer->Add(RECAST_ABILITY, PAbility->getRecastId(), action.recast);
         }
 
         uint16 recastID = PAbility->getRecastId();
@@ -1824,15 +1822,6 @@ void CCharEntity::OnRangedAttack(CRangeState& state, action_t& action)
 
                 if (slot == SLOT_RANGED)
                 {
-                    if (state.IsRapidShot())
-                    {
-                        damage = attackutils::CheckForDamageMultiplier(this, PItem, damage, PHYSICAL_ATTACK_TYPE::RAPID_SHOT, SLOT_RANGED);
-                    }
-                    else
-                    {
-                        damage = attackutils::CheckForDamageMultiplier(this, PItem, damage, PHYSICAL_ATTACK_TYPE::RANGED, SLOT_RANGED);
-                    }
-
                     if (PItem != nullptr)
                     {
                         charutils::TrySkillUP(this, (SKILLTYPE)PItem->getSkillType(), PTarget->GetMLevel());
@@ -1890,6 +1879,18 @@ void CCharEntity::OnRangedAttack(CRangeState& state, action_t& action)
             actionTarget.messageID  = 352;
             actionTarget.reaction   = REACTION::HIT;
             actionTarget.speceffect = SPECEFFECT::CRITICAL_HIT;
+        }
+
+        if (slot == SLOT_RANGED)
+        {
+            if (state.IsRapidShot())
+            {
+                totalDamage = attackutils::CheckForDamageMultiplier(this, PItem, totalDamage, PHYSICAL_ATTACK_TYPE::RAPID_SHOT, SLOT_RANGED, true);
+            }
+            else
+            {
+                totalDamage = attackutils::CheckForDamageMultiplier(this, PItem, totalDamage, PHYSICAL_ATTACK_TYPE::RANGED, SLOT_RANGED, true);
+            }
         }
 
         actionTarget.param =
@@ -2039,6 +2040,7 @@ void CCharEntity::HandleErrorMessage(std::unique_ptr<CBasicPacket>& msg)
 void CCharEntity::OnDeathTimer()
 {
     TracyZoneScoped;
+    charutils::SetCharVar(this, "expLost", 0);
     charutils::HomePoint(this);
 }
 
@@ -2116,32 +2118,15 @@ void CCharEntity::OnRaise()
 
         loc.zone->PushPacket(this, CHAR_INRANGE_SELF, new CActionPacket(action));
 
-        uint8 mLevel = charutils::GetCharVar(this, "DeathLevel");
+        // Do not return EXP to the player if they do not have experienceLost variable.
+        uint16 expLost = charutils::GetCharVar(this, "expLost");
 
-        // Do not return EXP to the player if they do not have a level at death set
-        if (mLevel != 0)
+        if (expLost != 0)
         {
-            uint16 expLost = mLevel <= 67 ? (charutils::GetExpNEXTLevel(mLevel) * 8) / 100 : 2400;
-
-            uint16 xpNeededToLevel = charutils::GetExpNEXTLevel(jobs.job[GetMJob()]) - jobs.exp[GetMJob()];
-
-            // Player died within a battlefield, reward the battlefield level equivalent EXP
-            if (StatusEffectContainer->HasStatusEffect(EFFECT_BATTLEFIELD))
-            {
-                expLost = m_LevelRestriction >= 1 && m_LevelRestriction <= 67 ? (charutils::GetExpNEXTLevel(m_LevelRestriction) * 8) / 100 : 2400;
-            }
-
-            // Exp is enough to level you and (you're not under a level restriction, or the level restriction is higher than your current main level).
-            if (xpNeededToLevel < expLost && (m_LevelRestriction == 0 || GetMLevel() < m_LevelRestriction))
-            {
-                // Player probably leveled down when they died.  Give they xp for the next level.
-                expLost = GetMLevel() <= 67 ? (charutils::GetExpNEXTLevel(jobs.job[GetMJob()] + 1) * 8) / 100 : 2400;
-            }
-
             uint16 xpReturned = (uint16)(ceil(expLost * ratioReturned));
             charutils::AddExperiencePoints(true, this, this, xpReturned);
 
-            charutils::SetCharVar(this, "DeathLevel", 0);
+            charutils::SetCharVar(this, "expLost", 0);
         }
 
         // If Arise was used then apply a reraise 3 effect on the target
@@ -2340,10 +2325,6 @@ void CCharEntity::Die()
         (PBattlefield == nullptr || (PBattlefield->GetRuleMask() & RULES_LOSE_EXP) == RULES_LOSE_EXP) &&
         GetMLevel() >= settings::get<uint8>("map.EXP_LOSS_LEVEL"))
     {
-        // Track what level the player died at to properly give EXP back on raise
-        int32 level = (m_LevelRestriction > 0 && m_LevelRestriction < GetMLevel()) ? m_LevelRestriction : GetMLevel();
-        charutils::SetCharVar(this, "DeathLevel", level);
-
         float retainPercent = std::clamp(settings::get<uint8>("map.EXP_RETAIN") + getMod(Mod::EXPERIENCE_RETAINED) / 100.0f, 0.0f, 1.0f);
         charutils::DelExperiencePoints(this, retainPercent, 0);
 

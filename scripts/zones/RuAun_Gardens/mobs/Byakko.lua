@@ -14,9 +14,6 @@ entity.onMobInitialize = function(mob)
     mob:addMod(xi.mod.VIT, 13)
     mob:setMobMod(xi.mobMod.ADD_EFFECT, 1)
     mob:setMobMod(xi.mobMod.MAGIC_COOL, 35)
-end
-
-entity.onMobSpawn = function(mob, target)
     GetNPCByID(ID.npc.PORTAL_TO_BYAKKO):setAnimation(xi.anim.CLOSE_DOOR)
     mob:setMagicCastingEnabled(false)
 end

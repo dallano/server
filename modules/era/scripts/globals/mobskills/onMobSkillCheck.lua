@@ -963,6 +963,7 @@ m:addOverride("xi.globals.mobskills.chainspell.onMobSkillCheck", function(target
 end)
 
 m:addOverride("xi.globals.mobskills.chains_of_apathy.onMobSkillCheck", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     local targets = mob:getEnmityList()
     for i, v in pairs(targets) do
         if v.entity:isPC() then
@@ -981,6 +982,7 @@ m:addOverride("xi.globals.mobskills.chains_of_apathy.onMobSkillCheck", function(
 end)
 
 m:addOverride("xi.globals.mobskills.chains_of_arrogance.onMobSkillCheck", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     local targets = mob:getEnmityList()
     for i, v in pairs(targets) do
         if v.entity:isPC() then
@@ -999,6 +1001,7 @@ m:addOverride("xi.globals.mobskills.chains_of_arrogance.onMobSkillCheck", functi
 end)
 
 m:addOverride("xi.globals.mobskills.chains_of_cowardice.onMobSkillCheck", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     local targets = mob:getEnmityList()
     for i, v in pairs(targets) do
         if v.entity:isPC() then
@@ -1017,6 +1020,7 @@ m:addOverride("xi.globals.mobskills.chains_of_cowardice.onMobSkillCheck", functi
 end)
 
 m:addOverride("xi.globals.mobskills.chains_of_envy.onMobSkillCheck", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     local targets = mob:getEnmityList()
     for i, v in pairs(targets) do
         if v.entity:isPC() then
@@ -1035,6 +1039,7 @@ m:addOverride("xi.globals.mobskills.chains_of_envy.onMobSkillCheck", function(ta
 end)
 
 m:addOverride("xi.globals.mobskills.chains_of_rage.onMobSkillCheck", function(target, mob, skill)
+    local ID = require("scripts/zones/Empyreal_Paradox/IDs")
     local targets = mob:getEnmityList()
     for i, v in pairs(targets) do
         if v.entity:isPC() then
@@ -1109,7 +1114,7 @@ m:addOverride("xi.globals.mobskills.circle_blade.onMobSkillCheck", function(targ
 end)
 
 m:addOverride("xi.globals.mobskills.circle_of_flames.onMobSkillCheck", function(target, mob, skill)
-    if mob:getAnimationSub() == 6 then -- 1 bomb
+    if mob:getAnimationSub() == 2 then -- 1 bomb
         return 1
     end
 
@@ -1422,6 +1427,10 @@ m:addOverride("xi.globals.mobskills.daze.onMobSkillCheck", function(target, mob,
     return 0
 end)
 
+m:addOverride("xi.globals.mobskills.daydream.onMobSkillCheck", function(target, mob, skill)
+    return 0
+end)
+
 m:addOverride("xi.globals.mobskills.deadeye.onMobSkillCheck", function(target, mob, skill)
     return 0
 end)
@@ -1724,6 +1733,17 @@ m:addOverride("xi.globals.mobskills.dread_shriek.onMobSkillCheck", function(targ
 end)
 
 m:addOverride("xi.globals.mobskills.dream_flower.onMobSkillCheck", function(target, mob, skill)
+    return 0
+end)
+
+m:addOverride("xi.globals.mobskills.dream_shroud.onMobSkillCheck", function(target, mob, skill)
+    if
+        mob:hasStatusEffect(xi.effect.MAGIC_ATK_BOOST) or
+        mob:hasStatusEffect(xi.effect.MAGIC_DEF_BOOST)
+    then
+        return 1
+    end
+
     return 0
 end)
 
@@ -2254,7 +2274,7 @@ m:addOverride("xi.globals.mobskills.forceful_blow.onMobSkillCheck", function(tar
 end)
 
 m:addOverride("xi.globals.mobskills.formation_attack.onMobSkillCheck", function(target, mob, skill)
-    if mob:getAnimationSub() == 6  then
+    if mob:getAnimationSub() == 2  then -- 1 Bomb
         return 1
     end
 
@@ -3041,6 +3061,10 @@ m:addOverride("xi.globals.mobskills.hyper_pulse.onMobSkillCheck", function(targe
     end
 
     return 1
+end)
+
+m:addOverride("xi.globals.mobskills.hypnogenesis.onMobSkillCheck", function(target, mob, skill)
+    return 0
 end)
 
 m:addOverride("xi.globals.mobskills.hypnosis.onMobSkillCheck", function(target, mob, skill)
@@ -3960,11 +3984,18 @@ end)
 
 m:addOverride("xi.globals.mobskills.nether_blast.onMobSkillCheck", function(target, mob, skill)
     -- Ranged attack only used when target is out of range
-    if mob:checkDistance(target) > 2 then
+    if
+        mob:checkDistance(target) > 2 or
+        skill:getID() == 1910 -- Diabolos Dynamis Tavnazia doesnt care about range
+    then
         return 0
     else
         return 1
     end
+end)
+
+m:addOverride("xi.globals.mobskills.nether_tempest.onMobSkillCheck", function(target, mob, skill)
+    return 0
 end)
 
 m:addOverride("xi.globals.mobskills.nightmare.onMobSkillCheck", function(target, mob, skill)
@@ -5095,7 +5126,11 @@ m:addOverride("xi.globals.mobskills.self-destruct.onMobSkillCheck", function(tar
 end)
 
 m:addOverride("xi.globals.mobskills.self-destruct_1.onMobSkillCheck", function(target, mob, skill)
-    if mob:getHPP() > 21 or mob:getAnimationSub() ~= 6  then
+    if
+        mob:getHPP() > 21 or
+        mob:getAnimationSub() ~= 0 or
+        mob:isMobType(xi.mobskills.mobType.NOTORIOUS)
+    then
         return 1
     end
 
@@ -5103,7 +5138,7 @@ m:addOverride("xi.globals.mobskills.self-destruct_1.onMobSkillCheck", function(t
 end)
 
 m:addOverride("xi.globals.mobskills.self-destruct_2.onMobSkillCheck", function(target, mob, skill)
-    if mob:getHPP() > 32 or mob:getAnimationSub() ~= 5 then
+    if mob:getHPP() > 32 or mob:getAnimationSub() ~= 1 then
         return 1
     end
 
@@ -5111,7 +5146,15 @@ m:addOverride("xi.globals.mobskills.self-destruct_2.onMobSkillCheck", function(t
 end)
 
 m:addOverride("xi.globals.mobskills.self-destruct_2death.onMobSkillCheck", function(target, mob, skill)
-    if (mob:getHPP() > 32 or mob:getAnimationSub() ~= 5) and math.random() < .2 then -- 20% chance for all bombs to explode
+    if
+        mob:getHPP() > 32 or
+        mob:getAnimationSub() ~= 1 or
+        mob:isMobType(xi.mobskills.mobType.NOTORIOUS)
+    then
+        return 1
+    end
+
+    if math.random() > .2 then -- 20% chance for all bombs to explode then
         return 1
     end
 
@@ -5119,7 +5162,7 @@ m:addOverride("xi.globals.mobskills.self-destruct_2death.onMobSkillCheck", funct
 end)
 
 m:addOverride("xi.globals.mobskills.self-destruct_3.onMobSkillCheck", function(target, mob, skill)
-    if mob:getHPP() > 66 or mob:getAnimationSub() ~= 4 then
+    if mob:getHPP() > 66 or mob:getAnimationSub() ~= 2 then
         return 1
     end
 
@@ -5131,7 +5174,15 @@ m:addOverride("xi.globals.mobskills.self-destruct_321.onMobSkillCheck", function
 end)
 
 m:addOverride("xi.globals.mobskills.self-destruct_3death.onMobSkillCheck", function(target, mob, skill)
-    if (mob:getHPP() > 66 or mob:getAnimationSub() ~= 4) and math.random() < .2 then -- 20% chance for all bombs to explode
+    if
+        mob:getHPP() > 66 or
+        mob:getAnimationSub() ~= 0 or
+        mob:isMobType(xi.mobskills.mobType.NOTORIOUS)
+    then
+        return 1
+    end
+
+    if math.random() > .2 then -- 20% chance for all bombs to explode then
         return 1
     end
 
@@ -5419,7 +5470,7 @@ m:addOverride("xi.globals.mobskills.slice.onMobSkillCheck", function(target, mob
 end)
 
 m:addOverride("xi.globals.mobskills.sling_bomb.onMobSkillCheck", function(target, mob, skill)
-    if mob:getAnimationSub() == 6  then
+    if mob:getAnimationSub() == 2  then -- 1 Bomb
         return 1
     end
 
@@ -5829,6 +5880,10 @@ m:addOverride("xi.globals.mobskills.sweep.onMobSkillCheck", function(target, mob
 end)
 
 m:addOverride("xi.globals.mobskills.sweeping_flail.onMobSkillCheck", function(target, mob, skill)
+    return 0
+end)
+
+m:addOverride("xi.globals.mobskills.sweeping_somnolence.onMobSkillCheck", function(target, mob, skill)
     return 0
 end)
 

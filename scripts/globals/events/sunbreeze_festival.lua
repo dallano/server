@@ -361,7 +361,8 @@ xi.events.sunbreeze_festival.setMusic = function(flag)
 end
 
 xi.events.sunbreeze_festival.onZoneTick = function(zone)
-    local npc = GetNPCByID(zones[zone:getID()].npc.GOLDFISH_NPC)
+    if xi.events.sunbreeze_festival.enabledCheck() then
+        local npc = GetNPCByID(zones[zone:getID()].npc.GOLDFISH_NPC)
 
     if
         xi.events.sunbreeze_festival.enabledCheck() and

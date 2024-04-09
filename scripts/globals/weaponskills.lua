@@ -216,10 +216,12 @@ local function getMultiAttacks(attacker, target, wsParams)
     -- The logic here wasnt actually checking for the augment.
     -- Also, it was in a completely different scale, making triple attack trigger always.
 
-    -- QA/TA/DA can only proc on the first hit of each weapon or each fist
+    -- QA/TA/DA can only proc a maximum of twice per weaponskill
+    -- Can proc once per hit of WS, and once per hand if dual wielding/HtH - up to a maximum of 2 times
     if
         attacker:getOffhandDmg() > 0 or
-        attacker:getWeaponSkillType(xi.slot.MAIN) == xi.skill.HAND_TO_HAND
+        attacker:getWeaponSkillType(xi.slot.MAIN) == xi.skill.HAND_TO_HAND or
+        numHits >= 2
     then
         multiChances = 2
     end
@@ -271,6 +273,13 @@ xi.weaponskills.getRangedHitRate = function(attacker, target, capHitRate, bonus,
 
     if bonus == nil then
         bonus = 0
+    end
+
+    if
+        calcParams ~= nil and
+        calcParams.bonusAcc ~= nil
+    then
+        bonus = bonus + calcParams.bonusAcc
     end
 
     local acc100 = (wsParams and wsParams.acc100) or 0
@@ -327,7 +336,7 @@ local function getSingleHitDamage(attacker, target, dmg, wsParams, calcParams, f
         end
     end
 
-    calcParams.hitRate = utils.clamp(calcParams.hitRate + calcParams.bonusAcc, 0.2, 0.95)
+    calcParams.hitRate = utils.clamp(calcParams.hitRate, 0.2, 0.95)
 
     if firstHitAccBonus ~= nil and firstHitAccBonus then
         calcParams.hitRate = calcParams.hitRate + 0.5 -- First hit gets a +100 ACC bonus which translates to +50 hit
@@ -791,7 +800,7 @@ xi.weaponskills.doPhysicalWeaponskill = function(attacker, target, wsID, wsParam
     calcParams.bonusfTP = gorgetBeltFTP or 0
     calcParams.bonusAcc = (gorgetBeltAcc or 0) + attacker:getMod(xi.mod.WSACC)
     calcParams.bonusWSmods = wsParams.bonusWSmods or 0
-    calcParams.hitRate = xi.weaponskills.getHitRate(attacker, target, false, calcParams.bonusAcc, false, wsParams, calcParams)
+    calcParams.hitRate = xi.weaponskills.getHitRate(attacker, target, false, 0, false, wsParams, calcParams)
     calcParams.skillType = attack.weaponType
 
     if
@@ -1118,6 +1127,13 @@ xi.weaponskills.getHitRate = function(attacker, target, capHitRate, bonus, isSub
         bonus = 0
     end
 
+    if
+        calcParams ~= nil and
+        calcParams.bonusAcc ~= nil
+    then
+        bonus = bonus + calcParams.bonusAcc
+    end
+
     local hitrate = 0
     local flourisheffect = attacker:getStatusEffect(xi.effect.BUILDING_FLOURISH)
     local accVarryTP = 0
@@ -1165,22 +1181,9 @@ xi.weaponskills.fTP = function(tp, ftp1, ftp2, ftp3)
         print("fTP error: TP value is not between 1000-3000!")
     end
 
-    return 1 -- no ftp mod
+    -- no ftp mod
+    return 1
 end
-
--- local function fTPMob(tp, ftp1, ftp2, ftp3)
---     if (tp < 1000) then
---         tp = 1000
---     end
-
---     if (tp >= 1000 and tp < 1500) then
---         return ftp1 + ( ((ftp2 - ftp1 ) / 500) * (tp - 1000) )
---     elseif (tp >= 1500 and tp <= 3000) then
---         -- generate a straight line between ftp2 and ftp3 and find point @ tp
---         return ftp2 + ( ((ftp3 - ftp2) / 1500) * (tp - 1500) )
---     end
---     return 1 -- no ftp mod
--- end
 
 xi.weaponskills.calculatedIgnoredDef = function(tp, def, ignore1, ignore2, ignore3)
     if tp >= 1000 and tp < 2000 then
