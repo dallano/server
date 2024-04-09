@@ -26,7 +26,7 @@ xi.settings.main =
     -- Enable Expansion (1 = Enabled, 0 = Disabled)
     ENABLE_COP       = 1,
     ENABLE_TOAU      = 1,
-    ENABLE_WOTG      = 0,
+    ENABLE_WOTG      = 1,
     ENABLE_ACP       = 0,
     ENABLE_AMK       = 0,
     ENABLE_ASA       = 0,
@@ -115,7 +115,7 @@ xi.settings.main =
     GIL_RATE        = 1.500, -- Multiplies gil earned from quests.  Won't always display in game.
     BAYLD_RATE      = 1.000, -- Multiples bayld earned from quests.
     -- Note: EXP rates are also influenced by conf setting
-    EXP_RATE        = 2.000, -- Multiplies exp from script (except FoV/GoV).
+    EXP_RATE        = 1.500, -- Multiplies exp from script (except FoV/GoV).
     SCROLL_EXP_RATE = 5.000, -- Multiplies exp from single use XP Scrolls (e.g. Miratete's Memoirs).
     BOOK_EXP_RATE   = 1.000, -- Multiplies exp from FoV/GoV book pages.
     TABS_RATE       = 1.000, -- Multiplies tabs earned from fov.
@@ -296,8 +296,8 @@ xi.settings.main =
     HOMEPOINT_TELEPORT           = 0,    -- Enables the homepoint teleport system
     DIG_ABUNDANCE_BONUS          = 0,     -- Increase chance of digging up an item (450  = item digup chance +45)
     EQUIP_FROM_OTHER_CONTAINERS  = false, -- true/false. Allows equipping items from Mog Satchel, Sack, and Case. Only possible with the use of client addons.
-    ENM_COOLDOWN                 = 21,    -- Number of hours before a player can obtain same KI for ENMs (default: 5 days)
-    FORCE_SPAWN_QM_RESET_TIME    = 30,   -- Number of seconds the ??? remains hidden for after the despawning of the mob it force spawns.
+    ENM_COOLDOWN                 = 120,   -- Number of hours before a player can obtain same KI for ENMs (default: 5 days)
+    FORCE_SPAWN_QM_RESET_TIME    = 120,   -- Number of seconds the ??? remains hidden for after the despawning of the mob it force spawns.
     MAP_VENDORS_ALL_MAPS         = false, -- If true, all map vendors can sell all vendorable maps
     ENABLE_TUTORIAL              = false, -- If true, enable Tutorial NPCs (WotG): Alaune (17719618), Gulldago (17739939), Selele (17764600)
 

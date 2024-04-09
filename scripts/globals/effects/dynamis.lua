@@ -6,8 +6,6 @@ require("scripts/globals/zone")
 local effectObject = {}
 
 effectObject.onEffectGain = function(target, effect)
-    print("Gained effect")
-    print(target:getZone())
     target:setLocalVar("dynamis_lasttimeupdate", effect:getTimeRemaining() / 1000)
 end
 
@@ -51,8 +49,6 @@ effectObject.onEffectTick = function(target, effect)
 end
 
 effectObject.onEffectLose = function(target, effect)
-    print("Lost effect")
-    print(target:getZone())
     target:delKeyItem(xi.ki.CRIMSON_GRANULES_OF_TIME)
     target:delKeyItem(xi.ki.AZURE_GRANULES_OF_TIME)
     target:delKeyItem(xi.ki.AMBER_GRANULES_OF_TIME)
@@ -65,9 +61,6 @@ effectObject.onEffectLose = function(target, effect)
             target:startCutscene(100)
         end
     end
-
-    -- xiSP Add EXP equivalent to however many mobs killed
-    target:addExp(xi.settings.main.EXP_RATE * (target:getLocalVar("dynamisKills") * 150))
 end
 
 return effectObject

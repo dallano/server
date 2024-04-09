@@ -43,7 +43,7 @@ entity.onMobDespawn = function(mob)
     GetMobByID(kingArthroID):setLocalVar("[POP]King_Arthro", 0)
 
     -- Set respawn persistence of knight crabs
-    local respawnTime = 75900 + math.random(0, 6) * 1800 -- 21:05 to 24:05 respawn timer in 30 minute intervals
+    local respawnTime = math.random(129600, 172800) -- (xiSP 36 - 48 hours)
     for offset = 1, 10 do
         xi.mob.nmTODPersist(GetMobByID(kingArthroID - offset), respawnTime)
         DisallowRespawn(kingArthroID - offset, false)
