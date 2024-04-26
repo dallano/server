@@ -68,7 +68,7 @@ zoneObject.onTriggerAreaEnter = function(player, triggerArea)
                 (pNation == 0 and player:getRank(player:getNation()) >= 2) or
                 (pNation > 0 and player:hasCompletedMission(pNation, 5)) or
                 (currentMission >= 5 and currentMission <= 9) or
-                player:getRank(player:getNation()) >= 1
+                player:getRank(player:getNation()) >= 3
             then
                 player:startEvent(569)
             else
