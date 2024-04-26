@@ -65,16 +65,16 @@ zones[xi.zone.BUBURIMU_PENINSULA] =
     },
     npc =
     {
-        OVERSEER_BASE   = 17261150, -- Bonbavour_RK in npc_list
-        SIGNPOST_OFFSET = 17261165,
+        OVERSEER_BASE   = GetFirstID('Bonbavour_RK'),
+        SIGNPOST_OFFSET = 17261166,
         LOGGING =
         {
-            17261175,
             17261176,
             17261177,
             17261178,
             17261179,
             17261180,
+            17261181,
         },
     },
 }

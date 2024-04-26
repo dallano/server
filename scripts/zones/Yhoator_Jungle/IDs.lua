@@ -65,34 +65,34 @@ zones[xi.zone.YHOATOR_JUNGLE] =
     },
     npc =
     {
-        OVERSEER_BASE     = 17285650, -- Ilieumort_RK in npc_list
-        PEDDLESTOX        = 17285686,
-        EDACIOUS_QM       = 17285617, -- qm1 in npc_list
+        OVERSEER_BASE     = 17285651, -- Ilieumort_RK in npc_list
+        PEDDLESTOX        = 17285687,
+        EDACIOUS_QM       = 17285618, -- qm1 in npc_list
         BEASTMEN_TREASURE =
         {
-            17285696, -- qm4
-            17285689, -- qm5
-            17285690, -- qm6
-            17285691, -- qm7
-            17285692, -- qm8
-            17285693, -- qm9
-            17285694, -- qm10
-            17285695, -- qm11
+            17285697, -- qm4
+            17285690, -- qm5
+            17285691, -- qm6
+            17285692, -- qm7
+            17285693, -- qm8
+            17285694, -- qm9
+            17285695, -- qm10
+            17285696, -- qm11
         },
         HARVESTING =
         {
-            17285681,
             17285682,
             17285683,
+            17285684,
         },
         LOGGING =
         {
-            17285675,
             17285676,
             17285677,
             17285678,
             17285679,
             17285680,
+            17285681,
         },
     },
 }

@@ -47,7 +47,7 @@ zones[xi.zone.WINDURST_WATERS_S] =
     },
     npc =
     {
-        SHUVO = 17163023,
+        SHUVO = 17163024,
     },
 }
 

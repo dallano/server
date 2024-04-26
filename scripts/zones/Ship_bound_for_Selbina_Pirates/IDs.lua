@@ -35,7 +35,7 @@ zones[xi.zone.SHIP_BOUND_FOR_SELBINA_PIRATES] =
     {
         PIRATES =
         {
-            [17707041] =
+            [17707042] =
             {
                 start_pos =
                 {
@@ -64,7 +64,7 @@ zones[xi.zone.SHIP_BOUND_FOR_SELBINA_PIRATES] =
                 },
                 position = 1,
             },
-            [17707042] =
+            [17707043] =
             {
                 start_pos =
                 {
@@ -93,7 +93,7 @@ zones[xi.zone.SHIP_BOUND_FOR_SELBINA_PIRATES] =
                 },
                 position = 2,
             },
-            [17707043] =
+            [17707044] =
             {
                 start_pos =
                 {
@@ -122,7 +122,7 @@ zones[xi.zone.SHIP_BOUND_FOR_SELBINA_PIRATES] =
                 },
                 position = 3,
             },
-            [17707061] =
+            [17707062] =
             {
                 start_pos =
                 {
@@ -154,7 +154,7 @@ zones[xi.zone.SHIP_BOUND_FOR_SELBINA_PIRATES] =
         },
         PIRATE_SHIP =
         {
-            id = 17707044,
+            id = 17707046,
             start_pos =
             {
                 x = -150,

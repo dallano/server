@@ -86,15 +86,15 @@ zones[xi.zone.LUFAISE_MEADOWS] =
     },
     npc =
     {
-        OVERSEER_BASE = 16875865, -- Jemmoquel_RK in npc_list
+        OVERSEER_BASE = 16875866, -- Jemmoquel_RK in npc_list
         LOGGING       =
         {
-            16875883,
             16875884,
             16875885,
             16875886,
             16875887,
             16875888,
+            16875889,
         },
     },
 }

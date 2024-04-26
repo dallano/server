@@ -54,15 +54,15 @@ zones[xi.zone.GIDDEUS] =
     },
     npc =
     {
-        TREASURE_CHEST = 17371611,
+        TREASURE_CHEST = 17371612,
         HARVESTING =
         {
-            17371612,
             17371613,
             17371614,
             17371615,
             17371616,
             17371617,
+            17371618,
         },
     },
 }

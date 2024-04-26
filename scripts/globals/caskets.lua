@@ -90,7 +90,7 @@ local casketInfo =
 -----------------------------------
 local function convertTime(rawTime)
     local rawSeconds = tonumber(rawTime)
-    local timeTable = { 0, 0, 0 }
+    local timeTable = { "", "", "" }
 
     timeTable[1] = string.format("%02.f", math.floor(rawSeconds / 3600))
     timeTable[2] = string.format("%02.f", math.floor(rawSeconds / 60 - (timeTable[1] * 60)))

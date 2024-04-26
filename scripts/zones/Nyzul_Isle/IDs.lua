@@ -173,43 +173,45 @@ zones[xi.zone.NYZUL_ISLE] =
     {
         TREASURE_COFFER =
         {
-            17092611, 17092612, 17092614
+            17092612,
+            17092613,
+            17092615,
         },
 
         TREASURE_CASKET =
         {
-            17092609, 17092610, 17092613, 17092620
+            17092610,
+            17092611,
+            17092614,
+            17092621,
         },
 
         RUNE_OF_TRANSFER =
         {
-            17093330, 17093331
+            17093331,
+            17093332,
         },
 
         -- Nyzul Isle Investigation
-        RUNIC_LAMP_1        = 17093332,
-        RUNIC_LAMP_2        = 17093333,
-        RUNIC_LAMP_3        = 17093334,
-        RUNIC_LAMP_4        = 17093335,
-        RUNIC_LAMP_5        = 17093336,
-        _257                = 17093359,
-        _259                = 17093361,
-        RUNE_TRANSFER_START = 17093429,
-        VENDING_BOX         = 17093430,
+        RUNIC_LAMP_OFFSET   = GetFirstID('Runic_Lamp'),
+        _257                = GetFirstID('_257'),
+        _259                = GetFirstID('_259'),
+        RUNE_TRANSFER_START = GetFirstID('Rune_of_Transfer_Start'),
+        VENDING_BOX         = GetFirstID('Vending_Box'),
 
         -- Other instances
-        WEATHER             = 17093423,
-        QM1                 = 17093472,
-        BLANK1              = 17093473,
-        BLANK2              = 17093474,
-        BLANK3              = 17093475,
-        NASHMEIRA1          = 17093476,
-        NASHMEIRA2          = 17093477,
-        RAZFAHD             = 17093478,
-        CSNPC1              = 17093479,
-        GHATSAD             = 17093480,
-        ALEXANDER           = 17093481,
-        CSNPC2              = 17093482,
+        WEATHER             = 17093424,
+        QM1                 = 17093473,
+        BLANK1              = 17093474,
+        BLANK2              = 17093475,
+        BLANK3              = 17093476,
+        NASHMEIRA1          = 17093477,
+        NASHMEIRA2          = 17093478,
+        RAZFAHD             = 17093479,
+        CSNPC1              = 17093480,
+        GHATSAD             = 17093481,
+        ALEXANDER           = 17093482,
+        CSNPC2              = 17093483,
     }
 }
 

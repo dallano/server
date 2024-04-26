@@ -97,7 +97,7 @@ zones[xi.zone.SOUTH_GUSTABERG] =
             [17216226] = 17216226,  -- Smile Helper
             [17216227] = 17216227,  -- Smile Helper
         },
-        GOLDFISH_NPC = 17216210, -- Sunbreeze festival goldish NPC
+        GOLDFISH_NPC = 17216211, -- Sunbreeze festival goldish NPC
     },
 }
 

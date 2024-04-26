@@ -55,8 +55,8 @@ zones[xi.zone.PHOMIUNA_AQUEDUCTS] =
     },
     npc =
     {
-        LADDER_KNOCKING       = 16888096,
-        QM_TAVNAZIAN_COOKBOOK = 16888123,
+        LADDER_KNOCKING       = 16888097,
+        QM_TAVNAZIAN_COOKBOOK = 16888124,
     },
 }
 

@@ -6430,6 +6430,7 @@ INSERT INTO `item_mods` VALUES (11343,9,3);   -- DEX: 3
 INSERT INTO `item_mods` VALUES (11343,11,-3); -- AGI: -3
 INSERT INTO `item_mods` VALUES (11343,23,7);  -- ATT: 7
 INSERT INTO `item_mods` VALUES (11343,25,7);  -- ACC: 7
+INSERT INTO `item_mods` VALUES (11343,369,1);  -- AUTO_REFRESH: 1
 
 -- Styrne Byrnie
 INSERT INTO `item_mods` VALUES (11344,1,42); -- DEF: 42

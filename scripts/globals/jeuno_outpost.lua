@@ -33,22 +33,22 @@ local npcTable =
 
 local outposts =
 {
-    [xi.region.RONFAURE]        = { ki = xi.ki.RONFAURE_SUPPLIES,              lvlOrg = 20, lvlRed = 10, },
-    [xi.region.ZULKHEIM]        = { ki = xi.ki.ZULKHEIM_SUPPLIES,              lvlOrg = 20, lvlRed = 10, },
-    [xi.region.NORVALLEN]       = { ki = xi.ki.NORVALLEN_SUPPLIES,             lvlOrg = 25, lvlRed = 15, },
-    [xi.region.GUSTABERG]       = { ki = xi.ki.GUSTABERG_SUPPLIES,             lvlOrg = 20, lvlRed = 10, },
-    [xi.region.DERFLAND]        = { ki = xi.ki.DERFLAND_SUPPLIES,              lvlOrg = 25, lvlRed = 15, },
-    [xi.region.SARUTABARUTA]    = { ki = xi.ki.SARUTABARUTA_SUPPLIES,          lvlOrg = 20, lvlRed = 10, },
-    [xi.region.KOLSHUSHU]       = { ki = xi.ki.KOLSHUSHU_SUPPLIES,             lvlOrg = 20, lvlRed = 10, },
-    [xi.region.ARAGONEU]        = { ki = xi.ki.ARAGONEU_SUPPLIES,              lvlOrg = 25, lvlRed = 15, },
+    [xi.region.RONFAURE]        = { ki = xi.ki.RONFAURE_SUPPLIES,              lvlOrg = 10, lvlRed = 10, },
+    [xi.region.ZULKHEIM]        = { ki = xi.ki.ZULKHEIM_SUPPLIES,              lvlOrg = 10, lvlRed = 10, },
+    [xi.region.NORVALLEN]       = { ki = xi.ki.NORVALLEN_SUPPLIES,             lvlOrg = 15, lvlRed = 15, },
+    [xi.region.GUSTABERG]       = { ki = xi.ki.GUSTABERG_SUPPLIES,             lvlOrg = 10, lvlRed = 10, },
+    [xi.region.DERFLAND]        = { ki = xi.ki.DERFLAND_SUPPLIES,              lvlOrg = 15, lvlRed = 15, },
+    [xi.region.SARUTABARUTA]    = { ki = xi.ki.SARUTABARUTA_SUPPLIES,          lvlOrg = 10, lvlRed = 10, },
+    [xi.region.KOLSHUSHU]       = { ki = xi.ki.KOLSHUSHU_SUPPLIES,             lvlOrg = 10, lvlRed = 10, },
+    [xi.region.ARAGONEU]        = { ki = xi.ki.ARAGONEU_SUPPLIES,              lvlOrg = 15, lvlRed = 15, },
     [xi.region.FAUREGANDI]      = { ki = xi.ki.FAUREGANDI_SUPPLIES,            lvlOrg = 35, lvlRed = 35, },
     [xi.region.VALDEAUNIA]      = { ki = xi.ki.VALDEAUNIA_SUPPLIES,            lvlOrg = 40, lvlRed = 40, },
-    [xi.region.QUFIMISLAND]     = { ki = xi.ki.QUFIM_SUPPLIES,                 lvlOrg = 25, lvlRed = 15, },
-    [xi.region.LITELOR]         = { ki = xi.ki.LITELOR_SUPPLIES,               lvlOrg = 35, lvlRed = 25, },
-    [xi.region.KUZOTZ]          = { ki = xi.ki.KUZOTZ_SUPPLIES,                lvlOrg = 40, lvlRed = 30, },
-    [xi.region.VOLLBOW]         = { ki = xi.ki.VOLLBOW_SUPPLIES,               lvlOrg = 65, lvlRed = 50, },
-    [xi.region.ELSHIMOLOWLANDS] = { ki = xi.ki.ELSHIMO_LOWLANDS_SUPPLIES,      lvlOrg = 35, lvlRed = 25, },
-    [xi.region.ELSHIMOUPLANDS]  = { ki = xi.ki.ELSHIMO_UPLANDS_SUPPLIES,       lvlOrg = 45, lvlRed = 35, },
+    [xi.region.QUFIMISLAND]     = { ki = xi.ki.QUFIM_SUPPLIES,                 lvlOrg = 15, lvlRed = 15, },
+    [xi.region.LITELOR]         = { ki = xi.ki.LITELOR_SUPPLIES,               lvlOrg = 25, lvlRed = 25, },
+    [xi.region.KUZOTZ]          = { ki = xi.ki.KUZOTZ_SUPPLIES,                lvlOrg = 30, lvlRed = 30, },
+    [xi.region.VOLLBOW]         = { ki = xi.ki.VOLLBOW_SUPPLIES,               lvlOrg = 50, lvlRed = 50, },
+    [xi.region.ELSHIMOLOWLANDS] = { ki = xi.ki.ELSHIMO_LOWLANDS_SUPPLIES,      lvlOrg = 25, lvlRed = 25, },
+    [xi.region.ELSHIMOUPLANDS]  = { ki = xi.ki.ELSHIMO_UPLANDS_SUPPLIES,       lvlOrg = 35, lvlRed = 35, },
     [xi.region.TAVNAZIANARCH]   = { ki = xi.ki.TAVNAZIAN_ARCHIPELAGO_SUPPLIES, lvlOrg = 30, lvlRed = 30, },
 }
 
@@ -103,11 +103,6 @@ xi.teleport.triggerOPWarp = function(player, npc)
     player:setLocalVar('[OP_Warp]npcId', npc:getID())
 
     player:PrintToPlayer(dialogTable.welcome, 0, name)
-
-    if player:getRank(player:getNation()) < 4 then
-        player:PrintToPlayer(dialogTable.tooLow, 0, name)
-        return
-    end
 
     for region, data in pairs(outposts) do
         if player:hasTeleport(player:getNation(), region + 5) then

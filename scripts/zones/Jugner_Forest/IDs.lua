@@ -122,15 +122,15 @@ zones[xi.zone.JUGNER_FOREST] =
 
     npc =
     {
-        OVERSEER_BASE = 17203848, -- Chaplion_RK in npc_list
+        OVERSEER_BASE = 17203849, -- Chaplion_RK in npc_list
         LOGGING =
         {
-            17203864,
             17203865,
             17203866,
             17203867,
             17203868,
             17203869,
+            17203870,
         },
     },
 }

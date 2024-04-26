@@ -142,7 +142,7 @@ zones[xi.zone.WINDURST_WATERS] =
             [17752310] = 17752310,  -- Goblin Merrymaker
             [17752311] = 17752311,  -- Goblin Merrymaker
         },
-        LELEROON_GREEN_DOOR = 17752333,
+        LELEROON_GREEN_DOOR = 17752334,
     },
 }
 

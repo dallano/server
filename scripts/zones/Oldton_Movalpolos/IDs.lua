@@ -54,18 +54,18 @@ zones[xi.zone.OLDTON_MOVALPOLOS] =
     },
     npc =
     {
-        SCRAWLED_WRITING = 16822469,
-        OVERSEER_BASE    = 16822509, -- first Conquest_Banner in npc_list
-        TREASURE_CHEST   = 16822531,
-        IRON_BOX         = 16822544,
+        SCRAWLED_WRITING = 16822470,
+        OVERSEER_BASE    = GetFirstID('Conquest_Banner'),
+        TREASURE_CHEST   = 16822532,
+        IRON_BOX         = 16822545,
         MINING =
         {
-            16822525,
             16822526,
             16822527,
             16822528,
             16822529,
             16822530,
+            16822531,
         },
     },
 }

@@ -59,9 +59,9 @@ zones[xi.zone.RIVERNE_SITE_A01] =
     },
     npc =
     {
-        DISPLACEMENT_OFFSET = 16900334,
-        SPATIAL_OURYU       = 16900358,
-        STONE_MONUMENT      = 16900374,
+        DISPLACEMENT_OFFSET = 16900335,
+        SPATIAL_OURYU       = 16900359,
+        STONE_MONUMENT      = 16900375,
     },
 }
 

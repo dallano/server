@@ -119,17 +119,17 @@ zones[xi.zone.WEST_SARUTABARUTA] =
 
     npc =
     {
-        SIGNPOST_OFFSET = 17248797,
-        OVERSEER_BASE   = 17248830, -- Naguipeillont_RK in npc_list
+        SIGNPOST_OFFSET = 17248798,
+        OVERSEER_BASE   = 17248831, -- Naguipeillont_RK in npc_list
 
         HARVESTING =
         {
-            17248846,
             17248847,
             17248848,
             17248849,
             17248850,
             17248851,
+            17248852,
         },
     },
 }

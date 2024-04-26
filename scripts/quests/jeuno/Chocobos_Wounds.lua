@@ -139,11 +139,7 @@ quest.sections =
                     if npcUtil.tradeHasExactly(trade, xi.items.BUNCH_OF_GYSAHL_GREENS) then
                         return quest:progressEvent(76)
                     elseif npcUtil.tradeHasExactly(trade, xi.items.CLUMP_OF_GAUSEBIT_WILDGRASS) then
-                        if getCurrentTime() > quest:getVar(player, 'Timer') then
-                            return quest:progressEvent(chocoboFeedTrades[quest:getVar(player, 'Prog')])
-                        else
-                            return quest:progressEvent(73)
-                        end
+                        return quest:progressEvent(chocoboFeedTrades[quest:getVar(player, 'Prog')])
                     end
                 end,
 

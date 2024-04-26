@@ -14,16 +14,16 @@ end
 entity.onTrigger = function(player, npc)
     local stock =
     {
-        12450, 18360, 1,     --Padded Cap
-        12424,  9234, 1,     --Iron Mask
-        12578, 28339, 1,     --Padded Armor
-        12706, 15552, 1,     --Iron Mittens
-        12449,  1471, 2,     --Brass Cap
-        12440,   396, 2,     --Leather Bandana
-        12577,  2236, 2,     --Brass Harness
-        12568,   604, 2,     --Leather Vest
-        12705,  1228, 2,     --Brass Mittens
-        12696,   324, 2,     --Leather Gloves
+        12450, 18360, 3,     --Padded Cap
+        12424,  9234, 3,     --Iron Mask
+        12578, 28339, 3,     --Padded Armor
+        12706, 15552, 3,     --Iron Mittens
+        12449,  1471, 3,     --Brass Cap
+        12440,   396, 3,     --Leather Bandana
+        12577,  2236, 3,     --Brass Harness
+        12568,   604, 3,     --Leather Vest
+        12705,  1228, 3,     --Brass Mittens
+        12696,   324, 3,     --Leather Gloves
         12448,   151, 3,     --Bronze Cap
         12576,   230, 3,     --Bronze Harness
         12552, 14256, 3,     --Chainmail

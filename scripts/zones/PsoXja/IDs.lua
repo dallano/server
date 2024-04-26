@@ -53,7 +53,6 @@ zones[xi.zone.PSOXJA] =
     {
         ROTATING_DOOR_OFFSET =
         {
-            16814489,
             16814490,
             16814491,
             16814492,
@@ -63,11 +62,12 @@ zones[xi.zone.PSOXJA] =
             16814496,
             16814497,
             16814498,
+            16814499,
         },
-        STONE_DOOR_OFFSET          = 16814445, -- _090 in npc_list
-        BLUE_BRACELET_DOOR         = 16814499,
-        GREEN_BRACELET_DOOR        = 16814502,
-        TREASURE_CHEST             = 16814557,
+        STONE_DOOR_OFFSET          = 16814446, -- _090 in npc_list
+        BLUE_BRACELET_DOOR         = 16814500,
+        GREEN_BRACELET_DOOR        = 16814503,
+        TREASURE_CHEST             = 16814558,
     },
 }
 

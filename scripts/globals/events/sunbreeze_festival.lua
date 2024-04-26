@@ -22,17 +22,17 @@ local sunbreezeNPCEntites =
 
     [xi.zone.WEST_RONFAURE] =
     {
-        17187570, -- Saradorial
+        17187571, -- Saradorial
     },
 
     [xi.zone.SOUTH_GUSTABERG] =
     {
-        17216210, -- Fish Eyes
+        17216211, -- Fish Eyes
     },
 
     [xi.zone.EAST_SARUTABARUTA] =
     {
-        17253106, -- Kesha Shopehllok
+        17253107, -- Kesha Shopehllok
     },
 
     [xi.zone.BASTOK_MARKETS] =
@@ -62,9 +62,9 @@ local sunbreezeDecorations =
 {
     [0] = -- Fireworks
     {
-        17187571, 17191555, 17212131, 17216209, 17244668, 17289818, 17248881,
-        17253105, 17719783, 17727646, 17723770, 17735938, 17740146, 17760486,
-        17744126, 17752456, 17756373, 17764738, 17788993,
+        17187572, 17191556, 17212132, 17216210, 17244669, 17289819, 17248882,
+        17253106, 17719784, 17727647, 17723771, 17735939, 17740147, 17760487,
+        17744127, 17752457, 17756374, 17764739, 17788994,
     },
 
     [xi.zone.BASTOK_MARKETS] =
@@ -364,12 +364,13 @@ xi.events.sunbreeze_festival.onZoneTick = function(zone)
     if xi.events.sunbreeze_festival.enabledCheck() then
         local npc = GetNPCByID(zones[zone:getID()].npc.GOLDFISH_NPC)
 
-    if
-        xi.events.sunbreeze_festival.enabledCheck() and
-        npc:getLocalVar("[SUNBREEZE]goldfishDialogueTimer") < os.time()
-    then
-        npc:showText(npc, zones[zone:getID()].text.GOLDFISH_NPC_DIALOGUE + math.random(0, 2))
-        npc:setLocalVar("[SUNBREEZE]goldfishDialogueTimer", os.time() + 20)
+        if
+            xi.events.sunbreeze_festival.enabledCheck() and
+            npc:getLocalVar("[SUNBREEZE]goldfishDialogueTimer") < os.time()
+        then
+            npc:showText(npc, zones[zone:getID()].text.GOLDFISH_NPC_DIALOGUE + math.random(0, 2))
+            npc:setLocalVar("[SUNBREEZE]goldfishDialogueTimer", os.time() + 20)
+        end
     end
 end
 

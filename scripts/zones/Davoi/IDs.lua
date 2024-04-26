@@ -84,9 +84,9 @@ zones[xi.zone.DAVOI] =
     },
     npc =
     {
-        HIDE_FLAP_OFFSET = 17388023,
-        STORAGE_HOLE     = 17388025,
-        TREASURE_CHEST   = 17388027,
+        HIDE_FLAP_OFFSET = 17388024,
+        STORAGE_HOLE     = 17388026,
+        TREASURE_CHEST   = 17388028,
     },
 }
 

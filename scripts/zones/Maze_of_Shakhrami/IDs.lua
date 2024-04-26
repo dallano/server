@@ -75,23 +75,23 @@ zones[xi.zone.MAZE_OF_SHAKHRAMI] =
     {
         FOSSIL_ROCKS =
         {
-            17588737,
-            17588739,
+            17588738,
             17588740,
             17588741,
             17588742,
             17588743,
+            17588744,
         },
-        ICHOROUS_IRE_FOSSIL_ROCK = 17588745,
-        TREASURE_CHEST           = 17588773,
+        ICHOROUS_IRE_FOSSIL_ROCK = 17588746,
+        TREASURE_CHEST           = 17588774,
         EXCAVATION =
         {
-            17588774,
             17588775,
             17588776,
             17588777,
             17588778,
             17588779,
+            17588780,
         },
     },
 }

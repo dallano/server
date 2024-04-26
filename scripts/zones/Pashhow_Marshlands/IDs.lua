@@ -119,7 +119,7 @@ zones[xi.zone.PASHHOW_MARSHLANDS] =
 
     npc =
     {
-        OVERSEER_BASE = 17224326, -- Mesachedeau_RK in npc_list
+        OVERSEER_BASE = GetFirstID('Mesachedeau_RK'),
     },
 }
 

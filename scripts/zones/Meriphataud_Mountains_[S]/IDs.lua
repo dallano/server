@@ -76,7 +76,7 @@ zones[xi.zone.MERIPHATAUD_MOUNTAINS_S] =
 
     npc =
     {
-        INDESCRIPT_MARKINGS = 17175342,
+        INDESCRIPT_MARKINGS = 17175343,
     },
 }
 

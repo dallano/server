@@ -45,8 +45,8 @@ zones[xi.zone.SELBINA] =
     },
     npc =
     {
-        EXPLORER_MOOGLE = 17793131,
-        SHIP = 17793088,
+        EXPLORER_MOOGLE = 17793132,
+        SHIP            = 17793089,
     },
 }
 

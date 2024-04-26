@@ -56,14 +56,14 @@ zones[xi.zone.GRAUBERG_S] =
     {
         HARVESTING =
         {
-            17142545,
             17142546,
             17142547,
             17142548,
             17142549,
             17142550,
+            17142551,
         },
-        INDESCRIPT_MARKINGS = 17142586,
+        INDESCRIPT_MARKINGS = 17142587,
     },
 }
 

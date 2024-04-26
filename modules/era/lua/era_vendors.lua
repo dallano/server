@@ -24,13 +24,13 @@ xi.eraShops.Mjoll =
 
 xi.eraShops.Charging_Chocobo =
 {
-    12801, 58738, 1,    -- Mythril Cuisses
-    12929, 36735, 1,    -- Mythril Leggings
-    12817, 14131, 2,    -- Brass Cuisses
-    12800, 34776, 2,    -- Cuisses
-    12945,  8419, 2,    -- Brass Greaves
-    12928, 21859, 2,    -- Plate Leggings
-    13080, 16891, 2,    -- Gorget
+    12801, 58738, 3,    -- Mythril Cuisses
+    12929, 36735, 3,    -- Mythril Leggings
+    12817, 14131, 3,    -- Brass Cuisses
+    12800, 34776, 3,    -- Cuisses
+    12945,  8419, 3,    -- Brass Greaves
+    12928, 21859, 3,    -- Plate Leggings
+    13080, 16891, 3,    -- Gorget
     12832,   191, 3,    -- Bronze Subligar
     12816,  1646, 3,    -- Scale Cuisses
     12960,   117, 3,    -- Bronze Leggings
@@ -39,14 +39,14 @@ xi.eraShops.Charging_Chocobo =
 
 xi.eraShops.Zhikkom =
 {
-    16473,  5713, 1, -- Kukri
-    16537, 31648, 1, -- Mythril Sword
-    16545, 21535, 1, -- Broadsword
-    16513, 11845, 1, -- Tuck
-    16558, 62560, 1, -- Falchion
-    16536,  7286, 2, -- Iron Sword
-    16552,  4163, 2, -- Scimitar
-    16466,  2231, 2, -- Knife
+    16473,  5713, 3, -- Kukri
+    16537, 31648, 3, -- Mythril Sword
+    16545, 21535, 3, -- Broadsword
+    16513, 11845, 3, -- Tuck
+    16558, 62560, 3, -- Falchion
+    16536,  7286, 3, -- Iron Sword
+    16552,  4163, 3, -- Scimitar
+    16466,  2231, 3, -- Knife
     16465,   150, 3, -- Bronze Knife
     16405,   106, 3, -- Cat Baghnakhs
     16535,   246, 3, -- Bronze Sword
@@ -56,24 +56,24 @@ xi.eraShops.Zhikkom =
 
 xi.eraShops.Peritrage =
 {
-    17218, 14158, 1, -- Zamburak
-    17298,   294, 1, -- Tathlum
-    17217,  2166, 2, -- Crossbow
-    17337,    22, 2, -- Mythril Bolt
+    17218, 14158, 3, -- Zamburak
+    17298,   294, 3, -- Tathlum
+    17217,  2166, 3, -- Crossbow
+    17337,    22, 3, -- Mythril Bolt
     17216,   165, 3, -- Light Crossbow
     17336,     5, 3, -- Crossbow Bolt
 }
 
 xi.eraShops.Ciqala =
 {
-    16392,  4818, 1, -- Metal Knuckles
-    17044,  6033, 1, -- Warhammer
-    16643, 11285, 1, -- Battleaxe
-    16705,  4186, 1, -- Greataxe
-    16391,   828, 2, -- Brass Knuckles
-    17043,  2083, 2, -- Brass Hammer
-    16641,  1435, 2, -- Brass Axe
-    16704,   618, 2, -- Butterfly Axe
+    16392,  4818, 3, -- Metal Knuckles
+    17044,  6033, 3, -- Warhammer
+    16643, 11285, 3, -- Battleaxe
+    16705,  4186, 3, -- Greataxe
+    16391,   828, 3, -- Brass Knuckles
+    17043,  2083, 3, -- Brass Hammer
+    16641,  1435, 3, -- Brass Axe
+    16704,   618, 3, -- Butterfly Axe
     16390,   224, 3, -- Bronze Knuckles
     17042,   312, 3, -- Bronze Hammer
     16640,   290, 3, -- Bronze Axe
@@ -98,13 +98,13 @@ xi.eraShops.Hortense =
 
 xi.eraShops.Sororo =
 {
-    4641,  1165, 1, -- Diaga
-    4662,  7025, 1, -- Stoneskin
-    4664,   837, 1, -- Slow
-    4610,   585, 2, -- Cure II
-    4636,   140, 2, -- Banish
-    4646,  1165, 2, -- Banishga
-    4661,  2097, 2, -- Blink
+    4641,  1165, 3, -- Diaga
+    4662,  7025, 3, -- Stoneskin
+    4664,   837, 3, -- Slow
+    4610,   585, 3, -- Cure II
+    4636,   140, 3, -- Banish
+    4646,  1165, 3, -- Banishga
+    4661,  2097, 3, -- Blink
     4609,    61, 3, -- Cure
     4615,  1363, 3, -- Curaga
     4622,   180, 3, -- Poisona

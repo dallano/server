@@ -100,7 +100,7 @@ zones[xi.zone.PASHHOW_MARSHLANDS_S] =
 
     npc =
     {
-        INDESCRIPT_MARKINGS_OFFSET = 17146626,
+        INDESCRIPT_MARKINGS_OFFSET = 17146627,
     },
 }
 

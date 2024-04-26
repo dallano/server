@@ -164,8 +164,8 @@ zones[xi.zone.SOUTHERN_SAN_DORIA] =
             [17719927] = 17719927,  -- Event Moogle
             [17719928] = 17719928,  -- Token Moogle (Token Redemption)
         },
-        LUSIANE  = 17719350,
-        ARPETION = 17719409,
+        LUSIANE  = 17719351,
+        ARPETION = 17719410,
     },
 }
 

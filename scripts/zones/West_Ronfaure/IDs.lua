@@ -75,9 +75,9 @@ zones[xi.zone.WEST_RONFAURE] =
     },
     npc =
     {
-        SIGNPOST_OFFSET = 17187505,
-        OVERSEER_BASE   = 17187525, -- Doladepaiton_RK in npc_list
-        GOLDFISH_NPC    = 17187570, -- Sunbreeze Festival Goldfish NPC
+        SIGNPOST_OFFSET = 17187506,
+        OVERSEER_BASE   = 17187526, -- Doladepaiton_RK in npc_list
+        GOLDFISH_NPC    = 17187571, -- Sunbreeze Festival Goldfish NPC
     },
 }
 

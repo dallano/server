@@ -63,15 +63,15 @@ zones[xi.zone.GUSGEN_MINES] =
     },
     npc =
     {
-        TREASURE_CHEST = 17580403,
+        TREASURE_CHEST = 17580404,
         MINING =
         {
-            17580397,
             17580398,
             17580399,
             17580400,
             17580401,
             17580402,
+            17580403,
         },
     },
 }

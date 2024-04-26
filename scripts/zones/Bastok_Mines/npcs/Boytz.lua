@@ -25,6 +25,8 @@ entity.onTrigger = function(player, npc)
         4148,  290, 3, -- Antidote
         17320,   7, 3, -- Iron Arrow
         17336,   5, 3, -- Crossbow Bolt
+        4165,  550, 3, -- Silent Oil
+        4164,  650, 3, -- Prism Powder
     }
 
     local rank = GetNationRank(xi.nation.BASTOK)

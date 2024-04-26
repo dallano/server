@@ -207,7 +207,7 @@ zones[xi.zone.ARRAPAGO_REMNANTS] =
         {
             [1] =
             {
-                DOOR1 = 17080974,
+                DOOR1 = 17080975,
             },
 
             [2] =
@@ -217,10 +217,10 @@ zones[xi.zone.ARRAPAGO_REMNANTS] =
 
             [3] =
             {
-                DOOR1 = 17080975,
-                DOOR2 = 17080976,
-                DOOR3 = 17080977,
-                DOOR4 = 17080978,
+                DOOR1 = 17080976,
+                DOOR2 = 17080977,
+                DOOR3 = 17080978,
+                DOOR4 = 17080979,
             },
         },
 
@@ -229,9 +229,9 @@ zones[xi.zone.ARRAPAGO_REMNANTS] =
             [1] =
             {
                 DOOR1 = 17080979,
-                DOOR2 = 17080980,
-                DOOR3 = 17080981,
-                DOOR4 = 17080982,
+                DOOR2 = 17080981,
+                DOOR3 = 17080982,
+                DOOR4 = 17080983,
             },
 
             [2] =
@@ -245,8 +245,8 @@ zones[xi.zone.ARRAPAGO_REMNANTS] =
         {
             [1] =
             {
-                DOOR1 = 17080983,
-                DOOR2 = 17080984,
+                DOOR1 = 17080984,
+                DOOR2 = 17080985,
             },
         },
 
@@ -254,8 +254,8 @@ zones[xi.zone.ARRAPAGO_REMNANTS] =
         {
             [1] =
             {
-                DOOR1 = 17080985,
-                DOOR2 = 17080986,
+                DOOR1 = 17080986,
+                DOOR2 = 17080987,
             },
         },
 
@@ -263,14 +263,14 @@ zones[xi.zone.ARRAPAGO_REMNANTS] =
         {
             [1] =
             {
-                DOOR1 = 17080987,
-                DOOR2 = 17080988,
+                DOOR1 = 17080997,
+                DOOR2 = 17080998,
             },
         },
 
         [6] =
         {
-            DOOR = 17080989,
+            DOOR = 17080990,
         },
     },
 

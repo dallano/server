@@ -34,7 +34,7 @@ zones[xi.zone.SHIP_BOUND_FOR_MHAURA_PIRATES] =
     {
         PIRATES =
         {
-            [17711136] =
+            [17711137] =
             {
                 start_pos =
                 {
@@ -63,7 +63,7 @@ zones[xi.zone.SHIP_BOUND_FOR_MHAURA_PIRATES] =
                 },
                 position = 1,
             },
-            [17711137] =
+            [17711138] =
             {
                 start_pos =
                 {
@@ -95,7 +95,7 @@ zones[xi.zone.SHIP_BOUND_FOR_MHAURA_PIRATES] =
                 },
                 position = 2,
             },
-            [17711138] =
+            [17711139] =
             {
                 start_pos =
                 {
@@ -130,7 +130,7 @@ zones[xi.zone.SHIP_BOUND_FOR_MHAURA_PIRATES] =
                 },
                 position = 3,
             },
-            [17711156] =
+            [17711157] =
             {
                 start_pos =
                 {
@@ -165,7 +165,7 @@ zones[xi.zone.SHIP_BOUND_FOR_MHAURA_PIRATES] =
         },
         PIRATE_SHIP =
         {
-            id = 17711139,
+            id = 17711141,
             start_pos =
             {
                 x = 150,

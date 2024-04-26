@@ -68,16 +68,16 @@ zones[xi.zone.MISAREAUX_COAST] =
     {
         LOGGING =
         {
-            16879972,
             16879973,
             16879974,
             16879975,
             16879976,
             16879977,
+            16879978,
         },
-        ZIPHIUS_QM_BASE  = 16879919,
         GRATION_QM       = 16879918,
-        ALSHA_QM         = 16879978,
+        ZIPHIUS_QM_BASE  = 16879919,
+        ALSHA_QM         = 16879979,
     },
 }
 

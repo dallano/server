@@ -61,7 +61,7 @@ zones[xi.zone.KING_RANPERRES_TOMB] =
     },
     npc =
     {
-        TREASURE_CHEST = 17556014,
+        TREASURE_CHEST = 17556015,
     },
 }
 

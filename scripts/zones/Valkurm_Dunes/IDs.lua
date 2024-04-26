@@ -85,12 +85,12 @@ zones[xi.zone.VALKURM_DUNES] =
     },
     npc =
     {
-        SUNSAND_QM        = 17199699, -- qm1 in npc_list
-        OVERSEER_BASE     = 17199709, -- Quanteilleron_RK in npc_list
-        PIRATE_CHART_QM   = 17199740,
-        PIRATE_CHART_TARU = 17199741,
-        BARNACLED_BOX     = 17199605,
-        SHIMMERING_POINT  = 17199742,
+        SUNSAND_QM        = 17199700, -- qm1 in npc_list
+        OVERSEER_BASE     = 17199710, -- Quanteilleron_RK in npc_list
+        PIRATE_CHART_QM   = 17199741,
+        PIRATE_CHART_TARU = 17199742,
+        BARNACLED_BOX     = 17199606,
+        SHIMMERING_POINT  = 17199743,
     },
 }
 

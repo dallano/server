@@ -86,7 +86,7 @@ xi.settings.main =
     -- Retail droprate = 0.1 (10%) with no other effects active
     -- Set to 0 to disable caskets.
     -- max is clamped to 1.0 (100%)
-    CASKET_DROP_RATE = 0,
+    CASKET_DROP_RATE = 0.1,
 
     -- Abyssea lights
     -- certain mobs that reduces the drop rate automatically depending on the light.

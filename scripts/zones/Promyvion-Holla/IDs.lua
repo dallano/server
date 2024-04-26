@@ -26,17 +26,17 @@ zones[xi.zone.PROMYVION_HOLLA] =
     {
         MEMORY_RECEPTACLES =
         {
-            [16842781] = { group = 1, strays = 3, stream = 16843060 },
-            [16842841] = { group = 2, strays = 5, stream = 16843056 },
-            [16842848] = { group = 2, strays = 5, stream = 16843057 },
-            [16842855] = { group = 2, strays = 5, stream = 16843058 },
-            [16842862] = { group = 2, strays = 5, stream = 16843059 },
-            [16842888] = { group = 3, strays = 7, stream = 16843053 },
-            [16842897] = { group = 3, strays = 7, stream = 16843054 },
-            [16842906] = { group = 3, strays = 7, stream = 16843055 },
-            [16842940] = { group = 4, strays = 7, stream = 16843061 },
-            [16842949] = { group = 4, strays = 7, stream = 16843062 },
-            [16842958] = { group = 4, strays = 7, stream = 16843063 },
+            [16842782] = { group = 1, strays = 3, stream = 16843060 },
+            [16842842] = { group = 2, strays = 5, stream = 16843056 },
+            [16842849] = { group = 2, strays = 5, stream = 16843057 },
+            [16842856] = { group = 2, strays = 5, stream = 16843058 },
+            [16842863] = { group = 2, strays = 5, stream = 16843059 },
+            [16842889] = { group = 3, strays = 7, stream = 16843053 },
+            [16842898] = { group = 3, strays = 7, stream = 16843054 },
+            [16842907] = { group = 3, strays = 7, stream = 16843055 },
+            [16842941] = { group = 4, strays = 7, stream = 16843061 },
+            [16842950] = { group = 4, strays = 7, stream = 16843062 },
+            [16842959] = { group = 4, strays = 7, stream = 16843063 },
         },
 
         CEREBRATOR    = 16843043,
@@ -50,17 +50,17 @@ zones[xi.zone.PROMYVION_HOLLA] =
             [31]        = { triggerArea = { -162, -4,  118, -158, 4,  122 }, destinations = { 42     } }, -- floor 3 return
             [32]        = { triggerArea = {  158, -4,  238,  162, 4,  242 }, destinations = { 42     } }, -- floor 3 return
             [41]        = { triggerArea = {  118, -4, -322,  121, 4, -318 }, destinations = { 33     } }, -- floor 4 return
-            [16843060]  = { triggerArea = {  -42, -4,  198,  -38, 4,  202 }, destinations = { 37     } }, -- floor 1 MR1
-            [16843056]  = { triggerArea = { -240, -4,   38, -237, 4,   41 }, destinations = { 33, 34 } }, -- floor 2 MR1
-            [16843057]  = { triggerArea = { -282, -4,  -42, -278, 4,  -38 }, destinations = { 33, 34 } }, -- floor 2 MR2
-            [16843058]  = { triggerArea = { -162, -4, -202, -157, 4, -198 }, destinations = { 33, 34 } }, -- floor 2 MR3
-            [16843059]  = { triggerArea = {   -2, -4,  -42,    2, 4,  -38 }, destinations = { 33, 34 } }, -- floor 2 MR4
-            [16843053]  = { triggerArea = { -282, -4,  277, -278, 4,  282 }, destinations = { 30     } }, -- floor 3 MR1
-            [16843054]  = { triggerArea = { -362, -4,  237, -358, 4,  242 }, destinations = { 30     } }, -- floor 3 MR2
-            [16843055]  = { triggerArea = { -362, -4,  118, -358, 4,  122 }, destinations = { 30     } }, -- floor 3 MR3
-            [16843061]  = { triggerArea = {   38, -4,  318,   42, 4,  322 }, destinations = { 30     } }, -- floor 3 MR4
-            [16843062]  = { triggerArea = {  158, -4,  358,  162, 4,  362 }, destinations = { 30     } }, -- floor 3 MR5
-            [16843063]  = { triggerArea = {  278, -4,  197,  282, 4,  202 }, destinations = { 30     } }, -- floor 3 MR6
+            [16843061]  = { triggerArea = {  -42, -4,  198,  -38, 4,  202 }, destinations = { 37     } }, -- floor 1 MR1
+            [16843057]  = { triggerArea = { -240, -4,   38, -237, 4,   41 }, destinations = { 33, 34 } }, -- floor 2 MR1
+            [16843058]  = { triggerArea = { -282, -4,  -42, -278, 4,  -38 }, destinations = { 33, 34 } }, -- floor 2 MR2
+            [16843059]  = { triggerArea = { -162, -4, -202, -157, 4, -198 }, destinations = { 33, 34 } }, -- floor 2 MR3
+            [16843060]  = { triggerArea = {   -2, -4,  -42,    2, 4,  -38 }, destinations = { 33, 34 } }, -- floor 2 MR4
+            [16843054]  = { triggerArea = { -282, -4,  277, -278, 4,  282 }, destinations = { 30     } }, -- floor 3 MR1
+            [16843055]  = { triggerArea = { -362, -4,  237, -358, 4,  242 }, destinations = { 30     } }, -- floor 3 MR2
+            [16843056]  = { triggerArea = { -362, -4,  118, -358, 4,  122 }, destinations = { 30     } }, -- floor 3 MR3
+            [16843062]  = { triggerArea = {   38, -4,  318,   42, 4,  322 }, destinations = { 30     } }, -- floor 3 MR4
+            [16843063]  = { triggerArea = {  158, -4,  358,  162, 4,  362 }, destinations = { 30     } }, -- floor 3 MR5
+            [16843064]  = { triggerArea = {  278, -4,  197,  282, 4,  202 }, destinations = { 30     } }, -- floor 3 MR6
         },
     },
 }

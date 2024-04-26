@@ -34,7 +34,7 @@ zones[xi.zone.VUNKERL_INLET_S] =
     },
     npc =
     {
-        INDESCRIPT_MARKINGS = 17118008,
+        INDESCRIPT_MARKINGS = 17118009,
     },
 }
 

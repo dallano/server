@@ -14,10 +14,9 @@ end
 entity.onTrigger = function(player, npc)
     local stock =
     {
-        13198, 19602, 1,    --Swordbelt
-        17389,   486, 1,    --Bamboo Fishing Rod
-        17396,     3, 2,    --Little Worm
-        17390,   212, 2,    --Yew Fishing Rod
+        17389,   486, 3,    --Bamboo Fishing Rod
+        17396,     3, 3,    --Little Worm
+        17390,   212, 3,    --Yew Fishing Rod
         17395,    10, 3,    --Lugworm
         17391,    64, 3,    --Willow Fishing Rod
         12600,   216, 3,    --Robe

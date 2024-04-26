@@ -52,7 +52,7 @@ zones[xi.zone.TAVNAZIAN_SAFEHOLD] =
     },
     npc =
     {
-        QM_IN_SEARCH_OF_TRUTH_BASE = 16883860,
+        QM_IN_SEARCH_OF_TRUTH_BASE = 16883861,
     },
 }
 

@@ -12,10 +12,10 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local stock =
     {
-        4862,  111, 1,    -- Scroll of Blind
-        4838,  360, 2,    -- Scroll of Bio
-        4828,   82, 2,    -- Scroll of Poison
-        4861, 2250, 2,    -- Scroll of Sleep
+        4862,  111, 3,    -- Scroll of Blind
+        4838,  360, 3,    -- Scroll of Bio
+        4828,   82, 3,    -- Scroll of Poison
+        4861, 2250, 3,    -- Scroll of Sleep
         4767,   61, 3,    -- Scroll of Stone
         4777,  140, 3,    -- Scroll of Water
         4762,  324, 3,    -- Scroll of Aero

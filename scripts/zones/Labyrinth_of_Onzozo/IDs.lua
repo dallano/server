@@ -88,7 +88,7 @@ zones[xi.zone.LABYRINTH_OF_ONZOZO] =
     },
     npc =
     {
-        TREASURE_CHEST = 17649900,
+        TREASURE_CHEST = 17649901,
     },
 }
 

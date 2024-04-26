@@ -406,6 +406,19 @@ xi.fellow_utils.onTrigger = function(player, fellow)
     end
 end
 
+xi.fellow_utils.canAct = function(fellow)
+    if
+        not fellow:hasStatusEffect(xi.effect.PETRIFICATION) and
+        not fellow:hasStatusEffect(xi.effect.SLEEP_I) and
+        not fellow:hasStatusEffect(xi.effect.SLEEP_II) and
+        not fellow:hasStatusEffect(xi.effect.LULLABY)
+    then
+        return true
+    end
+
+    return false
+end
+
 xi.fellow_utils.onFellowRoam = function(fellow)
     local master = fellow:getMaster()
 
@@ -426,18 +439,22 @@ xi.fellow_utils.onFellowRoam = function(fellow)
         fellow:setPos(mPos.x + math.random(-1, 1), mPos.y, mPos.z + math.random(-1, 1))
     end
 
-    xi.fellow_utils.spellCheck(fellow, master)
-    xi.fellow_utils.checkJobAbility(fellow, master)
+    if xi.fellow_utils.canAct(fellow) then
+        xi.fellow_utils.spellCheck(fellow, master)
+        xi.fellow_utils.checkJobAbility(fellow, master)
+    end
 end
 
 xi.fellow_utils.onFellowFight = function(fellow, target)
     local master = fellow:getMaster()
 
-    xi.fellow_utils.checkJobAbility(fellow, master)
-    xi.fellow_utils.checkProvoke(fellow, target, master)
-    xi.fellow_utils.spellCheck(fellow, master)
-    xi.fellow_utils.checkWeaponskill(fellow, target, master)
-    xi.fellow_utils.battleMessaging(fellow, master)
+    if xi.fellow_utils.canAct(fellow) then
+        xi.fellow_utils.checkJobAbility(fellow, master)
+        xi.fellow_utils.checkProvoke(fellow, target, master)
+        xi.fellow_utils.spellCheck(fellow, master)
+        xi.fellow_utils.checkWeaponskill(fellow, target, master)
+        xi.fellow_utils.battleMessaging(fellow, master)
+    end
 end
 
 xi.fellow_utils.buildPartyTable = function(master)
@@ -964,35 +981,38 @@ xi.fellow_utils.checkWeaponskill = function(fellow, target, fellowLvl)
     then
         -- Waits for party member to have TP if said member is also engaged to the same target as fellow
         for _, member in pairs(party) do
-            if
-                member:isPC() and
-                member:isEngaged() and
-                member:getTP() >= 1000 and
-                target:getHPP() > 15
-            then
-                for _, member in pairs(master:getParty()) do
-                    if member:isPC() then
-                        member:PrintToPlayer("Using weaponskill. Let's roll!", xi.msg.channel.PARTY, fellow:getName())
-                    end
-                end
-
-                -- Finds highest level WS to use
-                for _, skill in pairs(weaponskillTable) do
-                    if fellow:getMainLvl() > skill.level then
-                        chosenSkill = skill.id
-                        break
-                    end
-                end
-
-                -- Use skill control to ensure this isn't called multiple times for extra measure
+            if fellow:checkDistance(target) <= 5 then
                 if
-                    fellow:getLocalVar("skillControl") < os.time() and
-                    chosenSkill > 0
+                    (member:isPC() and
+                    member:isEngaged() and
+                    member:getTP() >= 1000 and
+                    target:getHPP() > 15) or
+                    not member:isEngaged()
                 then
-                    fellow:useMobAbility(chosenSkill, target)
-                    fellow:setLocalVar("chatControl", 0)
-                    fellow:setLocalVar("skillControl", os.time() + 5)
-                    return
+                    for _, member in pairs(master:getParty()) do
+                        if member:isPC() then
+                            member:PrintToPlayer("Using weaponskill. Let's roll!", xi.msg.channel.PARTY, fellow:getName())
+                        end
+                    end
+
+                    -- Finds highest level WS to use
+                    for _, skill in pairs(weaponskillTable) do
+                        if fellow:getMainLvl() > skill.level then
+                            chosenSkill = skill.id
+                            break
+                        end
+                    end
+
+                    -- Use skill control to ensure this isn't called multiple times for extra measure
+                    if
+                        fellow:getLocalVar("skillControl") < os.time() and
+                        chosenSkill > 0
+                    then
+                        fellow:useMobAbility(chosenSkill, target)
+                        fellow:setLocalVar("chatControl", 0)
+                        fellow:setLocalVar("skillControl", os.time() + 5)
+                        return
+                    end
                 end
             end
         end
