@@ -239,6 +239,7 @@ quest.sections =
                         player:messageSpecial(ghelsbaID.text.YOU_CAN_NOW_BECOME_A_DRAGOON)
                         player:setPetName(xi.pet.type.WYVERN, option + 1)
                         quest:complete(player)
+                        player:PrintToPlayer("Rahim will now join your party.", 20)
                     end
                 end,
             },

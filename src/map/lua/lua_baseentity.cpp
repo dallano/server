@@ -13264,6 +13264,34 @@ void CLuaBaseEntity::setTrustTPSkillSettings(uint16 trigger, uint16 select, sol:
 }
 
 /************************************************************************
+ *  Function: trustAttack()
+ *  Purpose : forces the trust to engage a target
+ *  Example : trust:trustAttack(target)
+ *  Notes   :
+ ************************************************************************/
+void CLuaBaseEntity::trustAttack(CLuaBaseEntity* PEntity)
+{
+    auto* PTrust = static_cast<CTrustEntity*>(m_PBaseEntity);
+
+    XI_DEBUG_BREAK_IF(PTrust->objtype != TYPE_TRUST);
+
+    trustutils::AttackTarget(PTrust, static_cast<CBattleEntity*>(PEntity->GetBaseEntity()));
+}
+
+/************************************************************************
+ *  Function: trustRetreat()
+ *  Purpose : forces the trust to retreat
+ *  Example : trust:trustRetreat()
+ *  Notes   :
+ ************************************************************************/
+void CLuaBaseEntity::trustRetreat()
+{
+    auto* PTrust = static_cast<CTrustEntity*>(m_PBaseEntity);
+    XI_DEBUG_BREAK_IF(m_PBaseEntity->objtype != TYPE_TRUST);
+    trustutils::Retreat(PTrust);
+}
+
+/************************************************************************
  *  Function: despawnPet()
  *  Purpose : Despawns a Pet Entity
  *  Example : target:despawnPet()
@@ -17445,6 +17473,8 @@ void CLuaBaseEntity::Register()
     SOL_REGISTER("removeSimpleGambit", CLuaBaseEntity::removeSimpleGambit);
     SOL_REGISTER("removeAllSimpleGambits", CLuaBaseEntity::removeAllSimpleGambits);
     SOL_REGISTER("setTrustTPSkillSettings", CLuaBaseEntity::setTrustTPSkillSettings);
+    SOL_REGISTER("trustAttack", CLuaBaseEntity::trustAttack);
+    SOL_REGISTER("trustRetreat", CLuaBaseEntity::trustRetreat);
 
     // Adventuring Fellow related
     SOL_REGISTER("spawnFellow", CLuaBaseEntity::spawnFellow);

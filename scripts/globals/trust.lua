@@ -378,7 +378,7 @@ end
 -- pageOffset is: (summon_message_id - 1) / 100
 -- Example: Shantotto II summon message ID: 11201
 -- pageOffset: (11201 - 1) / 100 = 112
-xi.trust.message = function(mob, messageOffset)
+xi.trust.message = function(mob, messageOffset, i)
     local poolID     = mob:getPool()
     local pageOffset = poolIDToMessagePageOffset[poolID]
 

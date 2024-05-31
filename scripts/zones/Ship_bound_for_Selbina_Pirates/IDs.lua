@@ -122,7 +122,7 @@ zones[xi.zone.SHIP_BOUND_FOR_SELBINA_PIRATES] =
                 },
                 position = 3,
             },
-            [17707062] =
+            [17707045] =
             {
                 start_pos =
                 {

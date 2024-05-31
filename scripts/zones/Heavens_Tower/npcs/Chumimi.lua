@@ -148,6 +148,7 @@ entity.onEventFinish = function(player, csid, option)
             player:messageSpecial(ID.text.ITEM_CANNOT_BE_OBTAINED)
         else
             player:completeQuest(xi.quest.log_id.WINDURST, xi.quest.id.windurst.THE_ROOT_OF_THE_PROBLEM)
+            player:PrintToPlayer("Koru-Moru will now join your party.", 20)
             player:addItem(13856)
             player:messageSpecial(ID.text.ITEM_OBTAINED, 13856)
             player:addTitle(xi.title.PARAGON_OF_BLACK_MAGE_EXCELLENCE)

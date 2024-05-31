@@ -23,6 +23,8 @@ spellObject.onMobSpawn = function(mob)
         [xi.magic.spell.GILGAMESH] = xi.trust.message_offset.TEAMWORK_2,
     })
 
+    mob:addMod(xi.mod.ATT, 50)
+
     mob:addSimpleGambit(ai.t.SELF, ai.c.NOT_STATUS, xi.effect.HASSO,
         ai.r.JA, ai.s.SPECIFIC, xi.ja.HASSO)
 

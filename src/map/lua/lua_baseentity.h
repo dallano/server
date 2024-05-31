@@ -732,6 +732,8 @@ public:
     void   removeSimpleGambit(std::string const& id);
     void   removeAllSimpleGambits();
     void   setTrustTPSkillSettings(uint16 trigger, uint16 select, sol::object const& value);
+    void   trustAttack(CLuaBaseEntity* PEntity);
+    void   trustRetreat();
 
     bool hasJugPet(); // If the entity has a pet, test if it is a jug pet.
     bool hasValidJugPetItem();

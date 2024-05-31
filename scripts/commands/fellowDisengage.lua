@@ -17,6 +17,14 @@ function error(player, msg)
 end
 
 function onTrigger(player)
+    local party = player:getPartyWithTrusts()
+
     player:fellowRetreat()
     player:setCharVar("fellowAttackControl", 0)
+
+    for _, member in pairs(party) do
+        if member:getObjType() == xi.objType.TRUST then
+            member:trustRetreat()
+        end
+    end
 end

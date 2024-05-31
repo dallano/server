@@ -84,8 +84,8 @@ quest.sections =
                         if not player:hasCompletedQuest(quest.areaId, quest.questId) then
                             quest:complete(player)
                         else
-                            player:addFame(xi.quest.fame_area.SANDORIA, 5)
-                            npcUtil.giveCurrency(player, "gil", xi.settings.main.GIL_RATE * 120)
+                            quest.reward.fame = 5
+                            quest:complete(player)
                         end
                 end,
             },

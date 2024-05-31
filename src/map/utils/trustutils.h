@@ -19,6 +19,8 @@ namespace trustutils
     void          BuildTrust(uint32 TrustID);
     CTrustEntity* LoadTrust(CCharEntity* PMaster, uint32 TrustID);
     void          LoadTrustStatsAndSkills(CTrustEntity* PTrust);
+    void          AttackTarget(CTrustEntity* PTrust, CBattleEntity* PTarget);
+    void          Retreat(CTrustEntity* PTrust);
 }; // namespace trustutils
 
 #endif

@@ -113,6 +113,7 @@ quest.sections =
             {
                 [692] = function(player, csid, option, npc)
                     if quest:complete(player) then
+                        player:PrintToPlayer("Pieuje will now join your party.", 20)
                         player:confirmTrade()
                     end
                 end,

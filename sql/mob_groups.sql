@@ -10078,15 +10078,15 @@ INSERT INTO `mob_groups` VALUES (22,3033,140,'Orcish_Stonechucker',330,0,1940,0,
 INSERT INTO `mob_groups` VALUES (23,3023,140,'Orcish_Neckchopper',330,0,1928,0,0,11,15,0);
 INSERT INTO `mob_groups` VALUES (24,3899,140,'Thousandarm_Deshglesh',0,32,2400,400,0,11,13,0);
 INSERT INTO `mob_groups` VALUES (25,1513,140,'Ghelsba_Pugil',330,0,975,0,0,3,6,0);
-INSERT INTO `mob_groups` VALUES (26,884,140,'Cyranuce_M_Cutauleon',0,128,0,0,0,30,30,0);
-INSERT INTO `mob_groups` VALUES (27,766,140,'Colo-colo',0,128,0,0,0,21,21,0);
-INSERT INTO `mob_groups` VALUES (28,1441,140,'Furies',0,128,0,750,0,19,19,0);
+INSERT INTO `mob_groups` VALUES (26,884,140,'Cyranuce_M_Cutauleon',0,128,0,0,0,28,31,0);
+INSERT INTO `mob_groups` VALUES (27,766,140,'Colo-colo',0,128,0,0,0,18,18,0);
+INSERT INTO `mob_groups` VALUES (28,1441,140,'Furies',0,128,0,750,0,15,15,0);
 INSERT INTO `mob_groups` VALUES (29,2181,140,'Kalamainu',0,128,0,1300,0,33,35,0);
 INSERT INTO `mob_groups` VALUES (30,2227,140,'Kilioa',0,128,0,1500,0,33,35,0);
-INSERT INTO `mob_groups` VALUES (31,3937,140,'Toadpillow',0,128,0,0,0,31,33,0);
-INSERT INTO `mob_groups` VALUES (32,3938,140,'Toadsquab',0,128,0,0,0,31,33,0);
-INSERT INTO `mob_groups` VALUES (33,3935,140,'Toadbolster',0,128,0,0,0,31,33,0);
-INSERT INTO `mob_groups` VALUES (34,3936,140,'Toadcushion',0,128,0,0,0,31,33,0);
+INSERT INTO `mob_groups` VALUES (31,3937,140,'Toadpillow',0,128,0,0,0,20,23,0);
+INSERT INTO `mob_groups` VALUES (32,3938,140,'Toadsquab',0,128,0,0,0,20,23,0);
+INSERT INTO `mob_groups` VALUES (33,3935,140,'Toadbolster',0,128,0,0,0,20,23,0);
+INSERT INTO `mob_groups` VALUES (34,3936,140,'Toadcushion',0,128,0,0,0,20,23,0);
 INSERT INTO `mob_groups` VALUES (35,651,140,'Carrion_Dragon',0,128,0,0,0,19,20,0);
 
 -- ------------------------------------------------------------
@@ -16027,6 +16027,14 @@ INSERT INTO `mob_groups` VALUES (7,0,298,'Larzos',0,128,0,0,0,0,0,0);
 INSERT INTO `mob_groups` VALUES (8,0,298,'Dark_Gyves',0,128,0,0,0,0,0,0);
 INSERT INTO `mob_groups` VALUES (9,0,298,'Lilith_Ascendant',0,128,0,0,0,0,0,0);
 INSERT INTO `mob_groups` VALUES (10,0,298,'Light_Gyves',0,128,0,0,0,0,0,0);
+
+-- ------------------------------------------------------------
+-- XI Singleplayer customs (Zone 300)
+-- ------------------------------------------------------------
+INSERT INTO `mob_groups` VALUES (1,2261,300,'Auto-Tank',0,128,0,0,0,0,0,0);
+INSERT INTO `mob_groups` VALUES (2,3285,300,'Auto-Healer',0,128,0,0,0,0,0,0);
+INSERT INTO `mob_groups` VALUES (3,2258,300,'Auto-Damage',0,128,0,0,0,0,0,0);
+INSERT INTO `mob_groups` VALUES (4,2259,300,'Auto-Puller',0,128,0,0,0,0,0,0);
 
 /*!40000 ALTER TABLE `mob_groups` ENABLE KEYS */;
 UNLOCK TABLES;

@@ -130,7 +130,7 @@ zones[xi.zone.SHIP_BOUND_FOR_MHAURA_PIRATES] =
                 },
                 position = 3,
             },
-            [17711157] =
+            [17711140] =
             {
                 start_pos =
                 {

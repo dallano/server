@@ -24,17 +24,16 @@ spellObject.onMobSpawn = function(mob)
     mob:addSimpleGambit(ai.t.TARGET, ai.c.NOT_STATUS, xi.effect.EVASION_DOWN, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.DISTRACT, 60)
 
     mob:addSimpleGambit(ai.t.SELF, ai.c.NOT_STATUS, xi.effect.PHALANX, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.PHALANX)
-    mob:addSimpleGambit(ai.t.SELF, ai.c.NOT_STATUS, xi.effect.HASTE, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.HASTE)
-    mob:addSimpleGambit(ai.t.SELF, ai.c.NOT_STATUS, xi.effect.REFRESH, ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.REFRESH)
+    mob:addSimpleGambit(ai.t.TARGET, ai.c.NOT_STATUS, xi.effect.HASTE, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.HASTE)
+    mob:addSimpleGambit(ai.t.TARGET, ai.c.NOT_STATUS, xi.effect.REFRESH, ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.REFRESH)
 
-    -- If Curilla is present, will cast Haste/Phalanx/Refresh on her.
-    mob:addSimpleGambit(ai.t.CURILLA, ai.c.NOT_STATUS, xi.effect.HASTE, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.HASTE)
-    mob:addSimpleGambit(ai.t.CURILLA, ai.c.NOT_STATUS, xi.effect.PHALANX, ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.PHALANX_II)
-    mob:addSimpleGambit(ai.t.CURILLA, ai.c.NOT_STATUS, xi.effect.REFRESH, ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.REFRESH)
+    mob:addSimpleGambit(ai.t.TARGET, ai.c.NOT_STATUS, xi.effect.HASTE, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.HASTE)
+    mob:addSimpleGambit(ai.t.TARGET, ai.c.NOT_STATUS, xi.effect.PHALANX, ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.PHALANX_II)
+    mob:addSimpleGambit(ai.t.TARGET, ai.c.NOT_STATUS, xi.effect.REFRESH, ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.REFRESH)
 
     -- NOTE: Do these late, to try and avoid clashing with healers casting -ra's
-    mob:addSimpleGambit(ai.t.SELF, ai.c.NOT_STATUS, xi.effect.PROTECT, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.PROTECT)
-    mob:addSimpleGambit(ai.t.SELF, ai.c.NOT_STATUS, xi.effect.SHELL, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.SHELL)
+    mob:addSimpleGambit(ai.t.TA, ai.c.NOT_STATUS, xi.effect.PROTECT, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.PROTECT)
+    mob:addSimpleGambit(ai.t.TA, ai.c.NOT_STATUS, xi.effect.SHELL, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.SHELL)
 end
 
 spellObject.onMobDespawn = function(mob)

@@ -460,6 +460,11 @@ namespace fellowutils
 
     void SpawnFellow(CCharEntity* PMaster, uint32 FellowID, bool spawningFromZone)
     {
+        if (PMaster->PParty == nullptr)
+        {
+            PMaster->PParty = new CParty(PMaster);
+        }
+
         CFellowEntity* PFellow = LoadFellow(PMaster, FellowID, spawningFromZone);
 
         if (PFellow)

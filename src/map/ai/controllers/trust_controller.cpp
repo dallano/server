@@ -97,19 +97,6 @@ void CTrustController::DoCombatTick(time_point tick)
 {
     TracyZoneScoped;
 
-    if (!POwner->PMaster->PAI->IsEngaged())
-    {
-        POwner->PAI->Internal_Disengage();
-        m_LastTopEnmity = nullptr;
-        m_CombatEndTime = m_Tick;
-    }
-
-    if (POwner->PMaster->GetBattleTargetID() != POwner->GetBattleTargetID())
-    {
-        POwner->PAI->Internal_ChangeTarget(POwner->PMaster->GetBattleTargetID());
-        m_LastTopEnmity = nullptr;
-    }
-
     // If busy, don't run around!
     if (POwner->PAI->IsCurrentState<CMagicState>() || POwner->PAI->IsCurrentState<CRangeState>())
     {
@@ -192,9 +179,10 @@ void CTrustController::DoCombatTick(time_point tick)
             POwner->PAI->PathFind->FollowPath(m_Tick);
         }
 
-        m_GambitsContainer->Tick(tick);
+        m_GambitsContainer->Tick(tick); // Soon to take out
 
         POwner->PAI->EventHandler.triggerListener("COMBAT_TICK", CLuaBaseEntity(POwner), CLuaBaseEntity(POwner->PMaster), CLuaBaseEntity(PTarget));
+        luautils::OnMobFight(POwner, PTarget);
     }
 }
 
@@ -225,7 +213,7 @@ void CTrustController::DoRoamTick(time_point tick)
         }
     }
 
-    if (PMaster->PAI->IsEngaged() && trustEngageCondition)
+    if (PMaster->PAI->IsEngaged() && trustEngageCondition && charutils::GetCharVar(PMaster, "fellowAttackControl") == 1)
     {
         POwner->PAI->Internal_Engage(PMaster->GetBattleTargetID());
     }
@@ -291,6 +279,8 @@ void CTrustController::DoRoamTick(time_point tick)
             m_NumHealingTicks = std::clamp(m_NumHealingTicks + 1, static_cast<std::size_t>(0U), m_tickDelays.size() - 1U);
         }
     }
+
+    luautils::OnMobRoam(POwner);
 }
 
 void CTrustController::Declump(CCharEntity* PMaster, CBattleEntity* PTarget)
@@ -302,25 +292,28 @@ void CTrustController::Declump(CCharEntity* PMaster, CBattleEntity* PTarget)
     {
         if (POtherTrust != POwner && !POtherTrust->PAI->PathFind->IsFollowingPath() && distance(POtherTrust->loc.p, POwner->loc.p) < 1.5f)
         {
-            auto diffAngle  = worldAngle(POwner->loc.p, PTarget->loc.p) + 64;
-            auto moveAmount = xirand::GetRandomNumber(0.0f, 1.5f) * ((currentPartyPos % 2) ? 1.0f : -1.0f);
-
-            // clang-format off
-            position_t newPos =
+            if (distance(PTarget->loc.p, POwner->loc.p) < 6.0f)
             {
-                POwner->loc.p.x - (cosf(rotationToRadian(diffAngle)) * moveAmount),
-                PTarget->loc.p.y,
-                POwner->loc.p.z + (sinf(rotationToRadian(diffAngle)) * moveAmount),
-                0,
-                0,
-            };
-            // clang-format on
+                auto diffAngle  = worldAngle(POwner->loc.p, PTarget->loc.p) + 64;
+                auto moveAmount = xirand::GetRandomNumber(0.0f, 1.5f) * ((currentPartyPos % 2) ? 1.0f : -1.0f);
 
-            if (POwner->PAI->PathFind->ValidPosition(newPos))
-            {
-                POwner->PAI->PathFind->PathTo(newPos, PATHFLAG_RUN | PATHFLAG_WALLHACK);
+                // clang-format off
+                position_t newPos =
+                {
+                    POwner->loc.p.x - (cosf(rotationToRadian(diffAngle)) * moveAmount),
+                    PTarget->loc.p.y,
+                    POwner->loc.p.z + (sinf(rotationToRadian(diffAngle)) * moveAmount),
+                    0,
+                    0,
+                };
+                // clang-format on
+
+                if (POwner->PAI->PathFind->ValidPosition(newPos))
+                {
+                    POwner->PAI->PathFind->PathTo(newPos, PATHFLAG_RUN | PATHFLAG_WALLHACK);
+                }
+                break;
             }
-            break;
         }
     }
 }
@@ -442,7 +435,7 @@ bool CTrustController::Cast(uint16 targid, SpellID spellid)
         targid = POwner->targid;
     }
 
-    auto PTarget      = (CBattleEntity*)POwner->GetEntity(targid, TYPE_MOB | TYPE_PC | TYPE_PET | TYPE_TRUST);
+    auto PTarget      = (CBattleEntity*)POwner->GetEntity(targid, TYPE_MOB | TYPE_PC | TYPE_PET | TYPE_TRUST | TYPE_FELLOW);
     auto PSpellFamily = PSpell->getSpellFamily();
     bool canCast      = true;
 

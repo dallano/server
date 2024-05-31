@@ -111,7 +111,11 @@ zoneObject.onGameHour = function(zone)
         DisallowRespawn(ID.mob.CITIPATI, true)
         DisallowRespawn(ID.mob.XOLOTL, true)
     else
-        if os.time() > xolre and VanadielHour() == 20 then
+        if
+            os.time() > xolre and
+            VanadielHour() == 20 and
+            not GetMobByID(ID.mob.XOLOTL):isSpawned()
+        then
             DisallowRespawn(ID.mob.XOLOTL, false)
             SpawnMob(ID.mob.XOLOTL)
             SetServerVariable("xolotlDead", 0)

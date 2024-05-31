@@ -26,17 +26,17 @@ zones[xi.zone.PROMYVION_MEA] =
     {
         MEMORY_RECEPTACLES =
         {
-            [16859156] = { group = 1, strays = 3, stream = 16859482 },
-            [16859206] = { group = 2, strays = 5, stream = 16859485 },
-            [16859213] = { group = 2, strays = 5, stream = 16859489 },
-            [16859220] = { group = 2, strays = 5, stream = 16859490 },
-            [16859227] = { group = 2, strays = 5, stream = 16859491 },
-            [16859297] = { group = 3, strays = 7, stream = 16859483 },
-            [16859306] = { group = 3, strays = 7, stream = 16859484 },
-            [16859315] = { group = 3, strays = 7, stream = 16859486 },
-            [16859377] = { group = 4, strays = 7, stream = 16859487 },
-            [16859386] = { group = 4, strays = 7, stream = 16859488 },
-            [16859395] = { group = 4, strays = 7, stream = 16859492 },
+            [16859155] = { group = 1, strays = 3, stream = 16859483 },
+            [16859205] = { group = 2, strays = 5, stream = 16859486 },
+            [16859212] = { group = 2, strays = 5, stream = 16859490 },
+            [16859219] = { group = 2, strays = 5, stream = 16859491 },
+            [16859226] = { group = 2, strays = 5, stream = 16859492 },
+            [16859296] = { group = 3, strays = 7, stream = 16859484 },
+            [16859305] = { group = 3, strays = 7, stream = 16859485 },
+            [16859314] = { group = 3, strays = 7, stream = 16859487 },
+            [16859376] = { group = 4, strays = 7, stream = 16859488 },
+            [16859385] = { group = 4, strays = 7, stream = 16859489 },
+            [16859394] = { group = 4, strays = 7, stream = 16859493 },
         },
 
         COVETER    = 16859472,

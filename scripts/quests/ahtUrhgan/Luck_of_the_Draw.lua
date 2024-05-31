@@ -132,6 +132,7 @@ quest.sections =
                         player:delKeyItem(xi.ki.FORGOTTEN_HEXAGUN)
                         player:unlockJob(xi.job.COR)
                         player:messageSpecial(talaccaCoveID.text.YOU_CAN_NOW_BECOME_A_CORSAIR)
+                        player:PrintToPlayer("Qultada will now join your party.", 20)
                     end
                 end,
             },

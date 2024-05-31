@@ -61,13 +61,21 @@ local regenTable =
     { effect = xi.effect.REGEN, spell = xi.magic.spell.REGEN,     level = 21, mpCost = 15 },
 }
 
-local cureTable =
+local cureTableHealer =
 {
     { spell = xi.magic.spell.CURE_V,   level = 61, mpCost = 135, hpThreshold = 500 },
     { spell = xi.magic.spell.CURE_IV,  level = 41, mpCost =  88, hpThreshold = 350 },
     { spell = xi.magic.spell.CURE_III, level = 21, mpCost =  46, hpThreshold = 180 },
     { spell = xi.magic.spell.CURE_II,  level = 11, mpCost =  24, hpThreshold = 100 },
     { spell = xi.magic.spell.CURE,     level =  1, mpCost =   8, hpThreshold = 45  },
+}
+
+local cureTableTank =
+{
+    { spell = xi.magic.spell.CURE_IV,  level = 55, mpCost =  88, hpThreshold = 350 },
+    { spell = xi.magic.spell.CURE_III, level = 30, mpCost =  46, hpThreshold = 180 },
+    { spell = xi.magic.spell.CURE_II,  level = 17, mpCost =  24, hpThreshold = 100 },
+    { spell = xi.magic.spell.CURE,     level =  5, mpCost =   8, hpThreshold = 45  },
 }
 
 local debuffTable =
@@ -294,6 +302,8 @@ xi.fellow_utils.onFellowSpawn = function(fellow)
     master:setLocalVar("chatCounter", 0)
     master:setFellowValue("spawnTime", os.time())
 
+    xi.autoparty.createParty(master)
+
     -- Adjust Position
     local mPos = master:getPos()
     fellow:setPos(mPos.x + math.random(-1.0, 1.0), mPos.y, mPos.z + math.random(-1.0, 1.0))
@@ -428,6 +438,7 @@ xi.fellow_utils.onFellowRoam = function(fellow)
 
     if
         master:isEngaged() and
+        master:getTarget() and
         master:getTarget():isEngaged() and
         master:getCharVar("fellowAttackControl") == 1
     then
@@ -666,6 +677,21 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
     local party         = xi.fellow_utils.buildPartyTable(master)
     local recast        = xi.fellow_utils.calculateRecast(fellow, fellowType)
     local thresholdMod  = 1
+    local debug         = false
+
+    local cureTable
+
+    if
+        fellowType == fellowTypes.HEALER or
+        fellowType == fellowTypes.SOOTHING
+    then
+        cureTable = cureTableHealer
+    elseif
+        fellowType == fellowTypes.SHIELD or
+        fellowType == fellowTypes.STALWART
+    then
+        cureTable = cureTableTank
+    end
 
 
     if
@@ -682,7 +708,6 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                 cure.mpCost <= mp
             then
                 for _, member in pairs(party) do
-
                     if
                         cure.spell == xi.magic.spell.CURE and
                         (member:getMainLvl() >= 35 or
@@ -692,19 +717,19 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                     end
 
                     if
-                        member:getMainJob() == xi.job.PLD and
+                        fellow:getMainJob() == xi.job.PLD and
                         member:getHPP() > 40
                     then
-                        thresholdMod = thresholdMod + 0.75
+                        thresholdMod = thresholdMod + 0.25
                     end
 
                     if
-                        member:hasStatusEffect(xi.effect.REGEN) and
-                        member:getHPP() > 50 or
-                        fellow:hasStatusEffect(xi.effect.REGEN) and
-                        fellow:getHPP() > 50
+                        (member:hasStatusEffect(xi.effect.REGEN) and
+                        member:getHPP() > 50) or
+                        (fellow:hasStatusEffect(xi.effect.REGEN) and
+                        fellow:getHPP() > 50)
                     then
-                        thresholdMod = thresholdMod + 0.25
+                        thresholdMod = thresholdMod + 0.50
                     end
 
                     if member:getHPP() < 50 then
@@ -712,7 +737,7 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                     end
 
                     -- Final Check before healing party member
-                    if (member:getMaxHP() - member:getHP()) > cure.hpThreshold * thresholdMod then
+                    if member:getMaxHP() - member:getHP() > cure.hpThreshold * thresholdMod then
                         fellow:setLocalVar("castingCoolDown", os.time() + recast)
                         fellow:castSpell(cure.spell, member)
                         return
@@ -722,7 +747,8 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                         thresholdMod = 1
                     end
 
-                    if (fellow:getMaxHP() - fellow:getHP()) > cure.hpThreshold * thresholdMod then
+                    -- Final Check before healing self
+                    if fellow:getMaxHP() - fellow:getHP() > cure.hpThreshold * thresholdMod then
                         fellow:setLocalVar("castingCoolDown", os.time() + recast)
                         fellow:castSpell(cure.spell, fellow)
                         return
@@ -1075,8 +1101,7 @@ xi.fellow_utils.checkProvoke = function(fellow, target, master)
         if
             fellow:getTarget():getID() ~= fellow:getID() or
             fellow:getMainLvl() >= 37 and
-            fellow:getMP() > 25 and
-            target:isNM()
+            fellow:getMP() > 25
         then
             fellow:castSpell(xi.magic.spell.FLASH, target)
             fellow:setLocalVar("flash", os.time() + 45)
@@ -1098,9 +1123,9 @@ xi.fellow_utils.calculateRecast = function(fellow, fellowType)
     elseif fellowType == fellowTypes.HEALER then
         recast = recast - math.random(1, 2)
     elseif fellowType == fellowTypes.STALWART then
-        recast = recast + math.random(1, 2)
+        recast = recast + math.random(6, 8)
     elseif fellowType == fellowTypes.SHIELD then
-        recast = recast + math.random(2, 4)
+        recast = recast + math.random(6, 10)
     end
 
     return recast
@@ -1196,7 +1221,7 @@ xi.fellow_utils.onDespawn = function(fellow)
 end
 
 xi.fellow_utils.upgradeArmor = function(fellow, master)
-    local offset        = master:getCharVar("[FELLOW]armorOffset")
+    local offset        = utils.clamp(master:getCharVar("[FELLOW]armorOffset"), 0, 300)
     local armorLock     = master:getFellowValue("armorLock")
     local unlocked      = {}
     local armorTable    =
@@ -1238,25 +1263,13 @@ xi.fellow_utils.changeJob = function(master, pJob, job)
 
     if pJob ~= job then
         if job == 1 or job == 4 then
-            if pJob == 2 or pJob == 5 then
-                master:setCharVar("[FELLOW]armorOffset", -100)
-            elseif pJob == 3 or pJob == 6 then
-                master:setCharVar("[FELLOW]armorOffset", -200)
-            end
+            master:setCharVar("[FELLOW]armorOffset", 0)
 
         elseif job == 2 or job == 5 then
-            if pJob == 1 or pJob == 4 then
                 master:setCharVar("[FELLOW]armorOffset", 100)
-            elseif pJob == 3 or pJob == 6 then
-                master:setCharVar("[FELLOW]armorOffset", -100)
-            end
 
         elseif job == 3 or job == 6 then
-            if pJob == 2 or pJob == 5 then
-                master:setCharVar("[FELLOW]armorOffset", 100)
-            elseif pJob == 1 or pJob == 4 then
                 master:setCharVar("[FELLOW]armorOffset", 200)
-            end
         end
 
         offset = master:getCharVar("[FELLOW]armorOffset")

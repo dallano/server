@@ -18,10 +18,10 @@ local dialogTable =
         text6 = 'I am unable to offer you my services. Please come again when you are eligible.',
     },
     welcome               = 'Hello, adventurer.',
-    teleport              = 'Where will you be heading?',
+    teleport              = 'This is where you will be heading?',
     teleportControlled    = "Your home nation is in operation in that area. I charge %s gil to transfer you.",
     teleportNotControlled = "Your nation home has no presence in the area. I charge %s gil to transfer you.",
-    noteleport            = 'Comes again',
+    noteleport            = 'Come again',
     thanks                = 'Thank you, adventurer. Safe travels.',
     noGil                 = 'I am not authorized to teleport without the proper funds.',
 }

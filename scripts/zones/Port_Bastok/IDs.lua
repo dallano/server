@@ -81,9 +81,8 @@ zones[xi.zone.PORT_BASTOK] =
     {
         STARLIGHT_DECORATIONS =
         {
-            [17744128] = 17744128,  -- Starlight Celebration Fountain
             [17744129] = 17744129,  -- Starlight Celebration Fountain
-            [17744130] = 17744130,  -- Starlight Celebration Planter
+            [17744130] = 17744130,  -- Starlight Celebration Fountain
             [17744131] = 17744131,  -- Starlight Celebration Planter
             [17744132] = 17744132,  -- Starlight Celebration Planter
             [17744133] = 17744133,  -- Starlight Celebration Planter
@@ -109,6 +108,7 @@ zones[xi.zone.PORT_BASTOK] =
             [17744153] = 17744153,  -- Starlight Celebration Planter
             [17744154] = 17744154,  -- Starlight Celebration Planter
             [17744155] = 17744155,  -- Starlight Celebration Planter
+            [17744156] = 17744156,  -- Starlight Celebration Planter
             -- [17744156] = 17744156,  -- Klaas
         },
 

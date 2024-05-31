@@ -3512,7 +3512,10 @@ INSERT INTO `mob_skill_lists` VALUES ('TRUST_Uka_Totlihn',1062,167); -- Judgemen
 -- INSERT INTO `mob_skill_lists` VALUES ('TRUST_Klara',1063,0);
 -- INSERT INTO `mob_skill_lists` VALUES ('TRUST_Romaa_Mihgo',1064,0);
 -- INSERT INTO `mob_skill_lists` VALUES ('TRUST_Kuyin_Hathdenna',1065,0);
--- INSERT INTO `mob_skill_lists` VALUES ('TRUST_Rahal',1066,0);
+INSERT INTO `mob_skill_lists` VALUES ('TRUST_Rahal',1066,3431); -- Fast Blade
+INSERT INTO `mob_skill_lists` VALUES ('TRUST_Rahal',1066,37); -- Seraph Blade
+INSERT INTO `mob_skill_lists` VALUES ('TRUST_Rahal',1066,3708); -- Swift Blade
+INSERT INTO `mob_skill_lists` VALUES ('TRUST_Rahal',1066,3432); -- Savage Blade
 -- INSERT INTO `mob_skill_lists` VALUES ('TRUST_Koru-Moru',1067,0);
 -- INSERT INTO `mob_skill_lists` VALUES ('TRUST_Pieuje_UC',1068,0);
 -- INSERT INTO `mob_skill_lists` VALUES ('TRUST_Invincible_Shield_UC',1069,0);

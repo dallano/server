@@ -37,23 +37,6 @@ xi.eraShops.Charging_Chocobo =
     12944,   998, 3,    -- Scale Greaves
 }
 
-xi.eraShops.Zhikkom =
-{
-    16473,  5713, 3, -- Kukri
-    16537, 31648, 3, -- Mythril Sword
-    16545, 21535, 3, -- Broadsword
-    16513, 11845, 3, -- Tuck
-    16558, 62560, 3, -- Falchion
-    16536,  7286, 3, -- Iron Sword
-    16552,  4163, 3, -- Scimitar
-    16466,  2231, 3, -- Knife
-    16465,   150, 3, -- Bronze Knife
-    16405,   106, 3, -- Cat Baghnakhs
-    16535,   246, 3, -- Bronze Sword
-    16517,  9406, 3, -- Degen
-    16551,   713, 3, -- Sapara
-}
-
 xi.eraShops.Peritrage =
 {
     17218, 14158, 3, -- Zamburak
@@ -176,20 +159,6 @@ xi.eraShops.Arlenne =
     16832,    97, 3, -- Harpoon
 }
 
-xi.eraShops.Tavourine =
-{
-    16584, 37800, 1,    -- Mythril Claymore
-    16466,  2182, 1,    -- Knife
-    17060,  2386, 1,    -- Rod
-    16640,   284, 2,    -- Bronze Axe
-    16465,   147, 2,    -- Bronze Knife
-    17059,    91, 2,    -- Bronze Rod
-    16583,  2448, 2,    -- Claymore
-    17035,  4363, 2,    -- Mace
-    17081,   627, 3,    -- Brass Rod
-    17034,   169, 3,    -- Bronze Mace
-}
-
 xi.eraShops.Pirvidiauce =
 {
     12986, 9180, 1, -- Chestnut Sabbots
@@ -221,25 +190,6 @@ xi.eraShops.Coullave =
     4148,   290, 3, -- Antidote
     4150,  2387, 3, -- Eye Drops
     13469, 1150, 3, -- Leather Ring
-}
-
--- Southern Sandoria
-xi.eraShops.Ashene =
-{
-    16455,  4309, 1, -- Baselard
-    16532, 16934, 1, -- Gladius
-    16545, 21067, 1, -- Broadsword
-    16576, 35769, 1, -- Hunting Sword
-    16524, 13406, 1, -- Fleuret
-    16450,  1827, 2, -- Dagger
-    16536,  7128, 2, -- Iron Sword
-    16566,  8294, 2, -- Longsword
-    16385,   129, 3, -- Cesti
-    16448,   140, 3, -- Bronze Dagger
-    16449,   837, 3, -- Brass Dagger
-    16531,  3523, 3, -- Brass Xiphos
-    16535,   241, 3, -- Bronze Sword
-    16565,  1674, 3, -- Spatha
 }
 
 xi.eraShops.Carautia =
@@ -692,7 +642,6 @@ local lookupTable =
     -- Bastok
     { "nation", "Bastok_Markets", "Mjoll", xi.eraShops.Mjoll, xi.nation.BASTOK, "MJOLL_SHOP_DIALOG", 1 },
     { "nation", "Bastok_Markets", "Charging_Chocobo", xi.eraShops.Charging_Chocobo, xi.nation.BASTOK, "CHARGINGCHOCOBO_SHOP_DIALOG", 1 },
-    { "nation", "Bastok_Markets", "Zhikkom", xi.eraShops.Zhikkom, xi.nation.BASTOK, "ZHIKKOM_SHOP_DIALOG", 1 },
     { "nation", "Bastok_Markets", "Peritrage", xi.eraShops.Peritrage, xi.nation.BASTOK, "PERITRAGE_SHOP_DIALOG", 1 },
     { "nation", "Bastok_Markets", "Ciqala", xi.eraShops.Ciqala, xi.nation.BASTOK, "CIQALA_SHOP_DIALOG", 1 },
     { "nation", "Bastok_Markets", "Hortense", xi.eraShops.Hortense, xi.nation.BASTOK, "HORTENSE_SHOP_DIALOG", 1 },

@@ -18,6 +18,8 @@ effectObject.onEffectGain = function(target, effect)
         target:getStatusEffect(xi.effect.AFFLATUS_MISERY):setSubPower(0)
         target:addMod(xi.mod.ENSPELL, 18)
         target:addMod(xi.mod.ENSPELL_DMG, effect:getPower())
+
+    elseif target:hasStatusEffect(xi.effect.AFFLATUS_SOLACE) then
     end
 end
 

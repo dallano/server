@@ -214,6 +214,7 @@ quest.sections =
             {
                 [49] = function(player, csid, option, npc)
                     quest:complete(player)
+                    player:PrintToPlayer("Rainemard will now join your party.", 20)
                 end,
             },
         },

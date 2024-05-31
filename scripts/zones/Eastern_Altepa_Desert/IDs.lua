@@ -60,7 +60,7 @@ zones[xi.zone.EASTERN_ALTEPA_DESERT] =
     },
     npc =
     {
-        OVERSEER_BASE = 17244627, -- Eaulevisat_RK in npc_list
+        OVERSEER_BASE = 17244628, -- Eaulevisat_RK in npc_list
     },
 }
 

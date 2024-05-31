@@ -1173,7 +1173,8 @@ xi.conquest.overseerOnTrade = function(player, npc, trade, guardNation, guardTyp
                 end
 
                 if player:getCP() >= ring.cp then
-                    player:delCP(cpCost)
+                    player:
+                    P(cpCost)
                     player:confirmTrade()
                     player:addItem(item)
                     player:setCharVar("CONQUEST_RING_RECHARGE", getConquestTally())

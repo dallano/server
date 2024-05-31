@@ -465,6 +465,11 @@ bool CTrustEntity::ValidTarget(CBattleEntity* PInitiator, uint16 targetFlags)
         return true;
     }
 
+    if (targetFlags & TARGET_FELLOW && PInitiator->allegiance == allegiance)
+    {
+        return true;
+    }
+
     if ((targetFlags & TARGET_PLAYER_PARTY_PIANISSIMO) && PInitiator->allegiance == allegiance && PMaster && PInitiator != this)
     {
         return true;

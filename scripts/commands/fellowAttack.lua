@@ -16,6 +16,7 @@ end
 
 function onTrigger(player)
     local target = player:getCursorTarget()
+    local party = player:getPartyWithTrusts()
 
     if
         target ~= nil and
@@ -23,6 +24,12 @@ function onTrigger(player)
     then
         player:fellowAttack(target)
         player:setCharVar("fellowAttackControl", 1)
+
+        for _, member in pairs(party) do
+            if member:getObjType() == xi.objType.TRUST then
+                member:engage(target:getID())
+            end
+        end
     else
         error(player)
     end

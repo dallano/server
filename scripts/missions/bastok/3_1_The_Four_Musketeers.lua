@@ -192,6 +192,7 @@ mission.sections =
 
                 [11] = function(player, csid, option, npc)
                     if mission:complete(player) then
+                        player:PrintToPlayer("Ayame will now join your party.", 20)
                         player:setPos(578, 25, -376, 126)
                     end
                 end,

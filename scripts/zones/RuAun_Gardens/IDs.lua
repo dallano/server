@@ -66,7 +66,7 @@ zones[xi.zone.RUAUN_GARDENS] =
 
     npc =
     {
-        TREASURE_COFFER  = 17310020,
+        TREASURE_COFFER  = 17310019,
         PORTAL_TO_SEIRYU = 17310057,
         PORTAL_TO_GENBU  = 17310060,
         PORTAL_TO_BYAKKO = 17310063,

@@ -12,12 +12,12 @@ local entity = {}
 entity.onTrigger = function(player, npc)
     local stock =
     {
-        16537, 31648, 1, -- Mythril Sword
-        16545, 21535, 1, -- Broadsword
-        16513, 11845, 1, -- Tuck
-        16558, 62560, 1, -- Falchion
-        16536,  7286, 2, -- Iron Sword
-        16552,  4163, 2, -- Scimitar
+        16537, 31648, 3, -- Mythril Sword
+        16545, 21535, 3, -- Broadsword
+        16513, 11845, 3, -- Tuck
+        16558, 62560, 3, -- Falchion
+        16536,  7286, 3, -- Iron Sword
+        16552,  4163, 3, -- Scimitar
         16535,   246, 3, -- Bronze Sword
         16517,  9406, 3, -- Degen
         16551,   713, 3, -- Sapara

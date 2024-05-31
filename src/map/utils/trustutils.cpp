@@ -779,4 +779,20 @@ namespace trustutils
             }
         }
     }
+
+    void AttackTarget(CTrustEntity* PTrust, CBattleEntity* PTarget)
+    {
+        if (!PTrust->StatusEffectContainer->HasPreventActionEffect())
+        {
+            PTrust->PAI->Engage(PTarget->targid);
+        }
+    }
+
+    void Retreat(CTrustEntity* PTrust)
+    {
+        if (!PTrust->StatusEffectContainer->HasPreventActionEffect())
+        {
+            PTrust->PAI->Disengage();
+        }
+    }
 }; // namespace trustutils
