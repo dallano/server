@@ -2986,9 +2986,10 @@ xi.dynamis.setPetStats = function(mob)
     mob:addStatusEffect(xi.effect.BATTLEFIELD, 1, 0, 0, true)
     mob:setMobMod(xi.mobMod.CHECK_AS_NM, 1)
     mob:setMobMod(xi.mobMod.CHARMABLE, 0)
-    mob:setMobLevel(79)
+    -- mob:setMobLevel(79)
+    mob:setMobLevel(math.random(60, 62)) --xiSP
+    mob:addMod(xi.mod.HP, -mob:getMaxHP() * 0.75)
     mob:setTrueDetection(true)
-    mob:setMobLevel(math.random(60, 62))
 
     mob:setMobMod(xi.mobMod.CHARMABLE, 0)
 end
@@ -3005,7 +3006,6 @@ xi.dynamis.setAnimatedWeaponStats = function(mob)
     mob:addImmunity(xi.immunity.SILENCE)
     mob:addImmunity(xi.immunity.LULLABY)
     mob:addImmunity(xi.immunity.SLEEP)
-    mob:setMobMod(xi.mobMod.CHECK_AS_NM, 2)
     mob:setMobMod(xi.mobMod.CHARMABLE, 0)
     xi.dynamis.addParentListeners(mob)
 end

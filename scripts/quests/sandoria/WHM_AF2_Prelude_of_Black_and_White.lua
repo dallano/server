@@ -53,7 +53,7 @@ quest.sections =
             ['Narcheral'] =
             {
                 onTrade = function(player, npc, trade)
-                    if npcUtil.tradeHasExactly(trade, { xi.items.MOCCASINS, xi.items.CANTEEN_OF_YAGUDO_HOLY_WATER }) then
+                    if npcUtil.tradeHasExactly(trade, { xi.items.CANTEEN_OF_YAGUDO_HOLY_WATER }) then -- Only need water xiSP
                         return quest:progressEvent(691)
                     end
                 end,

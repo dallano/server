@@ -14,7 +14,12 @@ spellObject.onSpellCast = function(caster, target, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
+    local master = mob:getMaster()
+    local rank = master:getRank(xi.nation.BASTOK)
     xi.trust.message(mob, xi.trust.message_offset.SPAWN)
+    local attPower = 40 + (rank * 3)
+
+    mob:addMod(xi.mod.ATT, attPower)
 end
 
 spellObject.onMobDespawn = function(mob)

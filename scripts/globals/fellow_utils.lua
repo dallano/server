@@ -523,7 +523,7 @@ xi.fellow_utils.checkJobAbility = function(fellow, master)
                 local action
 
                 if fellow:getTarget() ~= nil then
-                    local action = fellow:getTarget():getCurrentAction()
+                    action = fellow:getTarget():getCurrentAction()
                 end
 
                 if
@@ -729,10 +729,10 @@ xi.fellow_utils.checkCure = function(fellow, master, fellowLvl, mp, fellowType)
                         (fellow:hasStatusEffect(xi.effect.REGEN) and
                         fellow:getHPP() > 50)
                     then
-                        thresholdMod = thresholdMod + 0.50
+                        thresholdMod = thresholdMod + 0.35
                     end
 
-                    if member:getHPP() < 50 then
+                    if member:getHPP() < 35 then
                         thresholdMod = 1
                     end
 

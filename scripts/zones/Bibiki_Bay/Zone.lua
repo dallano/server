@@ -15,6 +15,8 @@ end
 zoneObject.onInitialize = function(zone)
     zone:registerTriggerArea(1,  474, -10,  667,  511, 10,  708) -- Manaclipper while docked at Sunset Docks
     zone:registerTriggerArea(2, -410, -10, -385, -371, 10, -343) -- Manaclipper while docked at Purgonorgo Isle
+    zone:setBackgroundMusicDay(204)
+    zone:setBackgroundMusicNight(204)
 end
 
 zoneObject.onZoneIn = function(player, prevZone)

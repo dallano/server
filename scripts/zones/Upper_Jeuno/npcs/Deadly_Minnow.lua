@@ -24,6 +24,7 @@ entity.onTrigger = function(player, npc)
             12426, 47025,    -- Banded Helm
             12570, 20976,    -- Studded Vest
             12553, 35200,    -- Silver Mail
+            13703, 52301,    -- Brigandine Mail
             12554, 66792,    -- Banded Mail
             12698, 11012,    -- Studded Gloves
             12681, 18800,    -- Silver Mittens

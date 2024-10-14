@@ -11,6 +11,10 @@ effectObject.onEffectGain = function(target, effect)
         target:addMod(xi.mod.ENSPELL, 18)
         target:addMod(xi.mod.ENSPELL_DMG, power)
     end
+    target:addMod(xi.mod.HASTE_ABILITY, 800) -- xiSP
+    target:addMod(xi.mod.MATT, 5)            -- xiSP
+    target:addMod(xi.mod.MACC, 5)            -- xiSP
+    target:addMod(xi.mod.FASTCAST, 5)        -- xiSP
 end
 
 effectObject.onEffectTick = function(target, effect)
@@ -28,6 +32,10 @@ effectObject.onEffectLose = function(target, effect)
         target:setMod(xi.mod.ENSPELL, 0)
         target:setMod(xi.mod.ENSPELL_DMG, 0)
     end
+    target:delMod(xi.mod.HASTE_ABILITY, 800) -- xiSP
+    target:delMod(xi.mod.MATT, 5)            -- xiSP
+    target:delMod(xi.mod.MACC, 5)            -- xiSP
+    target:delMod(xi.mod.FASTCAST, 5)        -- xiSP
 end
 
 return effectObject

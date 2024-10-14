@@ -28,17 +28,17 @@ local mobSkills =
 }
 
 entity.onMobSpawn = function(mob)
-    mob:setMod(xi.mod.DEF, 486) -- 486 + 50 gives 536 DEF
-    mob:setMod(xi.mod.EVA, 355)
-    mob:setMod(xi.mod.ATT, 804) -- 804 + 66 gives 870 ATT
-    mob:setMod(xi.mod.UDMGMAGIC, -5000)
-    mob:addMod(xi.mod.MDEF, 12) -- 100 + 12 gives 112 MDEF
+    mob:addMod(xi.mod.DEF, 125) -- 486 + 50 gives 536 DEF
+    mob:addMod(xi.mod.EVA, 100)
+    mob:addMod(xi.mod.ATT, 150)
+    mob:setMod(xi.mod.UDMGMAGIC, 2000)
+    mob:addMod(xi.mod.MDEF, 8) -- 100 + 12 gives 112 MDEF
 end
 
 entity.onMobWeaponSkillPrepare = function(mob, target)
     if
-        mob:getHPP() <= 25 and
-        math.random() < 0.50
+        mob:getHPP() <= 10 and
+        math.random() < 0.1
     then
         return 1790 -- Gates of Hell
     else
@@ -47,7 +47,7 @@ entity.onMobWeaponSkillPrepare = function(mob, target)
 end
 
 entity.onMobFight = function(mob, target)
-    if mob:getHPP() > 25 then
+    if mob:getHPP() > 10 then
         mob:setMod(xi.mod.REGAIN, 10)
     else
         mob:setMod(xi.mod.REGAIN, 70)
@@ -71,7 +71,7 @@ entity.onMobDeath = function(mob, player, optParams)
 end
 
 entity.onMobDespawn = function(mob)
-    mob:setRespawnTime(math.random(48, 72) * 3600) -- 48 - 72 hours with 1 hour windows
+    mob:setRespawnTime(math.random(120, 140) * 3600) -- 5 to 7 days
 end
 
 return entity

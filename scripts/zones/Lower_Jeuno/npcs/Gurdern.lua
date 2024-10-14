@@ -7,6 +7,14 @@ require("scripts/globals/utils")
 -----------------------------------
 local entity = {}
 
+local shopStock =
+{
+    1823,   97636, -- Shrimp Lantern
+    1825,  102365, -- Antlion Trap
+    18014,  94356, -- Odorous Knife
+    18016, 196126, -- Odorous Knife +1
+}
+
 entity.onTrade = function(player, npc, trade)
 end
 
@@ -19,16 +27,19 @@ entity.onTrigger = function(player, npc)
     then
         player:startEvent(10052)
     else
-        player:startEvent(112)
+        -- player:startEvent(112)
+        player:PrintToPlayer("Monster lures! Come get your monster lures! Ah, adventurer. What can I do for you?", xi.msg.channel.SAY, "Gurdern")
+        xi.shop.general(player, shopStock)
     end
 end
 
 entity.onEventUpdate = function(player, csid, option)
 end
 
-entity.onEventFinish = function(player, csid, option)
+entity.ontFinish = function(player, csid, option)
     if csid == 10052 then
         player:setCharVar("WildcatJeuno", utils.mask.setBit(player:getCharVar("WildcatJeuno"), 14, true))
+    elseif csid == 112 then
     end
 end
 

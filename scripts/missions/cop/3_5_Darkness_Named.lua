@@ -124,6 +124,7 @@ mission.sections =
             {
                 [75] = function(player, csid, option, npc)
                     mission:complete(player)
+                    player:PrintToPlayer("Tenzen will now join your party.", 20)
                 end,
 
                 [82] = function(player, csid, option, npc)

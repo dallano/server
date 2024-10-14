@@ -33,7 +33,7 @@ end
 
 mobskillObject.onMobWeaponSkill = function(target, mob, skill)
     local typeEffect = xi.effect.BURN
-    local power = 30
+    local power = 8
 
     xi.mobskills.mobStatusEffectMove(mob, target, typeEffect, power, 3, 60)
 

@@ -213,13 +213,13 @@ INSERT INTO `traits` VALUES (15,'double attack',1,50,2,288,12,'ROV',0);
 INSERT INTO `traits` VALUES (15,'double attack',1,75,3,288,14,'ABYSSEA',0); -- level 76 prior to ROV update (05/14/2015), set Abby tag so it's removed from 75-cap servers
 INSERT INTO `traits` VALUES (15,'double attack',1,85,4,288,16,'ROV',0);
 INSERT INTO `traits` VALUES (15,'double attack',1,99,5,288,18,'ROV',0);
-INSERT INTO `traits` VALUES (16,'triple attack',6,35,1,302,5,NULL,0); -- ffxi(sp)
+INSERT INTO `traits` VALUES (16,'triple attack',6,35,1,302,5,NULL,0); -- xiSP Thief 37
 INSERT INTO `traits` VALUES (16,'triple attack',6,45,2,302,7,NULL,0);
 INSERT INTO `traits` VALUES (17,'counter',2,10,1,291,8,NULL,0);
 INSERT INTO `traits` VALUES (17,'counter',2,81,2,291,12,'ABYSSEA',0);
-INSERT INTO `traits` VALUES (18,'dual wield',6,20,1,259,10,NULL,0); -- ffxi(sp) Thief
-INSERT INTO `traits` VALUES (18,'dual wield',6,45,2,259,15,NULL,0);
-INSERT INTO `traits` VALUES (18,'dual wield',6,75,3,259,25,NULL,0);
+INSERT INTO `traits` VALUES (18,'dual wield',1,35,1,259,10,NULL,0); -- xiSP Warrior 37
+INSERT INTO `traits` VALUES (18,'dual wield',6,20,1,259,10,NULL,0); -- xiSP Thief 20, 55
+INSERT INTO `traits` VALUES (18,'dual wield',6,55,2,259,25,NULL,0);
 INSERT INTO `traits` VALUES (18,'dual wield',13,10,1,259,10,NULL,0);
 INSERT INTO `traits` VALUES (18,'dual wield',13,25,2,259,15,NULL,0);
 INSERT INTO `traits` VALUES (18,'dual wield',13,45,3,259,25,NULL,0);

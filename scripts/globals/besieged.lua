@@ -135,7 +135,8 @@ end
 -- I decided to use the formula duration (with AC) = 3 hours + (mercenary rank - 1) * 20 minutes.
 -----------------------------------
 local function getSanctionDuration(player)
-    local duration = 10800 + 1200 * (xi.besieged.getMercenaryRank(player) - 1)
+    -- local duration = 10800 + 1200 * (xi.besieged.getMercenaryRank(player) - 1)
+    local duration = 28800 -- xiSP
 
     if xi.besieged.getAstralCandescence() == 0 then
         duration = duration / 2

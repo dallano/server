@@ -817,13 +817,13 @@ local overseerInvNation =
         [32771] = { rank =  1, cp =  1000, lvl = 10, item = 12509 },                -- legionnaires_cap
         [32772] = { rank =  1, cp =  1000, lvl = 10, item = 12752 },                -- legionnaires_mittens
         [32773] = { rank =  1, cp =  1000, lvl = 10, item = 13003 },                -- legionnaires_leggings
-        [32774] = { rank =  1, cp =  1000, lvl = 10, item = 17128 },     -- legionnaires_staff
-        [32775] = { rank =  1, cp =  1000, lvl = 10, item = 16780 },     -- legionnaires_scythe
+        [32774] = { rank =  1, cp =  1000, lvl = 10, item = 17128 },                -- legionnaires_staff
+        [32775] = { rank =  1, cp =  1000, lvl = 10, item = 16780 },                -- legionnaires_scythe
         [32784] = { rank =  2, cp =  2000, lvl = 18, item = 17048 },                -- decurions_hammer
         [32785] = { rank =  2, cp =  2000, lvl = 10, item = 12629 },                -- legionnaires_harness
         [32786] = { rank =  2, cp =  2000, lvl = 20, item = 12881 },                -- legionnaires_subligar
-        [32787] = { rank =  2, cp =  2000, lvl = 20, item = 16745 },     -- decurions_dagger
-        [32788] = { rank =  2, cp =  2000, lvl = 20, item = 12337 },     -- decurions_shield
+        [32787] = { rank =  2, cp =  2000, lvl = 20, item = 16745 },                -- decurions_dagger
+        [32788] = { rank =  2, cp =  2000, lvl = 20, item = 12337 },                -- decurions_shield
         [32800] = { rank =  3, cp =  4000, lvl = 30, item = 16712 },                -- centurions_axe
         [32801] = { rank =  3, cp =  4000, lvl = 10, item = 13098 },                -- republican_bronze_medal
         [32802] = { rank =  3, cp =  4000, lvl = 30, item = 12438 },                -- centurions_visor
@@ -831,38 +831,38 @@ local overseerInvNation =
         [32804] = { rank =  3, cp =  4000, lvl = 30, item = 12694 },                -- centurions_finger_gauntlets
         [32805] = { rank =  3, cp =  4000, lvl = 30, item = 12822 },                -- centurions_cuisses
         [32806] = { rank =  3, cp =  4000, lvl = 30, item = 12950 },                -- centurions_greaves
-        [32807] = { rank =  3, cp =  4000, lvl = 30, item = 16806 },     -- centurions_sword
-        [32808] = { rank =  3, cp =  4000, lvl = 30, item = 13830 },     -- legionnaires_circlet
-        [32809] = { rank =  3, cp =  4000, lvl =  1, item = 13497 },     -- bastokan_ring
+        [32807] = { rank =  3, cp =  4000, lvl = 30, item = 16806 },                -- centurions_sword
+        [32808] = { rank =  3, cp =  4000, lvl = 30, item = 13830 },                -- legionnaires_circlet
+        [32809] = { rank =  3, cp =  4000, lvl =  1, item = 13497 },                -- bastokan_ring
         [32816] = { rank =  4, cp =  8000, lvl = 40, item = 16516 },                -- junior_musketeers_tuck
         [32817] = { rank =  4, cp =  8000, lvl = 40, item = 12422 },                -- iron_musketeers_armet
         [32818] = { rank =  4, cp =  8000, lvl = 40, item = 12678 },                -- iron_musketeers_gauntlets
         [32819] = { rank =  4, cp =  8000, lvl = 40, item = 12934 },                -- iron_musketeers_sabatons
-        [32820] = { rank =  4, cp =  8000, lvl = 40, item = 13721 },     -- iron_musketeers_gambison
-        [32821] = { rank =  4, cp =  8000, lvl = 40, item = 17283 },     -- junior_musketeers_chakram
+        [32820] = { rank =  4, cp =  8000, lvl = 40, item = 13721 },                -- iron_musketeers_gambison
+        [32821] = { rank =  4, cp =  8000, lvl = 40, item = 17283 },                -- junior_musketeers_chakram
         [32832] = { rank =  5, cp = 16000, lvl = 50, item = 16529 },                -- musketeers_sword
         [32833] = { rank =  5, cp = 16000, lvl = 30, item = 13099 },                -- republican_iron_medal
         [32834] = { rank =  5, cp = 16000, lvl = 50, item = 12550 },                -- iron_musketeers_cuirass
         [32835] = { rank =  5, cp = 16000, lvl = 50, item = 12806 },                -- iron_musketeers_cuisses
-        [32836] = { rank =  5, cp = 16000, lvl = 50, item = 17129 },     -- musketeers_pole
-        [32837] = { rank =  5, cp = 16000, lvl = 50, item = 17253 },     -- musketeer_gun
+        [32836] = { rank =  5, cp = 16000, lvl = 50, item = 17129 },                -- musketeers_pole
+        [32837] = { rank =  5, cp = 16000, lvl = 50, item = 17253 },                -- musketeer_gun
         [32848] = { rank =  6, cp = 24000, lvl = 55, item = 13100 },                -- republican_mythril_medal
         [32849] = { rank =  6, cp = 24000, lvl = 55, item = 13582 },                -- republican_army_mantle
-        [32850] = { rank =  6, cp = 24000, lvl = 55, item = 16557 },     -- musketeer_commanders_falchion
-        [32851] = { rank =  6, cp = 24000, lvl = 55, item = 12304 },     -- musketeer_commanders_shield
-        [32852] = { rank =  6, cp = 24000, lvl = 55, item = 17151 },     -- musketeer_commanders_rod
-        [32853] = { rank =  6, cp = 24000, lvl = 55, item = 13064 },     -- iron_musketeers_gorget
+        [32850] = { rank =  6, cp = 24000, lvl = 55, item = 16557 },                -- musketeer_commanders_falchion
+        [32851] = { rank =  6, cp = 24000, lvl = 55, item = 12304 },                -- musketeer_commanders_shield
+        [32852] = { rank =  6, cp = 24000, lvl = 55, item = 17151 },                -- musketeer_commanders_rod
+        [32853] = { rank =  6, cp = 24000, lvl = 55, item = 13064 },                -- iron_musketeers_gorget
         [32864] = { rank =  7, cp = 32000, lvl = 60, item = 15957 },                -- iron_musketeers_quiver
-        [32865] = { rank =  7, cp = 32000, lvl = 60, item = 17807 },     -- gold_musketeers_uchigatana
-        [32866] = { rank =  7, cp = 32000, lvl = 60, item = 13558 },     -- gold_musketeers_ring
+        [32865] = { rank =  7, cp = 32000, lvl = 60, item = 17807 },                -- gold_musketeers_uchigatana
+        [32866] = { rank =  7, cp = 32000, lvl = 60, item = 13558 },                -- gold_musketeers_ring
         [32880] = { rank =  8, cp = 40000, lvl = 65, item = 14015 },                -- praefectuss_gloves
-        [32881] = { rank =  8, cp = 40000, lvl = 65, item = 13880 },     -- presidential_hairpin
-        [32882] = { rank =  8, cp = 40000, lvl = 65, item = 13141 },     -- republican_gold_medal
+        [32881] = { rank =  8, cp = 40000, lvl = 65, item = 13880 },                -- presidential_hairpin
+        [32882] = { rank =  8, cp = 40000, lvl = 65, item = 13141 },                -- republican_gold_medal
         [32896] = { rank =  9, cp = 48000, lvl = 71, item = 16799 },                -- senior_gold_musketeers_scythe
         [32897] = { rank =  9, cp = 48000, lvl = 71, item = 17457 },                -- senior_gold_musketeers_rod
-        [32898] = { rank =  9, cp = 48000, lvl = 71, item = 18196 },     -- senior_gold_musketeers_axe
-        [32899] = { rank =  9, cp = 48000, lvl = 71, item = 17655 },     -- senior_gold_musketeers_scimitar
-        [32912] = { rank = 10, cp = 56000, lvl =  1, item = 14429 },     -- republic_aketon
+        [32898] = { rank =  9, cp = 48000, lvl = 71, item = 18196 },                -- senior_gold_musketeers_axe
+        [32899] = { rank =  9, cp = 48000, lvl = 71, item = 17655 },                -- senior_gold_musketeers_scimitar
+        [32912] = { rank = 10, cp = 56000, lvl =  1, item = 14429 },                -- republic_aketon
         [32932] = {            cp =  5000, lvl =  1, item = 17584 },                -- republic_signet_staff
         [32940] = { rank = 10, cp = 10000, lvl =  1, item =  6378 },                -- decorative_chair_set
     },
@@ -1173,8 +1173,7 @@ xi.conquest.overseerOnTrade = function(player, npc, trade, guardNation, guardTyp
                 end
 
                 if player:getCP() >= ring.cp then
-                    player:
-                    P(cpCost)
+                    player:delCP(cpCost)
                     player:confirmTrade()
                     player:addItem(item)
                     player:setCharVar("CONQUEST_RING_RECHARGE", getConquestTally())

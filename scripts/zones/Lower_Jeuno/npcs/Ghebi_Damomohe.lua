@@ -36,7 +36,13 @@ end
 entity.onTrigger = function(player, npc)
     local astralCovenantCD = player:getCharVar("[ENM]AstralCovenant")
 
-    if
+    if player:hasKeyItem(xi.ki.ASTRAL_COVENANT) then
+        npc:injectActionPacket(player:getID(), 4, 261, 0, 0, 0, 10, 1)
+
+        npc:timer(3500, function(x)
+            xi.teleport.to(player, xi.teleport.id.SHROUDED_MAW)
+        end)
+    elseif
         player:hasKeyItem(xi.ki.PSOXJA_PASS) and
         astralCovenantCD < VanadielTime()
     then
@@ -46,8 +52,6 @@ entity.onTrigger = function(player, npc)
         astralCovenantCD >= VanadielTime()
     then
         player:startEvent(106, 4, 2, 675, astralCovenantCD)
-    elseif player:hasKeyItem(xi.ki.ASTRAL_COVENANT) then
-        player:startEvent(106, 4)
     end
 end
 

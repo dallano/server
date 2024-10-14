@@ -114,11 +114,6 @@ void CTrustController::DoCombatTick(time_point tick)
             float currentDistanceToTarget = distance(POwner->loc.p, PTarget->loc.p);
             float currentDistanceToMaster = distance(POwner->loc.p, PMaster->loc.p);
 
-            if (currentDistanceToTarget > WarpDistance)
-            {
-                POwner->PAI->PathFind->WarpTo(PTarget->loc.p);
-            }
-
             POwner->PAI->PathFind->LookAt(PTarget->loc.p);
 
             switch (PTrust->m_MovementType)
@@ -189,6 +184,12 @@ void CTrustController::DoCombatTick(time_point tick)
 void CTrustController::DoRoamTick(time_point tick)
 {
     TracyZoneScoped;
+
+    // If busy, don't run around!
+    if (POwner->PAI->IsCurrentState<CMagicState>() || POwner->PAI->IsCurrentState<CRangeState>())
+    {
+        return;
+    }
 
     auto* PMaster              = static_cast<CCharEntity*>(POwner->PMaster);
     auto  masterLastAttackTime = static_cast<CPlayerController*>(PMaster->PAI->GetController())->getLastAttackTime();
@@ -435,7 +436,7 @@ bool CTrustController::Cast(uint16 targid, SpellID spellid)
         targid = POwner->targid;
     }
 
-    auto PTarget      = (CBattleEntity*)POwner->GetEntity(targid, TYPE_MOB | TYPE_PC | TYPE_PET | TYPE_TRUST | TYPE_FELLOW);
+    auto PTarget      = (CBattleEntity*)POwner->GetEntity(targid, TYPE_MOB | TYPE_PC | TYPE_PET | TYPE_TRUST);
     auto PSpellFamily = PSpell->getSpellFamily();
     bool canCast      = true;
 

@@ -1,3 +1,16 @@
+--[
+-- 31 Virid
+-- 55 gala
+-- 86 kej
+
+-- 138 cloud
+
+-- 138 Man
+-- 310 wagh
+-- 448 Oni
+-- 626 army
+-- Nothing
+--]
 -----------------------------------
 -- Area: Boneyard Gully
 --  Mob: Race Runner

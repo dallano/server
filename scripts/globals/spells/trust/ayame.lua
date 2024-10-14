@@ -18,12 +18,13 @@ spellObject.onSpellCast = function(caster, target, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
-    xi.trust.teamworkMessage(mob, {
-        [xi.magic.spell.NAJI] = xi.trust.message_offset.TEAMWORK_1,
-        [xi.magic.spell.GILGAMESH] = xi.trust.message_offset.TEAMWORK_2,
-    })
+    local master = mob:getMaster()
+    local rank = master:getRank(xi.nation.BASTOK)
+    local attPower = 40 + (rank * 3)
 
-    mob:addMod(xi.mod.ATT, 50)
+    master:PrintToPlayer("I'm here to assist, citizen of Bastok.", xi.msg.channel.PARTY, "Ayame")
+
+    mob:addMod(xi.mod.ATT, attPower)
 
     mob:addSimpleGambit(ai.t.SELF, ai.c.NOT_STATUS, xi.effect.HASSO,
         ai.r.JA, ai.s.SPECIFIC, xi.ja.HASSO)
@@ -34,7 +35,7 @@ spellObject.onMobSpawn = function(mob)
     mob:addSimpleGambit(ai.t.SELF, ai.c.TP_LT, 1000,
         ai.r.JA, ai.s.SPECIFIC, xi.ja.MEDITATE)
 
-    mob:setTrustTPSkillSettings(ai.tp.OPENER, ai.s.SPECIAL_AYAME)
+    xi.autoparty.onTrustSpawn(mob)
 end
 
 spellObject.onMobDespawn = function(mob)

@@ -3,7 +3,6 @@
 --  Mob: Old Professor Mariselle
 -----------------------------------
 local ID = require('scripts/zones/Sacrarium/IDs')
-local professorTables = require('scripts/zones/Sacrarium/globals')
 require('scripts/globals/missions')
 require('scripts/globals/utils')
 -----------------------------------
@@ -49,16 +48,7 @@ entity.onMobFight = function(mob, target)
     end
 
     local teleTime = mob:getLocalVar('teleTime')
-    if
-        mob:getBattleTime() - teleTime > 30 and
-        mob:getBattleTime() > 59 and
-        mob:actionQueueEmpty()
-    then
-        local profLocation = mob:getLocalVar('spawnLocation')
-        local randomPosition = math.random(1, 9)
-        utils.mobTeleport(mob, 2000, professorTables.locations[profLocation][randomPosition])
-        mob:setLocalVar('teleTime', mob:getBattleTime())
-    end
+
 
     -- If players wander too far from professor and his teleport room he deaggros --
     -- This is a safety measure due to the navmesh sucking, if players wanted too far and OPM + Babies are teleporting they will just wander through walls --

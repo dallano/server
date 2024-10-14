@@ -65,6 +65,7 @@ quest.sections =
                 [54] = function(player, csid, option, npc)
                     if quest:complete(player) then
                         player:delKeyItem(xi.ki.CURILLAS_BOTTLE_FULL)
+                        player:PrintToPlayer("Curilla will now join your party.", 20)
                     end
                 end,
             },

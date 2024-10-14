@@ -26,6 +26,9 @@ zoneObject.onZoneIn = function(player, prevZone)
         player:setPos(432.013, 5.353, 216.472, 153)
     end
 
+    player:changeMusic(0, 225)
+    player:changeMusic(1, 225)
+
     return cs
 end
 

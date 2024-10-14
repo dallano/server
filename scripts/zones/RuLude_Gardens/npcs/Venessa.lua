@@ -79,6 +79,13 @@ entity.onTrigger = function(player, npc)
             xi.teleport.to(player, xi.teleport.id.SPIRE_OF_MEA)
         end)
 
+    elseif player:hasKeyItem(xi.ki.CENSER_OF_ACRIMONY) then
+        npc:injectActionPacket(player:getID(), 4, 261, 0, 0, 0, 10, 1)
+
+        npc:timer(3500, function(x)
+            xi.teleport.to(player, xi.teleport.id.SPIRE_OF_VAHZL)
+        end)
+
     -- Player has attempted the ENM at least once
     elseif
         player:getCurrentMission(xi.mission.log_id.COP) > xi.mission.id.cop.THE_RITES_OF_LIFE and

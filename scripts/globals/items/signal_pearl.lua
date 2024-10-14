@@ -19,6 +19,7 @@ itemObject.onItemCheck = function(target)
 end
 
 itemObject.onItemUse = function(target)
+    -- xi.autoparty.createParty(target)
     target:spawnFellow(target:getFellowValue("fellowid"))
     target:setFellowValue("bond", target:getFellowValue("bond") + 1)
 end

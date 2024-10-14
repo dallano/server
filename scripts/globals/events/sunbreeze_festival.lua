@@ -127,25 +127,25 @@ local sunbreezeDecorations =
 -- fireworks in day / night cycles
 local sunbreezeFireworks =
 {
-    [xi.zone.WEST_RONFAURE]         = 17187571,
-    [xi.zone.EAST_RONFAURE]         = 17191555,
-    [xi.zone.NORTH_GUSTABERG]       = 17212131,
-    [xi.zone.SOUTH_GUSTABERG]       = 17216209,
-    [xi.zone.EASTERN_ALTEPA_DESERT] = 17244668,
-    [xi.zone.WESTERN_ALTEPA_DESERT] = 17289818,
-    [xi.zone.WEST_SARUTABARUTA]     = 17248881,
-    [xi.zone.EAST_SARUTABARUTA]     = 17253105,
-    [xi.zone.SOUTHERN_SAN_DORIA]    = 17719783,
-    [xi.zone.PORT_SAN_DORIA]        = 17727646,
-    [xi.zone.NORTHERN_SAN_DORIA]    = 17723770,
-    [xi.zone.BASTOK_MINES]          = 17735938,
-    [xi.zone.BASTOK_MARKETS]        = 17740146,
-    [xi.zone.PORT_BASTOK]           = 17744126,
+    [xi.zone.WEST_RONFAURE]         = 17187572,
+    [xi.zone.EAST_RONFAURE]         = 17191556,
+    [xi.zone.NORTH_GUSTABERG]       = 17212132,
+    [xi.zone.SOUTH_GUSTABERG]       = 17216210,
+    [xi.zone.EASTERN_ALTEPA_DESERT] = 17244669,
+    [xi.zone.WESTERN_ALTEPA_DESERT] = 17289819,
+    [xi.zone.WEST_SARUTABARUTA]     = 17248882,
+    [xi.zone.EAST_SARUTABARUTA]     = 17253106,
+    [xi.zone.SOUTHERN_SAN_DORIA]    = 17719784,
+    [xi.zone.PORT_SAN_DORIA]        = 17727647,
+    [xi.zone.NORTHERN_SAN_DORIA]    = 17723771,
+    [xi.zone.BASTOK_MINES]          = 17735939,
+    [xi.zone.BASTOK_MARKETS]        = 17740147,
+    [xi.zone.PORT_BASTOK]           = 17744127,
     [xi.zone.WINDURST_WATERS]       = 17752456,
-    [xi.zone.WINDURST_WALLS]        = 17756373,
-    [xi.zone.PORT_WINDURST]         = 17760486,
-    [xi.zone.WINDURST_WOODS]        = 17764738,
-    [xi.zone.RABAO]                 = 17788993,
+    [xi.zone.WINDURST_WALLS]        = 17756374,
+    [xi.zone.PORT_WINDURST]         = 17760487,
+    [xi.zone.WINDURST_WOODS]        = 17764739,
+    [xi.zone.RABAO]                 = 17788994,
 }
 
 local sunbreezeMusicZones =
@@ -368,7 +368,7 @@ xi.events.sunbreeze_festival.onZoneTick = function(zone)
             xi.events.sunbreeze_festival.enabledCheck() and
             npc:getLocalVar("[SUNBREEZE]goldfishDialogueTimer") < os.time()
         then
-            npc:showText(npc, zones[zone:getID()].text.GOLDFISH_NPC_DIALOGUE + math.random(0, 2))
+            -- npc:showText(npc, zones[zone:getID()].text.GOLDFISH_NPC_DIALOGUE + math.random(0, 2))
             npc:setLocalVar("[SUNBREEZE]goldfishDialogueTimer", os.time() + 20)
         end
     end

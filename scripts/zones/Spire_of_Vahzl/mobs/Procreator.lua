@@ -8,7 +8,7 @@ mixins = { require("scripts/mixins/families/empty_terroanima") }
 local entity = {}
 
 entity.onMobSpawn = function(mob)
-    mob:setLocalVar("maxBabies", 4)
+    mob:setLocalVar("maxBabies", 2)
     mob:setMobMod(xi.mobMod.NO_LINK, 1)
     mob:setMod(xi.mod.TRIPLE_ATTACK, 10)
     mob:setMod(xi.mod.STORETP, 100)
@@ -27,12 +27,6 @@ entity.onMobWeaponSkillPrepare = function(mob, target)
 end
 
 entity.onMobFight = function(mob, target)
-    if mob:getHPP() < 20 then
-        local nextMob = GetMobByID(mob:getID() - 1) --Agonizer aggros at <20%
-        if not nextMob:isEngaged() then
-            nextMob:updateEnmity(target)
-        end
-    end
 end
 
 entity.onMobDeath = function(mob, player, optParams)

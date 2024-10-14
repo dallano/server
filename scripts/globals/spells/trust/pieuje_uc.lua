@@ -14,15 +14,28 @@ spellObject.onSpellCast = function(caster, target, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
-    xi.trust.message(mob, xi.trust.message_offset.SPAWN)
+    local player = mob:getMaster()
+    mob:addMod(xi.mod.MP, mob:getMainLvl() * 4) -- Fix terrible elvaan MP
+
+    player:PrintToPlayer("Dear white mage, I have answered your call.", xi.msg.channel.PARTY, "Pieuje")
+    mob:setAutoAttackEnabled(false)
+    xi.autoparty.onTrustSpawn(mob)
 end
 
-spellObject.onMobDespawn = function(mob)
-    xi.trust.message(mob, xi.trust.message_offset.DESPAWN)
+spellObject.onMobRoam = function(mob)
+    xi.autoparty.onHealerRoam(mob)
+end
+
+spellObject.onMobFight = function(mob, target)
+    xi.autoparty.onHealerFight(mob, target)
 end
 
 spellObject.onMobDeath = function(mob)
-    xi.trust.message(mob, xi.trust.message_offset.DEATH)
+    local player = mob:getMaster()
+    player:PrintToPlayer("I have matters to deal with in my nation. Please, excuse me.", xi.msg.channel.PARTY, "Pieuje")
+end
+
+spellObject.onMobDespawn = function(mob)
 end
 
 return spellObject

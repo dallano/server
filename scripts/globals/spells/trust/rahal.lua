@@ -15,22 +15,18 @@ end
 
 spellObject.onMobSpawn = function(mob)
     local player = mob:getMaster()
+    local power  = 0
     player:PrintToPlayer("I've come to aid you, sir dragoon.", xi.msg.channel.PARTY, "Rahal")
 
-    mob:addSimpleGambit(ai.t.SELF, ai.c.NOT_HAS_TOP_ENMITY, 0,
-                        ai.r.JA, ai.s.SPECIFIC, xi.ja.PROVOKE)
-
-    mob:addSimpleGambit(ai.t.TARGET, ai.c.NOT_STATUS, xi.effect.FLASH,
-                        ai.r.MA, ai.s.SPECIFIC, xi.magic.spell.FLASH)
-
-    mob:addSimpleGambit(ai.t.PARTY, ai.c.HPP_LT, 75,
-                        ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.CURE)
+    xi.autoparty.onTankSpawn(mob, power)
 end
 
 spellObject.onMobRoam = function(mob)
+    xi.autoparty.onTankRoam(mob)
 end
 
 spellObject.onMobFight = function(mob, target)
+    xi.autoparty.onTankFight(mob, target)
 end
 
 spellObject.onMobDespawn = function(mob)

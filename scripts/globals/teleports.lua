@@ -88,6 +88,8 @@ local ids =
     SPIRE_OF_MEA          = 74,
     MONARCH_LINN          = 75,
     WAUGHROON_SHRINE      = 76,
+    SHROUDED_MAW          = 77,
+    SPIRE_OF_VAHZL        = 78,
 }
 xi.teleport.id = ids
 
@@ -167,6 +169,8 @@ xi.teleport.destination =
     [ids.SPIRE_OF_HOLLA]        = {  0.0225,    -2.000,  -293.64, 191,  17 }, -- (xiSP)
     [ids.MONARCH_LINN]          = {  12.527,     0.400,  -539.60, 127,  31 }, -- (xiSP)
     [ids.WAUGHROON_SHRINE]      = {  -357.63,    104.24, -259.99,   0, 144 }, -- (xiSP)
+    [ids.SHROUDED_MAW]          = {      -58,        40,      14,   0,   9 }, -- (xiSP)
+    [ids.SPIRE_OF_VAHZL]        = {      0.0,    -2.000,   293.64, 63,  23 }, -- (xiSP)
 }
 
 xi.teleport.type =

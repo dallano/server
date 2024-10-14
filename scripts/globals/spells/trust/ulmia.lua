@@ -14,16 +14,24 @@ spellObject.onSpellCast = function(caster, target, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
-    xi.trust.teamworkMessage(mob, {
-        [xi.magic.spell.PRISHE] = xi.trust.message_offset.TEAMWORK_1,
-        [xi.magic.spell.MILDAURION] = xi.trust.message_offset.TEAMWORK_2,
-    })
+    local master = mob:getMaster()
 
-    -- TODO: BRD trusts need better logic and major overhaul, for now they compliment each other
-    mob:addSimpleGambit(ai.t.SELF, ai.c.NOT_STATUS, xi.effect.MADRIGAL, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.MADRIGAL)
-    mob:addSimpleGambit(ai.t.SELF, ai.c.NOT_STATUS, xi.effect.MINUET, ai.r.MA, ai.s.HIGHEST, xi.magic.spellFamily.VALOR_MINUET)
+    -- Dialogue
+    -- Complete CoP 2-4 An Eternal Memory
+    if master:hasCompletedMission(xi.mission.log_id.COP, xi.mission.id.cop.AN_ETERNAL_MELODY) then
+        master:PrintToPlayer("I wish to aid you in your endeavors, adventurer.", xi.msg.channel.PARTY, "Ulmia")
+    end
 
     mob:setAutoAttackEnabled(false)
+    xi.autoparty.onTrustSpawn(mob)
+end
+
+spellObject.onMobRoam = function(mob)
+    xi.autoparty.onBardRoam(mob)
+end
+
+spellObject.onMobFight = function(mob, target)
+    xi.autoparty.onBardFight(mob, target)
 end
 
 spellObject.onMobDespawn = function(mob)

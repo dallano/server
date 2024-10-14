@@ -5901,7 +5901,7 @@ namespace battleutils
     void assistTarget(CCharEntity* PChar, uint16 TargID)
     {
         // get the entity we want to assist
-        CBattleEntity* EntityToAssist = (CBattleEntity*)PChar->GetEntity(TargID, TYPE_MOB | TYPE_PC | TYPE_FELLOW);
+        CBattleEntity* EntityToAssist = (CBattleEntity*)PChar->GetEntity(TargID, TYPE_MOB | TYPE_PC);
         if (EntityToAssist != nullptr)
         {
             if (EntityToAssist->objtype == TYPE_PC && EntityToAssist->GetBattleTargetID() != 0)

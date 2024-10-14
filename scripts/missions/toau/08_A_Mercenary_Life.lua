@@ -34,7 +34,7 @@ mission.sections =
         check = function(player, currentMission, missionStatus, vars)
             return
                 currentMission == mission.missionId
-                and os.time() >= vars.Stage
+                -- and os.time() >= vars.Stage
                 and not mission:getMustZone(player)
         end,
 

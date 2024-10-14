@@ -26,10 +26,7 @@ entity.onTrigger = function(player, npc)
         4702,  62192,    -- Sacrifice
         4703,  64584,    -- Esuna
         4704,  30967,    -- Auspice
-        4614, 141137,    -- Cure VI
-        4655, 103882,    -- Protect V
-        4660, 125069,    -- Shell V
-        5103, 140332,    -- Crusade
+        4751,  98631,    -- Erase
     }
 
     player:showText(npc, ID.text.BRAVEOX_SHOP_DIALOG)

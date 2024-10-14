@@ -1015,7 +1015,7 @@ xi.dynamis.addMinutesToDynamis = function(zone, minutes)
     local playersInZone = zone:getPlayers()
     local zoneDynamisToken = zone:getLocalVar(string.format("[DYNA]Token_%s", zoneID))
     local prevExpire = GetServerVariable(string.format("[DYNA]Timepoint_%s", zoneID)) -- Determine previous expiration time.
-    local targetTime = prevExpire + (60 * minutes)
+    local targetTime = prevExpire + (360 * minutes) -- Extra time (xiSP)
 
     -- Update Time Remaining
     SetServerVariable(string.format("[DYNA]Timepoint_%s", zoneID), targetTime)

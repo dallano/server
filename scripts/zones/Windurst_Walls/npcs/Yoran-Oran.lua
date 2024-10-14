@@ -44,30 +44,40 @@ entity.onEventUpdate = function(player, csid, option)
 end
 
 entity.onEventFinish = function(player, csid, option)
+    local trustVar = player:getCharVar("[TRUST]yoranCount")
     if csid == 249 then
         player:addQuest(xi.quest.log_id.WINDURST, xi.quest.id.windurst.MANDRAGORA_MAD)
 
     -- TODO: This can easily be handled as a table, keyed by csid - 250 when in range
     elseif csid == 251 then
         npcUtil.completeQuest(player, xi.quest.log_id.WINDURST, xi.quest.id.windurst.MANDRAGORA_MAD, { fame = 10, fameArea = xi.quest.fame_area.WINDURST })
+        player:setCharVar("[TRUST]yoranCount", trustVar + 2)
         player:addGil(xi.settings.main.GIL_RATE * 200)
         player:confirmTrade()
     elseif csid == 252 then
         npcUtil.completeQuest(player, xi.quest.log_id.WINDURST, xi.quest.id.windurst.MANDRAGORA_MAD, { fame = 25, fameArea = xi.quest.fame_area.WINDURST })
+        player:setCharVar("[TRUST]yoranCount", trustVar + 3)
         player:addGil(xi.settings.main.GIL_RATE * 250)
         player:confirmTrade()
     elseif csid == 253 then
         npcUtil.completeQuest(player, xi.quest.log_id.WINDURST, xi.quest.id.windurst.MANDRAGORA_MAD, { fame = 50, fameArea = xi.quest.fame_area.WINDURST })
+        player:setCharVar("[TRUST]yoranCount", trustVar + 4)
         player:addGil(xi.settings.main.GIL_RATE * 1200)
         player:confirmTrade()
     elseif csid == 254 then
         npcUtil.completeQuest(player, xi.quest.log_id.WINDURST, xi.quest.id.windurst.MANDRAGORA_MAD, { fame = 10, fameArea = xi.quest.fame_area.WINDURST })
+        player:setCharVar("[TRUST]yoranCount", trustVar + 1)
         player:addGil(xi.settings.main.GIL_RATE * 120)
         player:confirmTrade()
     elseif csid == 255 then
         npcUtil.completeQuest(player, xi.quest.log_id.WINDURST, xi.quest.id.windurst.MANDRAGORA_MAD, { fame = 100, fameArea = xi.quest.fame_area.WINDURST })
+        player:setCharVar("[TRUST]yoranCount", trustVar + 5)
         player:addGil(xi.settings.main.GIL_RATE * 5500)
         player:confirmTrade()
+    end
+
+    if trustVar < 10 and player:getCharVar("[TRUST]yoranCount") >= 10 then
+        player:PrintToPlayer("Yoran-Oran will now join your party.", 20)
     end
 end
 

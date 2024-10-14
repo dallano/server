@@ -138,6 +138,7 @@ mission.sections =
 
                 [554] = function(player, csid, option, npc)
                     if mission:complete(player) then
+                        player:PrintToPlayer("Trion will now join your party.", 20)
                         player:delKeyItem(xi.ki.ROYAL_KNIGHTS_DAVOI_REPORT)
                         player:addRankPoints(100)
                     end

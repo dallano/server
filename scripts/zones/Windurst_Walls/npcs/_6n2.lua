@@ -35,6 +35,7 @@ entity.onEventFinish = function(player, csid, option)
         -- I CAN HEAR A RAINBOW
     if csid == 384 then
         player:addQuest(xi.quest.log_id.WINDURST, xi.quest.id.windurst.I_CAN_HEAR_A_RAINBOW)
+        player:PrintToPlayer("Ajido-Marujido will now join your party.", 20)
     end
 end
 

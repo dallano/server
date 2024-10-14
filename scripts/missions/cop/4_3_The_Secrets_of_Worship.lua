@@ -21,17 +21,15 @@ local mission = Mission:new(xi.mission.log_id.COP, xi.mission.id.cop.THE_SECRETS
 
 local profQmOnTrigger = function(player, npc)
     local missionStatus = mission:getVar(player, 'Status')
-    local isSpawnPoint = npc:getLocalVar('hasProfessorMariselle') == 1
 
     if
         missionStatus == 3 and
         not player:hasKeyItem(xi.ki.RELIQUIARIUM_KEY) and
-        mission:getVar(player, "hasKilled") == 0 and
-        isSpawnPoint
+        mission:getVar(player, "hasKilled") == 0
     then
-        GetMobByID(sacrariumID.mob.OLD_PROFESSOR_MARISELLE):setSpawn(npc:getXPos(), npc:getYPos(), npc:getZPos(), 0)
+        GetMobByID(sacrariumID.mob.OLD_PROFESSOR_MARISELLE):setSpawn(player:getXPos(), player:getYPos(), player:getZPos(), 0)
         for i = 1, 2 do
-            GetMobByID(sacrariumID.mob.OLD_PROFESSOR_MARISELLE + i):setSpawn(npc:getXPos(), npc:getYPos(), npc:getZPos(), 0)
+            GetMobByID(sacrariumID.mob.OLD_PROFESSOR_MARISELLE + i):setSpawn(player:getXPos(), player:getYPos(), player:getZPos(), 0)
         end
 
         npcUtil.popFromQM(player, npc, sacrariumID.mob.OLD_PROFESSOR_MARISELLE, { radius = 2, hide = 0 })

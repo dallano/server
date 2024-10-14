@@ -3,7 +3,6 @@
 --  Mob: Mariselles' Pupils
 -----------------------------------
 local ID = require('scripts/zones/Sacrarium/IDs')
-local professorTables = require('scripts/zones/Sacrarium/globals')
 require('scripts/globals/missions')
 require('scripts/globals/utils')
 -----------------------------------
@@ -28,7 +27,7 @@ entity.onMobFight = function(mob, target)
     then
         local profLocation = mob:getLocalVar('spawnLocation')
         local randomPosition = math.random(1, 9)
-        utils.mobTeleport(mob, 2000, professorTables.locations[profLocation][randomPosition])
+
         mob:setLocalVar('teleTime', mob:getBattleTime())
     end
 

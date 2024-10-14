@@ -6,10 +6,10 @@ local entity = {}
 
 local stock =
 {
-    xi.items.PIECE_OF_ANGEL_SKIN, 75257,
-    xi.items.DIVINE_LOG,          24356,
-    1133,                         15678, -- Dragon Blood
-    866,                          7845,  -- Wyvern scales
+    xi.items.PIECE_OF_ANGEL_SKIN, 185365,
+    xi.items.DIVINE_LOG,          124356,
+    1133,                         115678, -- Dragon Blood
+    866,                          17845,  -- Wyvern scales
 }
 
 entity.onTrade = function(player, npc, trade)

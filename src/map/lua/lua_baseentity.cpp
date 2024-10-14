@@ -4520,7 +4520,7 @@ void CLuaBaseEntity::unlockEquipSlot(uint8 slot)
 
 int8 CLuaBaseEntity::getShieldSize()
 {
-    XI_DEBUG_BREAK_IF(m_PBaseEntity->objtype != TYPE_PC && m_PBaseEntity->objtype != TYPE_PET && m_PBaseEntity->objtype != TYPE_FELLOW);
+    XI_DEBUG_BREAK_IF(m_PBaseEntity->objtype != TYPE_PC && m_PBaseEntity->objtype != TYPE_PET && m_PBaseEntity->objtype != TYPE_TRUST);
 
     if (m_PBaseEntity->objtype == TYPE_PC)
     {

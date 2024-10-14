@@ -14,15 +14,26 @@ spellObject.onSpellCast = function(caster, target, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
-    xi.trust.message(mob, xi.trust.message_offset.SPAWN)
+    local player = mob:getMaster()
+    player:PrintToPlayer("Let's bust some Mandi-wandies!", xi.msg.channel.PARTY, "Yoran-Oran")
+    mob:setAutoAttackEnabled(false)
+    xi.autoparty.onTrustSpawn(mob)
 end
 
-spellObject.onMobDespawn = function(mob)
-    xi.trust.message(mob, xi.trust.message_offset.DESPAWN)
+spellObject.onMobRoam = function(mob)
+    xi.autoparty.onHealerRoam(mob)
+end
+
+spellObject.onMobFight = function(mob, target)
+    xi.autoparty.onHealerFight(mob, target)
 end
 
 spellObject.onMobDeath = function(mob)
-    xi.trust.message(mob, xi.trust.message_offset.DEATH)
+    local player = mob:getMaster()
+    player:PrintToPlayer("Owie... I'm heading back to my manor...", xi.msg.channel.PARTY, "Yoran-Oran")
+end
+
+spellObject.onMobDespawn = function(mob)
 end
 
 return spellObject

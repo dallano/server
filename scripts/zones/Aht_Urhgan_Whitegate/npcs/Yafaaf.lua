@@ -20,7 +20,7 @@ entity.onTrigger = function(player, npc)
     }
 
     player:showText(npc, ID.text.YAFAAF_SHOP_DIALOG)
-    xi.shop.general(player, stock, 1)
+    xi.shop.general(player, xi.shop.foodStock)
 end
 
 entity.onEventUpdate = function(player, csid, option)

@@ -76,6 +76,7 @@ mission.sections =
 
                 [105] = function(player, csid, option, npc)
                     mission:complete(player)
+                    player:PrintToPlayer("Ulmia will now join your party.", 20)
                 end,
             },
         },

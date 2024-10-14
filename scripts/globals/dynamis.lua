@@ -330,6 +330,7 @@ xi.dynamis.entryNpcOnTrigger = function(player, npc)
     local tavnaziaFirst = false
     printf("info.reqs(player) %s", info.reqs(player))
     -- Tavnazia is unique;  plays the first time cs directly on trigger without message or transporting
+
     if
         info.csBit == 10 and
         info.reqs(player) and

@@ -4,29 +4,25 @@
 require("scripts/globals/ability")
 require("scripts/globals/gambits")
 require("scripts/globals/magic")
-require("scripts/globals/roe")
 require("scripts/globals/trust")
 require("scripts/globals/weaponskillids")
 -----------------------------------
 local spellObject = {}
 
 spellObject.onMagicCastingCheck = function(caster, target, spell)
-    return xi.trust.canCast(caster, spell, 1014)
+    -- return xi.trust.canCast(caster, spell, xi.magic.spell.AYAME_UC)
 end
 
 spellObject.onSpellCast = function(caster, target, spell)
-    -- Records of Eminence: Alter Ego: Tenzen
-    if caster:getEminenceProgress(935) then
-        xi.roe.onRecordTrigger(caster, 935)
-    end
-
     return xi.trust.spawn(caster, spell)
 end
 
 spellObject.onMobSpawn = function(mob)
-    xi.trust.teamworkMessage(mob, {
-        [xi.magic.spell.IROHA] = xi.trust.message_offset.TEAMWORK_1,
-    })
+    local master = mob:getMaster()
+
+    master:PrintToPlayer("Tenzen here. I need better dialogue.", xi.msg.channel.PARTY, "Tenzen")
+
+    mob:addMod(xi.mod.ATT, 50)
 
     mob:addSimpleGambit(ai.t.SELF, ai.c.NOT_STATUS, xi.effect.HASSO,
         ai.r.JA, ai.s.SPECIFIC, xi.ja.HASSO)
@@ -34,7 +30,10 @@ spellObject.onMobSpawn = function(mob)
     mob:addSimpleGambit(ai.t.SELF, ai.c.HAS_TOP_ENMITY, 0,
         ai.r.JA, ai.s.SPECIFIC, xi.ja.THIRD_EYE)
 
-    mob:setTrustTPSkillSettings(ai.tp.CLOSER_UNTIL_TP, ai.s.HIGHEST, 1500)
+    mob:addSimpleGambit(ai.t.SELF, ai.c.TP_LT, 1000,
+        ai.r.JA, ai.s.SPECIFIC, xi.ja.MEDITATE)
+
+    xi.autoparty.onTrustSpawn(mob)
 end
 
 spellObject.onMobDespawn = function(mob)

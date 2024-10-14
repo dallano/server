@@ -92,14 +92,14 @@ xi.settings.map =
     ALL_JOBS_WIDESCAN = false,
 
     -- Modifier to apply to player speed. 0 is the retail accurate default. Negative numbers will reduce it.
-    SPEED_MOD = -5,
+    SPEED_MOD = 0,
 
     -- Modifier to apply to mount speed. 0 is the retail accurate default. Negative numbers will reduce it.
     -- Note retail treats the mounted speed as double what it actually is.
     MOUNT_SPEED_MOD = 0,
 
     -- Modifier to apply to agro'd monster speed. 0 is the retail accurate default. Negative numbers will reduce it.
-    MOB_SPEED_MOD = -5,
+    MOB_SPEED_MOD = 0,
 
     -- Allows you to manipulate the constant multiplier in the skill-up rate formulas, having a potent effect on skill-up rates.
     CRAFT_CHANCE_MULTIPLIER   = 2.0,
@@ -107,7 +107,7 @@ xi.settings.map =
 
     -- Multiplier for skillup amounts. Using anything above 1 will break the 0.5 cap, the cap will become 0.9 (For maximum, set to 5)
     SKILLUP_CHANCE_MULTIPLIER = 2,
-    SKILLUP_AMOUNT_MULTIPLIER = 1.5,
+    SKILLUP_AMOUNT_MULTIPLIER = 2,
 
     -- Gardening Factors. DO NOT change defaults without verifiable proof that your change IS how retail does it. Myths need to be optional.
     GARDEN_DAY_MATTERS       = false,
@@ -217,7 +217,7 @@ xi.settings.map =
     -- Max allowed merits points players can hold
     --  10 classic
     --  30 abyssea
-    MAX_MERIT_POINTS = 10,
+    MAX_MERIT_POINTS = 30,
 
     -- Minimum time between uses of yell command (in seconds).
     YELL_COOLDOWN = 30,

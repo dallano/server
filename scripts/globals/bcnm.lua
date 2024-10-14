@@ -934,19 +934,19 @@ local function checkReqs(player, npc, bfid, registrant)
         end,
 
         [641] = function() -- ENM: Follow the White Rabbit
-            return player:hasKeyItem(xi.ki.ZEPHYR_FAN) and npcId == getEntranceOffset(2)
+            return player:hasKeyItem(xi.ki.ZEPHYR_FAN)
         end,
 
         [642] = function() -- ENM: When Hell Freezes Over
-            return player:hasKeyItem(xi.ki.ZEPHYR_FAN) and npcId == getEntranceOffset(4)
+            return player:hasKeyItem(xi.ki.ZEPHYR_FAN)
         end,
 
         [643] = function() -- ENM: Brothers
-            return player:hasKeyItem(xi.ki.ZEPHYR_FAN) and npcId == getEntranceOffset(6)
+            return player:hasKeyItem(xi.ki.ZEPHYR_FAN)
         end,
 
         [644] = function() -- ENM: Holy Cow
-            return player:hasKeyItem(xi.ki.ZEPHYR_FAN) and npcId == getEntranceOffset(8)
+            return player:hasKeyItem(xi.ki.ZEPHYR_FAN)
         end,
 
         [672] = function() -- PM5-3 U2: Head Wind
@@ -1231,19 +1231,19 @@ local function checkReqs(player, npc, bfid, registrant)
         end,
 
         [641] = function() -- ENM: Follow the White Rabbit
-            return player:hasKeyItem(xi.ki.ZEPHYR_FAN) and npcId == getEntranceOffset(2)
+            return player:hasKeyItem(xi.ki.ZEPHYR_FAN)
         end,
 
         [642] = function() -- ENM: When Hell Freezes Over
-            return player:hasKeyItem(xi.ki.ZEPHYR_FAN) and npcId == getEntranceOffset(4)
+            return player:hasKeyItem(xi.ki.ZEPHYR_FAN)
         end,
 
         [643] = function() -- ENM: Brothers
-            return player:hasKeyItem(xi.ki.ZEPHYR_FAN) and npcId == getEntranceOffset(6)
+            return player:hasKeyItem(xi.ki.ZEPHYR_FAN)
         end,
 
         [644] = function() -- ENM: Holy Cow
-            return player:hasKeyItem(xi.ki.ZEPHYR_FAN) and npcId == getEntranceOffset(8)
+            return player:hasKeyItem(xi.ki.ZEPHYR_FAN)
         end,
 
         [672] = function() -- PM5-3 U2: Head Wind

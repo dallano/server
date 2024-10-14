@@ -11,6 +11,9 @@ effectObject.onEffectGain = function(target, effect)
     if target:isPC() then
         power = target:getSkillLevel(xi.skill.SHIELD) * 0.15
         target:setCharVar("[DEFENDER]spxiPower", power)
+    else
+        power = (target:getMainLvl() * 3) * 0.15
+        target:setLocalVar("[DEFENDER]spxiPower", power)
     end
 
     target:addMod(xi.mod.DEFP, 25 + power)
@@ -27,6 +30,8 @@ effectObject.onEffectLose = function(target, effect)
 
     if target:isPC() then
         power = target:getCharVar("[DEFENDER]spxiPower")
+    else
+        power = target:getLocalVar("[DEFENDER]spxiPower")
     end
 
     target:delMod(xi.mod.DEFP, 25 + power)

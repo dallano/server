@@ -12,11 +12,11 @@ local function enterShell(mob)
     mob:setAnimationSub(1)
     mob:setAutoAttackEnabled(false)
     mob:setMagicCastingEnabled(false)
-    mob:setMod(xi.mod.UDMGPHYS, -8500)
-    mob:setMod(xi.mod.UDMGRANGE, -8500)
-    mob:setMod(xi.mod.UDMGMAGIC, -7500)
-    mob:setMod(xi.mod.UDMGBREATH, -7500)
-    mob:setMod(xi.mod.REGEN, 100)
+    mob:setMod(xi.mod.UDMGPHYS, -5500)
+    mob:setMod(xi.mod.UDMGRANGE, -5500)
+    mob:setMod(xi.mod.UDMGMAGIC, -2500)
+    mob:setMod(xi.mod.UDMGBREATH, -1500)
+    mob:setMod(xi.mod.REGEN, 30)
     mob:setMobMod(xi.mobMod.SKILL_LIST, 250)
     mob:setMobMod(xi.mobMod.NO_MOVE, 1)
     mob:setLocalVar("inShell", 1)
@@ -82,7 +82,7 @@ entity.onMobFight = function(mob, target)
         mob:setMagicCastingEnabled(false)
         mob:addStatusEffect(xi.effect.CHAINSPELL, 1, 0, 2)
         mob:castSpell(xi.magic.spell.FLOOD, target)
-        mob:setLocalVar("petCooldown", os.time() + 20)
+        mob:setLocalVar("petCooldown", os.time() + 35)
     end
 
     -- Shen exits shell if a pet dies so that it can respawn it
@@ -107,7 +107,7 @@ entity.onSpellPrecast = function(mob, spell)
             local pet = GetMobByID(mob:getID() + i)
             if not pet:isSpawned() then
                 SpawnMob(pet:getID()):updateEnmity(target)
-                pet:setPos(pos.x, pos.y, pos.z, pos.rot)
+                pet:setPos(pos.x + math.random(-2, 2), pos.y, pos.z + math.random(-2, 2), pos.rot)
                 break
             end
         end

@@ -375,15 +375,15 @@ xi.eraShops.Hasim =
     4653,  32000, -- Scroll of Protect III
 }
 
-xi.eraShops.Stinknix =
-{
-    943,    294, -- Poison Dust
-    944,   1035, -- Venom Dust
-    945,   2000, -- Paralysis Dust
-    17320,    7, -- Iron Arrow
-    17336,    5, -- Crossbow Bolt
-    17313, 1107, -- Grenade
-}
+-- xi.eraShops.Stinknix =
+-- {
+--     943,    294, -- Poison Dust
+--     944,   1035, -- Venom Dust
+--     945,   2000, -- Paralysis Dust
+--     17320,    7, -- Iron Arrow
+--     17336,    5, -- Crossbow Bolt
+--     17313, 1107, -- Grenade
+-- }
 
 xi.eraShops.Susu =
 {
@@ -426,17 +426,17 @@ xi.eraShops.Taza =
 }
 
 -- Upper Jeuno
-xi.eraShops.Coumuna =
-{
-    16705,  4550, -- Greataxe
-    16518, 31000, -- Mythril Degen
-    16460, 12096, -- Kris
-    16467, 14560, -- Mythril Knife
-    16399, 15488, -- Katars
-    16589, 13962, -- Two-Handed Sword
-    16412, 29760, -- Mythril Claws
-    16567, 85250, -- Knight's Sword
-}
+-- xi.eraShops.Coumuna =
+-- {
+--     16705,  4550, -- Greataxe
+--     16518, 31000, -- Mythril Degen
+--     16460, 12096, -- Kris
+--     16467, 14560, -- Mythril Knife
+--     16399, 15488, -- Katars
+--     16589, 13962, -- Two-Handed Sword
+--     16412, 29760, -- Mythril Claws
+--     16567, 85250, -- Knight's Sword
+-- }
 
 xi.eraShops.Areebah =
 {
@@ -578,24 +578,25 @@ xi.eraShops.Brave_Ox =
     4720,  31850, -- Flash
     4750, 546000, -- Reraise III
     4638,  78260, -- Banish III
-    -- 4701, 20092, -- Cura
-    -- 4702, 62192, -- Sacrifice
-    -- 4703, 64584, -- Esuna
-    -- 4704, 30967, -- Auspice
+    4701, 20092, -- Cura
+    4702, 62192, -- Sacrifice
+    4703, 64584, -- Esuna
+    4704, 30967, -- Auspice
+    4751, 98631, -- Erase
 }
 
 -- Upper Jeuno
-xi.eraShops.Antonia =
-{
-    17061,  6256, -- Mythril Rod
-    17027, 11232, -- Oak Cudgel
-    17036, 18048, -- Mythril Mace
-    17044,  6033, -- Warhammer
-    17098, 37440, -- Oak Pole
-    16836, 44550, -- Halberd
-    16774, 10596, -- Scythe
-    17320,     7, -- Iron Arrow
-}
+-- xi.eraShops.Antonia =
+-- {
+--     17061,  6256, -- Mythril Rod
+--     17027, 11232, -- Oak Cudgel
+--     17036, 18048, -- Mythril Mace
+--     17044,  6033, -- Warhammer
+--     17098, 37440, -- Oak Pole
+--     16836, 44550, -- Halberd
+--     16774, 10596, -- Scythe
+--     17320,     7, -- Iron Arrow
+-- }
 
 -- Windurst Waters
 xi.eraShops.OrezEbrez =
@@ -676,10 +677,10 @@ local lookupTable =
     { "standard", "Lower_Jeuno", "Creepstix", xi.eraShops.Creepstix, nil, "JUNK_SHOP_DIALOG", 1 },
     { "standard", "Lower_Jeuno", "Hasim", xi.eraShops.Hasim, nil, "WAAG_DEEG_SHOP_DIALOG", 1 },
     { "standard", "Lower_Jeuno", "Susu", xi.eraShops.Susu, nil, "WAAG_DEEG_SHOP_DIALOG", 1 },
-    { "standard", "Lower_Jeuno", "Stinknix", xi.eraShops.Stinknix, nil, "JUNK_SHOP_DIALOG", 1 },
+    -- { "standard", "Lower_Jeuno", "Stinknix", xi.eraShops.Stinknix, nil, "JUNK_SHOP_DIALOG", 1 },
     { "standard", "Lower_Jeuno", "Taza", xi.eraShops.Taza, nil, "WAAG_DEEG_SHOP_DIALOG", 1 },
-    { "standard", "Upper_Jeuno", "Antonia", xi.eraShops.Antonia, nil, "VIETTES_SHOP_DIALOG", 1 },
-    { "standard", "Upper_Jeuno", "Coumuna", xi.eraShops.Coumuna, nil, "VIETTES_SHOP_DIALOG", 1 },
+    -- { "standard", "Upper_Jeuno", "Antonia", xi.eraShops.Antonia, nil, "VIETTES_SHOP_DIALOG", 1 },
+    -- { "standard", "Upper_Jeuno", "Coumuna", xi.eraShops.Coumuna, nil, "VIETTES_SHOP_DIALOG", 1 },
     { "standard", "Upper_Jeuno", "Areebah", xi.eraShops.Areebah, xi.quest.fame_area.JEUNO, "MP_SHOP_DIALOG", 1 },
     { "standard", "RuLude_Gardens", "Dabih_Jajalioh", xi.eraShops.DabihJajalioh, xi.quest.fame_area.JEUNO, "DABIHJAJALIOH_SHOP_DIALOG", 1 },
     { "standard", "Port_Jeuno", "Gekko", xi.eraShops.Gekko, xi.quest.fame_area.JEUNO, "DUTY_FREE_SHOP_DIALOG", 1 },

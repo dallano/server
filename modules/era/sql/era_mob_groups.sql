@@ -181,7 +181,7 @@ UPDATE mob_groups SET content_tag='WOTG' WHERE name='Flockbock' AND groupid='32'
 UPDATE mob_groups SET content_tag='WOTG' WHERE name='Sengann' AND groupid='79' AND zoneid='24';
 UPDATE mob_groups SET content_tag='WOTG' WHERE name='Yal-un_Eke' AND groupid='82' AND zoneid='24';
 
-UPDATE mob_groups SET minLevel = 80, maxLevel = 83 WHERE name = "Abraxas" and zoneid = 24;
+UPDATE mob_groups SET minLevel = 75, maxLevel = 76 WHERE name = "Abraxas" and zoneid = 24;
     -- 79-82
 UPDATE mob_groups SET minLevel = 79, maxLevel = 82 WHERE name = "Fomor_Ninja"       and zoneid = 24 and groupid = 33;
 UPDATE mob_groups SET minLevel = 79, maxLevel = 82 WHERE name = "Fomor_Monk"        and zoneid = 24 and groupid = 34;

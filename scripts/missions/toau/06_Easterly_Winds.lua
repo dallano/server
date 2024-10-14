@@ -38,8 +38,7 @@ mission.sections =
 
     {
         check = function(player, currentMission, missionStatus, vars)
-            return currentMission == mission.missionId and
-                os.time() >= vars.Stage
+            return currentMission == mission.missionId -- xiSP no JP midnight wait
         end,
 
         [xi.zone.RULUDE_GARDENS] =

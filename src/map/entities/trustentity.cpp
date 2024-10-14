@@ -53,7 +53,7 @@ CTrustEntity::CTrustEntity(CCharEntity* PChar)
     m_MovementType              = MELEE_RANGE;
     m_IsClaimable               = false;
     m_bReleaseTargIDOnDisappear = true;
-    spawnAnimation              = SPAWN_ANIMATION::SPECIAL; // Initial spawn has the special spawn-in animation
+    spawnAnimation              = SPAWN_ANIMATION::NORMAL; // Initial spawn has the special spawn-in animation
 
     PAI = std::make_unique<CAIContainer>(this, std::make_unique<CPathFind>(this), std::make_unique<CTrustController>(PChar, this),
                                          std::make_unique<CTargetFind>(this));
@@ -461,11 +461,6 @@ void CTrustEntity::OnRangedAttack(CRangeState& state, action_t& action)
 bool CTrustEntity::ValidTarget(CBattleEntity* PInitiator, uint16 targetFlags)
 {
     if (PInitiator->objtype == TYPE_TRUST && PMaster == PInitiator->PMaster)
-    {
-        return true;
-    }
-
-    if (targetFlags & TARGET_FELLOW && PInitiator->allegiance == allegiance)
     {
         return true;
     }
